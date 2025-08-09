@@ -28,7 +28,7 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -191,7 +191,7 @@ a:focus:not(:focus-visible) {
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     .card {
-        background: rgba(30, 30, 30, 0.95);
+        background: rgba(30, 30, 30, 0.85);
     }
 
     h1, .label {
