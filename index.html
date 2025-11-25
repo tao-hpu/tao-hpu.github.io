@@ -6,268 +6,811 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Tao An's official website - Personal portfolio and professional work showcase">
-    <meta name="keywords" content="Tao An, FIM, AI Engineering, SLAN, Portfolio">
+    <meta name="description" content="Tao An - AI Researcher at Hawaii Pacific University">
+    <meta name="keywords" content="Tao An, AI Research, Machine Learning, Hawaii Pacific University">
     <meta name="author" content="Tao An">
-    <meta property="og:title" content="Tao An's Official Website">
-    <meta property="og:description" content="Personal portfolio and professional work showcase">
+    <meta property="og:title" content="Tao An">
+    <meta property="og:description" content="AI Researcher focused on building impactful technology">
     <meta property="og:type" content="website">
-    <title>Tao An's Official Website</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Tao An</title>
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Background layers -->
-    <div class="bg-image"></div>
-    <div class="bg-gradient"></div>
-    <div class="bg-grid"></div>
-
-    <!-- Floating particles -->
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
-    <main class="content">
-        <!-- Hero Section -->
-        <header class="hero">
-            <div class="avatar-container">
-                <div class="avatar-ring"></div>
-                <img src="https://oss.v-dk.com/img/202511260002211.jpg" alt="Tao An" class="avatar">
-                <div class="status-dot"></div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo"><span class="logo-char">T</span><span class="logo-char">\</span><span class="logo-char">A</span></a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#connect">Connect</a>
             </div>
+        </div>
+    </nav>
 
-            <div class="hero-text">
-                <p class="greeting">Welcome to</p>
-                <h1 class="name">
-                    <span class="name-first">Tao</span>
-                    <span class="name-last">An's Space</span>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <strong><span class="word-fade" style="--i:5">AI</span> <span class="word-fade underline"
+                            style="--i:2">research</span> <span class="word-fade" style="--i:7">and</span>
+                        <span class="word-fade underline" style="--i:0">engineering</span> <span class="word-fade"
+                            style="--i:4">that</span>
+                        <span class="word-fade" style="--i:6">create</span> <span class="word-fade"
+                            style="--i:1">real</span> <span class="word-fade" style="--i:3">impact.</span></strong>
                 </h1>
-                <p class="tagline">
-                    <span class="typewriter"></span>
+                <p class="hero-description fade-in" style="animation-delay: 1.2s;">
+                    I'm an AI researcher at Hawaii Pacific University, passionate about
+                    developing machine learning solutions that bridge academic research
+                    with practical applications.
                 </p>
             </div>
-        </header>
+            <div class="hero-visual fade-in" style="animation-delay: 0s;">
+                <!-- D3.js Neural Network -->
+                <div class="illustration-container" id="neural-network"></div>
+            </div>
+        </section>
 
-        <!-- Links Section -->
-        <nav class="links-grid" role="navigation">
-            <!-- Personal Links -->
-            <section class="link-section personal">
-                <div class="section-header">
-                    <span class="section-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="about-container">
+                <div class="about-avatar fade-on-scroll">
+                    <img src="https://oss.v-dk.com/img/202511260002211.jpg" alt="Tao An" class="avatar-img">
+                </div>
+                <div class="about-content fade-on-scroll">
+                    <h2 class="section-title">About Tao An</h2>
+                    <p class="about-text">
+                        As an AI researcher, I focus on developing innovative solutions
+                        that advance the field of artificial intelligence. My work spans
+                        machine learning, natural language processing, and AI systems design.
+                    </p>
+                    <p class="about-text">
+                        I believe in the power of technology to solve real-world problems
+                        and am committed to responsible AI development that benefits society.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Cards -->
+        <section class="cards-section" id="research">
+            <div class="cards-grid">
+                <a href="https://scholar.google.com/citations?user=HBIPWm4AAAAJ" target="_blank"
+                    rel="noopener noreferrer" class="card card-beige fade-on-scroll">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="25" r="8" fill="#191918" />
+                            <circle cx="30" cy="45" r="6" fill="#191918" />
+                            <circle cx="50" cy="45" r="6" fill="#191918" />
+                            <circle cx="25" cy="60" r="5" fill="#191918" />
+                            <circle cx="40" cy="62" r="5" fill="#191918" />
+                            <circle cx="55" cy="60" r="5" fill="#191918" />
+                            <line x1="40" y1="33" x2="30" y2="39" stroke="#191918" stroke-width="2" />
+                            <line x1="40" y1="33" x2="50" y2="39" stroke="#191918" stroke-width="2" />
+                            <line x1="30" y1="51" x2="25" y2="55" stroke="#191918" stroke-width="2" />
+                            <line x1="30" y1="51" x2="40" y2="57" stroke="#191918" stroke-width="2" />
+                            <line x1="50" y1="51" x2="55" y2="55" stroke="#191918" stroke-width="2" />
+                            <line x1="50" y1="51" x2="40" y2="57" stroke="#191918" stroke-width="2" />
                         </svg>
-                    </span>
-                    <h2>Personal</h2>
-                </div>
+                    </div>
+                    <h3 class="card-title">Research Publications</h3>
+                    <p class="card-subtitle">Google Scholar</p>
+                </a>
 
-                <div class="links-list">
-                    <a href="https://x.com/tao_an_hpu" target="_blank" rel="noopener noreferrer" class="link-item featured" aria-label="Tao An on X (Twitter)">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">X</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="Tao An on GitHub">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">GitHub</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer" class="link-item featured" aria-label="Tao An on Medium">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M4.285 7.269a.733.733 0 0 0-.24-.619l-1.77-2.133v-.32h5.498l4.25 9.32 3.736-9.32H21v.319l-1.515 1.451a.45.45 0 0 0-.168.425v10.666a.448.448 0 0 0 .168.425l1.479 1.451v.319h-7.436v-.319l1.529-1.487c.152-.15.152-.194.152-.424V8.401L11.05 19.218h-.575L5.417 8.401v7.249c-.041.305.06.612.275.833L7.684 19v.319H2v-.319l1.992-2.487a.87.87 0 0 0 .257-.833V7.269h.036z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">Medium</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://www.instagram.com/tao_hpu/" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="Tao An on Instagram">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">Instagram</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="http://youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="Tao An on YouTube">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">YouTube</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/tao-hpu" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="Tao An on LinkedIn">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">LinkedIn</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="mailto:tan1@my.hpu.edu" class="link-item" aria-label="Email Tao An">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">Email</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Work Links -->
-            <section class="link-section work">
-                <div class="section-header">
-                    <span class="section-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                <a href="https://arxiv.org/a/0009-0006-2933-0320.html" target="_blank" rel="noopener noreferrer"
+                    class="card card-green fade-on-scroll">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="30" width="40" height="8" rx="2" fill="#191918" />
+                            <rect x="20" y="42" width="40" height="8" rx="2" fill="#191918" />
+                            <rect x="20" y="54" width="25" height="8" rx="2" fill="#191918" />
+                            <path d="M55 20 L65 30 L55 30 Z" fill="#191918" />
+                            <rect x="15" y="15" width="40" height="55" rx="3" stroke="#191918" stroke-width="2"
+                                fill="none" />
                         </svg>
-                    </span>
-                    <h2>Work</h2>
-                </div>
+                    </div>
+                    <h3 class="card-title">Preprints & Papers</h3>
+                    <p class="card-subtitle">arXiv</p>
+                </a>
 
-                <div class="links-list">
-                    <a href="https://scholar.google.com/citations?user=HBIPWm4AAAAJ" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="Tao An on Google Scholar">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">Google Scholar</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
+                <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer"
+                    class="card card-purple fade-on-scroll">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 55 L40 40 L55 55" stroke="#191918" stroke-width="3" fill="none" />
+                            <path d="M25 40 L40 25 L55 40" stroke="#191918" stroke-width="3" fill="none" />
+                            <rect x="38" y="40" width="4" height="25" fill="#191918" />
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Open Source Projects</h3>
+                    <p class="card-subtitle">GitHub</p>
+                </a>
+            </div>
+        </section>
 
-                    <a href="https://arxiv.org/a/0009-0006-2933-0320.html" target="_blank" rel="noopener noreferrer" class="link-item featured" aria-label="Tao An on arXiv">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="3"/>
-                                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(0 12 12)"/>
-                                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/>
-                                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">arXiv</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://orcid.org/0009-0006-2933-0320" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="Tao An on ORCID">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">ORCID</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://www.fim.com.cn/" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="FIM Tech">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                                <polyline points="2 17 12 22 22 17"/>
-                                <polyline points="2 12 12 17 22 12"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">FIM</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://www.wuz.com.cn/" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="WUZ Tech">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">WUZ (中文)</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://www.slan.org.cn/" target="_blank" rel="noopener noreferrer" class="link-item" aria-label="SLAN Organization">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">SLAN (中文)</span>
-                        <span class="link-arrow">&rarr;</span>
-                    </a>
-
-                    <a href="https://fim-tech.feishu.cn/wiki/space/7524906799680929795" target="_blank" rel="noopener noreferrer" class="link-item handbook" aria-label="AI Engineering Handbook">
-                        <span class="link-icon">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                            </svg>
-                        </span>
-                        <span class="link-text">AI Engineering Handbook (中文)</span>
-                        <span class="link-badge">New</span>
-                        <span class="link-arrow">&rarr;</span>
+        <!-- Featured Box -->
+        <section class="featured-section">
+            <div class="featured-box fade-on-scroll">
+                <div class="featured-content">
+                    <h3 class="featured-title">AI Engineering Handbook</h3>
+                    <p class="featured-description">
+                        A comprehensive guide covering AI engineering practices,
+                        machine learning workflows, and best practices for building
+                        production-ready AI systems.
+                    </p>
+                    <a href="https://fim-tech.feishu.cn/wiki/space/7524906799680929795" target="_blank"
+                        rel="noopener noreferrer" class="featured-button">
+                        Read handbook
                     </a>
                 </div>
-            </section>
-        </nav>
+                <div class="featured-links">
+                    <p class="featured-links-title">Learn more</p>
+                    <a href="https://www.fim.com.cn/" target="_blank" rel="noopener noreferrer" class="featured-link">
+                        <span>FIM Tech</span>
+                        <span class="arrow">&rarr;</span>
+                    </a>
+                    <a href="https://www.slan.org.cn/" target="_blank" rel="noopener noreferrer" class="featured-link">
+                        <span>SLAN Organization</span>
+                        <span class="arrow">&rarr;</span>
+                    </a>
+                    <a href="https://www.wuz.com.cn/" target="_blank" rel="noopener noreferrer" class="featured-link">
+                        <span>WUZ Platform</span>
+                        <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; <span id="year"></span> Tao An. All rights reserved.</p>
-        </footer>
+        <!-- Connect Section -->
+        <section class="connect-section" id="connect">
+            <h2 class="section-title-small fade-on-scroll">Connect</h2>
+            <div class="connect-list fade-on-scroll">
+                <a href="https://x.com/tao_an_hpu" target="_blank" rel="noopener noreferrer" class="connect-item">
+                    <span class="connect-name">X (Twitter)</span>
+                    <span class="connect-category">Social</span>
+                    <span class="connect-arrow">&rarr;</span>
+                </a>
+                <a href="https://www.linkedin.com/in/tao-hpu" target="_blank" rel="noopener noreferrer"
+                    class="connect-item">
+                    <span class="connect-name">LinkedIn</span>
+                    <span class="connect-category">Professional</span>
+                    <span class="connect-arrow">&rarr;</span>
+                </a>
+                <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer" class="connect-item">
+                    <span class="connect-name">Medium</span>
+                    <span class="connect-category">Writing</span>
+                    <span class="connect-arrow">&rarr;</span>
+                </a>
+                <a href="http://youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer" class="connect-item">
+                    <span class="connect-name">YouTube</span>
+                    <span class="connect-category">Videos</span>
+                    <span class="connect-arrow">&rarr;</span>
+                </a>
+                <a href="https://www.instagram.com/tao_hpu/" target="_blank" rel="noopener noreferrer"
+                    class="connect-item">
+                    <span class="connect-name">Instagram</span>
+                    <span class="connect-category">Photos</span>
+                    <span class="connect-arrow">&rarr;</span>
+                </a>
+                <a href="https://orcid.org/0009-0006-2933-0320" target="_blank" rel="noopener noreferrer"
+                    class="connect-item">
+                    <span class="connect-name">ORCID</span>
+                    <span class="connect-category">Academic</span>
+                    <span class="connect-arrow">&rarr;</span>
+                </a>
+                <a href="mailto:tan1@my.hpu.edu" class="connect-item">
+                    <span class="connect-name">Email</span>
+                    <span class="connect-category">Contact</span>
+                    <span class="connect-arrow">&rarr;</span>
+                </a>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Dark Footer -->
+    <footer class="footer-dark">
+        <div class="footer-container">
+            <!-- Logo -->
+            <div class="footer-logo">T\A</div>
+
+            <!-- Footer Columns -->
+            <div class="footer-column">
+                <h4>Research</h4>
+                <a href="https://scholar.google.com/citations?user=HBIPWm4AAAAJ" target="_blank"
+                    rel="noopener noreferrer">Google Scholar</a>
+                <a href="https://arxiv.org/a/0009-0006-2933-0320.html" target="_blank"
+                    rel="noopener noreferrer">arXiv</a>
+                <a href="https://orcid.org/0009-0006-2933-0320" target="_blank" rel="noopener noreferrer">ORCID</a>
+                <a href="https://fim-tech.feishu.cn/wiki/space/7524906799680929795" target="_blank"
+                    rel="noopener noreferrer">AI Handbook</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Projects</h4>
+                <a href="https://www.fim.com.cn/" target="_blank" rel="noopener noreferrer">FIM Tech</a>
+                <a href="https://www.slan.org.cn/" target="_blank" rel="noopener noreferrer">SLAN</a>
+                <a href="https://www.wuz.com.cn/" target="_blank" rel="noopener noreferrer">WUZ</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Social</h4>
+                <a href="https://x.com/tao_an_hpu" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+                <a href="https://www.linkedin.com/in/tao-hpu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer">Medium</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Media</h4>
+                <a href="http://youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a href="https://www.instagram.com/tao_hpu/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:tan1@my.hpu.edu">Email</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Tao An. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Typewriter effect
-        const typewriter = document.querySelector('.typewriter');
-        const text = 'AI Researcher, MS in AI @ Hawaii Pacific University';
-        let i = 0;
+        // Scroll-triggered fade in animation
+        const fadeElements = document.querySelectorAll('.fade-on-scroll');
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        function type() {
-            if (i < text.length) {
-                typewriter.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 30);
-            } else {
-                typewriter.classList.add('done');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function updateActiveNav() {
+            const scrollY = window.scrollY;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+
+            // Remove active if at top of page
+            if (scrollY < 200) {
+                navLinks.forEach(link => link.classList.remove('active'));
             }
         }
 
-        setTimeout(type, 800);
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+
+        // D3.js AI Mind Illustration - Organic hand-drawn style
+        (function () {
+            const container = document.getElementById('neural-network');
+            const width = 420;
+            const height = 420;
+            const cx = width / 2;
+            const cy = height / 2;
+
+            // Colors
+            const accentColor = '#d97757';
+            const darkColor = '#191918';
+            const lightAccent = 'rgba(217, 119, 87, 0.15)';
+
+            // Create SVG
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('viewBox', `0 0 ${width} ${height}`)
+                .attr('class', 'hero-illustration')
+                .style('cursor', 'pointer');
+
+            // Add slight hand-drawn effect with filter
+            const defs = svg.append('defs');
+            const filter = defs.append('filter')
+                .attr('id', 'hand-drawn')
+                .attr('x', '-20%')
+                .attr('y', '-20%')
+                .attr('width', '140%')
+                .attr('height', '140%');
+            filter.append('feTurbulence')
+                .attr('type', 'fractalNoise')
+                .attr('baseFrequency', '0.04')
+                .attr('numOctaves', '1')
+                .attr('result', 'noise');
+            filter.append('feDisplacementMap')
+                .attr('in', 'SourceGraphic')
+                .attr('in2', 'noise')
+                .attr('scale', '2')
+                .attr('xChannelSelector', 'R')
+                .attr('yChannelSelector', 'G');
+
+            // Create main group with filter
+            const mainGroup = svg.append('g')
+                .attr('filter', 'url(#hand-drawn)');
+
+            // Draw concentric arcs (fingerprint/mind waves) - scaled up
+            const arcGroup = mainGroup.append('g').attr('class', 'arcs');
+            const arcRadii = [60, 85, 110, 135, 165];
+
+            arcRadii.forEach((r, i) => {
+                const startAngle = -Math.PI * 0.7;
+                const endAngle = Math.PI * 0.4;
+
+                const arc = d3.arc()
+                    .innerRadius(r - 3)
+                    .outerRadius(r)
+                    .startAngle(startAngle)
+                    .endAngle(endAngle);
+
+                arcGroup.append('path')
+                    .attr('d', arc)
+                    .attr('transform', `translate(${cx - 25}, ${cy + 15})`)
+                    .attr('fill', darkColor)
+                    .attr('opacity', 0.12 + i * 0.03)
+                    .attr('class', `arc-${i}`);
+            });
+
+            // Neural network nodes - scaled up positions
+            const nodes = [
+                { x: cx - 80, y: cy - 95, r: 11, type: 'input' },
+                { x: cx - 112, y: cy - 25, r: 10, type: 'input' },
+                { x: cx - 95, y: cy + 55, r: 11, type: 'input' },
+                { x: cx, y: cy - 65, r: 14, type: 'hidden' },
+                { x: cx + 15, y: cy + 15, r: 16, type: 'hidden' },
+                { x: cx - 25, y: cy + 82, r: 12, type: 'hidden' },
+                { x: cx + 82, y: cy - 40, r: 15, type: 'output' },
+                { x: cx + 95, y: cy + 55, r: 14, type: 'output' },
+            ];
+
+            // Connections - organic curved paths
+            const connections = [
+                [0, 3], [0, 4], [1, 3], [1, 4], [1, 5], [2, 4], [2, 5],
+                [3, 6], [3, 7], [4, 6], [4, 7], [5, 7]
+            ];
+
+            // Draw connections as curved lines
+            const linkGroup = mainGroup.append('g').attr('class', 'links');
+            const linkElements = [];
+
+            connections.forEach(([i, j], idx) => {
+                const source = nodes[i];
+                const target = nodes[j];
+
+                // Create curved path
+                const midX = (source.x + target.x) / 2 + (Math.random() - 0.5) * 20;
+                const midY = (source.y + target.y) / 2 + (Math.random() - 0.5) * 20;
+
+                const link = linkGroup.append('path')
+                    .attr('d', `M ${source.x} ${source.y} Q ${midX} ${midY} ${target.x} ${target.y}`)
+                    .attr('fill', 'none')
+                    .attr('stroke', darkColor)
+                    .attr('stroke-width', 2.5)
+                    .attr('stroke-linecap', 'round')
+                    .attr('opacity', 0.2)
+                    .style('cursor', 'pointer')
+                    .on('click', function(event) {
+                        event.stopPropagation();
+
+                        // Highlight line
+                        d3.select(this)
+                            .transition()
+                            .duration(100)
+                            .attr('stroke', accentColor)
+                            .attr('opacity', 0.8)
+                            .attr('stroke-width', 4)
+                            .transition()
+                            .duration(600)
+                            .attr('stroke', darkColor)
+                            .attr('opacity', 0.2)
+                            .attr('stroke-width', 2.5);
+
+                        // Fast particle along the line
+                        for (let p = 0; p < 3; p++) {
+                            const particle = particleGroup.append('circle')
+                                .attr('cx', source.x)
+                                .attr('cy', source.y)
+                                .attr('r', 5 - p)
+                                .attr('fill', accentColor)
+                                .attr('opacity', 0);
+
+                            particle.transition()
+                                .delay(p * 60)
+                                .duration(0)
+                                .attr('opacity', 0.9 - p * 0.2)
+                                .transition()
+                                .duration(400)
+                                .ease(d3.easeQuadOut)
+                                .attr('cx', target.x)
+                                .attr('cy', target.y)
+                                .attr('r', 2)
+                                .transition()
+                                .duration(200)
+                                .attr('opacity', 0)
+                                .remove();
+                        }
+                    });
+
+                linkElements.push(link);
+            });
+
+            // Connection line pulse animation
+            function pulseConnections() {
+                linkElements.forEach((link, idx) => {
+                    const delay = idx * 150 + Math.random() * 200;
+                    link.transition()
+                        .delay(delay)
+                        .duration(800)
+                        .attr('opacity', 0.45)
+                        .attr('stroke-width', 3)
+                        .transition()
+                        .duration(1000)
+                        .attr('opacity', 0.2)
+                        .attr('stroke-width', 2.5);
+                });
+            }
+
+            // Particle group for animations
+            const particleGroup = svg.append('g').attr('class', 'particles');
+
+            // Draw nodes
+            const nodeGroup = mainGroup.append('g').attr('class', 'nodes');
+
+            const nodeElements = nodeGroup.selectAll('circle')
+                .data(nodes)
+                .enter()
+                .append('circle')
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr('r', d => d.r)
+                .attr('fill', d => d.type === 'output' ? accentColor : darkColor)
+                .attr('opacity', d => d.type === 'hidden' ? 0.4 : 0.85)
+                .style('cursor', 'pointer')
+                .on('click', function(event, d) {
+                    event.stopPropagation();
+
+                    // Ripple effect
+                    const ripple = svg.append('circle')
+                        .attr('cx', d.x)
+                        .attr('cy', d.y)
+                        .attr('r', d.r)
+                        .attr('fill', 'none')
+                        .attr('stroke', d.type === 'output' ? accentColor : darkColor)
+                        .attr('stroke-width', 3)
+                        .attr('opacity', 0.8);
+
+                    ripple.transition()
+                        .duration(600)
+                        .attr('r', d.r * 4)
+                        .attr('opacity', 0)
+                        .remove();
+
+                    // Radiate particles
+                    for (let i = 0; i < 6; i++) {
+                        const angle = (i / 6) * Math.PI * 2;
+                        const particle = particleGroup.append('circle')
+                            .attr('cx', d.x)
+                            .attr('cy', d.y)
+                            .attr('r', 3)
+                            .attr('fill', accentColor)
+                            .attr('opacity', 0.9);
+
+                        particle.transition()
+                            .duration(500)
+                            .attr('cx', d.x + Math.cos(angle) * 50)
+                            .attr('cy', d.y + Math.sin(angle) * 50)
+                            .attr('r', 1)
+                            .attr('opacity', 0)
+                            .remove();
+                    }
+
+                    // Node pulse
+                    d3.select(this)
+                        .transition()
+                        .duration(150)
+                        .attr('r', d.r * 1.5)
+                        .transition()
+                        .duration(300)
+                        .attr('r', d.r);
+                });
+
+            // Click on empty space - all nodes pulse
+            svg.on('click', function(event) {
+                // All nodes pulse together
+                nodeElements.each(function(d) {
+                    const node = d3.select(this);
+                    const baseOpacity = d.type === 'hidden' ? 0.4 : 0.85;
+
+                    node.transition()
+                        .duration(200)
+                        .attr('r', d.r * 1.4)
+                        .attr('opacity', 1)
+                        .transition()
+                        .duration(400)
+                        .attr('r', d.r)
+                        .attr('opacity', baseOpacity);
+                });
+
+                // Flash all connections
+                linkElements.forEach(link => {
+                    link.transition()
+                        .duration(200)
+                        .attr('opacity', 0.5)
+                        .attr('stroke-width', 4)
+                        .transition()
+                        .duration(400)
+                        .attr('opacity', 0.2)
+                        .attr('stroke-width', 2.5);
+                });
+            });
+
+            // Animation: Send organic pulses through network
+            function sendPulse() {
+                const duration = 1200;
+
+                // Randomly select a few connections to animate
+                const activeConns = connections.filter(() => Math.random() > 0.6);
+
+                activeConns.forEach(([i, j]) => {
+                    const source = nodes[i];
+                    const target = nodes[j];
+                    const delay = (source.type === 'input' ? 0 : 600) + Math.random() * 400;
+
+                    // Create flowing particle with trail
+                    const trailCount = 3;
+                    for (let t = 0; t < trailCount; t++) {
+                        const trailDelay = delay + t * 80;
+                        const trailOpacity = 0.8 - t * 0.25;
+                        const trailSize = 4 - t * 1;
+
+                        const particle = particleGroup.append('circle')
+                            .attr('cx', source.x)
+                            .attr('cy', source.y)
+                            .attr('r', trailSize)
+                            .attr('fill', accentColor)
+                            .attr('opacity', 0);
+
+                        particle.transition()
+                            .delay(trailDelay)
+                            .duration(0)
+                            .attr('opacity', trailOpacity)
+                            .transition()
+                            .duration(duration)
+                            .ease(d3.easeCubicInOut)
+                            .attr('cx', target.x)
+                            .attr('cy', target.y)
+                            .attr('r', trailSize * 0.5)
+                            .transition()
+                            .duration(300)
+                            .attr('opacity', 0)
+                            .remove();
+                    }
+                });
+
+                // Pulse input nodes - Layer 1
+                nodeElements.filter(d => d.type === 'input')
+                    .each(function (d, i) {
+                        d3.select(this)
+                            .transition()
+                            .delay(i * 100)
+                            .duration(250)
+                            .attr('r', d.r * 1.5)
+                            .attr('opacity', 1)
+                            .transition()
+                            .duration(400)
+                            .attr('r', d.r)
+                            .attr('opacity', 0.85);
+                    });
+
+                // Pulse hidden nodes - Layer 2
+                nodeElements.filter(d => d.type === 'hidden')
+                    .each(function (d, i) {
+                        d3.select(this)
+                            .transition()
+                            .delay(600 + i * 120)
+                            .duration(300)
+                            .attr('r', d.r * 1.35)
+                            .attr('opacity', 0.7)
+                            .transition()
+                            .duration(500)
+                            .attr('r', d.r)
+                            .attr('opacity', 0.4);
+                    });
+
+                // Pulse output nodes - Layer 3
+                nodeElements.filter(d => d.type === 'output')
+                    .each(function (d, i) {
+                        d3.select(this)
+                            .transition()
+                            .delay(1300 + i * 150)
+                            .duration(350)
+                            .attr('r', d.r * 1.4)
+                            .attr('opacity', 1)
+                            .transition()
+                            .duration(600)
+                            .attr('r', d.r)
+                            .attr('opacity', 0.85);
+                    });
+            }
+
+            // Output ripple effect
+            function outputRipple() {
+                nodes.filter(n => n.type === 'output').forEach(node => {
+                    const ripple = svg.append('circle')
+                        .attr('cx', node.x)
+                        .attr('cy', node.y)
+                        .attr('r', node.r)
+                        .attr('fill', 'none')
+                        .attr('stroke', accentColor)
+                        .attr('stroke-width', 2)
+                        .attr('opacity', 0.5);
+
+                    ripple.transition()
+                        .duration(1200)
+                        .ease(d3.easeQuadOut)
+                        .attr('r', node.r * 3)
+                        .attr('opacity', 0)
+                        .remove();
+                });
+            }
+
+            // Arc breathing animation
+            function breatheArcs() {
+                arcRadii.forEach((r, i) => {
+                    svg.select(`.arc-${i}`)
+                        .transition()
+                        .delay(i * 100)
+                        .duration(1500)
+                        .attr('opacity', 0.2 + i * 0.05)
+                        .transition()
+                        .duration(1500)
+                        .attr('opacity', 0.12 + i * 0.03);
+                });
+            }
+
+            // Hidden nodes breathing animation
+            let breathePhase = 0;
+            function breatheNodes() {
+                breathePhase += 0.03;
+                nodeElements.filter(d => d.type === 'hidden')
+                    .attr('r', d => d.r * (1 + Math.sin(breathePhase) * 0.12));
+                requestAnimationFrame(breatheNodes);
+            }
+            breatheNodes();
+
+            // Gentle sway animation for nodes (rotate around Z axis)
+            let swayAngle = 0;
+            function swayNodes() {
+                swayAngle += 0.015;
+                const angle = Math.sin(swayAngle) * 3; // ±3 degrees
+                nodeGroup.attr('transform', `rotate(${angle}, ${cx}, ${cy})`);
+                linkGroup.attr('transform', `rotate(${angle}, ${cx}, ${cy})`);
+                requestAnimationFrame(swayNodes);
+            }
+            swayNodes();
+
+            // Arc slow rotation animation - alternating directions
+            const arcAngles = arcRadii.map(() => 0);
+
+            function rotateArcs() {
+                arcRadii.forEach((r, i) => {
+                    // 相邻弧线方向交替：奇数正向，偶数逆向
+                    const direction = i % 2 === 0 ? 1 : -1;
+                    arcAngles[i] += 0.12 * direction;
+                    svg.select(`.arc-${i}`)
+                        .attr('transform', `translate(${cx - 25}, ${cy + 15}) rotate(${arcAngles[i]})`);
+                });
+                requestAnimationFrame(rotateArcs);
+            }
+            rotateArcs();
+
+            // Main animation loop
+            function animate() {
+                sendPulse();
+                pulseConnections();
+                setTimeout(outputRipple, 1800);
+                breatheArcs();
+            }
+
+            // Start animations
+            animate();
+            setInterval(animate, 4000);
+
+            // 3D rotation with mouse interaction
+            let rotateX = 0;
+            let rotateY = 0;
+            let targetRotateX = 0;
+            let targetRotateY = 0;
+            let autoRotate = 0;
+            let isHovering = false;
+
+            // Set up 3D perspective
+            container.style.perspective = '800px';
+
+            // Smooth interpolation
+            function lerp(current, target, factor) {
+                return current + (target - current) * factor;
+            }
+
+            // Mouse interaction
+            container.addEventListener('mouseenter', () => { isHovering = true; });
+            container.addEventListener('mouseleave', () => {
+                isHovering = false;
+                targetRotateX = 0;
+                targetRotateY = 0;
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                if (!isHovering) return;
+                const rect = container.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                targetRotateY = x * 25;
+                targetRotateX = -y * 15;
+            });
+
+            // Animation loop
+            function animate3D() {
+                if (isHovering) {
+                    rotateX = lerp(rotateX, targetRotateX, 0.1);
+                    rotateY = lerp(rotateY, targetRotateY, 0.1);
+                } else {
+                    autoRotate += 0.3;
+                    const wobbleY = Math.sin(autoRotate * 0.02) * 6;
+                    const wobbleX = Math.cos(autoRotate * 0.015) * 4;
+                    rotateX = lerp(rotateX, wobbleX, 0.05);
+                    rotateY = lerp(rotateY, wobbleY, 0.05);
+                }
+                svg.attr('style', `transform: rotateY(${rotateY}deg) rotateX(${rotateX}deg); transform-style: preserve-3d;`);
+                requestAnimationFrame(animate3D);
+            }
+            animate3D();
+        })();
     </script>
 </body>
 
