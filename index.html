@@ -113,12 +113,13 @@
                     class="card card-green fade-on-scroll">
                     <div class="card-icon">
                         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="20" y="30" width="40" height="8" rx="2" fill="#191918" />
-                            <rect x="20" y="42" width="40" height="8" rx="2" fill="#191918" />
-                            <rect x="20" y="54" width="25" height="8" rx="2" fill="#191918" />
-                            <path d="M55 20 L65 30 L55 30 Z" fill="#191918" />
-                            <rect x="15" y="15" width="40" height="55" rx="3" stroke="#191918" stroke-width="2"
-                                fill="none" />
+                            <!-- Paper with folded corner -->
+                            <path class="paper-body" d="M18 12 L50 12 L62 24 L62 68 L18 68 Z" stroke="#191918" stroke-width="2" fill="none" />
+                            <path class="paper-fold" d="M50 12 L50 24 L62 24" stroke="#191918" stroke-width="2" fill="none" />
+                            <!-- Text lines -->
+                            <rect class="text-line" x="24" y="32" width="32" height="4" rx="1" fill="#191918" />
+                            <rect class="text-line" x="24" y="42" width="32" height="4" rx="1" fill="#191918" />
+                            <rect class="text-line" x="24" y="52" width="20" height="4" rx="1" fill="#191918" />
                         </svg>
                     </div>
                     <h3 class="card-title">Preprints & Papers</h3>

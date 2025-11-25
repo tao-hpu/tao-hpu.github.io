@@ -73,15 +73,24 @@ body {
     animation: fadeInLeft 0.5s ease forwards;
 }
 
-.nav-logo .logo-char:nth-child(1) { animation-delay: 0.1s; }
-.nav-logo .logo-char:nth-child(2) { animation-delay: 0.25s; }
-.nav-logo .logo-char:nth-child(3) { animation-delay: 0.4s; }
+.nav-logo .logo-char:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.nav-logo .logo-char:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.nav-logo .logo-char:nth-child(3) {
+    animation-delay: 0.4s;
+}
 
 @keyframes fadeInLeft {
     from {
         opacity: 0;
         transform: translateX(-15px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -308,42 +317,44 @@ body {
 }
 
 @keyframes drawLine {
-    0% { stroke-dashoffset: 30; opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 1; }
+    0% {
+        stroke-dashoffset: 30;
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
 }
 
-/* arXiv Card - Paper unfold/page flip effect */
-.card-green .card-icon svg rect {
+/* arXiv Card - Paper reading effect */
+.card-green .card-icon svg .text-line {
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
     transform-origin: left center;
     transform-box: fill-box;
 }
 
-.card-green .card-icon svg path {
-    transition: transform 0.5s ease;
-    transform-origin: 55px 25px;
-}
-
-.card-green:hover .card-icon svg rect:nth-child(1) {
+.card-green:hover .card-icon svg .text-line:nth-of-type(1) {
     transform: scaleX(1.1) translateX(2px);
+    opacity: 0.7;
 }
 
-.card-green:hover .card-icon svg rect:nth-child(2) {
-    transform: scaleX(1.05) translateX(1px);
-    transition-delay: 0.1s;
+.card-green:hover .card-icon svg .text-line:nth-of-type(2) {
+    transform: scaleX(1.06) translateX(1px);
+    transition-delay: 0.08s;
 }
 
-.card-green:hover .card-icon svg rect:nth-child(3) {
-    transform: translateX(3px);
+.card-green:hover .card-icon svg .text-line:nth-of-type(3) {
+    transform: scaleX(1.25) translateX(3px);
     transition-delay: 0.15s;
 }
 
-.card-green:hover .card-icon svg path {
-    transform: rotate(-15deg) translateY(-3px);
-}
-
-/* GitHub Card - Code merge/branch animation */
+/* GitHub Card - Upload/push animation */
 .card-purple .card-icon svg path {
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform-origin: center;
@@ -351,20 +362,22 @@ body {
 }
 
 .card-purple .card-icon svg rect {
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform-origin: center bottom;
+    transform-box: fill-box;
 }
 
 .card-purple:hover .card-icon svg path:nth-child(1) {
-    transform: translateY(5px);
+    transform: translateY(-8px);
+    transition-delay: 0.05s;
 }
 
 .card-purple:hover .card-icon svg path:nth-child(2) {
-    transform: translateY(-5px) scale(1.1);
+    transform: translateY(-8px);
 }
 
 .card-purple:hover .card-icon svg rect {
-    transform: scaleY(1.15);
+    transform: translateY(-6px);
 }
 
 .card-title {
@@ -826,6 +839,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -836,6 +850,7 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -846,11 +861,25 @@ body {
     animation: fadeInUp 0.8s ease forwards;
 }
 
-.fade-in-delay-1 { animation-delay: 0.1s; }
-.fade-in-delay-2 { animation-delay: 0.2s; }
-.fade-in-delay-3 { animation-delay: 0.3s; }
-.fade-in-delay-4 { animation-delay: 0.4s; }
-.fade-in-delay-5 { animation-delay: 0.5s; }
+.fade-in-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.fade-in-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.fade-in-delay-3 {
+    animation-delay: 0.3s;
+}
+
+.fade-in-delay-4 {
+    animation-delay: 0.4s;
+}
+
+.fade-in-delay-5 {
+    animation-delay: 0.5s;
+}
 
 /* Word-by-word fade in for hero title */
 .word-fade {
