@@ -28,5 +28,21 @@ Contributing
 Author
 - Tao An
 
-License
-- All rights reserved (add a license file if you want to open source).
+## License
+
+This project is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+**You are free to:**
+- **Share** — copy and redistribute the material
+- **Adapt** — remix, transform, and build upon the material
+
+**Under the following terms:**
+- **Attribution** — You must give appropriate credit to [Tao An](https://github.com/tao-hpu)
+- **NonCommercial** — You may NOT use the material for commercial purposes
+- **ShareAlike** — You must distribute your contributions under the same license
+
+[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+---
+
+**Fork this project!** Feel free to use this as a template for your own personal homepage.
