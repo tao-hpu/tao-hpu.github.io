@@ -279,6 +279,7 @@ body {
     width: 100px;
     height: 100px;
     transition: transform 0.3s ease;
+    filter: url(#hand-drawn-card);
 }
 
 /* Google Scholar Card - Neural network nodes pulse outward */
