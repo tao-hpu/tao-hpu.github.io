@@ -27,6 +27,9 @@
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-ring"></div>
+
     <!-- Hand-drawn filter for card icons -->
     <svg style="position: absolute; width: 0; height: 0;">
         <defs>
@@ -825,6 +828,66 @@
                 requestAnimationFrame(animate3D);
             }
             animate3D();
+        })();
+
+        // Custom Cursor
+        (function() {
+            const ring = document.querySelector('.cursor-ring');
+
+            // Check for touch device
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                return;
+            }
+
+            let mouseX = 0, mouseY = 0;
+            let ringX = 0, ringY = 0;
+
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                ring.style.opacity = '1';
+            });
+
+            // Ring follows with smooth lag
+            function animateRing() {
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+
+                ring.style.left = ringX + 'px';
+                ring.style.top = ringY + 'px';
+
+                requestAnimationFrame(animateRing);
+            }
+            animateRing();
+
+            // Hover effect on interactive elements
+            const hoverTargets = document.querySelectorAll('a, button, .card, .connect-item, .featured-link, .nav-logo, input, textarea');
+
+            hoverTargets.forEach(target => {
+                target.addEventListener('mouseenter', () => {
+                    ring.classList.add('cursor-hover');
+                });
+                target.addEventListener('mouseleave', () => {
+                    ring.classList.remove('cursor-hover');
+                });
+            });
+
+            // Click effect
+            document.addEventListener('mousedown', () => {
+                ring.classList.add('cursor-click');
+            });
+            document.addEventListener('mouseup', () => {
+                ring.classList.remove('cursor-click');
+            });
+
+            // Hide ring when leaving window
+            document.addEventListener('mouseleave', () => {
+                ring.style.opacity = '0';
+            });
+            document.addEventListener('mouseenter', () => {
+                ring.style.opacity = '1';
+            });
         })();
     </script>
 </body>
