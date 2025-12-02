@@ -356,6 +356,12 @@
             const cx = width / 2;
             const cy = height / 2;
 
+            // Page visibility - 防止 tab 切换时动画淤积
+            let isPageVisible = !document.hidden;
+            document.addEventListener('visibilitychange', () => {
+                isPageVisible = !document.hidden;
+            });
+
             // Colors
             const accentColor = '#d97757';
             const darkColor = '#191918';
@@ -758,9 +764,11 @@
             // Hidden nodes breathing animation
             let breathePhase = 0;
             function breatheNodes() {
-                breathePhase += 0.03;
-                nodeElements.filter(d => d.type === 'hidden')
-                    .attr('r', d => d.r * (1 + Math.sin(breathePhase) * 0.12));
+                if (isPageVisible) {
+                    breathePhase += 0.03;
+                    nodeElements.filter(d => d.type === 'hidden')
+                        .attr('r', d => d.r * (1 + Math.sin(breathePhase) * 0.12));
+                }
                 requestAnimationFrame(breatheNodes);
             }
             breatheNodes();
@@ -768,10 +776,12 @@
             // Gentle sway animation for nodes (rotate around Z axis)
             let swayAngle = 0;
             function swayNodes() {
-                swayAngle += 0.015;
-                const angle = Math.sin(swayAngle) * 3; // ±3 degrees
-                nodeGroup.attr('transform', `rotate(${angle}, ${cx}, ${cy})`);
-                linkGroup.attr('transform', `rotate(${angle}, ${cx}, ${cy})`);
+                if (isPageVisible) {
+                    swayAngle += 0.015;
+                    const angle = Math.sin(swayAngle) * 3; // ±3 degrees
+                    nodeGroup.attr('transform', `rotate(${angle}, ${cx}, ${cy})`);
+                    linkGroup.attr('transform', `rotate(${angle}, ${cx}, ${cy})`);
+                }
                 requestAnimationFrame(swayNodes);
             }
             swayNodes();
@@ -780,28 +790,32 @@
             const arcAngles = arcRadii.map(() => 0);
 
             function rotateArcs() {
-                arcRadii.forEach((r, i) => {
-                    // 相邻弧线方向交替：奇数正向，偶数逆向
-                    const direction = i % 2 === 0 ? 1 : -1;
-                    arcAngles[i] += 0.12 * direction;
-                    svg.select(`.arc-${i}`)
-                        .attr('transform', `translate(${cx - 25}, ${cy + 15}) rotate(${arcAngles[i]})`);
-                });
+                if (isPageVisible) {
+                    arcRadii.forEach((r, i) => {
+                        // 相邻弧线方向交替：奇数正向，偶数逆向
+                        const direction = i % 2 === 0 ? 1 : -1;
+                        arcAngles[i] += 0.12 * direction;
+                        svg.select(`.arc-${i}`)
+                            .attr('transform', `translate(${cx - 25}, ${cy + 15}) rotate(${arcAngles[i]})`);
+                    });
+                }
                 requestAnimationFrame(rotateArcs);
             }
             rotateArcs();
 
             // Main animation loop
             function animate() {
-                sendPulse();
-                pulseConnections();
-                setTimeout(outputRipple, 1800);
-                breatheArcs();
+                if (isPageVisible) {
+                    sendPulse();
+                    pulseConnections();
+                    setTimeout(outputRipple, 1800);
+                    breatheArcs();
+                }
+                setTimeout(animate, 4000);
             }
 
             // Start animations
             animate();
-            setInterval(animate, 4000);
 
             // 3D rotation with mouse interaction
             let rotateX = 0;
@@ -838,17 +852,19 @@
 
             // Animation loop
             function animate3D() {
-                if (isHovering) {
-                    rotateX = lerp(rotateX, targetRotateX, 0.1);
-                    rotateY = lerp(rotateY, targetRotateY, 0.1);
-                } else {
-                    autoRotate += 0.3;
-                    const wobbleY = Math.sin(autoRotate * 0.02) * 6;
-                    const wobbleX = Math.cos(autoRotate * 0.015) * 4;
-                    rotateX = lerp(rotateX, wobbleX, 0.05);
-                    rotateY = lerp(rotateY, wobbleY, 0.05);
+                if (isPageVisible) {
+                    if (isHovering) {
+                        rotateX = lerp(rotateX, targetRotateX, 0.1);
+                        rotateY = lerp(rotateY, targetRotateY, 0.1);
+                    } else {
+                        autoRotate += 0.3;
+                        const wobbleY = Math.sin(autoRotate * 0.02) * 6;
+                        const wobbleX = Math.cos(autoRotate * 0.015) * 4;
+                        rotateX = lerp(rotateX, wobbleX, 0.05);
+                        rotateY = lerp(rotateY, wobbleY, 0.05);
+                    }
+                    svg.attr('style', `transform: rotateY(${rotateY}deg) rotateX(${rotateX}deg); transform-style: preserve-3d;`);
                 }
-                svg.attr('style', `transform: rotateY(${rotateY}deg) rotateX(${rotateX}deg); transform-style: preserve-3d;`);
                 requestAnimationFrame(animate3D);
             }
             animate3D();
