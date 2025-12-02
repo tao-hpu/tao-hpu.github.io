@@ -399,6 +399,7 @@
             arcRadii.forEach((r, i) => {
                 const startAngle = -Math.PI * 0.7;
                 const endAngle = Math.PI * 0.4;
+                const targetOpacity = 0.12 + i * 0.03;
 
                 const arc = d3.arc()
                     .innerRadius(r - 3)
@@ -410,8 +411,13 @@
                     .attr('d', arc)
                     .attr('transform', `translate(${cx - 25}, ${cy + 15})`)
                     .attr('fill', darkColor)
-                    .attr('opacity', 0.12 + i * 0.03)
-                    .attr('class', `arc-${i}`);
+                    .attr('opacity', 0)
+                    .attr('class', `arc-${i}`)
+                    .transition()
+                    .duration(800)
+                    .delay(600 + i * 100)
+                    .ease(d3.easeQuadOut)
+                    .attr('opacity', targetOpacity);
             });
 
             // Neural network nodes - scaled up positions
@@ -450,7 +456,16 @@
                     .attr('stroke', darkColor)
                     .attr('stroke-width', 2.5)
                     .attr('stroke-linecap', 'round')
-                    .attr('opacity', 0.2)
+                    .attr('opacity', 0);
+
+                // 入场动画
+                link.transition()
+                    .duration(600)
+                    .delay(300 + idx * 50)
+                    .ease(d3.easeQuadOut)
+                    .attr('opacity', 0.2);
+
+                link
                     .style('cursor', 'pointer')
                     .on('click', function(event) {
                         event.stopPropagation();
@@ -525,10 +540,19 @@
                 .append('circle')
                 .attr('cx', d => d.x)
                 .attr('cy', d => d.y)
-                .attr('r', d => d.r)
+                .attr('r', 0)
                 .attr('fill', d => d.type === 'output' ? accentColor : darkColor)
                 .attr('opacity', d => d.type === 'hidden' ? 0.4 : 0.85)
-                .style('cursor', 'pointer')
+                .style('cursor', 'pointer');
+
+            // 节点入场动画
+            nodeElements.transition()
+                .duration(800)
+                .delay((d, i) => i * 80)
+                .ease(d3.easeBackOut.overshoot(1.5))
+                .attr('r', d => d.r);
+
+            nodeElements
                 .on('click', function(event, d) {
                     event.stopPropagation();
 
