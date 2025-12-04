@@ -109,7 +109,7 @@ html {
 html[data-theme="dark"] {
     --color-primary: #e6e6e6;
     --color-background: #121212;
-    --color-surface: #1e1e1e;
+    --color-surface: rgba(255, 255, 255, 0.03); /* Matches card backgrounds */
     --color-text: #e6e6e6;
     --color-muted: #a3a3a3;
     --color-accent: #e68a6d; 
@@ -138,7 +138,7 @@ html[data-theme="dark"] {
     html:not([data-theme="light"]) {
         --color-primary: #e6e6e6;
         --color-background: #121212;
-        --color-surface: #1e1e1e;
+        --color-surface: rgba(255, 255, 255, 0.03); /* Matches card backgrounds */
         --color-text: #e6e6e6;
         --color-muted: #a3a3a3;
         --color-accent: #e68a6d; 
