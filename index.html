@@ -48,13 +48,92 @@
         <div class="nav-container">
             <a href="/" class="nav-logo"><span class="logo-char">T</span><span class="logo-char">\</span><span
                     class="logo-char">A</span></a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#connect">Connect</a>
+            
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#research">Research</a>
+                    <a href="#connect">Connect</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <!-- Sun Icon (for dark mode) -->
+                    <svg class="sun-icon" viewBox="0 0 24 24" style="display: none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon Icon (for light mode) -->
+                    <svg class="moon-icon" viewBox="0 0 24 24" style="display: block;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
+
+    <script>
+        // Theme Toggle Logic
+        (function() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            const sunIcon = toggleBtn.querySelector('.sun-icon');
+            const moonIcon = toggleBtn.querySelector('.moon-icon');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            function setTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                updateIcons(theme);
+                
+                // Dispatch a custom event so D3.js can listen to it
+                window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
+            }
+            
+            function updateIcons(theme) {
+                if (theme === 'dark') {
+                    sunIcon.style.display = 'block';
+                    moonIcon.style.display = 'none';
+                } else {
+                    sunIcon.style.display = 'none';
+                    moonIcon.style.display = 'block';
+                }
+            }
+            
+            // Initialize
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                // Default to system preference but explicitly set the attribute
+                // to ensure consistent CSS selector matching
+                const defaultTheme = systemPrefersDark ? 'dark' : 'light';
+                setTheme(defaultTheme);
+            }
+            
+            // Event Listener
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            });
+            
+            // Listen for system changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    setTheme(newTheme);
+                }
+            });
+        })();
+    </script>
 
     <main>
         <!-- Hero Section -->
@@ -106,14 +185,14 @@
         <section class="cards-section" id="research">
             <div class="cards-grid">
                 <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer"
-                    class="card card-beige fade-on-scroll">
+                    class="card card-beige fade-on-scroll" aria-label="Read Articles & Insights on Medium">
                     <div class="card-icon">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 58 L52 28 L58 34 L28 64 L20 66 Z" stroke="#191918" stroke-width="2"
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M22 58 L52 28 L58 34 L28 64 L20 66 Z" stroke="currentColor" stroke-width="2"
                                 fill="none" />
-                            <path d="M52 28 L56 24 C58 22 62 22 64 24 C66 26 66 30 64 32 L58 34" stroke="#191918"
+                            <path d="M52 28 L56 24 C58 22 62 22 64 24 C66 26 66 30 64 32 L58 34" stroke="currentColor"
                                 stroke-width="2" fill="none" />
-                            <line x1="26" y1="60" x2="54" y2="32" stroke="#191918" stroke-width="1.5" />
+                            <line x1="26" y1="60" x2="54" y2="32" stroke="currentColor" stroke-width="1.5" />
                         </svg>
                     </div>
                     <h3 class="card-title">Articles & Insights</h3>
@@ -121,18 +200,18 @@
                 </a>
 
                 <a href="https://arxiv.org/a/0009-0006-2933-0320.html" target="_blank" rel="noopener noreferrer"
-                    class="card card-green fade-on-scroll">
+                    class="card card-green fade-on-scroll" aria-label="View Preprints & Papers on arXiv">
                     <div class="card-icon">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <!-- Paper with folded corner -->
-                            <path class="paper-body" d="M18 12 L50 12 L62 24 L62 68 L18 68 Z" stroke="#191918"
+                            <path class="paper-body" d="M18 12 L50 12 L62 24 L62 68 L18 68 Z" stroke="currentColor"
                                 stroke-width="2" fill="none" />
-                            <path class="paper-fold" d="M50 12 L50 24 L62 24" stroke="#191918" stroke-width="2"
+                            <path class="paper-fold" d="M50 12 L50 24 L62 24" stroke="currentColor" stroke-width="2"
                                 fill="none" />
                             <!-- Text lines -->
-                            <rect class="text-line" x="24" y="32" width="32" height="4" rx="1" fill="#191918" />
-                            <rect class="text-line" x="24" y="42" width="32" height="4" rx="1" fill="#191918" />
-                            <rect class="text-line" x="24" y="52" width="20" height="4" rx="1" fill="#191918" />
+                            <rect class="text-line" x="24" y="32" width="32" height="4" rx="1" fill="currentColor" />
+                            <rect class="text-line" x="24" y="42" width="32" height="4" rx="1" fill="currentColor" />
+                            <rect class="text-line" x="24" y="52" width="20" height="4" rx="1" fill="currentColor" />
                         </svg>
                     </div>
                     <h3 class="card-title">Preprints & Papers</h3>
@@ -140,12 +219,12 @@
                 </a>
 
                 <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer"
-                    class="card card-purple fade-on-scroll">
+                    class="card card-purple fade-on-scroll" aria-label="See Open Source Projects on GitHub">
                     <div class="card-icon">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M25 55 L40 40 L55 55" stroke="#191918" stroke-width="3" fill="none" />
-                            <path d="M25 40 L40 25 L55 40" stroke="#191918" stroke-width="3" fill="none" />
-                            <rect x="38" y="40" width="4" height="25" fill="#191918" />
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M25 55 L40 40 L55 55" stroke="currentColor" stroke-width="3" fill="none" />
+                            <path d="M25 40 L40 25 L55 40" stroke="currentColor" stroke-width="3" fill="none" />
+                            <rect x="38" y="40" width="4" height="25" fill="currentColor" />
                         </svg>
                     </div>
                     <h3 class="card-title">Open Source Projects</h3>
@@ -368,23 +447,30 @@
             const cx = width / 2;
             const cy = height / 2;
 
+            // Helper to get CSS variable value
+            function getCSSVariable(name) {
+                return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+            }
+
             // Page visibility - 防止 tab 切换时动画淤积
             let isPageVisible = !document.hidden;
             document.addEventListener('visibilitychange', () => {
                 isPageVisible = !document.hidden;
             });
 
-            // Colors
-            const accentColor = '#d97757';
-            const darkColor = '#191918';
-            const lightAccent = 'rgba(217, 119, 87, 0.15)';
+            // Initial Colors from CSS
+            let accentColor = getCSSVariable('--color-accent') || '#d97757';
+            let darkColor = getCSSVariable('--color-text') || '#191918';
+            // Light accent is derivative in CSS, but here we just use opacity
+            // const lightAccent = 'rgba(217, 119, 87, 0.15)'; 
 
             // Create SVG
             const svg = d3.select(container)
                 .append('svg')
                 .attr('viewBox', `0 0 ${width} ${height}`)
                 .attr('class', 'hero-illustration')
-                .style('cursor', 'pointer');
+                .style('cursor', 'pointer')
+                .attr('aria-hidden', 'true'); // Decorative
 
             // Add slight hand-drawn effect with filter
             const defs = svg.append('defs');
@@ -414,6 +500,44 @@
             const arcGroup = mainGroup.append('g').attr('class', 'arcs');
             const arcRadii = [60, 85, 110, 135, 165];
 
+            // Group references for dynamic updating
+            let pathElements = [];
+            let nodeElementsSelect;
+            let linkElementsSelect;
+
+            // Theme Change Listener (System)
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                // Only react to system changes if no manual override
+                if(!localStorage.getItem('theme')) {
+                    updateColors();
+                }
+            });
+            
+            // Theme Change Listener (Manual Toggle)
+            window.addEventListener('themeChanged', () => {
+                updateColors();
+            });
+            
+            function updateColors() {
+                 // Small delay to allow CSS to update
+                 setTimeout(() => {
+                    accentColor = getCSSVariable('--color-accent');
+                    darkColor = getCSSVariable('--color-text');
+                    
+                    // Update existing elements
+                    if(pathElements.length) {
+                        pathElements.forEach(p => p.attr('fill', darkColor));
+                    }
+                    if(nodeElementsSelect) {
+                        nodeElementsSelect.attr('fill', d => d.type === 'output' ? accentColor : darkColor)
+                                        .attr('stroke', d => d.type === 'output' ? accentColor : darkColor);
+                    }
+                    if(linkElementsSelect) {
+                        linkElementsSelect.attr('stroke', darkColor);
+                    }
+                }, 100);
+            }
+
             arcRadii.forEach((r, i) => {
                 const startAngle = -Math.PI * 0.7;
                 const endAngle = Math.PI * 0.4;
@@ -425,13 +549,16 @@
                     .startAngle(startAngle)
                     .endAngle(endAngle);
 
-                arcGroup.append('path')
+                const p = arcGroup.append('path')
                     .attr('d', arc)
                     .attr('transform', `translate(${cx - 25}, ${cy + 15})`)
                     .attr('fill', darkColor)
                     .attr('opacity', 0)
-                    .attr('class', `arc-${i}`)
-                    .transition()
+                    .attr('class', `arc-${i}`);
+                
+                pathElements.push(p);
+
+                p.transition()
                     .duration(800)
                     .delay(600 + i * 100)
                     .ease(d3.easeQuadOut)
@@ -529,6 +656,9 @@
 
                 linkElements.push(link);
             });
+            
+            // Store D3 selection for updating later
+            linkElementsSelect = linkGroup.selectAll('path');
 
             // Connection line pulse animation
             function pulseConnections() {
@@ -562,6 +692,9 @@
                 .attr('fill', d => d.type === 'output' ? accentColor : darkColor)
                 .attr('opacity', d => d.type === 'hidden' ? 0.4 : 0.85)
                 .style('cursor', 'pointer');
+            
+            // Store for update
+            nodeElementsSelect = nodeElements;
 
             // 节点入场动画
             nodeElements.transition()
