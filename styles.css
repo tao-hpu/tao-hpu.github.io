@@ -113,26 +113,27 @@ html[data-theme="dark"] {
     --color-text: #e6e6e6;
     --color-muted: #a3a3a3;
     --color-accent: #e68a6d; 
-    --color-accent-light: rgba(230, 138, 109, 0.15);
+    --color-accent-light: rgba(255, 255, 255, 0.05); /* More subtle hover background */
     
-    --color-card-beige: #2a2725;
-    --color-card-green: #1f2622;
-    --color-card-purple: #26242b;
+    /* Unify card backgrounds in dark mode for cleaner look */
+    --color-card-beige: rgba(255, 255, 255, 0.03);
+    --color-card-green: rgba(255, 255, 255, 0.03);
+    --color-card-purple: rgba(255, 255, 255, 0.03);
     
-    --color-nav-bg: rgba(18, 18, 18, 0.9);
-    --color-footer-bg: #0a0a0a; 
-    --color-footer-text: #e6e6e6;
+    --color-nav-bg: rgba(18, 18, 18, 0.8);
+    --color-footer-bg: #121212; /* Seamless footer */
+    --color-footer-text: #a3a3a3;
 
     /* Dark mode specific adjustments */
-    --color-border: rgba(255, 255, 255, 0.15);
-    --color-button-text: #121212; /* Dark text on light button */
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-button-text: #121212;
 
-    /* FORCE background color to bypass variable lag/issues */
+    /* FORCE background color */
     background-color: #121212;
     color: #e6e6e6;
 }
 
-/* 3. System Dark Mode Fallback (Only if no attribute set) */
+/* 3. System Dark Mode Fallback */
 @media (prefers-color-scheme: dark) {
     html:not([data-theme="light"]) {
         --color-primary: #e6e6e6;
@@ -141,20 +142,19 @@ html[data-theme="dark"] {
         --color-text: #e6e6e6;
         --color-muted: #a3a3a3;
         --color-accent: #e68a6d; 
-        --color-accent-light: rgba(230, 138, 109, 0.15);
+        --color-accent-light: rgba(255, 255, 255, 0.05);
         
-        --color-card-beige: #2a2725;
-        --color-card-green: #1f2622;
-        --color-card-purple: #26242b;
+        --color-card-beige: rgba(255, 255, 255, 0.03);
+        --color-card-green: rgba(255, 255, 255, 0.03);
+        --color-card-purple: rgba(255, 255, 255, 0.03);
         
-        --color-nav-bg: rgba(18, 18, 18, 0.9);
-        --color-footer-bg: #0a0a0a; 
-        --color-footer-text: #e6e6e6;
+        --color-nav-bg: rgba(18, 18, 18, 0.8);
+        --color-footer-bg: #121212;
+        --color-footer-text: #a3a3a3;
 
-        --color-border: rgba(255, 255, 255, 0.15);
+        --color-border: rgba(255, 255, 255, 0.1);
         --color-button-text: #121212;
 
-        /* FORCE background color */
         background-color: #121212;
         color: #e6e6e6;
     }
