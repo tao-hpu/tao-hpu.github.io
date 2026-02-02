@@ -418,6 +418,25 @@ body {
     line-height: 1.8;
 }
 
+.about-text a,
+.about-text a strong {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.about-text a {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.about-text a:hover,
+.about-text a:hover strong {
+    color: var(--color-accent);
+}
+
 /* Publications Section */
 .publications-section {
     padding: 2rem 3rem 3rem;
