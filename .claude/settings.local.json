@@ -5,8 +5,25 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "WebSearch",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(weasyprint:*)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --print-to-pdf=\"/Users/TaoTao/Desktop/Workspace/tao-hpu.github.io/tmp/resume_en.pdf\" --no-margins \"file:///Users/TaoTao/Desktop/Workspace/tao-hpu.github.io/tmp/resume_en.html\")",
+      "Bash(pandoc:*)",
+      "Bash(open:*)",
+      "WebFetch(domain:fim.ai)",
+      "Bash(chmod:*)",
+      "Bash(./build.sh:*)",
+      "WebFetch(domain:tao-hpu.github.io)",
+      "Bash(kpsewhich:*)",
+      "Bash(xelatex:*)",
+      "Bash(brew list:*)",
+      "Bash(brew install:*)",
+      "Bash(typst compile:*)"
     ],
     "deny": []
-  }
+  },
+  "enabledMcpjsonServers": [
+    "connect-apps",
+    "github"
+  ]
 }
