@@ -483,6 +483,15 @@ body {
     background: var(--color-accent-light);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
+    text-align: center;
+}
+
+.venue-badge-secondary {
+    color: var(--color-muted);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    font-weight: 500;
+    padding: 0.125rem 0.5rem;
 }
 
 .venue-year {
