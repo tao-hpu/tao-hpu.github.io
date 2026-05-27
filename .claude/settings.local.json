@@ -7,7 +7,7 @@
       "WebSearch",
       "Bash(git pull:*)",
       "Bash(weasyprint:*)",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --print-to-pdf=\"/Users/TaoTao/Desktop/Workspace/tao-hpu.github.io/tmp/resume_en.pdf\" --no-margins \"file:///Users/TaoTao/Desktop/Workspace/tao-hpu.github.io/tmp/resume_en.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --print-to-pdf=\"/Users/TaoTao/Workspace/tao-hpu.github.io/tmp/resume_en.pdf\" --no-margins \"file:///Users/TaoTao/Workspace/tao-hpu.github.io/tmp/resume_en.html\")",
       "Bash(pandoc:*)",
       "Bash(open:*)",
       "WebFetch(domain:fim.ai)",
