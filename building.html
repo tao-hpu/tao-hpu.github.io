@@ -21,7 +21,7 @@
     <meta name="twitter:title" content="Tao An">
     <meta name="twitter:description" content="AI Researcher focused on building impactful technology">
     <meta name="twitter:image" content="https://tao-hpu.github.io/images/og-cover.jpg">
-    <title>Tao An Official Site</title>
+    <title>Tao An — Building</title>
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -61,9 +61,9 @@
             
             <div class="nav-right">
                 <div class="nav-links">
-                    <a href="/" class="active">Home</a>
+                    <a href="/">Home</a>
                     <a href="/research.html">Research</a>
-                    <a href="/building.html">Building</a>
+                    <a href="/building.html" class="active">Building</a>
                 </div>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                     <!-- Sun Icon (for dark mode) -->
@@ -150,83 +150,209 @@
         <section class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <strong><span class="word-fade" style="--i:5">From</span> <span class="word-fade underline"
-                            style="--i:2">industry</span> <span class="word-fade" style="--i:7">to</span>
-                        <span class="word-fade underline" style="--i:0">academia</span> <span class="word-fade"
-                            style="--i:4">—</span>
-                        <span class="word-fade" style="--i:6">building</span> <span class="word-fade"
-                            style="--i:1">AI</span> <span class="word-fade" style="--i:3">that</span> <span class="word-fade" style="--i:8">works.</span></strong>
+                    <strong><span class="word-fade underline" style="--i:0">Building.</span></strong>
                 </h1>
-                <p class="hero-description fade-in" style="animation-delay: 1.2s;">
-                    <strong>MS in Artificial Intelligence</strong> from Hawaii Pacific University (2026).
-                    A decade in tech. Pivoted to <strong>AI in 2021</strong>.
-                    Now formalizing <strong>production experience</strong> through academic research.
+                <p class="hero-description fade-in" style="animation-delay: 0.6s;">
+                    Founder of <a href="https://fim.ai" target="_blank" rel="noopener noreferrer"><strong>FIM&nbsp;Labs</strong></a>
+                    (&#127480;&#127468;&nbsp;Singapore). I build production AI &mdash; open-source agent
+                    infrastructure, plus deployed systems for <strong>government, legal, healthcare</strong>, and
+                    academic institutions across China.
                 </p>
             </div>
             <div class="hero-visual fade-in" style="animation-delay: 0s;">
-                <!-- D3.js Neural Network -->
                 <div class="illustration-container" id="neural-network"></div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about-section" id="about">
-            <div class="about-container">
-                <div class="about-avatar fade-on-scroll">
-                    <img src="https://oss.v-dk.com/img/202511260002211.jpg" alt="Tao An" class="avatar-img">
+        <!-- Flagship -->
+        <section class="featured-project-section" id="flagship">
+            <h2 class="section-title-small fade-on-scroll">Flagship &mdash; Open Source</h2>
+            <a href="https://github.com/fim-ai/fim-one/" target="_blank" rel="noopener noreferrer"
+               class="featured-project-box fade-on-scroll">
+                <div class="featured-project-content">
+                    <div class="featured-project-header">
+                        <span class="featured-project-badge">1,100+ &#9733; on GitHub</span>
+                    </div>
+                    <h3 class="featured-project-name">FIM One</h3>
+                    <p class="featured-project-desc">
+                        Self-hosted, model-agnostic enterprise agent platform that wires agents to the systems you
+                        already run &mdash; ERP, CRM, OA, databases &mdash; without touching existing infrastructure.
+                        Intelligent DAG planning, ReAct reasoning, full RAG pipeline, visual workflow editor, MCP support.
+                    </p>
+                    <div class="featured-project-tags">
+                        <span class="project-tag">Agent Runtime</span>
+                        <span class="project-tag">Enterprise AI</span>
+                        <span class="project-tag">RAG Pipeline</span>
+                        <span class="project-tag">China + Global Stack</span>
+                    </div>
+                    <span class="featured-project-cta">View on GitHub &rarr;</span>
                 </div>
-                <div class="about-content fade-on-scroll">
-                    <h2 class="section-title">About Tao An (安涛)</h2>
-                    <p class="about-text">
-                        Founder of <a href="https://fim.ai" target="_blank" rel="noopener noreferrer"><strong>FIM Labs Pte Ltd</strong></a> (🇸🇬 Singapore · 🇨🇳 Beijing),
-                        building <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer"><strong>FIM One</strong></a> —
-                        an open-source AI connector hub that links agents to enterprise systems (Feishu, Slack, Teams & more).
-                        Also serving government and enterprise clients in China,
-                        with production AI systems focused on <strong>legal</strong> and <strong>healthcare</strong> domains.
-                    </p>
-                    <p class="about-text">
-                        <strong>Research interests:</strong> Retrieval-Augmented Generation, LLM memory architectures, knowledge graphs.
-                    </p>
+            </a>
+        </section>
+
+        <!-- Product family -->
+        <section class="publications-section" id="products">
+            <h2 class="section-title-small fade-on-scroll">FIM Product Family</h2>
+            <div class="publication-simple-list fade-on-scroll">
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Scout</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">FIM Scout</span>
+                        <p class="publication-simple-tldr">Bid-intelligence pipeline &mdash; discovery, openness scoring, and tracking for government &amp; enterprise tenders.</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Paperwork</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">FIM Paperwork</span>
+                        <p class="publication-simple-tldr">Turns source code into IP assets &mdash; software-copyright and patent-mining automation.</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Zico</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">Zico</span>
+                        <p class="publication-simple-tldr">Sovereign contract-lifecycle management &mdash; drafting, review, and tracking with data kept on-prem.</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Atlas</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">Atlas</span>
+                        <p class="publication-simple-tldr">Specialty follow-up-care platform (deployed with Beijing Ditan Hospital).</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Suwen</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">速问数据 (Suwen)</span>
+                        <p class="publication-simple-tldr">Medical-access AI data platform &mdash; policy tracking, comparison, and auto-generated reports for drug/device market access.</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Yimu</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">Yimu</span>
+                        <p class="publication-simple-tldr">Personal decision OS blending structured reasoning with an AI assistant.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Explore -->
-        <section class="cards-section" id="explore">
-            <div class="cards-grid">
-                <a href="/research.html" class="card card-green fade-on-scroll" aria-label="Research — papers and academic work">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M18 12 L50 12 L62 24 L62 68 L18 68 Z" stroke="currentColor" stroke-width="2" fill="none" />
-                            <path d="M50 12 L50 24 L62 24" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="24" y="32" width="32" height="4" rx="1" fill="currentColor" />
-                            <rect x="24" y="42" width="32" height="4" rx="1" fill="currentColor" />
-                            <rect x="24" y="52" width="20" height="4" rx="1" fill="currentColor" />
-                        </svg>
+        <!-- Selected Deployments -->
+        <section class="publications-section" id="deployments">
+            <h2 class="section-title-small fade-on-scroll">Selected Deployments</h2>
+            <div class="publication-simple-list fade-on-scroll">
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Tsinghua</span>
                     </div>
-                    <span class="card-eyebrow">Academia</span>
-                    <h3 class="card-title">Research &rarr;</h3>
-                    <p class="card-subtitle">Papers &middot; LLM memory &middot; RAG &middot; knowledge graphs</p>
-                </a>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">AI Writing Platform &mdash; Tsinghua University</span>
+                        <p class="publication-simple-tldr"><strong>Direct engagement.</strong> Real-time text analysis, grammar &amp; logic feedback, AI-assisted drafting and teacher-assisted grading for students.</p>
+                    </div>
+                </div>
 
-                <a href="/building.html" class="card card-purple fade-on-scroll" aria-label="Building — products and deployments">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M12 66 L68 66" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            <rect x="20" y="50" width="40" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="22" y="34" width="17" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="41" y="34" width="17" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="31" y="18" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                        </svg>
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Gov</span>
+                        <span class="venue-badge venue-badge-secondary">Legal</span>
                     </div>
-                    <span class="card-eyebrow">Industry</span>
-                    <h3 class="card-title">Building &rarr;</h3>
-                    <p class="card-subtitle">FIM product family &middot; government &amp; healthcare AI</p>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">Regulatory-Document &amp; Legal-Aid Review Systems</span>
+                        <p class="publication-simple-tldr"><strong>Tao An</strong> &mdash; self-built model + RAG for government legal review; cut review cycles from weeks to hours with 60%+ less manual work.</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">China Customs</span>
+                        <span class="venue-badge venue-badge-secondary">subcontractor</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">Trade-Index Analytics &amp; AI Species-Nomenclature Database</span>
+                        <p class="publication-simple-tldr">Big-data monitoring of technical-trade trends and AI species identification for import compliance; built as a development subcontractor on a China Customs platform.</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">PUMCH</span>
+                        <span class="venue-badge venue-badge-secondary">协和</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">Gynecology Knowledge Graph &amp; POP Recommendation</span>
+                        <p class="publication-simple-tldr">Clinical decision-support tools deployed in a Peking Union Medical College Hospital project; built the application layer.</p>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Ditan</span>
+                        <span class="venue-badge venue-badge-secondary">Pro bono</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">HIV Drug-Interaction Reference (京顺 8 号)</span>
+                        <p class="publication-simple-tldr">Drug–drug interaction lookup for HIV therapy with Beijing Ditan Hospital / WHO Collaborating Centre; pro bono.</p>
+                        <div class="publication-simple-links">
+                            <a href="https://www.slan.org.cn/public-service/hiv-druginteractions/hiv.html" target="_blank" rel="noopener noreferrer">Tool</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Peking Univ.</span>
+                        <span class="venue-badge venue-badge-secondary">北大</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">Quantitative-Paleontology Platform</span>
+                        <p class="publication-simple-tldr">Quantitative-analysis and teaching platform for paleontology.</p>
+                        <div class="publication-simple-links">
+                            <a href="http://geopku.com/" target="_blank" rel="noopener noreferrer">Live</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured In Section -->
+        <section class="featured-section" id="media">
+            <h2 class="section-title-small fade-on-scroll">Featured In</h2>
+            <div class="featured-list fade-on-scroll">
+                <a href="https://medium.com/@sanjays_8381/if-i-had-to-launch-ai-in-2026-id-start-here-expert-interview-ca62024f2ae8"
+                   target="_blank" rel="noopener noreferrer" class="featured-item">
+                    <div class="featured-content">
+                        <span class="featured-source">Medium &middot; Sanjay Singhania</span>
+                        <h3 class="featured-title">The Truth About AI Right Now: An Expert Interview Without the Hype</h3>
+                        <p class="featured-excerpt">
+                            "If I had to launch AI in 2026, I'd start here" &mdash; what's actually working in real deployments,
+                            where AI creates measurable value today, and common technical decisions that go wrong.
+                        </p>
+                        <span class="featured-date">January 2026</span>
+                    </div>
                 </a>
             </div>
         </section>
 
-        </main>
+    </main>
 
     <!-- Dark Footer -->
     <footer class="footer-dark">

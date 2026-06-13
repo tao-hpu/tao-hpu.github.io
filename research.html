@@ -21,7 +21,7 @@
     <meta name="twitter:title" content="Tao An">
     <meta name="twitter:description" content="AI Researcher focused on building impactful technology">
     <meta name="twitter:image" content="https://tao-hpu.github.io/images/og-cover.jpg">
-    <title>Tao An Official Site</title>
+    <title>Tao An — Research</title>
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -61,8 +61,8 @@
             
             <div class="nav-right">
                 <div class="nav-links">
-                    <a href="/" class="active">Home</a>
-                    <a href="/research.html">Research</a>
+                    <a href="/">Home</a>
+                    <a href="/research.html" class="active">Research</a>
                     <a href="/building.html">Building</a>
                 </div>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
@@ -150,17 +150,12 @@
         <section class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <strong><span class="word-fade" style="--i:5">From</span> <span class="word-fade underline"
-                            style="--i:2">industry</span> <span class="word-fade" style="--i:7">to</span>
-                        <span class="word-fade underline" style="--i:0">academia</span> <span class="word-fade"
-                            style="--i:4">—</span>
-                        <span class="word-fade" style="--i:6">building</span> <span class="word-fade"
-                            style="--i:1">AI</span> <span class="word-fade" style="--i:3">that</span> <span class="word-fade" style="--i:8">works.</span></strong>
+                    <strong><span class="word-fade underline" style="--i:0">Research.</span></strong>
                 </h1>
-                <p class="hero-description fade-in" style="animation-delay: 1.2s;">
-                    <strong>MS in Artificial Intelligence</strong> from Hawaii Pacific University (2026).
-                    A decade in tech. Pivoted to <strong>AI in 2021</strong>.
-                    Now formalizing <strong>production experience</strong> through academic research.
+                <p class="hero-description fade-in" style="animation-delay: 0.6s;">
+                    <strong>Retrieval-augmented generation</strong>, <strong>LLM long-term memory</strong>,
+                    and <strong>knowledge graphs</strong> — formalizing a decade of production practice into
+                    reproducible research. MS in Artificial Intelligence, Hawaii Pacific University (2026).
                 </p>
             </div>
             <div class="hero-visual fade-in" style="animation-delay: 0s;">
@@ -169,60 +164,128 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about-section" id="about">
-            <div class="about-container">
-                <div class="about-avatar fade-on-scroll">
-                    <img src="https://oss.v-dk.com/img/202511260002211.jpg" alt="Tao An" class="avatar-img">
-                </div>
-                <div class="about-content fade-on-scroll">
-                    <h2 class="section-title">About Tao An (安涛)</h2>
-                    <p class="about-text">
-                        Founder of <a href="https://fim.ai" target="_blank" rel="noopener noreferrer"><strong>FIM Labs Pte Ltd</strong></a> (🇸🇬 Singapore · 🇨🇳 Beijing),
-                        building <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer"><strong>FIM One</strong></a> —
-                        an open-source AI connector hub that links agents to enterprise systems (Feishu, Slack, Teams & more).
-                        Also serving government and enterprise clients in China,
-                        with production AI systems focused on <strong>legal</strong> and <strong>healthcare</strong> domains.
-                    </p>
-                    <p class="about-text">
-                        <strong>Research interests:</strong> Retrieval-Augmented Generation, LLM memory architectures, knowledge graphs.
-                    </p>
-                </div>
-            </div>
-        </section>
+        <!-- Publications Section -->
+        <section class="publications-section" id="publications">
+            <h2 class="section-title-small fade-on-scroll">Publications</h2>
 
-        <!-- Explore -->
-        <section class="cards-section" id="explore">
-            <div class="cards-grid">
-                <a href="/research.html" class="card card-green fade-on-scroll" aria-label="Research — papers and academic work">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M18 12 L50 12 L62 24 L62 68 L18 68 Z" stroke="currentColor" stroke-width="2" fill="none" />
-                            <path d="M50 12 L50 24 L62 24" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="24" y="32" width="32" height="4" rx="1" fill="currentColor" />
-                            <rect x="24" y="42" width="32" height="4" rx="1" fill="currentColor" />
-                            <rect x="24" y="52" width="20" height="4" rx="1" fill="currentColor" />
-                        </svg>
+            <div class="publication-simple-list fade-on-scroll">
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Under Review</span>
+                        <span class="venue-badge venue-badge-secondary">TMLR</span>
+                        <span class="venue-year">2026</span>
                     </div>
-                    <span class="card-eyebrow">Academia</span>
-                    <h3 class="card-title">Research &rarr;</h3>
-                    <p class="card-subtitle">Papers &middot; LLM memory &middot; RAG &middot; knowledge graphs</p>
-                </a>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://openreview.net/forum?id=6ukieTMBcG" target="_blank" rel="noopener noreferrer">
+                            The Preference Centroid: Consensus Density Governs Output Dispersion in Aligned LLMs
+                        </a>
+                        <p class="publication-simple-tldr">
+                            <strong>Tao An</strong>, Shuai Feng &mdash; Sampling an aligned LLM repeatedly and embedding the
+                            completions, output dispersion (mean pairwise cosine distance) is governed by the <em>consensus
+                            density</em> of the task&mdash;near-zero on factual prompts, wide on open-ended ones (Spearman
+                            &rho;&nbsp;=&nbsp;0.85), replicating on a second model and predicted by held-out judges that score
+                            only the prompt (&rho;&nbsp;=&nbsp;&minus;0.91). A matched base-vs-instruct comparison shows alignment
+                            amplifies a gradient the pretrained base already carries, compressing the high-consensus end
+                            ~8.7-fold against 1.8-fold at the low end&mdash;grounding the &ldquo;equalizer vs. amplifier&rdquo;
+                            boundary at the distribution level rather than in posited task complexity.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://openreview.net/forum?id=6ukieTMBcG" target="_blank" rel="noopener noreferrer">OpenReview</a>
+                        </div>
+                    </div>
+                </div>
 
-                <a href="/building.html" class="card card-purple fade-on-scroll" aria-label="Building — products and deployments">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M12 66 L68 66" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            <rect x="20" y="50" width="40" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="22" y="34" width="17" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="41" y="34" width="17" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                            <rect x="31" y="18" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
-                        </svg>
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Under Review</span>
+                        <span class="venue-badge venue-badge-secondary">ARR</span>
+                        <span class="venue-year">2026</span>
                     </div>
-                    <span class="card-eyebrow">Industry</span>
-                    <h3 class="card-title">Building &rarr;</h3>
-                    <p class="card-subtitle">FIM product family &middot; government &amp; healthcare AI</p>
-                </a>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
+                            Verbatim Chunks Beat Extracted Artifacts: A Controlled Ablation of Memory Representations for Long LLM Conversations
+                        </a>
+                        <p class="publication-simple-tldr">
+                            <strong>Tao An</strong> &mdash; A controlled ablation isolating the stored memory representation inside
+                            one fixed retrieve&ndash;rerank&ndash;reason pipeline: LLM-extracted typed artifacts versus verbatim
+                            conversation chunks, holding the model, retriever, reranker, and judge constant. Verbatim chunks win by
+                            15.9 points on LoCoMo (43.9% vs. 28.0%) and 22.0 points on LongMemEval-S (67.4% vs. 45.4%); the
+                            extracted-artifact pipeline never beats naive RAG. The mechanism is <em>lossy distillation</em>&mdash;extraction
+                            discards verbatim detail that chunks retain for free&mdash;so structured memory should augment verbatim
+                            text, not replace it.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">arXiv</a>
+                            <a href="https://arxiv.org/pdf/2601.00821" target="_blank" rel="noopener noreferrer">PDF</a>
+                            <a href="https://github.com/tao-hpu/cog-canvas" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">HHAI 2026</span>
+                        <span class="venue-badge venue-badge-secondary">IOS Press</span>
+                        <span class="venue-year">2026</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://arxiv.org/abs/2512.10961" target="_blank" rel="noopener noreferrer">
+                            AI as Equalizer or Amplifier? Task Complexity as the Moderating Factor for Human Expertise in Hybrid Intelligence Systems
+                        </a>
+                        <p class="publication-simple-tldr">
+                            <strong>Tao An</strong> &mdash; Accepted at the 5th International Conference on Hybrid Human-Artificial
+                            Intelligence (HHAI&nbsp;2026, Brussels); proceedings in IOS Press <em>Frontiers in Artificial Intelligence
+                            and Applications</em>. Drawing on structured field observations since mid-2024, this position paper
+                            reconciles the &ldquo;AI as equalizer&rdquo; and &ldquo;AI as amplifier&rdquo; debates: AI narrows
+                            novice&ndash;expert gaps on routine, well-structured tasks but amplifies them on complex tasks requiring
+                            deep judgment. Domain expertise&mdash;not prompt engineering&mdash;determines who benefits most from AI.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://arxiv.org/abs/2512.10961" target="_blank" rel="noopener noreferrer">arXiv</a>
+                            <a href="https://arxiv.org/pdf/2512.10961" target="_blank" rel="noopener noreferrer">PDF</a>
+                            <a href="https://hhai-conference.org/2026/" target="_blank" rel="noopener noreferrer">Conference</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Preprint</span>
+                        <span class="venue-year">2025</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://arxiv.org/abs/2508.13171" target="_blank" rel="noopener noreferrer">
+                            Cognitive Workspace: Active Memory Management for LLMs
+                        </a>
+                        <p class="publication-simple-tldr">
+                            <strong>Tao An</strong> &mdash; Proposes Cognitive Workspace, a paradigm transcending traditional RAG by
+                            emulating human cognitive mechanisms: active memory management, hierarchical cognitive buffers, and
+                            task-driven context optimization. Achieves a 58.6% memory-reuse rate (vs. 0% for RAG) with 17&ndash;18%
+                            net efficiency gain.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://arxiv.org/abs/2508.13171" target="_blank" rel="noopener noreferrer">arXiv</a>
+                            <a href="https://arxiv.org/pdf/2508.13171" target="_blank" rel="noopener noreferrer">PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Patent</span>
+                        <span class="venue-badge venue-badge-secondary">Pending</span>
+                        <span class="venue-year">2026</span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <span class="publication-simple-title">
+                            A Graph-Neural-Network Method for Data-Information Recommendation
+                        </span>
+                        <p class="publication-simple-tldr">
+                            <strong>Tao An</strong> &mdash; Chinese invention patent, under examination. GNN-based recommendation
+                            over heterogeneous data&ndash;information graphs.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
