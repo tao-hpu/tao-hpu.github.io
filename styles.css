@@ -336,7 +336,8 @@ body {
     text-decoration: underline;
     text-decoration-color: var(--color-accent);
     text-decoration-thickness: 5px;
-    text-underline-offset: 4px;
+    text-underline-offset: 0.16em;
+    text-decoration-skip-ink: none;
 }
 
 .hero-description {
@@ -344,6 +345,21 @@ body {
     font-size: 1.125rem;
     color: var(--color-muted);
     line-height: 1.7;
+}
+
+.hero-description a,
+.hero-description a:visited {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.hero-description a:hover,
+.hero-description a:hover strong {
+    color: var(--color-accent);
 }
 
 .hero-visual {
@@ -537,9 +553,12 @@ body {
 .publication-simple-links a {
     font-family: var(--font-sans);
     font-size: 0.75rem;
-    color: var(--color-muted);
-    text-decoration: none;
-    transition: color 0.2s ease;
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .publication-simple-links a:hover {
