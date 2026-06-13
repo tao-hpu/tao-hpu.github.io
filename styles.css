@@ -444,35 +444,6 @@ body {
     margin: 0 auto;
 }
 
-.publication-list {
-    max-width: 900px;
-    margin: 1.5rem auto 0;
-}
-
-.publication-item {
-    padding: 1.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    background: var(--color-surface);
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.publication-item:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
-}
-
-.publication-venue {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    min-width: 70px;
-}
-
 .venue-badge {
     font-family: var(--font-sans);
     font-size: 0.6875rem;
@@ -499,74 +470,6 @@ body {
     font-size: 0.8125rem;
     color: var(--color-muted);
     font-weight: 500;
-}
-
-.publication-content {
-    flex: 1;
-}
-
-.publication-title {
-    font-family: var(--font-serif);
-    font-size: 1.125rem;
-    font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-}
-
-.publication-title a {
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.publication-title a:hover {
-    color: var(--color-accent);
-}
-
-.publication-authors {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    color: var(--color-muted);
-    margin-bottom: 0.75rem;
-}
-
-.publication-abstract {
-    font-family: var(--font-serif);
-    font-size: 0.9375rem;
-    color: var(--color-muted);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.publication-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-}
-
-.pub-link {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--color-accent);
-    text-decoration: none;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid var(--color-accent);
-    border-radius: 4px;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.pub-link:hover {
-    background: var(--color-accent);
-    color: var(--color-background);
-}
-
-.pub-status {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    color: var(--color-muted);
-    font-style: italic;
 }
 
 /* Simple Publication List */
@@ -600,13 +503,6 @@ body {
 .publication-simple-body {
     flex: 1;
     min-width: 0;
-}
-
-.publication-simple-year {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    color: var(--color-muted);
-    min-width: 40px;
 }
 
 .publication-simple-title {
@@ -670,25 +566,6 @@ body {
 
     .publication-simple-links {
         margin-top: 0.25rem;
-    }
-
-    .publication-item {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1.25rem;
-    }
-
-    .publication-venue {
-        flex-direction: row;
-        justify-content: flex-start;
-    }
-
-    .publication-title {
-        font-size: 1rem;
-    }
-
-    .publication-abstract {
-        font-size: 0.875rem;
     }
 }
 
