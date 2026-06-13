@@ -315,6 +315,17 @@ body {
     align-items: center;
 }
 
+/* Subpage hero: single column, centered (no canvas) */
+.hero-solo {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+}
+
+.hero-solo .hero-content {
+    max-width: 760px;
+}
+
 .hero-content {
     max-width: 100%;
 }
