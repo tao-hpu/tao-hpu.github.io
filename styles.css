@@ -576,6 +576,93 @@ body {
     color: var(--color-accent);
 }
 
+/* Topic tag (per publication) */
+.topic-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+    margin-top: 0.1rem;
+}
+
+.topic-tag::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.topic-mem::before {
+    background: #d97757;
+}
+
+.topic-hai::before {
+    background: #6a9a78;
+}
+
+.topic-kg::before {
+    background: #8a7bb3;
+}
+
+/* BibTeX expander */
+.bibtex-details {
+    margin-top: 0.6rem;
+}
+
+.bibtex-details summary {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: fit-content;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.bibtex-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.bibtex-details summary::before {
+    content: "+";
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.bibtex-details[open] summary::before {
+    content: "\2212";
+}
+
+.bibtex-details summary:hover {
+    color: var(--color-accent);
+}
+
+.bibtex-pre {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    line-height: 1.55;
+    color: var(--color-text);
+    background: var(--color-accent-light);
+    border-left: 2px solid var(--color-accent);
+    border-radius: 4px;
+    padding: 0.75rem 0.9rem;
+    margin-top: 0.5rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
 @media (max-width: 768px) {
     .publications-section {
         padding: 2rem 1.5rem;
