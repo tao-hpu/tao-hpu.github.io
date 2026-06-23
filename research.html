@@ -188,18 +188,16 @@
                         </p>
                         <div class="publication-simple-links">
                             <a href="https://openreview.net/forum?id=6ukieTMBcG" target="_blank" rel="noopener noreferrer">OpenReview</a>
+                            <button type="button" class="bibtex-toggle" aria-expanded="false">BibTeX</button>
                         </div>
-                        <details class="bibtex-details">
-                            <summary>BibTeX</summary>
-                            <pre class="bibtex-pre">@misc{an2026preference,
+                        <pre class="bibtex-pre" hidden>@misc{an2026preference,
   title  = {The Preference Centroid: Consensus Density Governs
             Output Dispersion in Aligned LLMs},
   author = {An, Tao and Feng, Shuai},
   year   = {2026},
   note   = {Under review at TMLR},
-  url    = {https://openreview.net/forum?id=6ukieTMBcG}
+  url    = {<a href="https://openreview.net/forum?id=6ukieTMBcG">https://openreview.net/forum?id=6ukieTMBcG</a>}
 }</pre>
-                        </details>
                     </div>
                 </div>
 
@@ -227,23 +225,21 @@
                             <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">arXiv</a>
                             <a href="https://arxiv.org/pdf/2601.00821" target="_blank" rel="noopener noreferrer">PDF</a>
                             <a href="https://github.com/tao-hpu/cog-canvas" target="_blank" rel="noopener noreferrer">Code</a>
+                            <button type="button" class="bibtex-toggle" aria-expanded="false">BibTeX</button>
                         </div>
-                        <details class="bibtex-details">
-                            <summary>BibTeX</summary>
-                            <pre class="bibtex-pre">@article{an2026verbatim,
+                        <pre class="bibtex-pre" hidden>@article{an2026verbatim,
   title   = {Verbatim Chunks Beat Extracted Artifacts: A Controlled
              Ablation of Memory Representations for Long LLM Conversations},
   author  = {An, Tao},
   journal = {arXiv preprint arXiv:2601.00821},
   year    = {2026}
 }</pre>
-                        </details>
                     </div>
                 </div>
 
                 <div class="publication-simple-item">
                     <div class="publication-simple-meta">
-                        <span class="venue-badge">&#11088; HHAI 2026</span>
+                        <span class="venue-badge"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg>HHAI 2026</span>
                         <span class="venue-badge venue-badge-secondary">IOS Press</span>
                         <span class="venue-year">2026</span>
                         <span class="topic-tag topic-hai">Human&ndash;AI</span>
@@ -264,10 +260,9 @@
                             <a href="https://arxiv.org/abs/2512.10961" target="_blank" rel="noopener noreferrer">arXiv</a>
                             <a href="https://arxiv.org/pdf/2512.10961" target="_blank" rel="noopener noreferrer">PDF</a>
                             <a href="https://hhai-conference.org/2026/" target="_blank" rel="noopener noreferrer">Conference</a>
+                            <button type="button" class="bibtex-toggle" aria-expanded="false">BibTeX</button>
                         </div>
-                        <details class="bibtex-details">
-                            <summary>BibTeX</summary>
-                            <pre class="bibtex-pre">@inproceedings{an2026equalizer,
+                        <pre class="bibtex-pre" hidden>@inproceedings{an2026equalizer,
   title     = {AI as Equalizer or Amplifier? Task Complexity as the
                Moderating Factor for Human Expertise in Hybrid
                Intelligence Systems},
@@ -278,7 +273,6 @@
   publisher = {IOS Press},
   year      = {2026}
 }</pre>
-                        </details>
                     </div>
                 </div>
 
@@ -301,17 +295,15 @@
                         <div class="publication-simple-links">
                             <a href="https://arxiv.org/abs/2508.13171" target="_blank" rel="noopener noreferrer">arXiv</a>
                             <a href="https://arxiv.org/pdf/2508.13171" target="_blank" rel="noopener noreferrer">PDF</a>
+                            <button type="button" class="bibtex-toggle" aria-expanded="false">BibTeX</button>
                         </div>
-                        <details class="bibtex-details">
-                            <summary>BibTeX</summary>
-                            <pre class="bibtex-pre">@article{an2025cognitive,
+                        <pre class="bibtex-pre" hidden>@article{an2025cognitive,
   title   = {Cognitive Workspace: Active Memory Management
              for Large Language Models},
   author  = {An, Tao},
   journal = {arXiv preprint arXiv:2508.13171},
   year    = {2025}
 }</pre>
-                        </details>
                     </div>
                 </div>
 
@@ -422,6 +414,16 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // BibTeX toggle — show/hide the code block below without moving the button
+        document.querySelectorAll('.bibtex-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pre = btn.closest('.publication-simple-links').nextElementSibling;
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', String(!expanded));
+                if (pre) pre.hidden = expanded;
+            });
+        });
 
         // Scroll-triggered fade in animation
         const fadeElements = document.querySelectorAll('.fade-on-scroll');

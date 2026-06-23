@@ -499,6 +499,14 @@ body {
     font-weight: 500;
 }
 
+.badge-star {
+    width: 0.78em;
+    height: 0.78em;
+    fill: currentColor;
+    margin-right: 0.32em;
+    vertical-align: -0.09em;
+}
+
 /* Simple Publication List */
 .publication-simple-list {
     max-width: 900px;
@@ -609,21 +617,18 @@ body {
     background: #8a7bb3;
 }
 
-/* BibTeX expander */
-.bibtex-details {
-    margin-top: 0.6rem;
-}
-
-.bibtex-details summary {
+/* BibTeX toggle — stays inline in the links row; code block expands below */
+.bibtex-toggle {
     font-family: var(--font-sans);
     font-size: 0.75rem;
     color: var(--color-text);
     cursor: pointer;
-    list-style: none;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    width: fit-content;
+    padding: 0;
+    border: none;
+    background: none;
     text-decoration: underline;
     text-decoration-color: var(--color-accent);
     text-decoration-thickness: 1.5px;
@@ -631,36 +636,40 @@ body {
     transition: color 0.2s ease;
 }
 
-.bibtex-details summary::-webkit-details-marker {
-    display: none;
-}
-
-.bibtex-details summary::before {
+.bibtex-toggle::before {
     content: "+";
     color: var(--color-accent);
     font-weight: 700;
 }
 
-.bibtex-details[open] summary::before {
+.bibtex-toggle[aria-expanded="true"]::before {
     content: "\2212";
 }
 
-.bibtex-details summary:hover {
+.bibtex-toggle:hover {
     color: var(--color-accent);
 }
 
 .bibtex-pre {
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     font-size: 0.72rem;
-    line-height: 1.55;
-    color: var(--color-text);
-    background: var(--color-accent-light);
-    border-left: 2px solid var(--color-accent);
-    border-radius: 4px;
-    padding: 0.75rem 0.9rem;
-    margin-top: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin-top: 0.55rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--color-border);
     white-space: pre-wrap;
     word-break: break-word;
+}
+
+.bibtex-pre a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.bibtex-pre a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
 }
 
 @media (max-width: 768px) {
