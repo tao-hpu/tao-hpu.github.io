@@ -168,7 +168,7 @@
                class="featured-project-box fade-on-scroll">
                 <div class="featured-project-content">
                     <div class="featured-project-header">
-                        <span class="featured-project-badge">1,100+ &#9733; on GitHub</span>
+                        <span class="featured-project-badge" id="fim-stars" data-repo="fim-ai/fim-one">1,200+ &#9733; on GitHub</span>
                     </div>
                     <h3 class="featured-project-name">FIM One</h3>
                     <p class="featured-project-desc">
@@ -404,6 +404,21 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Live GitHub star count — rounds down to the nearest 100 with "+"; silently keeps the baked-in value on failure
+        (function () {
+            const el = document.getElementById('fim-stars');
+            if (!el) return;
+            fetch(`https://api.github.com/repos/${el.dataset.repo}`)
+                .then(r => r.ok ? r.json() : Promise.reject())
+                .then(d => {
+                    if (typeof d.stargazers_count === 'number') {
+                        const rounded = Math.floor(d.stargazers_count / 100) * 100;
+                        el.innerHTML = `${rounded.toLocaleString('en-US')}+ ★ on GitHub`;
+                    }
+                })
+                .catch(() => {});
+        })();
 
         // Scroll-triggered fade in animation
         const fadeElements = document.querySelectorAll('.fade-on-scroll');
