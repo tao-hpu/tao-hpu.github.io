@@ -711,7 +711,7 @@ body {
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 420px));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
     justify-content: center;
     gap: 2rem;
 }

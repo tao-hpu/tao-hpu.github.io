@@ -6,22 +6,22 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Tao An — AI Researcher · MS in AI from Hawaii Pacific University (2026). Founder of FIM Labs, building production AI for legal & healthcare.">
-    <meta name="keywords" content="Tao An, AI Research, Machine Learning, RAG, LLM, FIM Labs, Hawaii Pacific University, Singapore">
+    <meta name="description" content="Open-source courses and developer tools by Tao An — a from-scratch LLM course, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.">
+    <meta name="keywords" content="Tao An, open source, llm-from-scratch, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation">
     <meta name="author" content="Tao An">
-    <meta property="og:title" content="Tao An">
-    <meta property="og:description" content="AI Researcher focused on building impactful technology">
+    <meta property="og:title" content="Tao An — Open Source">
+    <meta property="og:description" content="A from-scratch LLM course, AI-coding utilities, and ops automation — all open source.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tao-hpu.github.io/">
+    <meta property="og:url" content="https://tao-hpu.github.io/opensource.html">
     <meta property="og:image" content="https://tao-hpu.github.io/images/og-cover.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Tao An — From industry to academia, building AI that works.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tao An">
-    <meta name="twitter:description" content="AI Researcher focused on building impactful technology">
+    <meta name="twitter:title" content="Tao An — Open Source">
+    <meta name="twitter:description" content="A from-scratch LLM course, AI-coding utilities, and ops automation — all open source.">
     <meta name="twitter:image" content="https://tao-hpu.github.io/images/og-cover.jpg">
-    <title>Tao An — Building</title>
+    <title>Tao An — Open Source</title>
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -58,13 +58,13 @@
         <div class="nav-container">
             <a href="/" class="nav-logo"><span class="logo-char">T</span><span class="logo-char">\</span><span
                     class="logo-char">A</span></a>
-            
+
             <div class="nav-right">
                 <div class="nav-links">
                     <a href="/">Home</a>
                     <a href="/research.html">Research</a>
-                    <a href="/building.html" class="active">Building</a>
-                    <a href="/opensource.html">Open Source</a>
+                    <a href="/building.html">Building</a>
+                    <a href="/opensource.html" class="active">Open Source</a>
                 </div>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                     <!-- Sun Icon (for dark mode) -->
@@ -95,20 +95,20 @@
             const sunIcon = toggleBtn.querySelector('.sun-icon');
             const moonIcon = toggleBtn.querySelector('.moon-icon');
             const html = document.documentElement;
-            
+
             // Check for saved theme preference
             const savedTheme = localStorage.getItem('theme');
             const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
+
             function setTheme(theme) {
                 html.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
                 updateIcons(theme);
-                
+
                 // Dispatch a custom event so D3.js can listen to it
                 window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
             }
-            
+
             function updateIcons(theme) {
                 if (theme === 'dark') {
                     sunIcon.style.display = 'block';
@@ -118,7 +118,7 @@
                     moonIcon.style.display = 'block';
                 }
             }
-            
+
             // Initialize
             if (savedTheme) {
                 setTheme(savedTheme);
@@ -128,14 +128,14 @@
                 const defaultTheme = systemPrefersDark ? 'dark' : 'light';
                 setTheme(defaultTheme);
             }
-            
+
             // Event Listener
             toggleBtn.addEventListener('click', () => {
                 const currentTheme = html.getAttribute('data-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 setTheme(newTheme);
             });
-            
+
             // Listen for system changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                 if (!localStorage.getItem('theme')) {
@@ -151,199 +151,147 @@
         <section class="hero hero-solo">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <strong><span class="word-fade underline" style="--i:0">Building.</span></strong>
+                    <strong><span class="word-fade underline" style="--i:0">Open</span> <span class="word-fade" style="--i:1">Source.</span></strong>
                 </h1>
                 <p class="hero-description fade-in" style="animation-delay: 0.6s;">
-                    Founder of <a href="https://fim.ai" target="_blank" rel="noopener noreferrer"><strong>FIM&nbsp;Labs</strong></a>
-                    (&#127480;&#127468;&nbsp;Singapore). I build production AI &mdash; open-source agent
-                    infrastructure, plus deployed systems for <strong>government, legal, healthcare</strong>, and
-                    academic institutions across China.
+                    A from-scratch <strong>LLM course</strong>, a handful of <strong>AI-coding utilities</strong> for
+                    Claude&nbsp;Code, and the <strong>ops automation</strong> I rely on day to day. Everything here is
+                    free, permissively licensed, and open to contributions &mdash; built in the open while building FIM.
                 </p>
             </div>
         </section>
 
-        <!-- Flagship -->
-        <section class="featured-project-section" id="flagship">
-            <h2 class="section-title-small fade-on-scroll">Flagship &mdash; Open Source</h2>
-            <a href="https://github.com/fim-ai/fim-one/" target="_blank" rel="noopener noreferrer"
-               class="featured-project-box fade-on-scroll">
-                <div class="featured-project-content">
-                    <div class="featured-project-header">
-                        <span class="featured-project-badge" id="fim-stars" data-repo="fim-ai/fim-one">1,200+ &#9733; on GitHub</span>
-                    </div>
-                    <h3 class="featured-project-name">FIM One</h3>
-                    <p class="featured-project-desc">
-                        Self-hosted, model-agnostic enterprise agent platform that wires agents to the systems you
-                        already run &mdash; ERP, CRM, OA, databases &mdash; without touching existing infrastructure.
-                        Intelligent DAG planning, ReAct reasoning, full RAG pipeline, visual workflow editor, MCP support.
-                    </p>
-                    <div class="featured-project-tags">
-                        <span class="project-tag">Agent Runtime</span>
-                        <span class="project-tag">Enterprise AI</span>
-                        <span class="project-tag">RAG Pipeline</span>
-                        <span class="project-tag">China + Global Stack</span>
-                    </div>
-                    <span class="featured-project-cta">View on GitHub &rarr;</span>
-                </div>
-            </a>
-        </section>
+        <!-- Learning Section -->
+        <section class="publications-section" id="learning">
+            <h2 class="section-title-small fade-on-scroll">Learning</h2>
 
-        <!-- Product family -->
-        <section class="publications-section" id="products">
-            <h2 class="section-title-small fade-on-scroll">FIM Product Family</h2>
             <div class="publication-simple-list fade-on-scroll">
                 <div class="publication-simple-item">
                     <div class="publication-simple-meta">
-                        <span class="venue-badge">Scout</span>
+                        <span class="venue-badge">Course</span>
+                        <span class="venue-badge venue-badge-secondary">中文 · Chinese</span>
+                        <span class="venue-badge venue-badge-secondary">HTML</span>
+                        <span class="venue-badge repo-star" data-repo="tao-hpu/llm-from-scratch"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">0</span></span>
                     </div>
                     <div class="publication-simple-body">
-                        <span class="publication-simple-title">FIM Scout</span>
-                        <p class="publication-simple-tldr">Bid-intelligence pipeline &mdash; discovery, openness scoring, and tracking for government &amp; enterprise tenders.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Paperwork</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">FIM Paperwork</span>
-                        <p class="publication-simple-tldr">Turns source code into IP assets &mdash; software-copyright and patent-mining automation.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Zico</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">Zico</span>
-                        <p class="publication-simple-tldr">Sovereign contract-lifecycle management &mdash; drafting, review, and tracking with data kept on-prem.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Atlas</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">Atlas</span>
-                        <p class="publication-simple-tldr">Specialty follow-up-care platform (deployed with Beijing Ditan Hospital).</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Suwen</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">Suwen</span>
-                        <p class="publication-simple-tldr">Medical-access AI data platform &mdash; policy tracking, comparison, and auto-generated reports for drug/device market access.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Selected Deployments -->
-        <section class="publications-section" id="deployments">
-            <h2 class="section-title-small fade-on-scroll">Selected Deployments</h2>
-            <div class="publication-simple-list fade-on-scroll">
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Tsinghua</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">AI Writing Platform &mdash; Tsinghua University</span>
-                        <p class="publication-simple-tldr"><strong>Direct engagement.</strong> Real-time text analysis, grammar &amp; logic feedback, AI-assisted drafting and teacher-assisted grading for students.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Gov</span>
-                        <span class="venue-badge venue-badge-secondary">Legal</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">Regulatory-Document &amp; Legal-Aid Review Systems</span>
-                        <p class="publication-simple-tldr"><strong>Self-built.</strong> Custom model + RAG for government legal review; cut review cycles from weeks to hours with 60%+ less manual work.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Customs</span>
-                        <span class="venue-badge venue-badge-secondary">subcontractor</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">Trade-Index Analytics &amp; AI Species-Nomenclature Database</span>
-                        <p class="publication-simple-tldr">Big-data monitoring of technical-trade trends and AI species identification for import compliance; built as a development subcontractor on a China Customs platform.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">PUMCH</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">Gynecology Medical Knowledge Graph</span>
-                        <p class="publication-simple-tldr">Structured gynecology knowledge graph powering clinical decision-support, deployed in a Peking Union Medical College Hospital project; built the application layer.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">PUMCH</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">POP Surgical-Approach Recommendation System</span>
-                        <p class="publication-simple-tldr">Automated surgical-approach recommendation for pelvic-organ-prolapse (POP) management, deployed in a Peking Union Medical College Hospital project; built the application layer.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Ditan</span>
-                        <span class="venue-badge venue-badge-secondary">Pro bono</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">HIV Drug-Interaction Reference</span>
-                        <p class="publication-simple-tldr">Drug–drug interaction lookup for HIV therapy with Beijing Ditan Hospital / WHO Collaborating Centre; pro bono.</p>
-                    </div>
-                </div>
-
-                <div class="publication-simple-item">
-                    <div class="publication-simple-meta">
-                        <span class="venue-badge">Peking Univ.</span>
-                    </div>
-                    <div class="publication-simple-body">
-                        <span class="publication-simple-title">Quantitative-Paleontology Platform</span>
-                        <p class="publication-simple-tldr">Quantitative-analysis and teaching platform for paleontology.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured In Section -->
-        <section class="featured-section" id="media">
-            <h2 class="section-title-small fade-on-scroll">Featured In</h2>
-            <div class="featured-list fade-on-scroll">
-                <a href="https://medium.com/@sanjays_8381/if-i-had-to-launch-ai-in-2026-id-start-here-expert-interview-ca62024f2ae8"
-                   target="_blank" rel="noopener noreferrer" class="featured-item">
-                    <div class="featured-content">
-                        <span class="featured-source">Medium &middot; Sanjay Singhania</span>
-                        <h3 class="featured-title">The Truth About AI Right Now: An Expert Interview Without the Hype</h3>
-                        <p class="featured-excerpt">
-                            "If I had to launch AI in 2026, I'd start here" &mdash; what's actually working in real deployments,
-                            where AI creates measurable value today, and common technical decisions that go wrong.
+                        <a class="publication-simple-title" href="https://github.com/tao-hpu/llm-from-scratch" target="_blank" rel="noopener noreferrer">
+                            llm-from-scratch &mdash; 从 0 到 1 手搓大模型
+                        </a>
+                        <p class="publication-simple-tldr">
+                            A from-scratch LLM course in Chinese: build a Transformer by hand, line by line, starting from a
+                            character-level bigram and working all the way up to reproducing <strong>GPT-2 124M</strong> &mdash;
+                            with interactive in-browser visualizations at every step. Aimed at readers who want to understand
+                            attention, training, and sampling by writing the code, not just calling an API.
                         </p>
-                        <span class="featured-date">January 2026</span>
+                        <div class="publication-simple-links">
+                            <a href="https://github.com/tao-hpu/llm-from-scratch" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
 
-    </main>
+        <!-- AI Coding Section -->
+        <section class="publications-section" id="ai-coding">
+            <h2 class="section-title-small fade-on-scroll">AI Coding</h2>
+
+            <div class="publication-simple-list fade-on-scroll">
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg>Featured</span>
+                        <span class="venue-badge venue-badge-secondary">Methodology</span>
+                        <span class="venue-badge repo-star" data-repo="tao-hpu/nano-spec"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">46</span></span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://github.com/tao-hpu/nano-spec" target="_blank" rel="noopener noreferrer">
+                            nano-spec &mdash; Spec-driven thinking, nano-sized docs
+                        </a>
+                        <p class="publication-simple-tldr">
+                            A lightweight task-specification format for AI-assisted development. Instead of heavyweight specs or
+                            no spec at all, nano-spec captures just enough intent &mdash; goal, constraints, acceptance &mdash; in
+                            a tiny document the model and you can both hold in your head, so agents build the right thing on the
+                            first pass.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://github.com/tao-hpu/nano-spec" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Toolkit</span>
+                        <span class="venue-badge venue-badge-secondary">Python</span>
+                        <span class="venue-badge repo-star" data-repo="tao-hpu/tao-ai-toolkit"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">3</span></span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://github.com/tao-hpu/tao-ai-toolkit" target="_blank" rel="noopener noreferrer">
+                            tao-ai-toolkit &mdash; Agents &amp; commands for AI coding
+                        </a>
+                        <p class="publication-simple-tldr">
+                            A curated collection of specialized AI coding agents and slash commands for Claude&nbsp;Code and other
+                            AI coding tools &mdash; the same workflows I use in production, packaged so you can drop them into your
+                            own setup.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://github.com/tao-hpu/tao-ai-toolkit" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">CLI</span>
+                        <span class="venue-badge venue-badge-secondary">TypeScript</span>
+                        <span class="venue-badge repo-star" data-repo="tao-hpu/ccmap"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">1</span></span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://github.com/tao-hpu/ccmap" target="_blank" rel="noopener noreferrer">
+                            ccmap &mdash; Coding heatmap for Claude Code + Codex
+                        </a>
+                        <p class="publication-simple-tldr">
+                            Scans your local Claude&nbsp;Code and Codex usage and renders a GitHub-style coding heatmap &mdash; both
+                            as an embeddable badge and a shareable HTML report, so you can see when and how much you actually code
+                            with AI assistants.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://github.com/tao-hpu/ccmap" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DevOps Section -->
+        <section class="publications-section" id="devops">
+            <h2 class="section-title-small fade-on-scroll">DevOps</h2>
+
+            <div class="publication-simple-list fade-on-scroll">
+                <div class="publication-simple-item">
+                    <div class="publication-simple-meta">
+                        <span class="venue-badge">Ops</span>
+                        <span class="venue-badge venue-badge-secondary">Shell</span>
+                        <span class="venue-badge repo-star" data-repo="tao-hpu/certease"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">0</span></span>
+                    </div>
+                    <div class="publication-simple-body">
+                        <a class="publication-simple-title" href="https://github.com/tao-hpu/certease" target="_blank" rel="noopener noreferrer">
+                            certease &mdash; Bash ACME / SSL orchestration
+                        </a>
+                        <p class="publication-simple-tldr">
+                            One-command TLS certificates for heterogeneous fleets. Auto-detects the nginx flavor
+                            (standard / LNMP / BT panel), gives you unified observability (<code>doctor</code> / <code>status</code>),
+                            and falls back across CAs (ZeroSSL&nbsp;&rarr;&nbsp;Let's&nbsp;Encrypt) &mdash; built for ops managing
+                            many servers that were never set up the same way twice.
+                        </p>
+                        <div class="publication-simple-links">
+                            <a href="https://github.com/tao-hpu/certease" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </main>
 
     <!-- Dark Footer -->
     <footer class="footer-dark">
@@ -353,16 +301,12 @@
 
             <!-- Footer Columns -->
             <div class="footer-column">
-                <h4>Research</h4>
-                <a href="https://scholar.google.com/citations?user=HBIPWm4AAAAJ" target="_blank"
-                    rel="noopener noreferrer">Google Scholar</a>
-                <a href="https://www.semanticscholar.org/author/Tao-An/2402727637" target="_blank"
-                    rel="noopener noreferrer">Semantic Scholar</a>
-                <a href="https://arxiv.org/a/0009-0006-2933-0320.html" target="_blank"
-                    rel="noopener noreferrer">arXiv</a>
-                <a href="https://orcid.org/0009-0006-2933-0320" target="_blank" rel="noopener noreferrer">ORCID</a>
-                <a href="https://openreview.net/profile?id=~Tao_An3" target="_blank"
-                    rel="noopener noreferrer">OpenReview</a>
+                <h4>Open Source</h4>
+                <a href="https://github.com/tao-hpu/llm-from-scratch" target="_blank" rel="noopener noreferrer">llm-from-scratch</a>
+                <a href="https://github.com/tao-hpu/nano-spec" target="_blank" rel="noopener noreferrer">nano-spec</a>
+                <a href="https://github.com/tao-hpu/tao-ai-toolkit" target="_blank" rel="noopener noreferrer">tao-ai-toolkit</a>
+                <a href="https://github.com/tao-hpu/ccmap" target="_blank" rel="noopener noreferrer">ccmap</a>
+                <a href="https://github.com/tao-hpu/certease" target="_blank" rel="noopener noreferrer">certease</a>
             </div>
 
             <div class="footer-column">
@@ -372,6 +316,7 @@
                 <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://www.instagram.com/tao_hpu/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <a href="http://youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili</a>
             </div>
 
             <div class="footer-column">
@@ -402,24 +347,22 @@
         </div>
     </footer>
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Live GitHub star count — rounds down to the nearest 100 with "+"; silently keeps the baked-in value on failure
-        (function () {
-            const el = document.getElementById('fim-stars');
-            if (!el) return;
+        // Live GitHub star counts — updates each repo badge with its exact count; silently keeps the baked-in value on failure
+        document.querySelectorAll('.repo-star[data-repo]').forEach(el => {
+            const countEl = el.querySelector('.repo-star-count');
+            if (!countEl) return;
             fetch(`https://api.github.com/repos/${el.dataset.repo}`)
                 .then(r => r.ok ? r.json() : Promise.reject())
                 .then(d => {
                     if (typeof d.stargazers_count === 'number') {
-                        const rounded = Math.floor(d.stargazers_count / 100) * 100;
-                        el.innerHTML = `${rounded.toLocaleString('en-US')}+ ★ on GitHub`;
+                        countEl.textContent = d.stargazers_count.toLocaleString('en-US');
                     }
                 })
                 .catch(() => {});
-        })();
+        });
 
         // Scroll-triggered fade in animation
         const fadeElements = document.querySelectorAll('.fade-on-scroll');
