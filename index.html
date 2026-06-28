@@ -84,6 +84,9 @@
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </button>
+                <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
@@ -1014,6 +1017,29 @@
             });
             document.addEventListener('mouseenter', () => {
                 ring.style.opacity = '1';
+            });
+        })();
+    </script>
+    <script>
+        // Mobile nav — hamburger dropdown toggle
+        (function () {
+            const toggle = document.querySelector('.nav-toggle');
+            const links = document.querySelector('.nav-links');
+            if (!toggle || !links) return;
+            const close = () => {
+                links.classList.remove('open');
+                toggle.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            };
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const open = links.classList.toggle('open');
+                toggle.classList.toggle('is-open', open);
+                toggle.setAttribute('aria-expanded', String(open));
+            });
+            links.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+            document.addEventListener('click', (e) => {
+                if (!links.contains(e.target) && !toggle.contains(e.target)) close();
             });
         })();
     </script>

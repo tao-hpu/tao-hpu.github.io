@@ -1694,3 +1694,86 @@ a:focus-visible {
         display: none;
     }
 }
+
+/* Mobile nav — collapse links into a hamburger dropdown */
+.nav-toggle {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin: 0 auto;
+        background: var(--color-text);
+        border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .nav-toggle.is-open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.is-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.is-open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-right {
+        gap: 0.5rem;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        right: 1.25rem;
+        flex-direction: column;
+        gap: 0;
+        min-width: 172px;
+        padding: 0.4rem;
+        background: var(--color-nav-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--color-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 16px 40px rgba(25, 25, 24, 0.18);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.95rem;
+        border-radius: 0.55rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: var(--color-card-beige);
+    }
+}
