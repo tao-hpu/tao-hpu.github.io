@@ -173,9 +173,7 @@
                     <div class="publication-simple-meta">
                         <span class="venue-badge">Course</span>
                         <span class="venue-badge venue-badge-secondary">中文 · Chinese</span>
-                        <span class="venue-badge venue-badge-secondary">Python · HTML</span>
-                        <span class="venue-badge repo-star" data-repo="tao-hpu/llm-from-scratch"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">0</span></span>
-                    </div>
+                        <span class="venue-badge venue-badge-secondary">Python · HTML</span>                    </div>
                     <div class="publication-simple-body">
                         <a class="publication-simple-title" href="https://github.com/tao-hpu/llm-from-scratch" target="_blank" rel="noopener noreferrer">
                             llm-from-scratch &mdash; 从 0 到 1 手搓大模型
@@ -202,9 +200,7 @@
                 <div class="publication-simple-item">
                     <div class="publication-simple-meta">
                         <span class="venue-badge"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg>Featured</span>
-                        <span class="venue-badge venue-badge-secondary">Methodology</span>
-                        <span class="venue-badge repo-star" data-repo="tao-hpu/nano-spec"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">46</span></span>
-                    </div>
+                        <span class="venue-badge venue-badge-secondary">Methodology</span>                    </div>
                     <div class="publication-simple-body">
                         <a class="publication-simple-title" href="https://github.com/tao-hpu/nano-spec" target="_blank" rel="noopener noreferrer">
                             nano-spec &mdash; Spec-driven thinking, nano-sized docs
@@ -224,9 +220,7 @@
                 <div class="publication-simple-item">
                     <div class="publication-simple-meta">
                         <span class="venue-badge">Toolkit</span>
-                        <span class="venue-badge venue-badge-secondary">Python</span>
-                        <span class="venue-badge repo-star" data-repo="tao-hpu/tao-ai-toolkit"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">3</span></span>
-                    </div>
+                        <span class="venue-badge venue-badge-secondary">Python</span>                    </div>
                     <div class="publication-simple-body">
                         <a class="publication-simple-title" href="https://github.com/tao-hpu/tao-ai-toolkit" target="_blank" rel="noopener noreferrer">
                             tao-ai-toolkit &mdash; Agents &amp; commands for AI coding
@@ -245,9 +239,7 @@
                 <div class="publication-simple-item">
                     <div class="publication-simple-meta">
                         <span class="venue-badge">CLI</span>
-                        <span class="venue-badge venue-badge-secondary">TypeScript</span>
-                        <span class="venue-badge repo-star" data-repo="tao-hpu/ccmap"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">1</span></span>
-                    </div>
+                        <span class="venue-badge venue-badge-secondary">TypeScript</span>                    </div>
                     <div class="publication-simple-body">
                         <a class="publication-simple-title" href="https://github.com/tao-hpu/ccmap" target="_blank" rel="noopener noreferrer">
                             ccmap &mdash; Coding heatmap for Claude Code + Codex
@@ -273,9 +265,7 @@
                 <div class="publication-simple-item">
                     <div class="publication-simple-meta">
                         <span class="venue-badge">Ops</span>
-                        <span class="venue-badge venue-badge-secondary">Shell</span>
-                        <span class="venue-badge repo-star" data-repo="tao-hpu/certease"><svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z"/></svg><span class="repo-star-count">0</span></span>
-                    </div>
+                        <span class="venue-badge venue-badge-secondary">Shell</span>                    </div>
                     <div class="publication-simple-body">
                         <a class="publication-simple-title" href="https://github.com/tao-hpu/certease" target="_blank" rel="noopener noreferrer">
                             certease &mdash; Bash ACME / SSL orchestration
@@ -352,20 +342,6 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Live GitHub star counts — updates each repo badge with its exact count; silently keeps the baked-in value on failure
-        document.querySelectorAll('.repo-star[data-repo]').forEach(el => {
-            const countEl = el.querySelector('.repo-star-count');
-            if (!countEl) return;
-            fetch(`https://api.github.com/repos/${el.dataset.repo}`)
-                .then(r => r.ok ? r.json() : Promise.reject())
-                .then(d => {
-                    if (typeof d.stargazers_count === 'number') {
-                        countEl.textContent = d.stargazers_count.toLocaleString('en-US');
-                    }
-                })
-                .catch(() => {});
-        });
 
         // Scroll-triggered fade in animation
         const fadeElements = document.querySelectorAll('.fade-on-scroll');
