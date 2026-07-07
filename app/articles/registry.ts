@@ -10,14 +10,32 @@ export type Article = {
   tags?: string[]
 }
 
+// Sorted newest-first on the index page; entries sharing a date keep this
+// array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
-    slug: 'hello-interactive-articles',
-    title: 'Research Notes, in an Interactive Format',
+    slug: 'verbatim-memory',
+    title: 'What Structured Memory Forgets',
     description:
-      'Why this section exists: web-native articles with interactive figures, permanent URLs, and citation metadata, alongside the papers.',
+      'Interactive companion to "It\'s Fidelity, Not Structure" (arXiv:2601.00821): explore the benchmark results and see why extraction loses to verbatim chunks at write time.',
     date: '2026-07-07',
-    tags: ['meta'],
+    tags: ['llm-memory'],
+  },
+  {
+    slug: 'consensus-dispersion',
+    title: 'How Much the Model Agrees with Itself',
+    description:
+      'Interactive companion to "The Preference Centroid" (TMLR submission): sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
+    date: '2026-07-07',
+    tags: ['human-ai'],
+  },
+  {
+    slug: 'active-memory-revisited',
+    title: 'What I Got Wrong About LLM Memory',
+    description:
+      'Cognitive Workspace (2025) argued for actively curated memory; my own 2026 ablation showed curation is lossy deletion. What failed, what survived, and the meta-lesson about measuring claims.',
+    date: '2026-07-07',
+    tags: ['llm-memory'],
   },
 ]
 

@@ -1,0 +1,120 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import DispersionScatter from '@/components/DispersionScatter'
+import AlignmentAmplifier from '@/components/AlignmentAmplifier'
+import SpecificityLadder from '@/components/SpecificityLadder'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('consensus-dispersion')
+
+<ArticleLayout slug="consensus-dispersion">
+
+Ask a model the capital of France 25 times and you get one answer in 25 wordings. Ask
+it for the opening line of a sea story 25 times and you get 25 different stories. Everyone
+who works with these models knows this. The paper behind this note,
+[The Preference Centroid](https://openreview.net/forum?id=6ukieTMBcG) (with Shuai Feng,
+under review at TMLR), argues the pattern is worth measuring precisely, because the
+quantity underneath it explains something people currently explain with a vaguer word.
+
+The vaguer word is "complexity." My earlier
+[HHAI paper](https://arxiv.org/abs/2512.10961) reconciled the "AI equalizes skill
+gaps" and "AI amplifies them" literatures by positing task complexity as the moderator:
+routine tasks equalize, complex tasks amplify. That answers *when*, not *why*. Complexity
+is a description of the task, not a property of the model you can point to. This paper
+supplies the measurable layer: what governs the split is the **consensus density** of
+the task, how much agreement exists about what a good answer looks like, and you can
+read it directly off the model's sampling behavior.
+
+The measurement is deliberately simple. Sample N&nbsp;=&nbsp;25 completions at
+temperature 1.0, embed them, and take the mean pairwise cosine distance. Call that the
+**dispersion** of the output cloud.
+
+## Judges who never see an output predict the spread
+
+The obvious objection to "dispersion tracks consensus" is circularity: if you infer a
+task's consensus from its dispersion, you have relabeled the thing you meant to explain.
+The paper's answer is to measure consensus from the other side. Three held-out judge
+models (GPT-4.1, Gemini 2.5 Flash, Qwen-Max) see *only the prompt*, never any
+completion, and rate how much knowledgeable people would agree on what a good answer
+looks like.
+
+<DispersionScatter />
+
+Click around this figure; it holds most of the paper.
+
+- The **factual** dots sit at the bottom-right: consensus above 90, dispersion near 0.02.
+  Open the capital-of-France prompt and read the samples. Two of the three shown are
+  *verbatim identical*. That is what an aligned model on a high-consensus task is:
+  one answer, lightly reworded.
+- The **creative** dots sit at the top-left, and one of them is an honest outlier:
+  the board-game-naming prompt at dispersion 0.56, whose outputs are near-random short
+  strings. The paper reports the creative band's median rather than letting one
+  degenerate prompt inflate the story, and the headline rank correlation drops from
+  0.85 to 0.84 without it.
+- Prompt-side consensus predicts output-side dispersion at Spearman
+  &rho;&nbsp;=&nbsp;&minus;0.91. The judges agree with each other
+  (&rho;&nbsp;=&nbsp;0.85&ndash;0.95), a small human expert panel tracks them at
+  &rho;&nbsp;=&nbsp;0.74, and the token-level entropy of an open-weight model, a purely
+  mechanical signal with no judgment in it, points the same way
+  (&rho;&nbsp;=&nbsp;0.66 with dispersion).
+- Switch to the GPT-4o toggle: a different lab's model, same ordering
+  (&rho;&nbsp;=&nbsp;0.84; per-prompt agreement with Claude 0.75). The gradient is a
+  property of aligned models, not a quirk of one.
+
+## Alignment amplifies a gradient it did not create
+
+Is this gradient something RLHF manufactures? A matched comparison on open weights
+says no: run the same 20 prompts through Qwen2.5-7B and Qwen2.5-7B-Instruct, identical
+in everything but alignment.
+
+<AlignmentAmplifier />
+
+The base model already carries the full ordering (gradient &rho;&nbsp;=&nbsp;0.80,
+essentially the instruct model's 0.79), and its dispersion is genuine
+consensus-tracking, not incoherence: the same output-blind judges predict the base
+model's per-prompt dispersion at &rho;&nbsp;=&nbsp;&minus;0.81. What instruction tuning
+does is compress every band, but *unequally*: roughly 8.7-fold on factual prompts
+against 1.8-fold on creative ones (the fold-difference's bootstrap CI excludes zero).
+Alignment does not invent the centroid; it sharpens the gradient the pretrained
+distribution already had, most where consensus is densest.
+
+## Form is not consensus
+
+The third finding is the one I find most useful in practice. Prompting does not
+"sharpen" the model; it *relocates* the sampling region (every conditioned cloud moves
+2&ndash;3&times; farther than resampling noise), and the spread at the destination is
+set by the destination's own consensus, not by how constraining the instruction looks.
+
+<SpecificityLadder />
+
+The trap is the first rung. "The story is about an old fisherman" looks like a
+constraint, and the judges initially over-credit it too (scoring it 47 against the
+base's 17). But it *raises* dispersion: naming a subject opens a narrative space
+rather than pinning an answer. Meanwhile the longest and most careful instruction in
+the set, avoid-anything-typical, is a deliberate relocation to a low-consensus
+destination, and it produces the widest cloud of all. You cannot read a prompt's
+effect on output spread off its syntax. You can only read it off where the prompt
+sends the model.
+
+The paper is equally explicit about where the metric ends: the embedding captures
+semantic content, not style, so a "write like Hemingway" arm, which judges score as
+high-consensus as the scene pin, barely moves measured dispersion. The disagreement
+lands exactly on the measurement boundary, which is the behavior you want from an
+honest instrument.
+
+## Why I care
+
+If dispersion is inverse consensus density, then the equalizer/amplifier boundary is
+not a mystery about human skill; it is a property of the output distribution you can
+measure per task. Tight cloud: everyone gets the same competent answer, and expertise
+buys little (equalization). Wide cloud: the model returns a field of uneven
+candidates, and the outcome depends on who selects among them (amplification). The
+paper's interpretive layer, that selection skill, call it taste, is the binding
+constraint exactly where dispersion is high, rests on a premise about sample quality
+the measurements motivate but do not yet establish, and the paper says so plainly.
+
+One methodological note carries over to anything you build on this: absolute dispersion
+values drift between sampling batches. Every claim above is a rank correlation or an
+effect direction, stable across five batches, two embedders, and four model families.
+If you reproduce this, compare orderings, not numbers.
+
+</ArticleLayout>

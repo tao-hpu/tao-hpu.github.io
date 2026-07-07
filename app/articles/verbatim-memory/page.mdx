@@ -1,0 +1,99 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import MemoryBenchmarkExplorer from '@/components/MemoryBenchmarkExplorer'
+import LossyExtractionDemo from '@/components/LossyExtractionDemo'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('verbatim-memory')
+
+<ArticleLayout slug="verbatim-memory">
+
+Most long-term memory systems for LLM conversations share one design instinct: raw
+dialogue is messy, so distill it. Run an extractor over each turn, keep typed records
+(decisions, facts, preferences, events), and retrieve those instead of raw text. It
+feels obviously right. Databases beat log files; why would conversational memory be
+different?
+
+My paper [It's Fidelity, Not Structure](https://arxiv.org/abs/2601.00821) tests that
+instinct with a controlled ablation. One fixed pipeline: hybrid retrieval, a
+`bge-reranker-v2-m3` reranking stage, the same answerer, the same judge. The only
+thing swapped is what sits in the store: LLM-extracted typed artifacts, or plain
+verbatim chunks (512 characters, sliding window). If structured memory helps, it
+should show up here, with everything else held constant.
+
+It does not. This note is the interactive companion: the result tables as figures you
+can poke at, and a demo of the mechanism. It is not a substitute for the
+[paper](https://arxiv.org/pdf/2601.00821), which has the controls and the statistics.
+
+## The result, and the trap I built for myself
+
+<MemoryBenchmarkExplorer />
+
+Three things worth clicking through:
+
+1. **On both real benchmarks, verbatim chunks win big.** 43.9% vs. 28.0% on LoCoMo,
+   67.4% vs. 45.4% on LongMemEval-S. That is a 15.9 and a 22.0 point gap from changing
+   nothing but the stored representation (McNemar p&nbsp;&lt;&nbsp;10⁻¹⁵ on both).
+   The extracted-artifact pipeline, with all its machinery, never beats naive
+   RAG + rerank overall.
+2. **Temporal questions are where extraction hurts most.** On LoCoMo temporal
+   reasoning, chunks hit 50.2% against 31.2% for artifacts, and 16.5% for a plain
+   RAG baseline with no timestamps at all. A verbatim store preserves dates
+   unconditionally; an extractor preserves them only when it notices them.
+3. **The synthetic tab tells the opposite story.** On the synthetic benchmark I
+   wrote first, artifacts looked excellent: 81.0% multi-hop pass rate against 25.0%
+   for chunks. If I had stopped there, the paper would have had the opposite title.
+   Synthetic questions were generated from the same kind of salient facts the
+   extractor is good at catching, so the benchmark and the system agreed with each
+   other. Real benchmarks ask about things no schema author anticipated.
+
+Also worth noting what did *not* help: unioning the two stores. Chunks ∪ artifacts
+scores slightly *below* chunks alone on both benchmarks. Adding a lossy store to a
+faithful one just adds retrieval noise.
+
+## The mechanism is lossy distillation
+
+Why does extraction lose? Not because retrieval fails. After 1-hop graph expansion,
+retrieval recall over the artifact store jumps from 25.8% to 71.8%, and answer
+accuracy barely moves. Retrieving more of a lossy store cannot recover what was never
+written down.
+
+The failure happens at write time. Drag the slider, then flip the retrieval toggle and
+watch which crosses it can and cannot fix:
+
+<LossyExtractionDemo />
+
+In the error analysis of 147 discordant LoCoMo questions, 69% of the diagnosable
+chunks-pass-artifacts-fail cases are write-time gaps: the fact simply was not
+deliberately extracted. Within those, 78.8% are salience misjudgments (the extractor
+did not consider it worth keeping), 14.9% are lost dates and times, and 6.4% are
+broken reasoning chains. A store-level probe makes it concrete: for 29.3% of these
+questions, the gold answer survives in *zero* artifacts. The information was in the
+conversation, the pipeline was fine, and the answer had already been deleted before
+any question was asked.
+
+That is the sense in which the problem is fidelity, not structure. Structure is not
+what hurts; the artifacts carry useful types and links. What hurts is that
+extraction is a lossy compression decided before the query distribution is known.
+
+## Extraction is not even cheaper where it counts
+
+The usual defense is cost: artifacts are 5.1× shorter, so answering over them is
+cheaper per query. True, but the metric that matters is cost per *correct* answer,
+and there chunks win too: $12.5 per thousand correct answers against $14.9 for
+artifacts on LoCoMo (and the artifact store also paid an extraction pass up front).
+Losing accuracy faster than you save tokens is not efficiency.
+
+## What I take from this
+
+The practical rule the paper ends on: **structured memory should augment verbatim
+text, not replace it.** Keep the raw conversation as the ground truth your retrieval
+runs over. If you want typed artifacts for their real strengths (deduplication,
+contradiction tracking, graph queries), build them as an index *into* the verbatim
+store, so a wrong salience call costs you a pointer, not the fact itself. And if you
+are evaluating a memory system on a benchmark you generated yourself, be suspicious
+when it agrees with your design.
+
+Code and data: [cog-canvas](https://github.com/tao-hpu/cog-canvas),
+[benchmark dataset](https://huggingface.co/datasets/tao-hpu/cog-canvas-benchmark).
+
+</ArticleLayout>

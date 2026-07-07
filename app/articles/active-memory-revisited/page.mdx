@@ -1,0 +1,88 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import WorkspaceReuseDemo from '@/components/WorkspaceReuseDemo'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('active-memory-revisited')
+
+<ArticleLayout slug="active-memory-revisited">
+
+In August 2025 I published
+[Cognitive Workspace](https://arxiv.org/abs/2508.13171), a position-plus-prototype
+paper arguing that LLM memory should be *active*: instead of passively retrieving
+chunks the way RAG does, a memory system should curate what it keeps, maintain
+hierarchical cognitive buffers the way working memory does, and plan what it will need
+next. The framing came from cognitive science (Baddeley's working-memory model,
+Clark and Chalmers' extended mind, Hutchins' distributed cognition), and the prototype
+backed it with a clean efficiency result: across multi-turn tasks, the workspace
+answered from its own curated state 54&ndash;60% of the time, where stateless RAG
+reuses nothing.
+
+Ten months later my own ablation said the central design instinct was wrong. This note
+is about which part failed, which part survived, and what the sequence taught me about
+testing claims in the order that matters.
+
+## The part that held up
+
+The reuse result was real, and it still is:
+
+<WorkspaceReuseDemo />
+
+Nothing in later work contradicts this. A system that carries curated state across
+turns genuinely avoids re-fetching, and the efficiency accounting (more operations per
+turn, fewer wasted retrievals, 17&ndash;18% net gain) survives.
+
+## The part that didn't
+
+Look at what the prototype measured: reuse rates, operation counts, efficiency. Now
+look at what the paper's thesis actually needed: evidence that a *curated, distilled
+working state* is a better substrate for answering questions than the raw
+conversation. The experiments never tested answer accuracy against a strong verbatim
+baseline. I measured the property my architecture was designed to maximize, and read
+it as support for the architecture.
+
+The test that mattered came in 2026, when I built
+[cog-canvas](https://github.com/tao-hpu/cog-canvas) and ran the controlled ablation in
+[It's Fidelity, Not Structure](https://arxiv.org/abs/2601.00821): one fixed
+retrieve-rerank-reason pipeline, swapping only the stored representation between
+LLM-extracted structured artifacts (Cognitive Workspace's descendants: typed decisions,
+facts, events, curated at write time) and dumb verbatim chunks. Verbatim won by 15.9
+points on LoCoMo and 22.0 on LongMemEval-S, and the structured pipeline never beat
+naive RAG on accuracy. The mechanism, lossy distillation, is dissected interactively in
+[the companion note](/articles/verbatim-memory): curation decides what is worth keeping
+before it knows the questions, and on real benchmarks 69% of its failures are
+information it deliberately never wrote down.
+
+That mechanism is aimed straight at Cognitive Workspace's heart. "Deliberate
+information curation" was innovation number one. Curation *is* deletion, and deletion
+before the query distribution is known is exactly what the 2026 ablation shows you
+pay for.
+
+## What synthesis survives
+
+The wrong reading of this sequence is "active memory was a dead end, RAG was right all
+along." The two results compose into something more specific:
+
+1. **Verbatim text must remain the ground truth.** Whatever memory architecture you
+   build, the raw conversation stays in the store, retrievable, uncompressed. That is
+   the 2026 result.
+2. **Active management belongs on top, as an index, not instead, as a replacement.**
+   Reuse, buffering, task-driven prefetching, the things Cognitive Workspace measured
+   and got right, do not require destroying the verbatim record. A workspace whose
+   buffers hold *pointers into* verbatim history gets the reuse without the lossy
+   distillation: a wrong curation call costs a cache miss, not the fact itself.
+
+The 2025 paper treated curation and management as one idea. They are two, and only one
+of them survived contact with a real accuracy benchmark.
+
+## The meta-lesson
+
+The uncomfortable part is not that the thesis needed revision; preprints exist to put
+ideas at risk. It is that the risk was available in 2025 and I did not take it: LoCoMo
+existed, verbatim baselines are trivial to build, and a week of ablation would have
+found the fidelity problem before the architecture essay was written. The general rule
+I take from it: **measure the claim, not the mechanism.** A system designed for reuse
+will show reuse; that is a manipulation check, not a result. The result is whether the
+user's question gets answered, and that has to be benchmarked against the dumbest
+strong baseline you can construct, first, not last.
+
+</ArticleLayout>

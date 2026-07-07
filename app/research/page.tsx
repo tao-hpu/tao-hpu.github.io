@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import BibtexToggle from './BibtexToggle'
 
 export const metadata: Metadata = {
@@ -65,6 +66,7 @@ export default function ResearchPage() {
                   <a href="https://openreview.net/forum?id=6ukieTMBcG" target="_blank" rel="noopener noreferrer">
                     OpenReview
                   </a>
+                  <Link href="/articles/consensus-dispersion">Interactive note</Link>
                   <button type="button" className="bibtex-toggle" aria-expanded="false">
                     BibTeX
                   </button>
@@ -121,6 +123,7 @@ export default function ResearchPage() {
                   <a href="https://aha.fim.ai/paper/2601.00821v3" target="_blank" rel="noopener noreferrer">
                     Read on aha.
                   </a>
+                  <Link href="/articles/verbatim-memory">Interactive note</Link>
                   <a href="https://arxiv.org/pdf/2601.00821" target="_blank" rel="noopener noreferrer">
                     PDF
                   </a>
@@ -264,6 +267,7 @@ export default function ResearchPage() {
                   <a href="https://aha.fim.ai/paper/2508.13171v1" target="_blank" rel="noopener noreferrer">
                     Read on aha.
                   </a>
+                  <Link href="/articles/active-memory-revisited">Interactive note</Link>
                   <a href="https://arxiv.org/pdf/2508.13171" target="_blank" rel="noopener noreferrer">
                     PDF
                   </a>
