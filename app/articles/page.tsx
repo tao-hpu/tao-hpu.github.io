@@ -4,6 +4,7 @@ import { articles } from './registry'
 
 export const metadata: Metadata = {
   title: 'Articles · Tao An',
+  alternates: { canonical: '/articles' },
   description:
     'Web-native research notes by Tao An: interactive figures, permanent URLs, citation metadata.',
 }

@@ -52,6 +52,7 @@ export function articleMetadata(slug: string): Metadata {
   return {
     title: `${a.title} · Tao An`,
     description: a.description,
+    alternates: { canonical: `/articles/${a.slug}` },
     openGraph: {
       title: a.title,
       description: a.description,

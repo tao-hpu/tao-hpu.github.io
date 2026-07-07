@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Tao An · Open Source',
+  alternates: { canonical: '/opensource' },
   description:
     'Open-source courses and developer tools by Tao An: a from-scratch LLM course, an IELTS whitepaper, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
   keywords:

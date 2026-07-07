@@ -3,6 +3,7 @@ import BibtexToggle from './BibtexToggle'
 
 export const metadata: Metadata = {
   title: 'Tao An · Research',
+  alternates: { canonical: '/research' },
 }
 
 export default function ResearchPage() {

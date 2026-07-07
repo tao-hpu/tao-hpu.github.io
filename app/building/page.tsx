@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react'
 
 export const metadata: Metadata = {
   title: 'Tao An · Building',
+  alternates: { canonical: '/building' },
   description:
     'Tao An: AI Researcher · MS in AI from Hawaii Pacific University (2026). Founder of FIM Labs, building production AI for legal & healthcare.',
 }

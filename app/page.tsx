@@ -1,4 +1,9 @@
+import type { Metadata } from 'next'
 import NeuralNetwork from './NeuralNetwork'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 export default function Home() {
   return (
