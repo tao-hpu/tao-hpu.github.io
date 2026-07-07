@@ -1789,3 +1789,206 @@ a:focus-visible {
         background: var(--color-card-beige);
     }
 }
+
+/* ============================================
+   Articles section (Next.js migration addition)
+   ============================================ */
+
+.article-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 9rem 1.5rem 5rem;
+}
+
+.article-breadcrumb {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    margin-bottom: 1.25rem;
+}
+
+.article-breadcrumb a {
+    color: var(--color-muted);
+    text-decoration: none;
+}
+
+.article-breadcrumb a:hover {
+    color: var(--color-accent);
+}
+
+.article-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.article-byline {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin: 0.9rem 0 2.75rem;
+}
+
+.article-prose {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text);
+}
+
+.article-prose p,
+.article-prose ul,
+.article-prose ol,
+.article-prose figure,
+.article-prose pre,
+.article-prose blockquote {
+    margin-bottom: 1.4rem;
+}
+
+.article-prose h2 {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-text);
+}
+
+.article-prose h3 {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    color: var(--color-text);
+}
+
+.article-prose a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.article-prose a:hover {
+    color: var(--color-accent);
+}
+
+.article-prose ul,
+.article-prose ol {
+    padding-left: 1.4rem;
+}
+
+.article-prose li {
+    margin-bottom: 0.4rem;
+}
+
+.article-prose code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.875em;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+}
+
+.article-prose pre {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+.article-prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.article-prose blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1.1rem;
+    color: var(--color-muted);
+}
+
+.article-prose figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    margin-top: 0.6rem;
+    line-height: 1.55;
+}
+
+.article-cite {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.article-cite h2 {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+.article-cite p {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin-bottom: 0.9rem;
+}
+
+.article-cite .bibtex-pre {
+    display: block;
+}
+
+/* Interactive layer-band demo */
+.layer-band-demo {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    background: var(--color-surface);
+}
+
+.layer-band-track {
+    display: flex;
+    gap: 3px;
+}
+
+.layer-band-cell {
+    flex: 1;
+    height: 34px;
+    border-radius: 3px;
+    background: var(--color-border);
+    transition: background 0.15s ease;
+}
+
+.layer-band-cell.on {
+    background: var(--color-accent);
+}
+
+.layer-band-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.1rem;
+}
+
+.layer-band-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+}
+
+.layer-band-controls input[type="range"] {
+    accent-color: var(--color-accent);
+}

@@ -1,48 +1,44 @@
 # Tao An's Space
 
-A minimal static personal homepage.
+Personal site of [Tao An](https://tao-hpu.github.io): research, projects, open
+source, and web-native research notes with interactive figures.
 
-Quick preview
-- Open in the host browser:
-  - $BROWSER index.html
-- Or run a simple HTTP server from the repository root:
-  - python3 -m http.server 8000
-  - $BROWSER http://localhost:8000
+Built with Next.js (App Router, static export) and deployed to GitHub Pages via
+GitHub Actions.
 
-Main files
-- [index.html](index.html): site entry
-- [styles.css](styles.css): styling (includes classes [`.content`](styles.css) and [`.card`](styles.css))
-- [.claude/settings.local.json](.claude/settings.local.json): local settings
-- [.gitignore](.gitignore)
+## Development
 
-Notes
-- The site is a static HTML/CSS single page. Edit `index.html` to change links or content.
-- Use the `$BROWSER` environment helper to open pages in the host browser from the dev container.
+```bash
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build      # static export to out/
+pnpm serve      # serve out/ locally
+```
 
-Contributing
-- Edit and push changes:
-  - git add .
-  - git commit -m "Update"
-  - git push
+## Structure
 
-Author
-- Tao An
+- `app/` — pages: home, `/research`, `/building`, `/opensource`, `/articles`
+- `app/articles/` — research notes. Each note is a `page.mdx` under its slug,
+  registered in `app/articles/registry.ts` (which also generates citation
+  metadata and BibTeX). Interactive figures are React components in
+  `components/`.
+- `app/globals.css` — single global stylesheet (design tokens as CSS variables,
+  light/dark via `data-theme`)
+- `public/` — favicons, images, PDF résumé
+
+Legacy URLs from the previous static site (`/research.html` etc.) keep working:
+the export writes `research.html` style files that GitHub Pages serves at both
+`/research` and `/research.html`.
+
+## Deployment
+
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds the
+static export and publishes it to GitHub Pages. The repository's Pages setting
+must be set to "GitHub Actions" as the source.
 
 ## License
 
-This project is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-**You are free to:**
-- **Share**: copy and redistribute the material
-- **Adapt**: remix, transform, and build upon the material
-
-**Under the following terms:**
-- **Attribution**: You must give appropriate credit to [Tao An](https://github.com/tao-hpu)
-- **NonCommercial**: You may NOT use the material for commercial purposes
-- **ShareAlike**: You must distribute your contributions under the same license
-
-[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
----
-
-**Fork this project!** Feel free to use this as a template for your own personal homepage.
+Content is licensed under
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/):
+attribution required, non-commercial, share-alike. Code is provided as-is;
+feel free to learn from it.
