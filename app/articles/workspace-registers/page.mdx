@@ -1,0 +1,52 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import RegisterPlanBars from '@/components/RegisterPlanBars'
+import RegisterDoseCurve from '@/components/RegisterDoseCurve'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('workspace-registers')
+
+<ArticleLayout slug="workspace-registers">
+
+How much of a language model's intermediate computation is *about to be said*, and how much is genuinely internal? A recent interpretability proposal from Anthropic's team, [Verbalizable Representations Form a Global Workspace](https://transformer-circuits.pub/2026/workspace/index.html), gives a bold answer: a small residual-stream subspace acts as a "global workspace," readable through a Jacobian lens, in which the model holds and manipulates intermediate thoughts. Read the workspace and you read the model's mind; steer along it and the model follows.
+
+I set out to replicate the core experiments on open-weight models (Qwen3-1.7B and 4B) and ended up asking a sharper question. There is a confound as old as the logit lens: the intermediate layers of a well-trained decoder increasingly *anticipate the output*. A lens readout at some middle layer that matches a token the model was already about to say is evidence of convergence, not of a workspace. So the question is not "can the lens read something," but: **which lens readouts reflect content the model is *not* about to say, and which are merely echoes of the output?**
+
+## A rank in the mouth
+
+For every lens hit I also record the token's rank in the model's actual next-token distribution at that position, which I will call the "mouth." A hit whose token already sits near the top of the mouth is a *shadow*: it may be nothing more than output anticipation. A hit whose token sits far outside the mouth is *covert*: whatever the lens is reading there, the model was not about to say it. Only covert content can support a workspace claim that is genuinely distinct from decoder convergence. The original paper uses this idea once, as a throwaway ablation filter; I promote it to the central measuring device and audit all six official evaluation sets under a strict criterion.
+
+The result is a clean split, and it has a name.
+
+<RegisterPlanBars />
+
+Covert content survives almost exclusively in two families: **multilingual** prompts, where the lens reads the answer's other-language form and the identity of the conversation's language, and **typo correction**, where it reads the intended word beneath a corrupted surface. Both are *metadata about the context*: which language we are in, what the user meant to type. I call these **context registers**. Every *content-plan* family dies. Poetry produces zero covert readouts of the upcoming rhyme; order-of-operations arithmetic stays at or below its permutation floor; multi-hop reasoning leaves a small residue that evaporates as the cut deepens.
+
+This one decomposition explains, in a single stroke, both the original paper's successes (its flagship demos are all register-like) and the failures flagged in Neel Nanda's independent replication (rhyme planning and mental arithmetic are content plans). And it is not an artifact of where I put the cut: slide the threshold in the figure above and the register families decay slowly while the plan families fall to their floors almost at once. A register is a fact about the context that conditions everything downstream without being any particular token's output. A plan is prospective content. The workspace, read strictly, holds the first and not the second.
+
+## From reading to writing
+
+A correlation is not a mechanism. If the language register is real workspace content and not a readout artifact, it should be causally load-bearing under a controlled write. So I estimate a language-register axis as the mass-mean contrast between content-matched English/Chinese parallel sentences, verify per item that the target language is genuinely absent from the clean output, and translate the register by a fraction of the measured population gap, against an amplitude-matched random-direction control.
+
+<RegisterDoseCurve />
+
+The register moves the language on 79 to 96% of prompts, with full flips (language changed and the answer still correct) at the operating point, in both directions, while the random control moves nothing. But here is the part that matters for the workspace reading: on the strictly covert subset, pushing the register reliably changes *which language the model speaks* but does not by itself retrieve the answer's form in that language. The register carries the language setting, not the content. A second register, the typo axis, behaves the same way: erasing it dose-dependently abolishes the model's ability to spell a corrupted word correctly, against a flat random control. Two registers, two clean causal instances, both amplitude-controlled.
+
+## The edit rewrites the question
+
+The strangest result is about self-knowledge. When I edit the workspace representation of a question's subject entity and then ask the model to restate the question, it reproduces the *edited* question in 59 to 71% of trials, stably across a 1.7B to 14B scale ladder. A lens over fresh, hook-free forward passes agrees with this behavioral measure on 96% of items. The edit does not just flip the answer; it rewrites the model's representation of what was asked, question included.
+
+The model's self-report about the edit, by contrast, never stabilizes. At 1.7B there is no signal; at 4B an edit-specific channel appears; at 8B it is indistinguishable from a random perturbation; at 14B it reverses sign. Detection, where it occurs, is statistically independent of capture and does not rescue the question memory. Introspective blindness here is not inattention. It is the absence of any contradiction inside the model's own state: a coherent workspace edit removes the very discrepancy that noticing would require.
+
+## What survives
+
+Finally, the geometry. Transported through the fitted lens, the unembedding directions of ~190 test entities collapse from an effective dimensionality of 75 to 128 in the raw space down to 2 to 12 after transport, across the entire model family. The two models with the tightest transport cones are exactly the two whose lens readouts are noisiest. The readable channel is a fitted property that predicts its own usability, and it is narrow.
+
+So the workspace picture that survives the controls is narrower and stranger than "the model's thoughts are readable and editable," but it is not empty, and parts of it are stronger than the original claims because they carry controls. What remains is a low-bandwidth, causally steerable channel that carries a handful of context registers: it is where the model keeps facts about the conversation that are nobody's next token. What does not survive: readable content plans, surgical edits of specific thoughts, and any consistent advantage of the Jacobian transport over a plain logit lens on the original evaluation sets.
+
+Registers, not plans.
+
+---
+
+This is an interactive companion to the paper *Registers, Not Plans: What Lives in a Language Model's Workspace That Isn't on Its Tongue*, currently under review. Every number here traces to a results JSON produced by a runnable script; the code, prompt sets, and per-experiment outputs are at [github.com/tao-hpu/jspace-replication](https://github.com/tao-hpu/jspace-replication). Figures are regenerated from those files.
+
+</ArticleLayout>

@@ -14,6 +14,14 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'workspace-registers',
+    title: "What the Model Isn't About to Say",
+    description:
+      'Interactive companion to "Registers, Not Plans" (under review): an independent replication of Anthropic\'s global-workspace claim, and why only context registers, not content plans, survive a strict readout test.',
+    date: '2026-07-08',
+    tags: ['interpretability'],
+  },
+  {
     slug: 'verbatim-memory',
     title: 'What Structured Memory Forgets',
     description:
