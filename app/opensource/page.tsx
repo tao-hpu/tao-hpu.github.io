@@ -281,6 +281,56 @@ export default function OpenSource() {
           </div>
         </section>
 
+        {/* Contributions Section */}
+        <section className="publications-section" id="contributions">
+          <h2 className="section-title-small fade-on-scroll">Contributions</h2>
+
+          <div className="publication-simple-list fade-on-scroll">
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Merged PR</span>
+                <span className="venue-badge venue-badge-secondary">OpenAI Agents SDK</span>
+                <span className="venue-badge venue-badge-secondary">Python</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://github.com/openai/openai-agents-python/pull/3749"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  openai/openai-agents-python &mdash; nested agent-tool state restoration fix
+                </a>
+                <p className="publication-simple-tldr">
+                  Found and diagnosed a state-restoration bug in the{' '}
+                  <strong>OpenAI Agents SDK</strong>: when a paused run resumed, a pending nested
+                  agent-as-tool approval could bind to the wrong tool call (or be lost entirely)
+                  because an earlier serialized entry had been filtered out during deserialization,
+                  shifting a positional pairing. Reported it with a root-cause analysis and a failing
+                  regression test. The maintainers shipped the fix and credited the work as{' '}
+                  <strong>co-author on the merged commit</strong> in the main branch.
+                </p>
+                <div className="publication-simple-links">
+                  <a
+                    href="https://github.com/openai/openai-agents-python/pull/3749"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Pull request
+                  </a>
+                  <a
+                    href="https://github.com/openai/openai-agents-python/commit/60d3f95219654d68e0a43789ecbd600e38ee2606"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Merged commit
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* DevOps Section */}
         <section className="publications-section" id="devops">
           <h2 className="section-title-small fade-on-scroll">DevOps</h2>
