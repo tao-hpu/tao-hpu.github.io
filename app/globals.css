@@ -559,6 +559,14 @@ a.publication-simple-item {
     background: #8a7bb3;
 }
 
+.topic-interp::before {
+    background: #5a8ca8;
+}
+
+.topic-safety::before {
+    background: #b5894e;
+}
+
 .page-research .publication-simple-list {
     max-width: 980px;
 }

@@ -31,9 +31,68 @@ export default function ResearchPage() {
 
         {/* Publications Section */}
         <section className="publications-section" id="publications">
-          <h2 className="section-title-small fade-on-scroll">Publications</h2>
+          <h2 className="section-title-small fade-on-scroll">Publications &amp; Patents</h2>
 
           <div className="publication-simple-list fade-on-scroll">
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Under Review</span>
+                <span className="venue-year">2026</span>
+                <span className="topic-tag topic-interp">Interpretability</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://github.com/tao-hpu/jspace-replication"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Registers, Not Plans: What Lives in a Language Model&rsquo;s Workspace That Isn&rsquo;t on
+                  Its Tongue
+                </a>
+                <p className="publication-simple-tldr">
+                  <strong>Tao An</strong> &mdash; An independent replication and reframing of Anthropic&rsquo;s
+                  &ldquo;global workspace&rdquo; (Jacobian-lens) claim on open Qwen3 models. A{' '}
+                  <em>mouth-exclusion</em> audit&mdash;scoring a lens readout as covert only when its token is
+                  far outside the model&rsquo;s own next-token distribution&mdash;splits the workspace: covert
+                  content survives almost only for <em>context registers</em> (the conversation&rsquo;s language,
+                  a corrupted word&rsquo;s intended form), while <em>content plans</em> (rhyme, arithmetic,
+                  associations) fall to a permutation floor. The surviving registers are causally load-bearing
+                  under amplitude-matched steering, and workspace edits rewrite the model&rsquo;s representation
+                  of the question itself across a 1.7B&ndash;14B scale ladder.
+                </p>
+                <div className="publication-simple-links">
+                  <a href="https://github.com/tao-hpu/jspace-replication" target="_blank" rel="noopener noreferrer">
+                    Code
+                  </a>
+                  <Link href="/articles/workspace-registers">Interactive note</Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Awaiting Submission</span>
+                <span className="venue-year">2026</span>
+                <span className="topic-tag topic-safety">AI Safety</span>
+              </div>
+              <div className="publication-simple-body">
+                <span className="publication-simple-title">
+                  CGEP: Toward Detecting and Attributing GEO Poisoning in Chinese AI Search
+                </span>
+                <p className="publication-simple-tldr">
+                  <strong>Tao An</strong> &mdash; Defines GEO-poisoning detection and attribution for Chinese
+                  generative search (DeepSeek, Doubao, Kimi): a five-technique taxonomy of coordinated,
+                  inauthentic manipulation, a task reframing from attack-success to detection &rarr;
+                  classification &rarr; <em>account-cluster attribution</em>, and a legally-constructed synthetic
+                  benchmark. A provenance pilot shows detection and attribution need different substrates&mdash;
+                  content features detect that manipulation happened (F1&nbsp;0.93) but only an account-interaction
+                  graph attributes it to a seller cluster (0.96)&mdash;and a confidence-gated fusion covers the
+                  taxonomy where a learned GNN and a zero-shot LLM both fail.
+                </p>
+              </div>
+            </div>
+
             <div className="publication-simple-item">
               <div className="publication-simple-meta">
                 <span className="venue-badge">Under Review</span>
