@@ -59,7 +59,8 @@ export default function ResearchPage() {
                   a corrupted word&rsquo;s intended form), while <em>content plans</em> (rhyme, arithmetic,
                   associations) fall to a permutation floor. The surviving registers are causally load-bearing
                   under amplitude-matched steering, and workspace edits rewrite the model&rsquo;s representation
-                  of the question itself across a 1.7B&ndash;14B scale ladder.
+                  of the question itself across a 1.7B&ndash;14B scale ladder. The register and capture
+                  findings reproduce on a second architecture (Gemma-2-2B).
                 </p>
                 <div className="publication-simple-links">
                   <a href="https://github.com/tao-hpu/jspace-replication" target="_blank" rel="noopener noreferrer">

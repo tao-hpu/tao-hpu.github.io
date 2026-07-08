@@ -7,7 +7,7 @@ export const metadata = articleMetadata('workspace-registers')
 
 <ArticleLayout slug="workspace-registers">
 
-How much of a language model's intermediate computation is *about to be said*, and how much is genuinely internal? A recent interpretability proposal from Anthropic's team, [Verbalizable Representations Form a Global Workspace](https://transformer-circuits.pub/2026/workspace/index.html), gives a bold answer: a small residual-stream subspace acts as a "global workspace," readable through a Jacobian lens, in which the model holds and manipulates intermediate thoughts. Read the workspace and you read the model's mind; steer along it and the model follows.
+How much of a language model's intermediate computation is *about to be said*, and how much is genuinely internal? A recent interpretability proposal from Anthropic's team, [Verbalizable Representations Form a Global Workspace](https://transformer-circuits.pub/2026/workspace/index.html), gives a bold answer: a small residual-stream subspace acts as a "global workspace," readable through a Jacobian lens, in which the model holds and manipulates intermediate thoughts. The lens itself is the network's own derivative of its final hidden state with respect to an intermediate layer, averaged over a corpus and decoded through the unembedding: a training-free cousin of the tuned lens. Read the workspace and you read the model's mind; steer along it and the model follows.
 
 I set out to replicate the core experiments on open-weight models (Qwen3-1.7B and 4B) and ended up asking a sharper question. There is a confound as old as the logit lens: the intermediate layers of a well-trained decoder increasingly *anticipate the output*. A lens readout at some middle layer that matches a token the model was already about to say is evidence of convergence, not of a workspace. So the question is not "can the lens read something," but: **which lens readouts reflect content the model is *not* about to say, and which are merely echoes of the output?**
 
@@ -37,9 +37,19 @@ The strangest result is about self-knowledge. When I edit the workspace represen
 
 The model's self-report about the edit, by contrast, never stabilizes. At 1.7B there is no signal; at 4B an edit-specific channel appears; at 8B it is indistinguishable from a random perturbation; at 14B it reverses sign. Detection, where it occurs, is statistically independent of capture and does not rescue the question memory. Introspective blindness here is not inattention. It is the absence of any contradiction inside the model's own state: a coherent workspace edit removes the very discrepancy that noticing would require.
 
+## A second architecture
+
+Everything so far is Qwen. To check that none of it is a quirk of one model family, I rerun the load-bearing experiments on Gemma-2-2B, a different architecture with its own separately fitted lens.
+
+Perspectival capture reproduces and, if anything, sharpens: the full-band swap rewrites the restatement to the *swapped* question on 83.9% of items, above every point on the Qwen ladder, while the random-direction control stays at behavioral zero. Both register writes reproduce too. Erasing the typo axis abolishes correction cleanly, and the language register stays causal, but at roughly 40% of Qwen's efficacy: 25.0% full flips at the operating point, against 55 to 65% on Qwen.
+
+That gap is itself informative. Gemma's Chinese is weaker, so pushing the language register reliably changes *which language it speaks* (language-only flip 79.2%) but into lower-quality Chinese that less often carries the correct answer. It is the same register-not-content dissociation the Qwen covert subset showed, reached here through a capability axis instead of a covertness filter: the register selects the language, and how much that selection pays off depends on how well the model commands the content.
+
+Self-report stays unreliable, in a new shape. Where 4B over-reported the edit and 8B reported generic arousal, Gemma *under*-reports it: its edit-arm yes-rate (8.9%) sits below both its random-direction control (25.0%) and the clean baseline (16.1%), and detection is independent of capture. Across all five models the one invariant is that the report channel never faithfully tracks the edit, while capture and its zeroed control do not vary. The load-bearing picture is a property of lens-equipped decoders, not of one model family.
+
 ## What survives
 
-Finally, the geometry. Transported through the fitted lens, the unembedding directions of ~190 test entities collapse from an effective dimensionality of 75 to 128 in the raw space down to 2 to 12 after transport, across the entire model family. The two models with the tightest transport cones are exactly the two whose lens readouts are noisiest. The readable channel is a fitted property that predicts its own usability, and it is narrow.
+Finally, the geometry. Transported through the fitted lens, the unembedding directions of ~190 test entities collapse from an effective dimensionality of 75 to 128 in the raw space down to 2 to 12 after transport, across the Qwen family. The two models with the tightest transport cones are exactly the two whose lens readouts are noisiest. The readable channel is a fitted property that predicts its own usability, and it is narrow.
 
 So the workspace picture that survives the controls is narrower and stranger than "the model's thoughts are readable and editable," but it is not empty, and parts of it are stronger than the original claims because they carry controls. What remains is a low-bandwidth, causally steerable channel that carries a handful of context registers: it is where the model keeps facts about the conversation that are nobody's next token. What does not survive: readable content plans, surgical edits of specific thoughts, and any consistent advantage of the Jacobian transport over a plain logit lens on the original evaluation sets.
 
