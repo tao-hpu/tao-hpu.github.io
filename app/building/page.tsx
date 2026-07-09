@@ -78,7 +78,7 @@ export default function Building() {
                 <span className="venue-badge">Scout</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">FIM Scout &nearr;</span>
+                <span className="publication-simple-title">FIM Scout ↗</span>
                 <p className="publication-simple-tldr">Bid-intelligence pipeline &mdash; discovery, openness scoring, and tracking for government &amp; enterprise tenders.</p>
               </div>
             </a>
@@ -93,7 +93,7 @@ export default function Building() {
                 <span className="venue-badge">Paperwork</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">FIM Paperwork &nearr;</span>
+                <span className="publication-simple-title">FIM Paperwork ↗</span>
                 <p className="publication-simple-tldr">Turns source code into IP assets &mdash; software-copyright and patent-mining automation.</p>
               </div>
             </a>
@@ -108,7 +108,7 @@ export default function Building() {
                 <span className="venue-badge">Zico</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">Zico &nearr;</span>
+                <span className="publication-simple-title">Zico ↗</span>
                 <p className="publication-simple-tldr">Sovereign contract-lifecycle management &mdash; drafting, review, and tracking with data kept on-prem.</p>
               </div>
             </a>
@@ -123,7 +123,7 @@ export default function Building() {
                 <span className="venue-badge">Atlas</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">Atlas &nearr;</span>
+                <span className="publication-simple-title">Atlas ↗</span>
                 <p className="publication-simple-tldr">Specialty follow-up-care platform (deployed with Beijing Ditan Hospital).</p>
               </div>
             </a>
@@ -138,7 +138,7 @@ export default function Building() {
                 <span className="venue-badge">Suwen</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">Suwen &nearr;</span>
+                <span className="publication-simple-title">Suwen ↗</span>
                 <p className="publication-simple-tldr">Medical-access AI data platform &mdash; policy tracking, comparison, and auto-generated reports for drug/device market access.</p>
               </div>
             </a>
@@ -153,7 +153,7 @@ export default function Building() {
                 <span className="venue-badge">aha.</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">aha. &nearr;</span>
+                <span className="publication-simple-title">aha. ↗</span>
                 <p className="publication-simple-tldr">Paste an arXiv link and read the paper side-by-side with a plain-language explanation &mdash; a free tool for understanding research faster.</p>
               </div>
             </a>
@@ -168,7 +168,7 @@ export default function Building() {
                 <span className="venue-badge">cito</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">cito &nearr;</span>
+                <span className="publication-simple-title">cito ↗</span>
                 <p className="publication-simple-tldr">Semantic search over academic papers: start from a landmark paper and pull the neighborhood around it by meaning, not keywords. Runs over Semantic Scholar with SPECTER2 embeddings.</p>
               </div>
             </a>
