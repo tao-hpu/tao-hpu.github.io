@@ -37,13 +37,14 @@ export default function ResearchPage() {
             <div className="publication-simple-item">
               <div className="publication-simple-meta">
                 <span className="venue-badge">Under Review</span>
+                <span className="venue-badge venue-badge-secondary">BlackboxNLP 2026</span>
                 <span className="venue-year">2026</span>
                 <span className="topic-tag topic-interp">Interpretability</span>
               </div>
               <div className="publication-simple-body">
                 <a
                   className="publication-simple-title"
-                  href="https://github.com/tao-hpu/jspace-replication"
+                  href="https://openreview.net/forum?id=MNyJaBJ5Mx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
