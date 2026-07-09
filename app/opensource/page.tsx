@@ -140,6 +140,43 @@ export default function OpenSource() {
 
             <div className="publication-simple-item">
               <div className="publication-simple-meta">
+                <span className="venue-badge">Notes</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
+                <span className="venue-badge venue-badge-secondary">React · TypeScript</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://algo.fim.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  algo-viz &mdash; 算法可视化实验室
+                </a>
+                <p className="publication-simple-tldr">
+                  The visual counterpart to the LLM courses, turned on algorithms themselves: drag a
+                  handle, watch a sorting pass or a graph traversal rearrange, and read off the
+                  geometric idea underneath. A living notebook in Chinese that grows one algorithm at a
+                  time, for readers who want to <em>see</em> why an algorithm works instead of
+                  memorizing its steps.
+                </p>
+                <div className="publication-simple-links">
+                  <a href="https://algo.fim.ai" target="_blank" rel="noopener noreferrer">
+                    Read online
+                  </a>
+                  <a
+                    href="https://github.com/tao-hpu/algo-viz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
                 <span className="venue-badge">Course</span>
                 <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
                 <span className="venue-badge venue-badge-secondary">React · TypeScript</span>

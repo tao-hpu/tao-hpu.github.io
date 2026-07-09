@@ -158,6 +158,21 @@ export default function Building() {
               </div>
             </a>
 
+            <a
+              href="https://cito.fim.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="publication-simple-item"
+            >
+              <div className="publication-simple-meta">
+                <span className="venue-badge">cito</span>
+              </div>
+              <div className="publication-simple-body">
+                <span className="publication-simple-title">cito &nearr;</span>
+                <p className="publication-simple-tldr">Semantic search over academic papers: start from a landmark paper and pull the neighborhood around it by meaning, not keywords. Runs over Semantic Scholar with SPECTER2 embeddings.</p>
+              </div>
+            </a>
+
           </div>
         </section>
 
