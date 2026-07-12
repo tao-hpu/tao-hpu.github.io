@@ -74,7 +74,7 @@ export default function ResearchPage() {
 
             <div className="publication-simple-item">
               <div className="publication-simple-meta">
-                <span className="venue-badge">Awaiting Submission</span>
+                <span className="venue-badge">Under Review</span>
                 <span className="venue-year">2026</span>
                 <span className="topic-tag topic-safety">AI Safety</span>
               </div>
