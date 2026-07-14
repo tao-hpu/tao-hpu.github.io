@@ -1994,6 +1994,14 @@ a:focus-visible {
     color: var(--color-muted);
 }
 
+.article-prose hr {
+    border: none;
+    height: 1px;
+    width: 72px;
+    margin: 2.75rem auto;
+    background: var(--color-border);
+}
+
 .article-prose figcaption {
     font-family: var(--font-sans);
     font-size: 0.8125rem;
