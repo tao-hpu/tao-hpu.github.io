@@ -14,6 +14,14 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'intervention-timing',
+    title: 'The Missing Cost Term',
+    description:
+      'Interactive companion to "When Should the Agent Speak?": twenty years of research learned what it costs to interrupt a person, and had no agent capable of earning that cost back. The agents arrived. The price did not come with them.',
+    date: '2026-07-14',
+    tags: ['human-ai'],
+  },
+  {
     slug: 'workspace-registers',
     title: "What the Model Isn't About to Say",
     description:

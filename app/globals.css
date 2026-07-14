@@ -2539,3 +2539,394 @@ a:focus-visible {
     border-left: 1px dashed var(--color-muted);
     pointer-events: none;
 }
+
+/* ==========================================================================
+   Intervention-timing article figures (it-)
+   ========================================================================== */
+
+.it-detail-key {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    margin-bottom: 0.15rem;
+}
+
+/* --- LineageTimeline ---------------------------------------------------- */
+
+.it-lineage {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+@media (min-width: 620px) {
+    .it-lineage {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 0.5rem;
+        align-items: start;
+    }
+}
+
+.it-lane {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.it-lane-head {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+}
+
+.it-lane-head span {
+    display: block;
+    font-weight: 400;
+    color: var(--color-muted);
+}
+
+.it-node {
+    display: grid;
+    grid-template-columns: 3.1rem 1fr;
+    gap: 0.4rem;
+    align-items: baseline;
+    text-align: left;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.it-node:hover {
+    background: var(--color-accent-light);
+}
+
+.it-node.on {
+    border-color: var(--color-border);
+    background: var(--color-background);
+}
+
+.it-node-year {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+}
+
+.it-node-name {
+    font-size: 0.75rem;
+    color: var(--color-text);
+    line-height: 1.35;
+}
+
+.it-split {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 2rem 0.2rem 0;
+}
+
+@media (min-width: 620px) {
+    .it-split {
+        flex-direction: column;
+        align-self: stretch;
+        padding: 2.2rem 0.4rem 0.6rem;
+    }
+}
+
+.it-split-line {
+    flex: 1;
+    border-top: 1px dashed var(--color-border);
+}
+
+@media (min-width: 620px) {
+    .it-split-line {
+        border-top: none;
+        border-left: 1px dashed var(--color-border);
+        width: 0;
+    }
+}
+
+.it-split-label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    white-space: nowrap;
+}
+
+@media (min-width: 620px) {
+    .it-split-label {
+        writing-mode: vertical-rl;
+    }
+}
+
+.it-detail-list {
+    list-style: none;
+    margin: 0.7rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.it-detail-list li {
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: var(--color-text);
+}
+
+/* --- InterventionGate --------------------------------------------------- */
+
+.it-gate-track {
+    position: relative;
+    height: 26px;
+    margin: 1.2rem 0 0.4rem;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    background: var(--color-background);
+    overflow: visible;
+}
+
+.it-gate-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    border-radius: 4px 0 0 4px;
+    transition: width 0.2s ease;
+}
+
+.it-gate-tau {
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    width: 0;
+    border-left: 2px solid var(--color-accent);
+    transition: left 0.2s ease;
+}
+
+.it-gate-tau em {
+    position: absolute;
+    top: -1.15rem;
+    left: 0.25rem;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.it-gate-verdict {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: 0.9rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+}
+
+.it-gate-verdict.on {
+    color: var(--color-accent);
+}
+
+.it-gate-verdict span {
+    font-weight: 400;
+    letter-spacing: 0;
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.lossy-slider em {
+    font-style: normal;
+    color: var(--color-muted);
+}
+
+/* --- CostFragments ------------------------------------------------------ */
+
+.it-frag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.it-frag {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 7.5rem) 1fr auto;
+    gap: 0.6rem;
+    align-items: center;
+    text-align: left;
+    padding: 0.45rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.it-frag:hover {
+    background: var(--color-accent-light);
+}
+
+.it-frag.on {
+    border-color: var(--color-border);
+    background: var(--color-background);
+}
+
+.it-frag-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.it-frag-key {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.it-frag-by {
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+}
+
+.it-frag-status {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    background: none;
+}
+
+.it-frag-priced {
+    background: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.it-frag-measured {
+    background: color-mix(in srgb, var(--color-accent) 50%, var(--color-border));
+    color: var(--color-muted);
+}
+
+.it-frag-named {
+    background: color-mix(in srgb, var(--color-accent) 25%, var(--color-border));
+    color: var(--color-muted);
+}
+
+.it-frag-absent {
+    background: none;
+    border: 1px dashed var(--color-muted);
+    color: var(--color-muted);
+}
+
+.it-frag-status.it-frag-priced,
+.it-frag-status.it-frag-measured,
+.it-frag-status.it-frag-named {
+    background: none;
+}
+
+.it-frag-status.it-frag-absent {
+    background: none;
+    border: none;
+}
+
+/* --- BenchmarkGap ------------------------------------------------------- */
+
+.it-bench-head,
+.it-bench-row {
+    display: grid;
+    grid-template-columns: 1fr 4.2rem 4.2rem 4.2rem;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.it-bench-head {
+    padding: 0 0.5rem 0.4rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0.3rem;
+}
+
+.it-bench-head span {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    text-align: center;
+}
+
+.it-bench-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.it-bench-row {
+    text-align: left;
+    padding: 0.45rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.it-bench-row:hover {
+    background: var(--color-accent-light);
+}
+
+.it-bench-row.on {
+    border-color: var(--color-border);
+    background: var(--color-background);
+}
+
+.it-bench-row.proposed {
+    margin-top: 0.5rem;
+    border-top: 1px dashed var(--color-border);
+    border-radius: 0 0 6px 6px;
+}
+
+.it-bench-row.proposed.on {
+    border-color: var(--color-accent);
+    border-radius: 6px;
+}
+
+.it-bench-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.it-bench-mark {
+    text-align: center;
+    font-size: 0.8125rem;
+    line-height: 1;
+}
+
+.it-bench-mark.m-y {
+    color: var(--color-accent);
+}
+
+.it-bench-mark.m-p {
+    color: color-mix(in srgb, var(--color-accent) 55%, var(--color-muted));
+}
+
+.it-bench-mark.m-n {
+    color: var(--color-border);
+}

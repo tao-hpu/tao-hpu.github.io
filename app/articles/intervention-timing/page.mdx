@@ -1,0 +1,180 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import LineageTimeline from '@/components/LineageTimeline'
+import InterventionGate from '@/components/InterventionGate'
+import CostFragments from '@/components/CostFragments'
+import FeedbackLadder from '@/components/FeedbackLadder'
+import BenchmarkGap from '@/components/BenchmarkGap'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('intervention-timing')
+
+<ArticleLayout slug="intervention-timing">
+
+A smart-glasses assistant that waits to be asked is a voice recorder with extra steps.
+That is the whole reason the timing question is now urgent rather than academic. Agents
+finish multi-step tasks against verifiable goals. Egocentric perception resolves what
+you are looking at and reaching for. The one decision nobody has modeled is the one an
+always-on assistant makes hundreds of times an hour: *should I say something now?*
+
+My survey [When Should the Agent Speak?](/papers/when-should-the-agent-speak.pdf) is
+organized around a single rule:
+
+> intervene ⇔ E[benefit of acting] − E[cost of interrupting] > θ
+
+and around a single claim about the state of the field in 2026: **the first term on the
+left has never been stronger, and the second has mostly vanished from the models.**
+
+This note is the interactive companion. It is not a substitute for the
+[paper](/papers/when-should-the-agent-speak.pdf), which carries the full taxonomy, the
+tables, and the provenance for every number below. The [living
+map](https://github.com/tao-hpu/awesome-proactive-agents) tracks the literature as it
+moves.
+
+## Two literatures hold the two halves, and they do not cite each other
+
+Before any language model could act on your behalf, a research community spent twenty
+years on the other half of this problem: what does it cost to interrupt a person, and
+how should that cost be weighed? They got remarkably far. Horvitz's 1999 alerting model
+prices the interruption as an expectation over an *inferred attentional state*, treats
+silence as a first-class action, and makes the alert fire only when net expected value
+turns positive. Iqbal and Horvitz then went and measured the thing in the field: a
+single alert costs an information worker a 20 to 25 minute arc, and 27% of the time the
+interrupted task is never resumed at all.
+
+Then the line went quiet, and the reason is not that the work failed. It is that the
+work had nowhere to compound. When the maximum upside of a perfectly timed intervention
+is *the user reads a message slightly earlier*, there is no return on a better cost
+model. The deep formalisms were built for an actor that did not exist.
+
+The actor exists now. And the wave that built it rebuilt the decision layer from
+scratch.
+
+<LineageTimeline />
+
+## The gate, rebuilt from first principles, and what it still cannot see
+
+The most interesting thing in the 2026 literature is that the decision-theoretic
+formulation is coming back, apparently without anyone noticing they are rebuilding it.
+PRISM derives an intervention threshold by Bayes-risk minimization over the asymmetric
+costs of a false alarm and a missed intervention, and gates a calibrated acceptance
+probability against it. It is Horvitz's rule with learned probabilities in place of
+elicited ones, and it works: on desktop event streams it takes the false-alarm rate from
+50.22% down to 22.94% while lifting F1 from 66.47 to 86.61.
+
+Play with it, then look for what is missing.
+
+<InterventionGate />
+
+The cost pair is a deployment constant. The authors sweep it from 1:4 to 1.2:1 and never
+measure it from a user. So the gate charges the same price for interrupting a person
+gazing out of a window and a person mid-sentence in a meeting. That state dependence is
+precisely the 1999 insight, and it has not come back with the rest of the formalism.
+
+## The cost term exists. It is in four pieces, in four literatures
+
+The honest status is not that nobody prices an interruption. It is worse than that, and
+more fixable. Four communities each price exactly one component of the cost, none of
+them cites the others, and none of them reuses the formalisms they are independently
+rediscovering.
+
+<CostFragments />
+
+The two rows with no owner are the two that 1999 already had. And the missing
+cost-of-silence term is not a theoretical complaint: when Proactive Agent's team fed
+one-sided reward-model feedback back at inference time, GPT-4o's recall collapsed from
+98.11 to 56.76. Penalize false alarms without valuing timely help and the optimum is
+mutism. The field rediscovered, empirically, why the decision needs two terms.
+
+The nearest fix is a substitution rather than a synthesis. Take PRISM's threshold, which
+already has the right shape, and replace its swept false-alarm cost with a load estimate
+of the kind Precision Proactivity already shows is computable from the interaction trace.
+A measured cost inside a derived threshold closes the loop the old lineage left open, and
+it is testable on data that exists today.
+
+## Why evaluation is the gating layer
+
+Every other layer can be built right now. Perception, action, memory: they are commodity
+components, and the survey spends the fewest pages on the one that is most mature. What
+cannot be built right now is a *reward*.
+
+Reinforcement learning works when the reward has ground truth. That is the lesson the
+GUI-agent literature keeps demonstrating and the proactive literature cannot use, because
+no one can say whether a given intervention, at a given instant, was good. Which means:
+
+> **reward ⊆ eval.** The objective a proactive agent can be trained against is bounded
+> above by the evaluation the field can construct. Until intervention quality is
+> measurable, RL for proactivity is not hard. It is undefined.
+
+You can see the trap by walking up the ladder of things you could learn from.
+
+<FeedbackLadder />
+
+The field trains on the bottom rung because it is the only rung that is cheap and
+attributable. The bottom rung is also the one that cannot tell *I wanted this* apart from
+*I wanted this now*. Gate on acceptance alone and PRISM's false alarms climb to 62.50%,
+because users cheerfully accept helpful suggestions that arrived at a terrible moment.
+
+## No benchmark answers the question a deployed policy has to answer
+
+Here is what a timing policy must be able to report on the day it ships. Of the moments
+you chose to act, how many were welcome? Of the moments that needed you, how many did you
+catch? And how much did your mistakes cost?
+
+<BenchmarkGap />
+
+The third column is empty all the way down. That is not a gap in coverage, it is the
+reason no two systems in this survey can be compared on the quantity the survey is about.
+The clearest illustration is the most sophisticated benchmark in the set: Pro²Bench's
+quality score assigns 0 to a false positive and 0 to a false negative, so **interrupting
+someone mid-pour with something irrelevant and silently watching the dish burn are the
+same outcome.** No amount of policy learning repairs a reward that is indifferent to the
+distinction the problem consists of.
+
+The one benchmark that makes timing its headline metric, EgoSocial, is also the one that
+tells us how far there is to go. Four frontier models score between 12.50% and 17.67% on
+intervention timing, while the same models reach 51.65 to 56.08 macro-F1 at merely
+noticing that a social interaction is under way. They can see the situation. They cannot
+pick the moment.
+
+## What I want to build next
+
+The survey's §8 is a design, not a result, and I am publishing the design before the
+data on purpose.
+
+The proposal is an annotation protocol and a metric suite for open-world intervention
+timing. Annotators mark decision *windows*, not instants, and each window gets a
+three-way label: **must** intervene, **may** intervene, **must not** intervene. The
+three-way scheme is the entire point. A binary label forces the *may* mass onto one side
+and erases the region where cost-benefit reasoning, rather than classification, does the
+work. How a policy behaves inside the *may* band is where conservatism, personalization,
+and the threshold itself become visible.
+
+Four numbers come out, reported together and never collapsed into one: timing recall on
+the *must* windows, violation rate on the *must-not* windows, a cost-weighted score whose
+exchange rate is swept as a curve rather than fixed as a hidden constant, and a discount
+for graduated actions, since a chime is not a takeover. Silence on a *may* window is never
+penalized, because that is the one-sided-penalty mistake that ProactiveBench's own
+ablation already exposed.
+
+It is deliberately small: one scenario family, 200 to 300 windows, three annotators each,
+seeded from HoloAssist's existing instructor utterances, which are ground-truth human
+interventions with timing, made by someone who could see the same stream the model sees.
+Annotator disagreement is recorded rather than adjudicated, because receptivity is
+personal and the disagreement *is* the signal.
+
+I am building it. If you work on egocentric assistance, proactive agents, or MR
+interaction and this is your problem too, I would like to hear from you.
+
+---
+
+This is an interactive companion to the survey *When Should the Agent Speak? A Survey of
+Intervention Timing for Always-On AI Assistants*
+([PDF](/papers/when-should-the-agent-speak.pdf)), with the accompanying living map at
+[tao-hpu/awesome-proactive-agents](https://github.com/tao-hpu/awesome-proactive-agents).
+
+One caveat the survey states about itself, and which I will not bury here: of the 47
+works it cites, 23 are arXiv-only preprints from 2024 to 2026 that have not passed peer
+review, including load-bearing ones. Where a paper's prose and its tables disagree, I
+cite the table. Where a paper's equations and its released code disagree, I say so.
+
+</ArticleLayout>

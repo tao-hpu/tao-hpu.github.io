@@ -36,6 +36,67 @@ export default function ResearchPage() {
           <div className="publication-simple-list fade-on-scroll">
             <div className="publication-simple-item">
               <div className="publication-simple-meta">
+                <span className="venue-badge">Preprint</span>
+                <span className="venue-badge venue-badge-secondary">Survey</span>
+                <span className="venue-year">2026</span>
+                <span className="topic-tag topic-hai">Human&ndash;AI</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="/papers/when-should-the-agent-speak.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  When Should the Agent Speak? A Survey of Intervention Timing for
+                  Always-On AI Assistants
+                </a>
+                <p className="publication-simple-tldr">
+                  <strong>Tao An</strong> &mdash; Surveys intervention timing for always-on
+                  assistants around one decision rule: intervene iff the expected benefit
+                  of acting exceeds the expected cost of interrupting. Reconnects two
+                  literatures that do not cite each other, the 1999&ndash;2017
+                  interruptibility line that formalized interruption cost but had no
+                  capable actor, and the 2024&ndash;2026 proactive-agent wave that has
+                  actors but rediscovers the cost term only in fragments. Argues
+                  evaluation is the gating layer, and proposes a benchmark design for
+                  open-world intervention timing with an explicit cost term.
+                </p>
+                <div className="publication-simple-links">
+                  <a
+                    href="/papers/when-should-the-agent-speak.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    PDF
+                  </a>
+                  <Link href="/articles/intervention-timing">Interactive note</Link>
+                  <a
+                    href="https://github.com/tao-hpu/awesome-proactive-agents"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Living map
+                  </a>
+                  <button type="button" className="bibtex-toggle" aria-expanded="false">
+                    BibTeX
+                  </button>
+                </div>
+                <pre className="bibtex-pre" hidden>
+                  {`@misc{an2026timing,
+  title        = {When Should the Agent Speak? A Survey of
+                  Intervention Timing for Always-On AI Assistants},
+  author       = {An, Tao},
+  year         = {2026},
+  howpublished = {\\url{https://tao-hpu.github.io/papers/when-should-the-agent-speak.pdf}},
+  note         = {Preprint}
+}`}
+                </pre>
+              </div>
+            </div>
+
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
                 <span className="venue-badge">Under Review</span>
                 <span className="venue-badge venue-badge-secondary">BlackboxNLP 2026</span>
                 <span className="venue-year">2026</span>
