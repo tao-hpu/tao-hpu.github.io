@@ -36,7 +36,8 @@ export default function ResearchPage() {
           <div className="publication-simple-list fade-on-scroll">
             <div className="publication-simple-item">
               <div className="publication-simple-meta">
-                <span className="venue-badge">Preprint</span>
+                <span className="venue-badge">Under Review</span>
+                <span className="venue-badge venue-badge-secondary">TMLR</span>
                 <span className="venue-badge venue-badge-secondary">Survey</span>
                 <span className="venue-year">2026</span>
                 <span className="topic-tag topic-hai">Human&ndash;AI</span>
@@ -89,7 +90,7 @@ export default function ResearchPage() {
   author       = {An, Tao},
   year         = {2026},
   howpublished = {\\url{https://tao-hpu.github.io/papers/when-should-the-agent-speak.pdf}},
-  note         = {Preprint}
+  note         = {Under review at TMLR}
 }`}
                 </pre>
               </div>
