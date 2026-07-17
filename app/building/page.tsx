@@ -129,21 +129,6 @@ export default function Building() {
             </a>
 
             <a
-              href="https://www.suwendata.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="publication-simple-item"
-            >
-              <div className="publication-simple-meta">
-                <span className="venue-badge">Suwen</span>
-              </div>
-              <div className="publication-simple-body">
-                <span className="publication-simple-title">Suwen ↗</span>
-                <p className="publication-simple-tldr">Medical-access AI data platform &mdash; policy tracking, comparison, and auto-generated reports for drug/device market access.</p>
-              </div>
-            </a>
-
-            <a
               href="https://aha.fim.ai"
               target="_blank"
               rel="noopener noreferrer"
