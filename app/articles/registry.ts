@@ -22,6 +22,14 @@ export const articles: Article[] = [
     tags: ['metascience'],
   },
   {
+    slug: 'acl-2026-citation-audit',
+    title: 'We Checked All 209,985 Citations in ACL 2026',
+    description:
+      'Companion note to the Tuto audit report: fabricated references are a rounding error (2 confirmed, 0.001%), unsupported claim citations are not (16% of papers), and the detector error rate is the number that decides whether any of this is publishable.',
+    date: '2026-07-17',
+    tags: ['metascience'],
+  },
+  {
     slug: 'intervention-timing',
     title: 'The Missing Cost Term',
     description:

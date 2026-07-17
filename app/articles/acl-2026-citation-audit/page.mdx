@@ -1,0 +1,22 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('acl-2026-citation-audit')
+
+<ArticleLayout slug="acl-2026-citation-audit">
+
+The companion essay on this site argues that the citation ledger is fine while the citation currency is dying. "The ledger is fine" was doing a lot of unexamined work in that sentence. This note is the receipt: we audited every reference in the ACL 2026 proceedings, all 4,459 papers, all 209,985 references, for whether the cited work exists and, where a citation backs a specific claim, whether the cited paper actually supports it. The full report is at [tuto.fim.ai](https://tuto.fim.ai/report), the pipeline is open source ([github.com/fim-ai/tuto](https://github.com/fim-ai/tuto), Apache-2.0), and the citation-level judgments ship as an anonymized CC BY dataset in the same repository. Disclosure up front: Tuto is a product of fim.ai, my company; this note is the summary I would want as a reader, not neutral coverage.
+
+Three findings, in the order they surprised me.
+
+**Fabricated references are a rounding error.** The funnel went from 209,985 references to 28,569 not found in any local snapshot, to 18,750 survivors of fuzzy rescue, to 12 suspicious leads after LLM triage, to exactly **2 confirmed nonexistent references** after human verification. That is 0.001%. Both confirmed cases had the same unsettling shape: real authors, real topic, plausible venue, no such paper. But the scare narrative about LLM-hallucinated bibliographies flooding top venues does not survive contact with the full corpus. At the existence level, the ledger holds.
+
+**Unsupported claim citations are not a rounding error.** These are real papers cited for claims they never make: the citation resolves, the DOI works, and the sentence it props up is not in the cited work. In a 100-paper full-text experiment, **16% of papers carried at least one confirmed case**, where "confirmed" means the flag survived an adversarial second review that was instructed to refute it. No existence check can catch these, because nothing is missing from the ledger. The entry is real; the withdrawal it supposedly backs never happened.
+
+**The detector's own error rate is the real headline.** Our first-pass precision was **13%**. Published raw, our flags would have overstated the problem by roughly 8x, and at one point a prompt bug quietly multiplied our suspicious count by 14x until we root-caused it. That episode is in the report as a case study, not buried, because it is the finding I most want other people to reuse: any citation-integrity tool that does not publish its own error rate should be assumed to have one like ours. This is the "measure the claim, not the mechanism" lesson from my memory post-mortem, applied to my own detector.
+
+One design constraint shaped everything downstream: the public report contains aggregate statistics and paraphrased, anonymized cases only. No paper is named, no author is identifiable, and the released dataset strips every verbatim string, because in a fully indexed literature any quoted sentence is a search key. Accountability infrastructure that starts by naming names would be a worse version of the false-positive problem with a person attached.
+
+A LaTeX write-up is next; the numbers above are stable, and the report they come from is the canonical version.
+
+</ArticleLayout>
