@@ -14,6 +14,14 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'citation-decoupling',
+    title: 'The Citation Ledger Is Fine. The Citation Currency Is Dying.',
+    description:
+      'Citation bundles a ledger (registration, priority) and a currency (reputation) in one act, coupled only because reading was the sole transport layer of science. LLM reader-side consumption is splitting them. Three falsifiable predictions, measurements underway.',
+    date: '2026-07-18',
+    tags: ['metascience'],
+  },
+  {
     slug: 'intervention-timing',
     title: 'The Missing Cost Term',
     description:
