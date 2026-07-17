@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Tao An · Open Source',
   alternates: { canonical: '/opensource' },
   description:
-    'Open-source courses and developer tools by Tao An: a from-scratch LLM course, an IELTS whitepaper, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
+    'Open-source courses and developer tools by Tao An: a from-scratch LLM course, an IELTS whitepaper, tuto for corpus-scale citation-integrity auditing, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
   keywords:
-    'Tao An, open source, linalg-to-attention, llm-from-scratch, ielts-whitepaper, IELTS, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
+    'Tao An, open source, linalg-to-attention, llm-from-scratch, ielts-whitepaper, IELTS, tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
   openGraph: {
     title: 'Tao An · Open Source',
     description: 'Open courses, AI-coding utilities, and ops automation, all open source.',
@@ -210,6 +211,57 @@ export default function OpenSource() {
                   >
                     GitHub
                   </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Research Tools Section */}
+        <section className="publications-section" id="research-tools">
+          <h2 className="section-title-small fade-on-scroll">Research Tools</h2>
+
+          <div className="publication-simple-list fade-on-scroll">
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">
+                  <svg className="badge-star" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.2l2.95 6.36 6.85.66-5.16 4.57 1.5 6.71L12 17.6l-6.14 3.5 1.5-6.71L2.2 9.22l6.85-.66z" />
+                  </svg>
+                  Featured
+                </span>
+                <span className="venue-badge venue-badge-secondary">Python</span>
+                <span className="venue-badge venue-badge-secondary">Apache-2.0</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://github.com/fim-ai/tuto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  tuto &mdash; Citation-integrity auditing at corpus scale
+                </a>
+                <p className="publication-simple-tldr">
+                  Audits whether a paper's references actually exist and, for claim citations, whether
+                  the cited paper really supports the claim. The first run swept all{' '}
+                  <strong>209,985 references</strong> in the ACL&nbsp;2026 proceedings (4,459 papers):
+                  only 2 came back confirmed nonexistent (0.001%), so fabrication is not the real
+                  problem, while <strong>16% of papers</strong> carry at least one confirmed
+                  unsupported citation. It publishes its own first-pass precision (13%), because the
+                  number-one enemy of automated citation checking is its own false positives.
+                </p>
+                <div className="publication-simple-links">
+                  <a href="https://github.com/fim-ai/tuto" target="_blank" rel="noopener noreferrer">
+                    GitHub
+                  </a>
+                  <a href="https://tuto.fim.ai/report" target="_blank" rel="noopener noreferrer">
+                    Report
+                  </a>
+                  <a href="https://tuto.fim.ai/check" target="_blank" rel="noopener noreferrer">
+                    Check a paper
+                  </a>
+                  <Link href="/articles/acl-2026-citation-audit">Companion note</Link>
                 </div>
               </div>
             </div>
