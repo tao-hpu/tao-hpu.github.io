@@ -244,7 +244,7 @@ export default function ResearchPage() {
                     arXiv
                   </a>
                   <a href="https://aha.fim.ai/paper/2601.00821v3" target="_blank" rel="noopener noreferrer">
-                    Read on aha.
+                    Read on aha. (中文)
                   </a>
                   <Link href="/articles/verbatim-memory">Interactive note</Link>
                   <a href="https://arxiv.org/pdf/2601.00821" target="_blank" rel="noopener noreferrer">
@@ -314,7 +314,7 @@ export default function ResearchPage() {
                     arXiv
                   </a>
                   <a href="https://aha.fim.ai/paper/2512.10961v2" target="_blank" rel="noopener noreferrer">
-                    Read on aha.
+                    Read on aha. (中文)
                   </a>
                   <a href="https://arxiv.org/pdf/2512.10961" target="_blank" rel="noopener noreferrer">
                     PDF
@@ -388,7 +388,7 @@ export default function ResearchPage() {
                     arXiv
                   </a>
                   <a href="https://aha.fim.ai/paper/2508.13171v1" target="_blank" rel="noopener noreferrer">
-                    Read on aha.
+                    Read on aha. (中文)
                   </a>
                   <Link href="/articles/active-memory-revisited">Interactive note</Link>
                   <a href="https://arxiv.org/pdf/2508.13171" target="_blank" rel="noopener noreferrer">

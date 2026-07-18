@@ -76,6 +76,7 @@ export default function Building() {
             >
               <div className="publication-simple-meta">
                 <span className="venue-badge">Scout</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
               </div>
               <div className="publication-simple-body">
                 <span className="publication-simple-title">FIM Scout ↗</span>
@@ -91,6 +92,7 @@ export default function Building() {
             >
               <div className="publication-simple-meta">
                 <span className="venue-badge">Paperwork</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
               </div>
               <div className="publication-simple-body">
                 <span className="publication-simple-title">FIM Paperwork ↗</span>
@@ -106,6 +108,7 @@ export default function Building() {
             >
               <div className="publication-simple-meta">
                 <span className="venue-badge">Zico</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
               </div>
               <div className="publication-simple-body">
                 <span className="publication-simple-title">Zico ↗</span>
@@ -121,6 +124,7 @@ export default function Building() {
             >
               <div className="publication-simple-meta">
                 <span className="venue-badge">Atlas</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
               </div>
               <div className="publication-simple-body">
                 <span className="publication-simple-title">Atlas ↗</span>
@@ -136,6 +140,7 @@ export default function Building() {
             >
               <div className="publication-simple-meta">
                 <span className="venue-badge">aha.</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
               </div>
               <div className="publication-simple-body">
                 <span className="publication-simple-title">aha. ↗</span>

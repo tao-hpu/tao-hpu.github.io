@@ -27,7 +27,7 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/tao-hpu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="http://youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili</a>
+          <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili (中文)</a>
         </div>
 
         <div className="footer-column">
