@@ -2,38 +2,29 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Tao An · Open Source',
+  title: 'Open Source',
   alternates: { canonical: '/opensource' },
   description:
     'Open-source courses and developer tools by Tao An: a from-scratch LLM course, an IELTS whitepaper, tuto for corpus-scale citation-integrity auditing, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
   keywords:
     'Tao An, open source, linalg-to-attention, llm-from-scratch, ielts-whitepaper, IELTS, tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
   openGraph: {
-    title: 'Tao An · Open Source',
+    title: 'Open Source · Tao An',
     description: 'Open courses, AI-coding utilities, and ops automation, all open source.',
     type: 'website',
-    url: 'https://tao-hpu.github.io/opensource.html',
-    images: [
-      {
-        url: 'https://tao-hpu.github.io/images/og-cover.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Tao An: From industry to academia, building AI that works.',
-      },
-    ],
+    url: 'https://tao-hpu.github.io/opensource',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tao An · Open Source',
+    title: 'Open Source · Tao An',
     description: 'Open courses, AI-coding utilities, and ops automation, all open source.',
-    images: ['https://tao-hpu.github.io/images/og-cover.jpg'],
   },
 }
 
 export default function OpenSource() {
   return (
     <div className="subpage opensource-page">
-      <main className="page-opensource">
+      <main className="page-opensource" id="main">
         {/* Hero Section */}
         <section className="hero hero-solo">
           <div className="hero-content">
@@ -48,11 +39,16 @@ export default function OpenSource() {
               </strong>
             </h1>
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
-              <strong>Open courses</strong> &mdash; from building an LLM from scratch to
-              reverse-engineering the IELTS &mdash; a handful of <strong>AI-coding utilities</strong>{' '}
-              for Claude&nbsp;Code, and the <strong>ops automation</strong> I rely on day to day.
-              Everything here is free, permissively licensed, and open to contributions &mdash; built
-              in the open while building FIM.
+              <strong>Courses, research tools, coding utilities, and ops automation</strong> released
+              under permissive licenses. Product work and client deployments live on{' '}
+              <Link href="/building">
+                <strong>Building</strong>
+              </Link>
+              ; the flagship agent platform is{' '}
+              <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">
+                <strong>FIM One</strong>
+              </a>
+              .
             </p>
           </div>
         </section>

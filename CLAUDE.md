@@ -21,11 +21,13 @@ OpenReview 等第三方平台。个人站是它当下唯一的发布地，目的
    全站唯一的 PDF 入口，站内留副本等于两套真相，出新版必然漂移。
    注意 Zenodo 的**文件直链是钉死在某一版的**（concept recid 取文件返回 404，
    实测只有 version recid 能直连），所以任何地方都只链 DOI，不链文件。
-3. **文章**：`app/articles/registry.ts` 加条目（`slug`/`title`/`description`/`date`/`tags`），
+3. **文章**：`app/articles/registry.ts` 加条目（`slug`/`title`/`description`/`date`/`tags`，
+   有配套论文时补 `relatedPaper` / `paperDoi`），
    新建 `app/articles/<slug>/page.mdx` 写 companion note。
-4. **`app/research/page.tsx` 同步加 publication 条目**，即使没投任何地方。
-   - `venue-badge` **只写真实状态**。没投就写 `Preprint`，不要编 `Under Review`，
-     不要挂一个并不存在的 venue。双盲在审的另有匿名期规则，见 memory。
+   同步更新 `public/feed.xml` 与 `public/sitemap.xml`。
+4. **`app/research/publications.ts` 加 publication 条目**（不要直接堆进 page.tsx），即使没投任何地方。
+   - `status` / badges **只写真实状态**。没投就写 `preprint` / `Preprint`，不要编
+     `Under Review`，不要挂一个并不存在的 venue。双盲在审的另有匿名期规则，见 memory。
    - links 给 PDF、DOI、`Interactive note`（指向第 3 步的文章）。
    - **BibTeX 用 DOI，不要用站点 URL 当 `howpublished`**。仓库改名或换域名会让所有
      引用失效，DOI 不会。

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { articles } from './registry'
 
 export const metadata: Metadata = {
-  title: 'Articles · Tao An',
+  title: 'Articles',
   alternates: { canonical: '/articles' },
   description:
     'Web-native research notes by Tao An: interactive figures, permanent URLs, citation metadata.',
@@ -23,7 +23,7 @@ export default function ArticlesPage() {
 
   return (
     <div className="subpage articles-page">
-      <main className="page-articles">
+      <main className="page-articles" id="main">
         <section className="hero hero-solo">
           <div className="hero-content">
             <h1 className="hero-title">
@@ -36,7 +36,8 @@ export default function ArticlesPage() {
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
               <strong>Research notes in a web-native format</strong>: interactive figures where a
               static PDF falls short, permanent URLs, and citation metadata. Longer-form and less
-              formal than the <Link href="/research">papers</Link>.
+              formal than the <Link href="/research">papers</Link>.{' '}
+              <a href="/feed.xml">Subscribe via RSS</a>.
             </p>
           </div>
         </section>

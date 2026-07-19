@@ -2,16 +2,21 @@ import type { Metadata } from 'next'
 import type { CSSProperties } from 'react'
 
 export const metadata: Metadata = {
-  title: 'Tao An · Building',
+  title: 'Building',
   alternates: { canonical: '/building' },
   description:
-    'Tao An: AI Researcher · MS in AI from Hawaii Pacific University (2026). Founder of FIM Labs, building production AI for legal & healthcare.',
+    'Products and deployments by Tao An / FIM Labs: enterprise agent infrastructure, government, legal, and healthcare AI systems.',
+  openGraph: {
+    title: 'Building · Tao An',
+    description: 'FIM product family and selected production deployments.',
+    url: 'https://tao-hpu.github.io/building',
+  },
 }
 
 export default function Building() {
   return (
     <div className="subpage building-page">
-      <main className="page-building">
+      <main className="page-building" id="main">
         {/* Hero Section */}
         <section className="hero hero-solo">
           <div className="hero-content">
@@ -27,16 +32,20 @@ export default function Building() {
               <a href="https://fim.ai" target="_blank" rel="noopener noreferrer">
                 <strong>FIM&nbsp;Labs</strong>
               </a>{' '}
-              (&#127480;&#127468;&nbsp;Singapore). I build production AI &mdash; open-source agent
-              infrastructure, plus deployed systems for <strong>government, legal, healthcare</strong>, and
-              academic institutions across China.
+              (&#127480;&#127468;&nbsp;Singapore). <strong>Products and deployments</strong> for
+              government, legal, healthcare, and academic institutions. Courses, coding utilities, and
+              the broader OSS catalog live on{' '}
+              <a href="/opensource">
+                <strong>Open Source</strong>
+              </a>
+              .
             </p>
           </div>
         </section>
 
         {/* Flagship */}
         <section className="featured-project-section" id="flagship">
-          <h2 className="section-title-small fade-on-scroll">Flagship &mdash; Open Source</h2>
+          <h2 className="section-title-small fade-on-scroll">Flagship product (open source)</h2>
           <a
             href="https://github.com/fim-ai/fim-one/"
             target="_blank"
@@ -45,7 +54,7 @@ export default function Building() {
           >
             <div className="featured-project-content">
               <div className="featured-project-header">
-                <span className="featured-project-badge">1,200+ &#9733; on GitHub</span>
+                <span className="featured-project-badge">Popular on GitHub</span>
               </div>
               <h3 className="featured-project-name">FIM One</h3>
               <p className="featured-project-desc">

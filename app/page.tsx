@@ -1,53 +1,58 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from '@/lib/site'
 import NeuralNetwork from './NeuralNetwork'
 
 export const metadata: Metadata = {
+  description: SITE_DESCRIPTION,
   alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Tao An',
+    description: SITE_TAGLINE,
+    url: SITE_URL,
+  },
 }
 
 export default function Home() {
   return (
     <div className="home-page">
-      <main>
+      <main id="main">
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
             <h1 className="hero-title">
               <strong>
-                <span className="word-fade" style={{ '--i': 5 } as React.CSSProperties}>
-                  From
+                <span className="word-fade" style={{ '--i': 0 } as React.CSSProperties}>
+                  How
                 </span>{' '}
-                <span className="word-fade underline" style={{ '--i': 2 } as React.CSSProperties}>
-                  industry
+                <span className="word-fade underline" style={{ '--i': 1 } as React.CSSProperties}>
+                  production LLMs
                 </span>{' '}
-                <span className="word-fade" style={{ '--i': 7 } as React.CSSProperties}>
-                  to
-                </span>{' '}
-                <span className="word-fade underline" style={{ '--i': 0 } as React.CSSProperties}>
-                  academia,
-                </span>{' '}
-                <span className="word-fade" style={{ '--i': 6 } as React.CSSProperties}>
-                  building
-                </span>{' '}
-                <span className="word-fade" style={{ '--i': 1 } as React.CSSProperties}>
-                  AI
+                <span className="word-fade" style={{ '--i': 2 } as React.CSSProperties}>
+                  remember
                 </span>{' '}
                 <span className="word-fade" style={{ '--i': 3 } as React.CSSProperties}>
-                  that
+                  and when to
                 </span>{' '}
-                <span className="word-fade" style={{ '--i': 8 } as React.CSSProperties}>
-                  works.
+                <span className="word-fade underline" style={{ '--i': 4 } as React.CSSProperties}>
+                  act.
                 </span>
               </strong>
             </h1>
-            <p className="hero-description fade-in" style={{ animationDelay: '1.2s' }}>
-              <strong>MS in Artificial Intelligence</strong> from Hawaii Pacific University (2026). A
-              decade in tech. Pivoted to <strong>AI in 2021</strong>. Now formalizing{' '}
-              <strong>production experience</strong> through academic research.
+            <p className="hero-description fade-in" style={{ animationDelay: '1.0s' }}>
+              <strong>MS in Artificial Intelligence</strong>, Hawaii Pacific University (2026). A
+              decade in tech; AI since <strong>2021</strong>. Research on{' '}
+              <strong>LLM memory</strong>, <strong>RAG</strong>, and{' '}
+              <strong>intervention timing</strong>, grounded in systems shipped for legal and
+              healthcare.
+            </p>
+            <p className="hero-links fade-in" style={{ animationDelay: '1.25s' }}>
+              <Link href="/research">Research →</Link>
+              <Link href="/articles">Interactive notes →</Link>
+              <a href="mailto:tan1@my.hpu.edu">Email</a>
             </p>
           </div>
           <div className="hero-visual fade-in" style={{ animationDelay: '0s' }}>
-            {/* D3.js Neural Network */}
             <NeuralNetwork />
           </div>
         </section>
@@ -56,7 +61,14 @@ export default function Home() {
         <section className="about-section" id="about">
           <div className="about-container">
             <div className="about-avatar fade-on-scroll">
-              <img src="/images/avatar.jpg" alt="Tao An" className="avatar-img" />
+              <img
+                src="/images/avatar-400.jpg"
+                alt="Tao An"
+                className="avatar-img"
+                width={400}
+                height={400}
+                decoding="async"
+              />
             </div>
             <div className="about-content fade-on-scroll">
               <h2 className="section-title">About Tao An</h2>
@@ -76,7 +88,7 @@ export default function Home() {
               </p>
               <p className="about-text">
                 <strong>Research interests:</strong> Retrieval-Augmented Generation, LLM memory
-                architectures, knowledge graphs.
+                architectures, knowledge graphs, and intervention timing for always-on assistants.
               </p>
             </div>
           </div>
@@ -98,10 +110,20 @@ export default function Home() {
               </p>
             </div>
             <div className="news-item">
+              <span className="news-date">2026.07</span>
+              <p className="news-body">
+                <span className="news-dot news-dot-building"></span>
+                New interactive notes:{' '}
+                <Link href="/articles/citation-decoupling">citation decoupling</Link>,{' '}
+                <Link href="/articles/intervention-timing">intervention timing</Link>, and the{' '}
+                <Link href="/articles/acl-2026-citation-audit">ACL 2026 citation audit</Link>.
+              </p>
+            </div>
+            <div className="news-item">
               <span className="news-date">2026.06</span>
               <p className="news-body">
                 <span className="news-dot news-dot-research"></span>Joined the{' '}
-                <a href="/research#service">NeurIPS 2026 Ethics Review Committee</a>.
+                <Link href="/research#service">NeurIPS 2026 Ethics Review Committee</Link>.
               </p>
             </div>
             <div className="news-item">
@@ -117,7 +139,7 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2026.01</span>
               <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint &mdash;{' '}
+                <span className="news-dot news-dot-research"></span>New preprint —{' '}
                 <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
                   Verbatim Chunks Beat Extracted Artifacts
                 </a>
@@ -128,7 +150,7 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2026.01</span>
               <p className="news-body">
-                <span className="news-dot news-dot-building"></span>Interviewed by Medium &mdash;{' '}
+                <span className="news-dot news-dot-building"></span>Interviewed by Medium —{' '}
                 <a
                   href="https://medium.com/@sanjays_8381/if-i-had-to-launch-ai-in-2026-id-start-here-expert-interview-ca62024f2ae8"
                   target="_blank"
@@ -142,7 +164,7 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2025.08</span>
               <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint &mdash;{' '}
+                <span className="news-dot news-dot-research"></span>New preprint —{' '}
                 <a href="https://arxiv.org/abs/2508.13171" target="_blank" rel="noopener noreferrer">
                   Cognitive Workspace: Active Memory Management for LLMs
                 </a>
@@ -154,8 +176,8 @@ export default function Home() {
 
         {/* Explore */}
         <section className="cards-section" id="explore">
-          <div className="cards-grid">
-            <a
+          <div className="cards-grid cards-grid-4">
+            <Link
               href="/research"
               className="card card-green fade-on-scroll"
               aria-label="Research: papers and academic work"
@@ -170,11 +192,29 @@ export default function Home() {
                 </svg>
               </div>
               <span className="card-eyebrow">Academia</span>
-              <h3 className="card-title">Research &rarr;</h3>
-              <p className="card-subtitle">Papers &middot; LLM memory &middot; RAG &middot; knowledge graphs</p>
-            </a>
+              <h3 className="card-title">Research →</h3>
+              <p className="card-subtitle">Papers · LLM memory · RAG · intervention timing</p>
+            </Link>
 
-            <a
+            <Link
+              href="/articles"
+              className="card card-amber fade-on-scroll"
+              aria-label="Articles: interactive research notes"
+            >
+              <div className="card-icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="16" y="14" width="48" height="52" rx="3" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="M28 28h24M28 38h24M28 48h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="56" cy="54" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="M56 50v8M52 54h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <span className="card-eyebrow">Notes</span>
+              <h3 className="card-title">Articles →</h3>
+              <p className="card-subtitle">Interactive figures · permanent URLs · citeable notes</p>
+            </Link>
+
+            <Link
               href="/building"
               className="card card-purple fade-on-scroll"
               aria-label="Building: products and deployments"
@@ -189,11 +229,11 @@ export default function Home() {
                 </svg>
               </div>
               <span className="card-eyebrow">Industry</span>
-              <h3 className="card-title">Building &rarr;</h3>
-              <p className="card-subtitle">FIM product family &middot; government &amp; healthcare AI</p>
-            </a>
+              <h3 className="card-title">Building →</h3>
+              <p className="card-subtitle">FIM product family · government &amp; healthcare AI</p>
+            </Link>
 
-            <a
+            <Link
               href="/opensource"
               className="card card-beige fade-on-scroll"
               aria-label="Open Source: courses and developer tools"
@@ -206,9 +246,9 @@ export default function Home() {
                 </svg>
               </div>
               <span className="card-eyebrow">Community</span>
-              <h3 className="card-title">Open Source &rarr;</h3>
-              <p className="card-subtitle">Open courses &middot; AI-coding tools &middot; ops automation</p>
-            </a>
+              <h3 className="card-title">Open Source →</h3>
+              <p className="card-subtitle">Open courses · AI-coding tools · ops automation</p>
+            </Link>
           </div>
         </section>
       </main>

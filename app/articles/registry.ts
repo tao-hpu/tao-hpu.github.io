@@ -1,5 +1,10 @@
 import type { Metadata } from 'next'
 
+export type RelatedPaper = {
+  label: string
+  href: string
+}
+
 export type Article = {
   slug: string
   title: string
@@ -16,6 +21,8 @@ export type Article = {
    * deliberately absent from `articleBibtex()`.
    */
   paperDoi?: string
+  /** Companion paper / report link shown in the article footer. */
+  relatedPaper?: RelatedPaper
 }
 
 // Sorted newest-first on the index page; entries sharing a date keep this
@@ -45,6 +52,10 @@ export const articles: Article[] = [
     date: '2026-07-14',
     tags: ['human-ai'],
     paperDoi: '10.5281/zenodo.21438396',
+    relatedPaper: {
+      label: 'When Should the Agent Speak? (PDF)',
+      href: '/papers/when-should-the-agent-speak.pdf',
+    },
   },
   {
     slug: 'workspace-registers',
@@ -53,6 +64,10 @@ export const articles: Article[] = [
       'Interactive companion to "Registers, Not Plans" (BlackboxNLP 2026, under review): an independent replication of Anthropic\'s global-workspace claim, and why only context registers, not content plans, survive a strict readout test.',
     date: '2026-07-08',
     tags: ['interpretability'],
+    relatedPaper: {
+      label: 'Registers, Not Plans (OpenReview)',
+      href: 'https://openreview.net/forum?id=MNyJaBJ5Mx',
+    },
   },
   {
     slug: 'verbatim-memory',
@@ -61,6 +76,10 @@ export const articles: Article[] = [
       'Interactive companion to "It\'s Fidelity, Not Structure" (arXiv:2601.00821): explore the benchmark results and see why extraction loses to verbatim chunks at write time.',
     date: '2026-07-07',
     tags: ['llm-memory'],
+    relatedPaper: {
+      label: "It's Fidelity, Not Structure (arXiv)",
+      href: 'https://arxiv.org/abs/2601.00821',
+    },
   },
   {
     slug: 'consensus-dispersion',
@@ -69,6 +88,10 @@ export const articles: Article[] = [
       'Interactive companion to "The Preference Centroid" (TMLR submission): sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
     date: '2026-07-07',
     tags: ['human-ai'],
+    relatedPaper: {
+      label: 'The Preference Centroid (OpenReview)',
+      href: 'https://openreview.net/forum?id=6ukieTMBcG',
+    },
   },
   {
     slug: 'active-memory-revisited',
@@ -77,6 +100,10 @@ export const articles: Article[] = [
       'Cognitive Workspace (2025) argued for actively curated memory; my own 2026 ablation showed curation is lossy deletion. What failed, what survived, and the meta-lesson about measuring claims.',
     date: '2026-07-07',
     tags: ['llm-memory'],
+    relatedPaper: {
+      label: 'Cognitive Workspace (arXiv)',
+      href: 'https://arxiv.org/abs/2508.13171',
+    },
   },
 ]
 

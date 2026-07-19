@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tao An · Articles</title>
+    <link>https://tao-hpu.github.io/articles</link>
+    <description>Web-native research notes by Tao An: interactive figures, permanent URLs, citation metadata.</description>
+    <language>en-us</language>
+    <atom:link href="https://tao-hpu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Citation Ledger Is Fine. The Citation Currency Is Dying.</title>
+      <link>https://tao-hpu.github.io/articles/citation-decoupling</link>
+      <guid isPermaLink="true">https://tao-hpu.github.io/articles/citation-decoupling</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Citation bundles a ledger (registration, priority) and a currency (reputation) in one act. LLM reader-side consumption is splitting them.</description>
+    </item>
+    <item>
+      <title>We Checked All 209,985 Citations in ACL 2026</title>
+      <link>https://tao-hpu.github.io/articles/acl-2026-citation-audit</link>
+      <guid isPermaLink="true">https://tao-hpu.github.io/articles/acl-2026-citation-audit</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Companion note to the Tuto audit report: fabricated references are a rounding error; unsupported claim citations are not.</description>
+    </item>
+    <item>
+      <title>The Missing Cost Term</title>
+      <link>https://tao-hpu.github.io/articles/intervention-timing</link>
+      <guid isPermaLink="true">https://tao-hpu.github.io/articles/intervention-timing</guid>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Interactive companion to When Should the Agent Speak?: twenty years of interruptibility research, and agents that arrived without the price term.</description>
+    </item>
+    <item>
+      <title>What the Model Isn't About to Say</title>
+      <link>https://tao-hpu.github.io/articles/workspace-registers</link>
+      <guid isPermaLink="true">https://tao-hpu.github.io/articles/workspace-registers</guid>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Interactive companion to Registers, Not Plans: why only context registers, not content plans, survive a strict readout test.</description>
+    </item>
+    <item>
+      <title>What Structured Memory Forgets</title>
+      <link>https://tao-hpu.github.io/articles/verbatim-memory</link>
+      <guid isPermaLink="true">https://tao-hpu.github.io/articles/verbatim-memory</guid>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Interactive companion to It's Fidelity, Not Structure: why extraction loses to verbatim chunks at write time.</description>
+    </item>
+    <item>
+      <title>How Much the Model Agrees with Itself</title>
+      <link>https://tao-hpu.github.io/articles/consensus-dispersion</link>
+      <guid isPermaLink="true">https://tao-hpu.github.io/articles/consensus-dispersion</guid>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Interactive companion to The Preference Centroid: sample clouds, judge-predicted dispersion, alignment as amplifier.</description>
+    </item>
+    <item>
+      <title>What I Got Wrong About LLM Memory</title>
+      <link>https://tao-hpu.github.io/articles/active-memory-revisited</link>
+      <guid isPermaLink="true">https://tao-hpu.github.io/articles/active-memory-revisited</guid>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Cognitive Workspace argued for actively curated memory; a later ablation showed curation is lossy deletion.</description>
+    </item>
+  </channel>
+</rss>
