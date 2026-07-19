@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
@@ -17,6 +16,13 @@ function normalize(path: string): string {
   return p === '' ? '/' : p
 }
 
+/**
+ * Site chrome uses real <a> tags, not next/link.
+ *
+ * With `output: 'export'`, next/link soft-nav fetches RSC payloads as *.txt
+ * (e.g. /index.txt, /research.txt). On GitHub Pages that can leave the browser
+ * stuck on a raw flight payload. Full document navigations always load the HTML.
+ */
 export default function Nav() {
   const pathname = normalize(usePathname() ?? '/')
   const [open, setOpen] = useState(false)
@@ -44,23 +50,23 @@ export default function Nav() {
   return (
     <nav className="nav">
       <div className="nav-container" ref={navRef}>
-        <Link href="/" className="nav-logo">
+        <a href="/" className="nav-logo">
           <span className="logo-char">T</span>
           <span className="logo-char">\</span>
           <span className="logo-char">A</span>
-        </Link>
+        </a>
 
         <div className="nav-right">
           <div className={`nav-links${open ? ' open' : ''}`}>
             {LINKS.map(({ href, label }) => (
-              <Link
+              <a
                 key={href}
                 href={href}
                 className={isActive(href) ? 'active' : undefined}
                 onClick={() => setOpen(false)}
               >
                 {label}
-              </Link>
+              </a>
             ))}
           </div>
           <ThemeToggle />

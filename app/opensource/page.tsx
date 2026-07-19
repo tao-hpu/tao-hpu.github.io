@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Open Source',
@@ -41,9 +40,9 @@ export default function OpenSource() {
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
               <strong>Courses, research tools, coding utilities, and ops automation</strong> released
               under permissive licenses. Product work and client deployments live on{' '}
-              <Link href="/building">
+              <a href="/building">
                 <strong>Building</strong>
-              </Link>
+              </a>
               ; the flagship agent platform is{' '}
               <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">
                 <strong>FIM One</strong>
@@ -257,7 +256,7 @@ export default function OpenSource() {
                   <a href="https://tuto.fim.ai/check" target="_blank" rel="noopener noreferrer">
                     Check a paper
                   </a>
-                  <Link href="/articles/acl-2026-citation-audit">Companion note</Link>
+                  <a href="/articles/acl-2026-citation-audit">Companion note</a>
                 </div>
               </div>
             </div>

@@ -86,7 +86,7 @@ export const viewport: Viewport = {
 }
 
 // Runs before paint: motion-ready gate + theme from localStorage/system,
-// mirroring the legacy inline scripts (no FOUC, no motion for no-JS).
+// plus recovery if a static-export RSC payload URL (*.txt) was opened directly.
 const bootScript = `
 document.documentElement.classList.add('motion-ready');
 (function () {
@@ -96,6 +96,22 @@ document.documentElement.classList.add('motion-ready');
       t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+(function () {
+  try {
+    var p = location.pathname;
+    if (!/\\.txt$/i.test(p)) return;
+    // Real text assets that must stay: robots + search-console style hashes.
+    if (p === '/robots.txt') return;
+    if (/^\\/[a-f0-9]{16,64}\\.txt$/i.test(p)) return;
+    // Next static-export flight payloads: /index.txt, /research.txt, /articles/x.txt
+    // Also map /home.txt → / (reported stuck state for the Home control).
+    var next;
+    if (p === '/index.txt' || p === '/home.txt') next = '/';
+    else if (p.slice(-10) === '/index.txt') next = p.slice(0, -10) || '/';
+    else next = p.slice(0, -4);
+    if (next && next !== p) location.replace(next + location.search + location.hash);
   } catch (e) {}
 })();
 `

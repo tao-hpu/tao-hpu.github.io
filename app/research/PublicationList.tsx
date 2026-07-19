@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useMemo, useState } from 'react'
 import { STATUS_FILTERS, publications, type Publication } from './publications'
 
@@ -58,22 +57,16 @@ function PubItem({ pub }: { pub: Publication }) {
         <p className="publication-simple-tldr">{pub.tldr}</p>
         {(pub.links?.length || pub.bibtex) && (
           <div className="publication-simple-links">
-            {pub.links?.map((l) =>
-              l.internal ? (
-                <Link key={l.href + l.label} href={l.href}>
-                  {l.label}
-                </Link>
-              ) : (
-                <a
-                  key={l.href + l.label}
-                  href={l.href}
-                  target={l.href.startsWith('http') ? '_blank' : undefined}
-                  rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {l.label}
-                </a>
-              ),
-            )}
+            {pub.links?.map((l) => (
+              <a
+                key={l.href + l.label}
+                href={l.href}
+                target={!l.internal && l.href.startsWith('http') ? '_blank' : undefined}
+                rel={!l.internal && l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {l.label}
+              </a>
+            ))}
             {pub.bibtex && (
               <button type="button" className="bibtex-toggle" aria-expanded="false">
                 BibTeX

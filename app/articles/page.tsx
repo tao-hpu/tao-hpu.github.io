@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { articles } from './registry'
 
 export const metadata: Metadata = {
@@ -36,7 +35,7 @@ export default function ArticlesPage() {
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
               <strong>Research notes in a web-native format</strong>: interactive figures where a
               static PDF falls short, permanent URLs, and citation metadata. Longer-form and less
-              formal than the <Link href="/research">papers</Link>.{' '}
+              formal than the <a href="/research">papers</a>.{' '}
               <a href="/feed.xml">Subscribe via RSS</a>.
             </p>
           </div>
@@ -56,9 +55,9 @@ export default function ArticlesPage() {
                   ))}
                 </div>
                 <div className="publication-simple-body">
-                  <Link className="publication-simple-title" href={`/articles/${a.slug}`}>
+                  <a className="publication-simple-title" href={`/articles/${a.slug}`}>
                     {a.title}
-                  </Link>
+                  </a>
                   <p className="publication-simple-tldr">{a.description}</p>
                 </div>
               </div>

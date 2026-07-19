@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from '@/lib/site'
 import NeuralNetwork from './NeuralNetwork'
 
@@ -47,8 +46,8 @@ export default function Home() {
               healthcare.
             </p>
             <p className="hero-links fade-in" style={{ animationDelay: '1.25s' }}>
-              <Link href="/research">Research →</Link>
-              <Link href="/articles">Interactive notes →</Link>
+              <a href="/research">Research →</a>
+              <a href="/articles">Interactive notes →</a>
               <a href="mailto:tan1@my.hpu.edu">Email</a>
             </p>
           </div>
@@ -114,16 +113,16 @@ export default function Home() {
               <p className="news-body">
                 <span className="news-dot news-dot-building"></span>
                 New interactive notes:{' '}
-                <Link href="/articles/citation-decoupling">citation decoupling</Link>,{' '}
-                <Link href="/articles/intervention-timing">intervention timing</Link>, and the{' '}
-                <Link href="/articles/acl-2026-citation-audit">ACL 2026 citation audit</Link>.
+                <a href="/articles/citation-decoupling">citation decoupling</a>,{' '}
+                <a href="/articles/intervention-timing">intervention timing</a>, and the{' '}
+                <a href="/articles/acl-2026-citation-audit">ACL 2026 citation audit</a>.
               </p>
             </div>
             <div className="news-item">
               <span className="news-date">2026.06</span>
               <p className="news-body">
                 <span className="news-dot news-dot-research"></span>Joined the{' '}
-                <Link href="/research#service">NeurIPS 2026 Ethics Review Committee</Link>.
+                <a href="/research#service">NeurIPS 2026 Ethics Review Committee</a>.
               </p>
             </div>
             <div className="news-item">
@@ -177,7 +176,7 @@ export default function Home() {
         {/* Explore */}
         <section className="cards-section" id="explore">
           <div className="cards-grid cards-grid-4">
-            <Link
+            <a
               href="/research"
               className="card card-green fade-on-scroll"
               aria-label="Research: papers and academic work"
@@ -194,9 +193,9 @@ export default function Home() {
               <span className="card-eyebrow">Academia</span>
               <h3 className="card-title">Research →</h3>
               <p className="card-subtitle">Papers · LLM memory · RAG · intervention timing</p>
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="/articles"
               className="card card-amber fade-on-scroll"
               aria-label="Articles: interactive research notes"
@@ -212,9 +211,9 @@ export default function Home() {
               <span className="card-eyebrow">Notes</span>
               <h3 className="card-title">Articles →</h3>
               <p className="card-subtitle">Interactive figures · permanent URLs · citeable notes</p>
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="/building"
               className="card card-purple fade-on-scroll"
               aria-label="Building: products and deployments"
@@ -231,9 +230,9 @@ export default function Home() {
               <span className="card-eyebrow">Industry</span>
               <h3 className="card-title">Building →</h3>
               <p className="card-subtitle">FIM product family · government &amp; healthcare AI</p>
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="/opensource"
               className="card card-beige fade-on-scroll"
               aria-label="Open Source: courses and developer tools"
@@ -248,7 +247,7 @@ export default function Home() {
               <span className="card-eyebrow">Community</span>
               <h3 className="card-title">Open Source →</h3>
               <p className="card-subtitle">Open courses · AI-coding tools · ops automation</p>
-            </Link>
+            </a>
           </div>
         </section>
       </main>

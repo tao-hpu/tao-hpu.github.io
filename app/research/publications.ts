@@ -39,10 +39,9 @@ export const publications: Publication[] = [
       { label: 'Survey', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
-    titleHref: '/papers/when-should-the-agent-speak.pdf',
+    titleHref: 'https://doi.org/10.5281/zenodo.21438396',
     links: [
-      { label: 'PDF', href: '/papers/when-should-the-agent-speak.pdf' },
-      { label: 'DOI', href: 'https://doi.org/10.5281/zenodo.21438396' },
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21438396' },
       { label: 'Interactive note', href: '/articles/intervention-timing', internal: true },
       {
         label: 'Living map',
@@ -54,8 +53,8 @@ export const publications: Publication[] = [
                   Intervention Timing for Always-On AI Assistants},
   author       = {An, Tao},
   year         = {2026},
+  publisher    = {Zenodo},
   doi          = {10.5281/zenodo.21438396},
-  url          = {https://doi.org/10.5281/zenodo.21438396},
   note         = {Under review at TMLR}
 }`,
   },

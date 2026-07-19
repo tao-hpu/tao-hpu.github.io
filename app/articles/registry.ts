@@ -53,8 +53,8 @@ export const articles: Article[] = [
     tags: ['human-ai'],
     paperDoi: '10.5281/zenodo.21438396',
     relatedPaper: {
-      label: 'When Should the Agent Speak? (PDF)',
-      href: '/papers/when-should-the-agent-speak.pdf',
+      label: 'When Should the Agent Speak? (Zenodo)',
+      href: 'https://doi.org/10.5281/zenodo.21438396',
     },
   },
   {

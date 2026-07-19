@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { articleBibtex, doiUrl, getArticle } from '@/app/articles/registry'
 import CopyBibtex from '@/components/CopyBibtex'
 
@@ -27,7 +26,7 @@ export default function ArticleLayout({
         <article className="article-container">
           <header className="article-header">
             <p className="article-breadcrumb">
-              <Link href="/articles">Articles</Link>
+              <a href="/articles">Articles</a>
               <span className="article-breadcrumb-sep" aria-hidden="true">
                 /
               </span>
@@ -74,6 +73,15 @@ export default function ArticleLayout({
               <h2>Citation</h2>
               <CopyBibtex bibtex={bibtex} />
             </div>
+            {a.paperDoi && (
+              <p>
+                Citing the research rather than this note? Cite the paper:{' '}
+                <a href={doiUrl(a.paperDoi)} target="_blank" rel="noopener noreferrer">
+                  {a.paperDoi}
+                </a>
+                . That DOI always resolves to the current version.
+              </p>
+            )}
             <p>If you refer to this note, please cite it as:</p>
             <pre className="bibtex-pre">{bibtex}</pre>
           </section>
