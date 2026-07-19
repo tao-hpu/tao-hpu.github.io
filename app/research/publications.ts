@@ -25,6 +25,36 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 'reuse-citation-decoupling',
+    title:
+      'Weakening in Real Time: The Association Between Artifact Reuse and Citation in Artifact-Dense Research, 2015–2024',
+    takeaway:
+      'Reuse and citation came apart by half over a decade: a calendar-period effect, not an LLM effect, and it spares the tail.',
+    tldr: 'Tao An — Links 20,529 arXiv papers published 2015–2025 to their author-designated GitHub repositories and estimates the rank association between annual fork flow and annual citation flow in every cohort-by-period cell. The association falls from roughly 0.45–0.50 in the late 2010s to roughly 0.25 by 2024, and the variation sits on the calendar-period axis rather than the publication-cohort axis: with period included the cohort coefficient is −0.0017 (p = 0.74), and the 2015 cohort, the same 262 papers throughout, declines from 0.49 to 0.04 over its own lifetime. Two candidate explanations fail on the correct axis. There is no discontinuity at the public release of general-purpose language models (−0.002, 95% CI [−0.061, +0.057]) and no gradient in field-level exposure to them (p = 0.82); nor does the citation mix degrade, with the share of substantively influential citations flat across the decade. Enumerating the full frame of 160,150 papers rather than sampling from it, the association among works that are both substantially reused and substantially cited shows no trend (−0.0031 per year, 95% CI [−0.0156, +0.0094], n = 3,885), an interval that excludes the full-sample estimate: the decoupling is a property of the population, not of its high-impact tail.',
+    year: '2026',
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
+    topics: [{ label: 'Metascience', className: 'topic-meta' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.21444564',
+    links: [
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21444564' },
+      {
+        label: 'Replication package',
+        href: 'https://doi.org/10.5281/zenodo.21444546',
+      },
+      { label: 'Interactive note', href: '/articles/citation-decoupling', internal: true },
+    ],
+    bibtex: `@misc{an2026weakening,
+  title     = {Weakening in Real Time: The Association Between
+               Artifact Reuse and Citation in Artifact-Dense
+               Research, 2015--2024},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21444564}
+}`,
+  },
+  {
     id: 'intervention-timing',
     title:
       'When Should the Agent Speak? A Survey of Intervention Timing for Always-On AI Assistants',

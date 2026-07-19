@@ -32,9 +32,15 @@ export const articles: Article[] = [
     slug: 'citation-decoupling',
     title: 'The Citation Ledger Is Fine. The Citation Currency Is Dying.',
     description:
-      'Citation bundles a ledger (registration, priority) and a currency (reputation) in one act, coupled only because reading was the sole transport layer of science. LLM reader-side consumption is splitting them. Three falsifiable predictions, measurements underway.',
+      'Citation bundles a ledger (registration, priority) and a currency (reputation) in one act, coupled only because reading was the sole transport layer of science. I argued LLM reader-side consumption is splitting them, and made three falsifiable predictions. Updated with the measurements: reuse and citation did come apart, by roughly half over a decade, but my mechanism lost. No break at model release, no field-exposure gradient, and the 2015 cohort declines as steeply as the 2023 one.',
     date: '2026-07-17',
+    updated: '2026-07-20',
     tags: ['metascience'],
+    paperDoi: '10.5281/zenodo.21444564',
+    relatedPaper: {
+      label: 'Weakening in Real Time (Zenodo)',
+      href: 'https://doi.org/10.5281/zenodo.21444564',
+    },
   },
   {
     slug: 'acl-2026-citation-audit',

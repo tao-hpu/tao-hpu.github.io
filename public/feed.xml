@@ -11,7 +11,7 @@
       <link>https://tao-hpu.github.io/articles/citation-decoupling</link>
       <guid isPermaLink="true">https://tao-hpu.github.io/articles/citation-decoupling</guid>
       <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
-      <description>Citation bundles a ledger (registration, priority) and a currency (reputation) in one act. LLM reader-side consumption is splitting them.</description>
+      <description>Citation bundles a ledger (registration, priority) and a currency (reputation) in one act. I argued LLM reader-side consumption was splitting them; updated with the measurements, which found the split but killed my mechanism.</description>
     </item>
     <item>
       <title>We Checked All 209,985 Citations in ACL 2026</title>

@@ -839,6 +839,10 @@ a.publication-simple-item {
     background: #b5894e;
 }
 
+.topic-meta::before {
+    background: #7d8a99;
+}
+
 .page-research .publication-simple-item {
     gap: 2rem;
 }

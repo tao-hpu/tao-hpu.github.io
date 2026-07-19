@@ -11,6 +11,8 @@ A decade ago, most of those fifty would have gotten at least a skim from me, and
 
 I want to argue that this small, private change in how researchers read is quietly splitting apart two functions that citation has bundled together for three centuries, and that the split has consequences for how scientific reputation will be denominated. I also want to be upfront that the empirical evidence is currently a mess that points in two directions at once, and that the strongest objection to my argument came from examining my own reading workflow. Then I will make three falsifiable predictions with dates attached, because arguments in this genre are cheap and getting cheaper, and the only honest way to write one is to specify how it loses.
 
+*Update, July 2026: the measurements are in, and the mechanism I bet on lost. The predictions below are left exactly as written; [what came back](#what-the-measurements-returned) is reported after them.*
+
 ## Citation is two things wearing one coat
 
 This part is textbook, and I want to be precise about what is and is not my claim, because the distinction itself belongs to other people.
@@ -124,6 +126,36 @@ And the fourth measurement, promoted from the objection above: **citation compos
 
 I am starting the full measurement runs this autumn, OpenAlex first, artifact-reuse data from Papers with Code, Hugging Face, and GitHub dependency graphs. If you run infrastructure at a publisher, an index, or a preprint server and hold linked readership-citation data (the kind of thing the Kusumegi team had), I would genuinely like to talk.
 
+## What the measurements returned
+
+*Added July 2026. Everything above is unchanged.*
+
+P3 was the core bet, and it is the one I ran. I linked 20,529 arXiv papers from 2015 to 2025 to the GitHub repositories their authors designated as official, measured reuse by annual fork counts and citation by annual citation counts, and estimated the rank association between the two flows in every cohort-by-year cell.
+
+**The phenomenon is there.** The association fell from roughly 0.45–0.50 in the late 2010s to roughly 0.25 by 2024. Prior work ran against me on this and prior work was wrong about the direction of travel. That is the part of the bet I won.
+
+**The mechanism is dead, and it was my mechanism.** Three separate results kill it:
+
+The decline is not dated to language models. The post-2023 shift is −0.002, with a 95 percent interval of [−0.061, +0.057], against a decade-long decline of about 0.23. That interval excludes any break larger than about a quarter of the total movement. There is no discontinuity where I said there would be one.
+
+It does not sort by field-level exposure. The interaction between period and field-level LLM penetration comes back at p = 0.82. The gradient I predicted, earliest and fastest where adoption is highest, is absent.
+
+Worst of all for my story, the variation is on the calendar-period axis, not the publication-cohort axis. Holding the set of papers fixed, the 2015 cohort declines from 0.49 to 0.04 over its own lifetime, as steeply as anything recent. With period in the model the cohort coefficient is −0.0017 (p = 0.74). Whatever is happening is happening to papers published in 2015 in the same year and to the same degree as to papers published in 2023. A reader-side behavioral shift that arrived with ChatGPT does not have that shape. Something that moves all vintages simultaneously, every year, for a decade, is not a technology adoption curve.
+
+**The fourth measurement, the one the objection generated, also lost.** I predicted composition would shift before volume: load-bearing citations holding while narrative ones decay. The share of substantively influential citations is flat across the decade, to within a percentage point, and both types weaken at the same rate. That one stings a little more, because it was the prediction I derived from the objection I was proudest of having taken seriously.
+
+And a caution I earned the hard way. A naive version of that composition test showed substantive citations weakening significantly faster, exactly as predicted. It was an artifact of cohort-varying zero inflation. Raising the threshold collapsed the difference monotonically and then reversed its sign. I had a result that confirmed my own hypothesis and it was a pipeline artifact, which is the failure mode this whole essay should have made me most afraid of.
+
+**One result I did not predict, and it cuts against the essay's practical claim harder than the mechanism refutation does.** The decoupling does not reach the top of the distribution. Rather than sampling, I enumerated the entire frame, all 160,150 papers from 2015 to 2024 with an author-designated repository, and looked at works that are both substantially reused and substantially cited. Among those, across all ten cohorts, the association has been flat at about 0.28 for a decade: a trend of −0.0031 per year, 95 percent interval [−0.0156, +0.0094], n = 3,885. That interval excludes the full-sample estimate of −0.0241. The test has 80 percent power against a slope of 0.0151, and the population-level effect is 1.6 times that, so this is a null with power behind it rather than thin data.
+
+Think about what that does to the argument above. I claimed the reputation currency is dying. But hiring, promotion and funding are argued over exactly that tail, and in the tail the two signals still track each other as well as they did in 2015. The currency is not being devalued where it is actually spent. What has come apart is the relationship in the bulk of the distribution, which matters for field-level aggregates and dashboards and any statistic dominated by the many rather than the few. That is a real finding and a narrower one than the essay I wrote.
+
+**P2 and P1, honestly.** P2 as literally specified, extending Smyth and Cunningham's review-article design past the ChatGPT boundary, I did not run. What I did run is the same mechanism claim on my own measure, and it failed there. P1, the concentration horse race, I did not settle. There is an exploratory probe in the replication package and its own memo says it is not a conclusion; I am not going to dress that up as a tested prediction.
+
+**So where does this leave the essay.** The split I described is real and measurable, and I would still write the first half. The causal story I attached to it is not supported, and if I had only run the cohort-axis version of the test I would have reported a confirmation, because on the wrong axis the cohort gradient looks like exactly what I predicted. Two accounts survive and neither is mine: that the population reusing artifacts is separating from the population that publishes and cites, and that a GitHub fork no longer measures what it did in 2016. Distinguishing those is the next study.
+
+I said a position like this is worthless unless it can lose. It lost. I would rather report that than the version where I quietly stop mentioning the predictions.
+
 ## Two disclosures
 
 First: parts of this argument were developed in dialogue with language models, which is either fitting or damning depending on your priors. One bias correction worth applying to me and to every essay in this genre: the training corpus oversamples complaint. The ninety percent of the scholarly system that works fine does not blog about it. A model's picture of academia, and therefore mine after long exposure, skews structurally pessimistic. Discount accordingly; the predictions are there so the discount has something to grind against.
@@ -134,6 +166,6 @@ Second: the registration layer is already creaking under the flood this essay de
 
 *Links: [Roosendaal & Geurts 1997](https://www.semanticscholar.org/paper/bbf26bb58721540c809d8c03a45e142ce20effc6) · [Shu & Jia 2026](https://www.sciencedirect.com/science/article/pii/S2694610626000160) · [Earp et al., Nature MI 2025](https://www.nature.com/articles/s42256-025-01159-8) · [Messeri & Crockett, Nature 2024](https://www.nature.com/articles/s41586-024-07146-0) · [Blechinger, KULA 2026](https://kula.uvic.ca/index.php/kula/article/view/310) · [Ghosh, Scholarly Kitchen 2026](https://scholarlykitchen.sspnet.org/2026/05/06/zero-click-readership-are-ai-overviews-changing-the-way-we-discover-research/) · [Gholami et al. 2026](https://kgi.georgetown.edu/wp-content/uploads/2026/02/Beyond-Search_Gholami_Firullo_Cheyre_Acquisti_79.pdf) · [Kusumegi et al., Science 2025](https://www.science.org/doi/10.1126/science.adw3000) · [Algaba et al. 2025](https://arxiv.org/abs/2405.15739) · [Smyth & Cunningham 2025](https://arxiv.org/abs/2511.07490) · [Shen et al. 2026](https://arxiv.org/abs/2605.22176) · [Sochat, JOSS 2022 (CiteLang)](https://github.com/vsoch/citelang) · [Koch et al., NeurIPS 2021](https://openreview.net/forum?id=zNQBIBKJRkd) · [HF dataset concentration (arXiv 2401.13822)](https://arxiv.org/abs/2401.13822) · [Ye & Yoganarasimhan 2026](https://arxiv.org/abs/2505.23842) · [Wührl et al. 2025](https://arxiv.org/abs/2602.10995) · [İlter 2026](https://arxiv.org/abs/2601.17431) · [Cambridge/COUNTER/NISO workshop report 2026](https://scholarlykitchen.sspnet.org/2026/06/25/making-ai-use-of-scholarly-content-traceable-measurable-and-trustworthy-a-meeting-report-from-cambridge-scholarly-ai-workshop/) · [arXiv policy 2025-10-31](https://blog.arxiv.org/2025/10/31/attention-authors-updated-practice-for-review-articles-and-position-papers-in-arxiv-cs-category/)*
 
-*This essay is the blog stage of a paper in progress; the formal version, with the measurements, will follow here.*
+*This essay was the blog stage of [Weakening in Real Time](https://doi.org/10.5281/zenodo.21444564), which reports the measurements above. The essay is left as written; the paper is where the result lives.*
 
 </ArticleLayout>
