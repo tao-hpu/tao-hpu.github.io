@@ -8,6 +8,14 @@ export type Article = {
   date: string
   updated?: string
   tags?: string[]
+  /**
+   * Zenodo *concept* DOI of the paper this note accompanies, e.g.
+   * '10.5281/zenodo.21438396'. Always the concept DOI, never a version DOI:
+   * it resolves to the latest version, so publishing a new PDF version needs
+   * no change here. This identifies the *paper*, not this note, so it is
+   * deliberately absent from `articleBibtex()`.
+   */
+  paperDoi?: string
 }
 
 // Sorted newest-first on the index page; entries sharing a date keep this
@@ -36,6 +44,7 @@ export const articles: Article[] = [
       'Interactive companion to "When Should the Agent Speak?": twenty years of research learned what it costs to interrupt a person, and had no agent capable of earning that cost back. The agents arrived. The price did not come with them.',
     date: '2026-07-14',
     tags: ['human-ai'],
+    paperDoi: '10.5281/zenodo.21438396',
   },
   {
     slug: 'workspace-registers',
@@ -79,6 +88,10 @@ export function getArticle(slug: string): Article {
 
 export function articleUrl(a: Article): string {
   return `https://tao-hpu.github.io/articles/${a.slug}`
+}
+
+export function doiUrl(doi: string): string {
+  return `https://doi.org/${doi}`
 }
 
 export function articleBibtex(a: Article): string {

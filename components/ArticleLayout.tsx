@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { articleBibtex, getArticle } from '@/app/articles/registry'
+import { articleBibtex, doiUrl, getArticle } from '@/app/articles/registry'
 
 function formatDate(iso: string): string {
   return new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
@@ -43,6 +43,15 @@ export default function ArticleLayout({
 
           <section className="article-cite">
             <h2>Citation</h2>
+            {a.paperDoi && (
+              <p>
+                Citing the research rather than this note? Cite the paper:{' '}
+                <a href={doiUrl(a.paperDoi)} target="_blank" rel="noopener noreferrer">
+                  {a.paperDoi}
+                </a>
+                . That DOI always resolves to the current version.
+              </p>
+            )}
             <p>If you refer to this note, please cite it as:</p>
             <pre className="bibtex-pre">{articleBibtex(a)}</pre>
           </section>

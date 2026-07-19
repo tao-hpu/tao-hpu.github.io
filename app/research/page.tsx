@@ -45,7 +45,7 @@ export default function ResearchPage() {
               <div className="publication-simple-body">
                 <a
                   className="publication-simple-title"
-                  href="/papers/when-should-the-agent-speak.pdf"
+                  href="https://doi.org/10.5281/zenodo.21438396"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -65,11 +65,11 @@ export default function ResearchPage() {
                 </p>
                 <div className="publication-simple-links">
                   <a
-                    href="/papers/when-should-the-agent-speak.pdf"
+                    href="https://doi.org/10.5281/zenodo.21438396"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    PDF
+                    PDF (Zenodo)
                   </a>
                   <Link href="/articles/intervention-timing">Interactive note</Link>
                   <a
@@ -89,7 +89,8 @@ export default function ResearchPage() {
                   Intervention Timing for Always-On AI Assistants},
   author       = {An, Tao},
   year         = {2026},
-  howpublished = {\\url{https://tao-hpu.github.io/papers/when-should-the-agent-speak.pdf}},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.21438396},
   note         = {Under review at TMLR}
 }`}
                 </pre>
