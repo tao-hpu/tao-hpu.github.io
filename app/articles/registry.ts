@@ -36,10 +36,10 @@ export const articles: Article[] = [
     date: '2026-07-17',
     updated: '2026-07-20',
     tags: ['metascience'],
-    paperDoi: '10.5281/zenodo.21444564',
+    paperDoi: '10.5281/zenodo.21452779',
     relatedPaper: {
       label: 'Weakening in Real Time (Zenodo)',
-      href: 'https://doi.org/10.5281/zenodo.21444564',
+      href: 'https://doi.org/10.5281/zenodo.21452779',
     },
   },
   {
