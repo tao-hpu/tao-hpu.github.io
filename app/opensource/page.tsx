@@ -4,9 +4,9 @@ export const metadata: Metadata = {
   title: 'Open Source',
   alternates: { canonical: '/opensource' },
   description:
-    'Open-source courses and developer tools by Tao An: a from-scratch LLM course, an IELTS whitepaper, tuto for corpus-scale citation-integrity auditing, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
+    'Open-source courses and developer tools by Tao An: a from-scratch LLM course, an IELTS whitepaper, Tuto for corpus-scale citation-integrity auditing, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
   keywords:
-    'Tao An, open source, linalg-to-attention, llm-from-scratch, ielts-whitepaper, IELTS, tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
+    'Tao An, open source, linalg-to-attention, llm-from-scratch, ielts-whitepaper, IELTS, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
   openGraph: {
     title: 'Open Source · Tao An',
     description: 'Open courses, AI-coding utilities, and ops automation, all open source.',
@@ -235,7 +235,7 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  tuto &mdash; Citation-integrity auditing at corpus scale
+                  Tuto &mdash; Citation-integrity auditing at corpus scale
                 </a>
                 <p className="publication-simple-tldr">
                   Audits whether a paper's references actually exist and, for claim citations, whether

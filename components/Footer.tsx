@@ -37,7 +37,7 @@ export default function Footer() {
 
         <div className="footer-column">
           <h4>中文资源</h4>
-          <a href="https://aha.fim.ai" target="_blank" rel="noopener noreferrer">aha. 论文导读</a>
+          <a href="https://aha.fim.ai" target="_blank" rel="noopener noreferrer">Aha. 论文导读</a>
           <a href="https://fim-tech.feishu.cn/wiki/space/7524906799680929795" target="_blank" rel="noopener noreferrer">AI 手册</a>
           <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili</a>
           <a href="https://l2a.fim.ai" target="_blank" rel="noopener noreferrer">线性代数 → 注意力</a>

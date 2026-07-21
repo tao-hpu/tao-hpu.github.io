@@ -168,7 +168,7 @@ export const publications: Publication[] = [
     titleHref: 'https://arxiv.org/abs/2601.00821',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2601.00821' },
-      { label: 'Read on aha. (中文)', href: 'https://aha.fim.ai/paper/2601.00821v3' },
+      { label: 'Read on Aha. (中文)', href: 'https://aha.fim.ai/paper/2601.00821v3' },
       { label: 'Interactive note', href: '/articles/verbatim-memory', internal: true },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2601.00821' },
       { label: 'Code', href: 'https://github.com/tao-hpu/cog-canvas' },
@@ -202,7 +202,7 @@ export const publications: Publication[] = [
     titleHref: 'https://arxiv.org/abs/2512.10961',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2512.10961' },
-      { label: 'Read on aha. (中文)', href: 'https://aha.fim.ai/paper/2512.10961v2' },
+      { label: 'Read on Aha. (中文)', href: 'https://aha.fim.ai/paper/2512.10961v2' },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2512.10961' },
       { label: 'DOI', href: 'https://doi.org/10.3233/FAIA260506' },
       {
@@ -240,7 +240,7 @@ export const publications: Publication[] = [
     titleHref: 'https://arxiv.org/abs/2508.13171',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2508.13171' },
-      { label: 'Read on aha. (中文)', href: 'https://aha.fim.ai/paper/2508.13171v1' },
+      { label: 'Read on Aha. (中文)', href: 'https://aha.fim.ai/paper/2508.13171v1' },
       { label: 'Interactive note', href: '/articles/active-memory-revisited', internal: true },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2508.13171' },
     ],

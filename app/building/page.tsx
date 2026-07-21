@@ -148,11 +148,11 @@ export default function Building() {
               className="publication-simple-item"
             >
               <div className="publication-simple-meta">
-                <span className="venue-badge">aha.</span>
+                <span className="venue-badge">Aha.</span>
                 <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">aha. ↗</span>
+                <span className="publication-simple-title">Aha. ↗</span>
                 <p className="publication-simple-tldr">Paste an arXiv link and read the paper side-by-side with a plain-language explanation &mdash; a free tool for understanding research faster.</p>
               </div>
             </a>
@@ -164,11 +164,26 @@ export default function Building() {
               className="publication-simple-item"
             >
               <div className="publication-simple-meta">
-                <span className="venue-badge">cito</span>
+                <span className="venue-badge">Cito</span>
               </div>
               <div className="publication-simple-body">
-                <span className="publication-simple-title">cito ↗</span>
+                <span className="publication-simple-title">Cito ↗</span>
                 <p className="publication-simple-tldr">Semantic search over academic papers: start from a landmark paper and pull the neighborhood around it by meaning, not keywords. Runs over Semantic Scholar with SPECTER2 embeddings.</p>
+              </div>
+            </a>
+
+            <a
+              href="https://hido.fim.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="publication-simple-item"
+            >
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Hido</span>
+              </div>
+              <div className="publication-simple-body">
+                <span className="publication-simple-title">Hido ↗</span>
+                <p className="publication-simple-tldr">Anonymous code hosting for double-blind peer review. Hand over a GitHub repo; reviewers get a no-login link to browse, download, and clone an identity-stripped mirror. One anonymization pipeline, prerendered for static serving.</p>
               </div>
             </a>
 
