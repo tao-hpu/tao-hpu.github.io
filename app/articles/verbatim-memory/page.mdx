@@ -13,7 +13,7 @@ dialogue is messy, so distill it. Run an extractor over each turn, keep typed re
 feels obviously right. Databases beat log files; why would conversational memory be
 different?
 
-My paper [It's Fidelity, Not Structure](https://arxiv.org/abs/2601.00821) tests that
+My paper [Fidelity Before Structure](https://arxiv.org/abs/2601.00821) tests that
 instinct with a controlled ablation. One fixed pipeline: hybrid retrieval, a
 `bge-reranker-v2-m3` reranking stage, the same answerer, the same judge. The only
 thing swapped is what sits in the store: LLM-extracted typed artifacts, or plain

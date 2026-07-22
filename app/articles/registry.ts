@@ -79,11 +79,11 @@ export const articles: Article[] = [
     slug: 'verbatim-memory',
     title: 'What Structured Memory Forgets',
     description:
-      'Interactive companion to "It\'s Fidelity, Not Structure" (arXiv:2601.00821): explore the benchmark results and see why extraction loses to verbatim chunks at write time.',
+      'Interactive companion to "Fidelity Before Structure" (arXiv:2601.00821): explore the benchmark results and see why extraction loses to verbatim chunks at write time.',
     date: '2026-07-07',
     tags: ['llm-memory'],
     relatedPaper: {
-      label: "It's Fidelity, Not Structure (arXiv)",
+      label: 'Fidelity Before Structure (arXiv)',
       href: 'https://arxiv.org/abs/2601.00821',
     },
   },

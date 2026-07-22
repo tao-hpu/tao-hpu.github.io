@@ -69,7 +69,7 @@ export const publications: Publication[] = [
     status: 'under-review',
     badges: [
       { label: 'Under Review' },
-      { label: 'TMLR', secondary: true },
+      { label: 'TMLR · Assigned AE', secondary: true },
       { label: 'Survey', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
@@ -89,7 +89,7 @@ export const publications: Publication[] = [
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.21438396},
-  note         = {Under review at TMLR}
+  note         = {Under review at TMLR (assigned AE)}
 }`,
   },
   {
@@ -103,7 +103,7 @@ export const publications: Publication[] = [
     status: 'under-review',
     badges: [
       { label: 'Under Review' },
-      { label: 'BlackboxNLP 2026', secondary: true },
+      { label: 'EMNLP 2026 Workshop · BlackboxNLP', secondary: true },
     ],
     topics: [{ label: 'Interpretability', className: 'topic-interp' }],
     titleHref: 'https://openreview.net/forum?id=MNyJaBJ5Mx',
@@ -120,7 +120,10 @@ export const publications: Publication[] = [
     tldr: 'Tao An — Defines GEO-poisoning detection and attribution for Chinese generative search (DeepSeek, Doubao, Kimi): a five-technique taxonomy of coordinated, inauthentic manipulation, a task reframing from attack-success to detection → classification → account-cluster attribution, and a legally-constructed synthetic benchmark. A provenance pilot shows detection and attribution need different substrates—content features detect that manipulation happened (F1 0.93) but only an account-interaction graph attributes it to a seller cluster (0.96)—and a confidence-gated fusion covers the taxonomy where a learned GNN and a zero-shot LLM both fail.',
     year: '2026',
     status: 'under-review',
-    badges: [{ label: 'Under Review' }],
+    badges: [
+      { label: 'Under Review' },
+      { label: 'EMNLP 2026 Workshop · NLP4PI', secondary: true },
+    ],
     topics: [{ label: 'AI Safety', className: 'topic-safety' }],
   },
   {
@@ -154,15 +157,15 @@ export const publications: Publication[] = [
   {
     id: 'verbatim-memory',
     title:
-      "It's Fidelity, Not Structure: Verbatim Chunks Beat Lossy Artifact Extraction in Long-Conversation LLM Memory",
+      'Fidelity Before Structure: Verbatim Chunks Beat Lossy Artifact Extraction in Long-Conversation LLM Memory',
     takeaway:
       'Verbatim chunks beat lossy extracted artifacts by large margins—structure should augment text, not replace it.',
-    tldr: "Tao An — A controlled ablation isolating the stored memory representation inside one fixed retrieve–rerank–reason pipeline: LLM-extracted typed artifacts versus verbatim conversation chunks, holding the model, retriever, reranker, and judge constant. Verbatim chunks win by 15.9 points on LoCoMo (43.9% vs. 28.0%) and 22.0 points on LongMemEval-S (67.4% vs. 45.4%); the extracted-artifact pipeline never beats naive RAG. The mechanism is lossy distillation—extraction discards verbatim detail that chunks retain for free—so structured memory should augment verbatim text, not replace it.",
+    tldr: "Tao An — A controlled ablation isolating the stored memory representation inside one fixed retrieve–rerank–reason pipeline: LLM-extracted typed artifacts versus verbatim conversation chunks, holding the model, retriever, reranker, and judge constant. Verbatim chunks win by 15.9 points on LoCoMo (43.9% vs. 28.0%) and 22.0 points on LongMemEval-S (67.4% vs. 45.4%); the extracted-artifact pipeline never beats naive RAG. The mechanism is lossy distillation—extraction discards verbatim detail that chunks retain for free—so structured memory should augment verbatim text, not replace it. (ARR Aug 2026 resubmission of the March cycle; former title It's Fidelity, Not Structure.)",
     year: '2026',
     status: 'under-review',
     badges: [
       { label: 'Under Review' },
-      { label: 'ARR', secondary: true },
+      { label: 'ARR 2026 August → EACL 2027', secondary: true },
     ],
     topics: [{ label: 'LLM Memory', className: 'topic-mem' }],
     titleHref: 'https://arxiv.org/abs/2601.00821',
@@ -178,11 +181,13 @@ export const publications: Publication[] = [
       },
     ],
     bibtex: `@article{an2026fidelity,
-  title   = {It's Fidelity, Not Structure: Verbatim Chunks Beat Lossy
+  title   = {Fidelity Before Structure: Verbatim Chunks Beat Lossy
              Artifact Extraction in Long-Conversation LLM Memory},
   author  = {An, Tao},
   journal = {arXiv preprint arXiv:2601.00821},
-  year    = {2026}
+  year    = {2026},
+  note    = {Under review at ACL ARR 2026 August (target EACL 2027);
+             formerly titled It's Fidelity, Not Structure}
 }`,
   },
   {
