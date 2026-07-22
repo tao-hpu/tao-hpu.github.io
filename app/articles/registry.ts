@@ -46,9 +46,14 @@ export const articles: Article[] = [
     slug: 'acl-2026-citation-audit',
     title: 'We Checked All 209,985 Citations in ACL 2026',
     description:
-      'Companion note to the Tuto audit report: fabricated references are a rounding error (2 confirmed, 0.001%), unsupported claim citations are not (16% of papers), and the detector error rate is the number that decides whether any of this is publishable.',
+      'Companion note to the Tuto audit report and the Scientometrics submission: fabricated references are a rounding error (2 confirmed, 0.001%); claim-support rates did not replicate across three identical-pipeline runs, so the paper takes non-replication—not any single rate—as the principal finding.',
     date: '2026-07-17',
+    updated: '2026-07-23',
     tags: ['metascience'],
+    relatedPaper: {
+      label: 'What Citations Get Wrong (report)',
+      href: 'https://tuto.fim.ai/report',
+    },
   },
   {
     slug: 'intervention-timing',

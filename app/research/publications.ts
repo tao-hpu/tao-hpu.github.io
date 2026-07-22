@@ -25,6 +25,44 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 'what-citations-get-wrong',
+    title:
+      'What Citations Get Wrong: A Full-Corpus Audit of Reference Existence and Claim Support in a Major NLP Conference',
+    takeaway:
+      'Existence errors are a rounding error; a single-run claim-support audit has not established that it measured anything.',
+    tldr: 'Tao An — Audits both promises a citation makes on the ACL 2026 proceedings treated as a census: 4,459 papers and 209,985 references. Existence holds: 91.0% of references resolve, and two references (0.001%) are confirmed nonexistent. Claim support, scored by a two-stage language-model judge, does not repeat. An audit of 2,110 claim citations from 100 papers put the confirmed support-defect rate at 0.95%; two further independent draws at the same commit returned 5.66% and 6.12%, pooling to 5.90% [5.12, 6.80] over 3,033 claim citations (7.9 SE from the audited figure). The gap sits in the support-judgment layer and traces to a first-pass judge whose model was read from an unlogged environment variable. The paper reports all three runs and takes the non-replication, not any single rate, as the principal finding: pin and log the judge, and repeatability returns. The existence census is unaffected.',
+    year: '2026',
+    status: 'under-review',
+    badges: [
+      { label: 'Under Review' },
+      { label: 'Scientometrics · Technical checks', secondary: true },
+    ],
+    topics: [{ label: 'Metascience', className: 'topic-meta' }],
+    titleHref: 'https://tuto.fim.ai/report',
+    links: [
+      { label: 'Report', href: 'https://tuto.fim.ai/report' },
+      { label: 'Code', href: 'https://github.com/fim-ai/tuto' },
+      {
+        label: 'Dataset (Zenodo)',
+        href: 'https://doi.org/10.5281/zenodo.21452257',
+      },
+      {
+        label: 'Interactive note',
+        href: '/articles/acl-2026-citation-audit',
+        internal: true,
+      },
+    ],
+    bibtex: `@misc{an2026citations,
+  title  = {What Citations Get Wrong: A Full-Corpus Audit of
+            Reference Existence and Claim Support in a Major
+            NLP Conference},
+  author = {An, Tao},
+  year   = {2026},
+  note   = {Under review at Scientometrics;
+            data DOI 10.5281/zenodo.21452257}
+}`,
+  },
+  {
     id: 'reuse-citation-decoupling',
     title:
       'Weakening in Real Time: The Association Between Artifact Reuse and Citation in Artifact-Dense Research, 2015–2024',
@@ -35,7 +73,7 @@ export const publications: Publication[] = [
     status: 'under-review',
     badges: [
       { label: 'Under Review' },
-      { label: 'Scientometrics', secondary: true },
+      { label: 'Scientometrics · With editor', secondary: true },
     ],
     topics: [{ label: 'Metascience', className: 'topic-meta' }],
     titleHref: 'https://doi.org/10.5281/zenodo.21452779',
@@ -55,7 +93,7 @@ export const publications: Publication[] = [
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.21452779},
-  note      = {Under review at Scientometrics}
+  note      = {Under review at Scientometrics (with editor)}
 }`,
   },
   {
