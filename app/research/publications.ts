@@ -25,6 +25,37 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 'machine-science-audit',
+    title:
+      'Recombination or Discovery? A Retrieval-Grounded Novelty Audit of Machine-Generated Research Papers',
+    takeaway:
+      'LLM novelty rates are exploratory upper bounds: retrieval misses most known prior art, and another LLM cannot certify a novelty verdict.',
+    tldr: 'Tao An — A retrieval-grounded, protocol-frozen novelty audit of 166 machine-generated papers (FARS) against 166 topic-matched ICLR 2025 submissions. Each paper is decomposed into contribution claims on four facets (purpose, mechanism, evaluation, domain; 549 machine and 494 human contributions); prior art is retrieved under per-paper submission-date cutoffs; contributions are classified as covered, recombination, or facet-novel under a pre-registered two-judge protocol. Machine contributions are judged facet-novel more often than human ones (56.1% vs. 35.6%), but the comparison is not certifiable: an adversarial re-audit flags 15–25% of purpose-novel verdicts as potentially covered, and a 106-pair gold prior-art audit finds the deployed retrieval surfaces known prior art for only 25–29% of pairs per arm. Automated novelty rates are therefore exploratory upper bounds. A companion integrity audit of 306 Agents4Science 2025 submissions finds hard fabrication evidence in 0/47 accepted versus 16/197 rejected (one-sided Fisher p = 0.029).',
+    year: '2026',
+    status: 'under-review',
+    badges: [
+      { label: 'Under Review' },
+      { label: 'NeurIPS 2026 Workshop · AI4MetaScience', secondary: true },
+      { label: 'Preprint', secondary: true },
+    ],
+    topics: [{ label: 'Metascience', className: 'topic-meta' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.21696223',
+    links: [
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21696223' },
+      { label: 'Code', href: 'https://github.com/tao-hpu/machine-science-audit' },
+    ],
+    bibtex: `@misc{an2026recombination,
+  title     = {Recombination or Discovery? A Retrieval-Grounded
+               Novelty Audit of Machine-Generated Research Papers},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21696223},
+  note      = {Under review at NeurIPS 2026 Workshop AI4MetaScience
+              (non-archival)}
+}`,
+  },
+  {
     id: 'what-citations-get-wrong',
     title:
       'What Citations Get Wrong: A Full-Corpus Audit of Reference Existence and Claim Support in a Major NLP Conference',
