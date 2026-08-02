@@ -845,6 +845,47 @@ a.publication-simple-item {
     background: #7d8a99;
 }
 
+.topic-dream::before {
+    background: #9a7b8a;
+}
+
+/* Dream-series teaser (coming soon; not in the main filter list) */
+.dream-series-wrap {
+    max-width: var(--content-width);
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.dream-series-intro {
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin: 0 0 0.25rem;
+}
+
+.dream-series-list {
+    margin-top: 0.75rem;
+}
+
+.publication-simple-item.is-coming-soon .publication-simple-title {
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+.publication-simple-item.is-coming-soon .publication-takeaway {
+    color: var(--color-muted);
+    font-weight: 400;
+}
+
+.venue-badge-coming-soon {
+    color: var(--color-muted);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    font-weight: 500;
+}
+
 .page-research .publication-simple-item {
     gap: 2rem;
 }

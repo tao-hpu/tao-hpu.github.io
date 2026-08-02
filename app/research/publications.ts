@@ -341,6 +341,58 @@ export const publications: Publication[] = [
   },
 ]
 
+/**
+ * Dream-series teaser (separate from the AI publication list).
+ * Titles and claims only; no PDF/DOI until a paper is public.
+ * Promote an entry into `publications` when a DOI or venue page exists.
+ */
+export type DreamSeriesTeaser = {
+  id: string
+  title: string
+  takeaway: string
+}
+
+export const dreamSeriesIntro =
+  'Five manuscripts from a ten-year single-subject dream series (2015–2024, recorded in Chinese). Distinct research questions on the same corpus; under peer review. Links and BibTeX will appear here as each paper becomes public.'
+
+export const dreamSeries: DreamSeriesTeaser[] = [
+  {
+    id: 'agency-not-altitude',
+    title:
+      'Agency, not altitude: affective polarity of self-initiated versus imposed vertical motion in a ten-year single-subject dream series',
+    takeaway:
+      'In this corpus, vertical-motion affect tracks agency over the motion, not altitude or direction.',
+  },
+  {
+    id: 'somatic-incorporation',
+    title:
+      'Site-specific somatic incorporation, annotated at the time of recording: seven cases from a ten-year dream series',
+    takeaway:
+      'Seven cases where a waking bodily state and a matching dream element were annotated together at recording time.',
+  },
+  {
+    id: 'llm-human-kappa',
+    title:
+      'What a reported LLM–human agreement coefficient does not tell you: a decomposition, five ablations, and four things to report',
+    takeaway:
+      'A single LLM–human κ mixes abstention with substance and can be raised by design choices that do not add knowledge.',
+  },
+  {
+    id: 'inheritance-contradiction',
+    title:
+      'Inheritance, abandonment, contradiction: a ten-year dream series read against the teaching text of the tradition that trained it',
+    takeaway:
+      'What a trained dreamer kept, abandoned, and contradicted from an inherited rule system; contradiction is the finding.',
+  },
+  {
+    id: 'dying-does-not-end',
+    title:
+      'Dying does not end the dream: continuation formats after in-dream death in a ten-year dream series',
+    takeaway:
+      'Narrative death inside the dream does not terminate it; four continuation formats, with most of the furniture inherited and the claim itself not taught.',
+  },
+]
+
 export const academicService = [
   {
     id: 'neurips-2026-ethics',
