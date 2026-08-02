@@ -476,6 +476,8 @@ body {
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
+    /* Prefer even line breaks; still depends on segment boundaries below */
+    text-wrap: balance;
 }
 
 .hero-title strong {
@@ -1974,7 +1976,9 @@ a.publication-simple-item {
     animation-delay: 0.5s;
 }
 
-/* Word-by-word fade in for hero title */
+/* Word-by-word fade in for hero title.
+   inline-block keeps each phrase a wrap unit; punctuation must live
+   at the end of a unit (never as its own leading-glue span). */
 .word-fade {
     display: inline-block;
     opacity: 1;
@@ -1984,6 +1988,19 @@ a.publication-simple-item {
     opacity: 0;
     animation: fadeInUp 0.6s ease forwards;
     animation-delay: calc(var(--i) * 0.12s);
+}
+
+/* Hold layout before client picks a slogan (avoids wrong-line flash) */
+.motion-ready .word-fade-pending,
+.word-fade-pending {
+    opacity: 0 !important;
+    animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .word-fade-pending {
+        opacity: 0 !important;
+    }
 }
 
 /* Scroll-triggered fade in */

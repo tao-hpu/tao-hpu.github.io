@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import HeroTitle from '@/components/HeroTitle'
 import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from '@/lib/site'
 import NeuralNetwork from './NeuralNetwork'
 
@@ -19,25 +20,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
-            <h1 className="hero-title">
-              <strong>
-                <span className="word-fade" style={{ '--i': 0 } as React.CSSProperties}>
-                  How
-                </span>{' '}
-                <span className="word-fade underline" style={{ '--i': 1 } as React.CSSProperties}>
-                  production LLMs
-                </span>{' '}
-                <span className="word-fade" style={{ '--i': 2 } as React.CSSProperties}>
-                  remember
-                </span>{' '}
-                <span className="word-fade" style={{ '--i': 3 } as React.CSSProperties}>
-                  and when to
-                </span>{' '}
-                <span className="word-fade underline" style={{ '--i': 4 } as React.CSSProperties}>
-                  act.
-                </span>
-              </strong>
-            </h1>
+            <HeroTitle />
             <p className="hero-description fade-in" style={{ animationDelay: '1.0s' }}>
               <strong>MS in Artificial Intelligence</strong>, Hawaii Pacific University (2026). A
               decade in tech; AI since <strong>2021</strong>. Research on{' '}
