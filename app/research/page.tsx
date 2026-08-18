@@ -2,11 +2,7 @@ import type { Metadata } from 'next'
 import { SITE_DESCRIPTION, SITE_URL } from '@/lib/site'
 import BibtexToggle from './BibtexToggle'
 import PublicationList from './PublicationList'
-import {
-  academicService,
-  dreamSeries,
-  dreamSeriesIntro,
-} from './publications'
+import { academicService } from './publications'
 
 export const metadata: Metadata = {
   title: 'Research',
@@ -45,28 +41,6 @@ export default function ResearchPage() {
           <h2 className="section-title-small fade-on-scroll">Publications &amp; Patents</h2>
           <div className="fade-on-scroll">
             <PublicationList />
-          </div>
-        </section>
-
-        <section className="publications-section" id="dream-series">
-          <h2 className="section-title-small fade-on-scroll">Dream series</h2>
-          <div className="dream-series-wrap fade-on-scroll">
-            <p className="dream-series-intro">{dreamSeriesIntro}</p>
-            <div className="publication-simple-list dream-series-list">
-              {dreamSeries.map((p) => (
-                <div className="publication-simple-item is-coming-soon" key={p.id}>
-                  <div className="publication-simple-meta">
-                    <span className="venue-badge venue-badge-coming-soon">Coming soon</span>
-                    <span className="venue-year">2026</span>
-                    <span className="topic-tag topic-dream">Dream series</span>
-                  </div>
-                  <div className="publication-simple-body">
-                    <span className="publication-simple-title">{p.title}</span>
-                    <p className="publication-takeaway">{p.takeaway}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
