@@ -14,7 +14,7 @@ export type Publication = {
   tldr: string
   year: string
   /** Primary status for filtering */
-  status: 'published' | 'under-review' | 'preprint' | 'patent'
+  status: 'published' | 'under-review' | 'preprint' | 'patent' | 'working'
   badges: { label: string; secondary?: boolean; starred?: boolean }[]
   topics: { label: string; className?: string }[]
   /** Primary title href when title is a link */
@@ -138,7 +138,7 @@ export const publications: Publication[] = [
     status: 'under-review',
     badges: [
       { label: 'Under Review' },
-      { label: 'TMLR · Assigned AE', secondary: true },
+      { label: 'TMLR · Under review', secondary: true },
       { label: 'Survey', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
@@ -188,11 +188,8 @@ export const publications: Publication[] = [
       'GEO poisoning needs detection and account-cluster attribution on different substrates—not just attack success.',
     tldr: 'Tao An — Defines GEO-poisoning detection and attribution for Chinese generative search (DeepSeek, Doubao, Kimi): a five-technique taxonomy of coordinated, inauthentic manipulation, a task reframing from attack-success to detection → classification → account-cluster attribution, and a legally-constructed synthetic benchmark. A provenance pilot shows detection and attribution need different substrates—content features detect that manipulation happened (F1 0.93) but only an account-interaction graph attributes it to a seller cluster (0.96)—and a confidence-gated fusion covers the taxonomy where a learned GNN and a zero-shot LLM both fail.',
     year: '2026',
-    status: 'under-review',
-    badges: [
-      { label: 'Under Review' },
-      { label: 'EMNLP 2026 Workshop · NLP4PI', secondary: true },
-    ],
+    status: 'working',
+    badges: [{ label: 'Working paper' }],
     topics: [{ label: 'AI Safety', className: 'topic-safety' }],
   },
   {
@@ -362,5 +359,6 @@ export const STATUS_FILTERS: { key: Publication['status'] | 'all'; label: string
   { key: 'published', label: 'Published' },
   { key: 'under-review', label: 'Under review' },
   { key: 'preprint', label: 'Preprint' },
+  { key: 'working', label: 'Working paper' },
   { key: 'patent', label: 'Patent' },
 ]
