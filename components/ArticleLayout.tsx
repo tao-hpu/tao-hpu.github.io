@@ -1,6 +1,7 @@
 import { articleBibtex, doiUrl, getArticle } from '@/app/articles/registry'
 import ArticleToc from '@/components/ArticleToc'
 import CopyBibtex from '@/components/CopyBibtex'
+import { readingMinutes } from '@/lib/reading-time'
 
 function formatDate(iso: string): string {
   return new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
@@ -20,6 +21,7 @@ export default function ArticleLayout({
 }) {
   const a = getArticle(slug)
   const bibtex = articleBibtex(a)
+  const minutes = readingMinutes(slug)
 
   return (
     <div className="subpage articles-page">
@@ -45,6 +47,7 @@ export default function ArticleLayout({
                   · updated <time dateTime={a.updated}>{formatDate(a.updated)}</time>
                 </>
               )}
+              {minutes > 0 && <> · {minutes} min read</>}
             </p>
             {a.relatedPaper && (
               <p className="article-related">
