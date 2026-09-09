@@ -65,6 +65,9 @@ html {
     --color-button-text: #ffffff;
     
     scroll-behavior: smooth;
+    /* 锚点跳转的落点。导航是 position: fixed 高 68px，不留这一段
+       标题会被导航盖住。 */
+    scroll-padding-top: 6rem;
     /* Force background color application */
     background-color: var(--color-background);
 }
