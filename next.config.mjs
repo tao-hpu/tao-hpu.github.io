@@ -1,5 +1,9 @@
 import createMDX from '@next/mdx'
 import rehypeSlug from 'rehype-slug'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,6 +13,11 @@ const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  // Pin the file-tracing root to this repo. A stray pnpm-lock.yaml in
+  // the home directory makes Next.js walk up and misdetect ~/ as the
+  // workspace root, turning the whole home dir into the tracing root
+  // during builds (memory explosion / OOM).
+  outputFileTracingRoot: __dirname,
 }
 
 // rehype-slug 给正文里的 h2 / h3 生成 id，文章目录和分享出去的
