@@ -1,0 +1,365 @@
+/* 论文与贡献列表: publication 条目与徽章、contribution list、topic tag、BibTeX 展开, 以及本族的窄屏断点。research 与 articles 两页共用。 */
+
+/* Publications Section */
+.publications-section {
+    padding: 2rem 3rem 3rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.venue-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.venue-badge-secondary {
+    color: var(--color-muted);
+    background: transparent;
+    border: 0;
+    font-weight: 500;
+    padding: 0.125rem 0;
+}
+
+.venue-year {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+.badge-star {
+    width: 0.78em;
+    height: 0.78em;
+    fill: currentColor;
+    margin-right: 0.32em;
+    vertical-align: -0.09em;
+}
+
+/* Simple Publication List — same column as .section-title-small */
+.publication-simple-list {
+    max-width: var(--content-width);
+    margin: 1rem auto 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.publication-simple-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.125rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.publication-simple-item:first-child {
+    border-top: 1px solid var(--color-border);
+}
+
+a.publication-simple-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.publication-simple-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    width: 128px;
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+}
+
+.publication-simple-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.publication-simple-title {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    line-height: 1.45;
+    transition: color 0.2s ease;
+}
+
+.publication-simple-title:hover {
+    color: var(--color-accent);
+}
+
+.publication-simple-tldr {
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+    margin: 0.4rem 0 0.6rem;
+}
+
+.publication-simple-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.publication-simple-links a {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.publication-simple-links a:hover {
+    color: var(--color-accent);
+}
+
+/* Contribution List (upstream / merged PRs) */
+.contribution-list {
+    max-width: var(--content-width);
+    margin: 1rem auto 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contribution-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.125rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.contribution-item:first-child {
+    border-top: 1px solid var(--color-border);
+}
+
+.contribution-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 128px;
+    flex-shrink: 0;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    align-self: flex-start;
+    margin-top: 0.1rem;
+}
+
+.contribution-text {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+}
+
+.contribution-text a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.contribution-text a:hover {
+    color: var(--color-accent);
+}
+
+/* Topic tag (per publication) */
+.topic-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+    margin-top: 0.1rem;
+}
+
+.topic-tag::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.topic-mem::before {
+    background: #d97757;
+}
+
+.topic-hai::before {
+    background: #6a9a78;
+}
+
+.topic-kg::before {
+    background: #8a7bb3;
+}
+
+.topic-interp::before {
+    background: #5a8ca8;
+}
+
+.topic-safety::before {
+    background: #b5894e;
+}
+
+.topic-meta::before {
+    background: #7d8a99;
+}
+
+.page-research .publication-simple-item {
+    gap: 2rem;
+}
+
+.page-opensource .publications-section {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.page-opensource .publication-simple-list {
+    margin-top: 0.75rem;
+}
+
+.page-opensource .publication-simple-item {
+    grid-template-columns: auto 1fr;
+    padding: 1.35rem 0;
+}
+
+.page-opensource .publication-simple-title {
+    font-family: var(--font-sans);
+    font-size: 1.08rem;
+}
+
+/* BibTeX toggle — stays inline in the links row; code block expands below */
+.bibtex-toggle {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-text);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.bibtex-toggle::before {
+    content: "+";
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.bibtex-toggle[aria-expanded="true"]::before {
+    content: "\2212";
+}
+
+.bibtex-toggle:hover {
+    color: var(--color-accent);
+}
+
+.bibtex-pre {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin-top: 0.55rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--color-border);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.bibtex-pre a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.bibtex-pre a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+    .publications-section,
+    .articles-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .publication-simple-item {
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: flex-start;
+    }
+
+    .publication-simple-meta {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        width: auto;
+    }
+
+    .publication-simple-links {
+        margin-top: 0.25rem;
+    }
+
+    .page-opensource .publication-simple-item {
+        grid-template-columns: 1fr;
+    }
+
+    .contribution-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .contribution-status {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .publications-section,
+    .articles-section {
+        padding: 1.5rem 1.25rem 2.5rem;
+    }
+}
+

@@ -1,0 +1,165 @@
+/* 基础层: reset、共享列宽变量、三套主题 token(亮色 / 显式暗色 / 系统暗色回退)、body 变量应用、skip link。 */
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Base Font Settings (Common) — next/font variables with system fallbacks */
+    --font-serif: var(--font-source-serif), "Source Serif 4", Georgia, "Times New Roman", serif;
+    --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /*
+     * Layout width tokens (one system site-wide)
+     * - shell:   nav / section outer frames / multi-card grids
+     * - content: lists, section eyebrows, featured blocks, news
+     * - prose:   long-form reading (article body, solo hero copy)
+     */
+    --shell-width: 1272px;
+    --content-width: 900px;
+    --prose-width: 720px;
+    /* Alias kept so older rules using --max-width keep working */
+    --max-width: var(--shell-width);
+
+    --color-card-amber: #e8dcc8;
+}
+
+/* Shared column helpers — prefer these over one-off max-width values */
+.content-col {
+    max-width: var(--content-width);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.prose-col {
+    max-width: var(--prose-width);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* 1. Default Theme (Light) - Applied to html tag */
+html {
+    --color-primary: #191918;
+    --color-background: #faf8f3;
+    --color-surface: #ebe8e1;
+    --color-text: #191918;
+    --color-muted: #6b635b;
+    --color-accent: #d97757;
+    --color-accent-light: rgba(217, 119, 87, 0.15);
+    --color-card-beige: #e8e4db;
+    --color-card-green: #c5d5c5;
+    --color-card-purple: #d5d0e0;
+    --color-nav-bg: rgba(250, 248, 243, 0.9);
+    --color-footer-bg: rgb(20, 20, 19);
+    --color-footer-text: #faf8f3;
+    
+    /* New Semantic Variables */
+    --color-border: rgba(25, 25, 24, 0.1);
+    --color-button-text: #ffffff;
+    
+    scroll-behavior: smooth;
+    /* Force background color application */
+    background-color: var(--color-background);
+}
+
+/* 2. Dark Theme (Explicit Attribute) */
+html[data-theme="dark"] {
+    --color-primary: #e6e6e6;
+    --color-background: #121212;
+    --color-surface: rgba(255, 255, 255, 0.03); /* Matches card backgrounds */
+    --color-text: #e6e6e6;
+    --color-muted: #a3a3a3;
+    --color-accent: #e68a6d; 
+    --color-accent-light: rgba(255, 255, 255, 0.05); /* More subtle hover background */
+    
+    /* Keep low-saturation card hues in dark mode so sections stay distinct */
+    --color-card-beige: rgba(232, 228, 219, 0.08);
+    --color-card-green: rgba(120, 160, 120, 0.14);
+    --color-card-purple: rgba(140, 120, 180, 0.14);
+    --color-card-amber: rgba(200, 160, 90, 0.14);
+    
+    --color-nav-bg: rgba(18, 18, 18, 0.8);
+    --color-footer-bg: #121212; /* Seamless footer */
+    --color-footer-text: #a3a3a3;
+
+    /* Dark mode specific adjustments */
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-button-text: #121212;
+
+    /* FORCE background color */
+    background-color: #121212;
+    color: #e6e6e6;
+}
+
+/* 3. System Dark Mode Fallback */
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+        --color-primary: #e6e6e6;
+        --color-background: #121212;
+        --color-surface: rgba(255, 255, 255, 0.03); /* Matches card backgrounds */
+        --color-text: #e6e6e6;
+        --color-muted: #a3a3a3;
+        --color-accent: #e68a6d; 
+        --color-accent-light: rgba(255, 255, 255, 0.05);
+        
+        --color-card-beige: rgba(232, 228, 219, 0.08);
+        --color-card-green: rgba(120, 160, 120, 0.14);
+        --color-card-purple: rgba(140, 120, 180, 0.14);
+        --color-card-amber: rgba(200, 160, 90, 0.14);
+        
+        --color-nav-bg: rgba(18, 18, 18, 0.8);
+        --color-footer-bg: #121212;
+        --color-footer-text: #a3a3a3;
+
+        --color-border: rgba(255, 255, 255, 0.1);
+        --color-button-text: #121212;
+
+        background-color: #121212;
+        color: #e6e6e6;
+    }
+}
+
+/* Apply variables to body */
+body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    /* Use variables but fallback to inherited from html */
+    color: var(--color-text); 
+    background-color: var(--color-background);
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+}
+
+/* Skip link (keyboard / screen-reader) */
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    z-index: 1000;
+    padding: 0.6rem 1rem;
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
+}
+
