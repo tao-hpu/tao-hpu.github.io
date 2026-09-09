@@ -183,3 +183,71 @@
     display: block;
 }
 
+
+/* ============================================
+   Article table of contents
+   ============================================ */
+
+/*
+ * 目录浮在正文列左侧的空白里，正文本身不移位。
+ * left 的算式跟着 .article-container 的居中走：
+ * 50% 是页面中线，减去半个正文列宽、一段间距、目录自身宽度。
+ * 窄到放不下就整块不出现（下面的断点），移动端因此没有目录。
+ */
+.article-toc {
+    display: none;
+}
+
+/*
+ * 1360 是算式反推出来的下限: left = 50% - 360 - 48 - 240, 要给左边留出
+ * 24px 余量, 视口至少 1344, 加上滚动条取整到 1360。再窄目录会被推出屏幕。
+ */
+@media (min-width: 1360px) {
+    .article-toc {
+        --toc-width: 15rem;
+        display: block;
+        position: fixed;
+        top: 9.5rem;
+        left: calc(50% - var(--prose-width) / 2 - 3rem - var(--toc-width));
+        width: var(--toc-width);
+        max-height: calc(100vh - 13rem);
+        overflow-y: auto;
+        font-family: var(--font-sans);
+    }
+
+    .article-toc ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .article-toc-item {
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .article-toc-sub {
+        padding-left: 0.75rem;
+    }
+
+    .article-toc-item a {
+        color: var(--color-muted);
+        font-size: 0.8125rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .article-toc-item a:hover {
+        color: var(--color-accent);
+    }
+
+    .article-toc-item.is-active a {
+        color: var(--color-text);
+    }
+}
+
+@media print {
+    .article-toc {
+        display: none;
+    }
+}

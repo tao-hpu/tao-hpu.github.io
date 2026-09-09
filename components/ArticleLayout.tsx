@@ -1,4 +1,5 @@
 import { articleBibtex, doiUrl, getArticle } from '@/app/articles/registry'
+import ArticleToc from '@/components/ArticleToc'
 import CopyBibtex from '@/components/CopyBibtex'
 
 function formatDate(iso: string): string {
@@ -23,6 +24,7 @@ export default function ArticleLayout({
   return (
     <div className="subpage articles-page">
       <main className="page-articles" id="main">
+        <ArticleToc />
         <article className="article-container">
           <header className="article-header">
             <p className="article-breadcrumb">
