@@ -138,7 +138,7 @@ export const publications: Publication[] = [
     status: 'under-review',
     badges: [
       { label: 'Under Review' },
-      { label: 'TMLR · Under review', secondary: true },
+      { label: 'TMLR · Decision pending', secondary: true },
       { label: 'Survey', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
@@ -158,7 +158,7 @@ export const publications: Publication[] = [
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.21438396},
-  note         = {Under review at TMLR (assigned AE)}
+  note         = {Under review at TMLR (decision pending)}
 }`,
   },
   {
@@ -169,13 +169,10 @@ export const publications: Publication[] = [
       'Covert workspace content is mostly context registers, not content plans—and it is causally load-bearing.',
     tldr: "Tao An — An independent replication and reframing of Anthropic's “global workspace” (Jacobian-lens) claim on open Qwen3 models. A mouth-exclusion audit—scoring a lens readout as covert only when its token is far outside the model's own next-token distribution—splits the workspace: covert content survives almost only for context registers (the conversation's language, a corrupted word's intended form), while content plans (rhyme, arithmetic, associations) fall to a permutation floor. The surviving registers are causally load-bearing under amplitude-matched steering, and workspace edits rewrite the model's representation of the question itself across a 1.7B–14B scale ladder. The register and capture findings reproduce on a second architecture (Gemma-2-2B).",
     year: '2026',
-    status: 'under-review',
-    badges: [
-      { label: 'Under Review' },
-      { label: 'EMNLP 2026 Workshop · BlackboxNLP', secondary: true },
-    ],
+    status: 'working',
+    badges: [{ label: 'Working paper' }],
     topics: [{ label: 'Interpretability', className: 'topic-interp' }],
-    titleHref: 'https://openreview.net/forum?id=MNyJaBJ5Mx',
+    titleHref: 'https://github.com/tao-hpu/jspace-replication',
     links: [
       { label: 'Code', href: 'https://github.com/tao-hpu/jspace-replication' },
       { label: 'Interactive note', href: '/articles/workspace-registers', internal: true },
@@ -237,7 +234,7 @@ export const publications: Publication[] = [
     titleHref: 'https://arxiv.org/abs/2601.00821',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2601.00821' },
-      { label: 'Read on Aha. (中文)', href: 'https://aha.fim.ai/paper/2601.00821v3' },
+      { label: 'Read on Aha. (中文)', href: 'https://aha.fim.ai/paper/2601.00821' },
       { label: 'Interactive note', href: '/articles/verbatim-memory', internal: true },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2601.00821' },
       { label: 'Code', href: 'https://github.com/tao-hpu/cog-canvas' },

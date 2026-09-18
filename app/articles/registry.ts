@@ -72,12 +72,12 @@ export const articles: Article[] = [
     slug: 'workspace-registers',
     title: "What the Model Isn't About to Say",
     description:
-      'Interactive companion to "Registers, Not Plans" (BlackboxNLP 2026, under review): an independent replication of Anthropic\'s global-workspace claim, and why only context registers, not content plans, survive a strict readout test.',
+      'Interactive companion to the working paper "Registers, Not Plans": an independent replication of Anthropic\'s global-workspace claim, and why only context registers, not content plans, survive a strict readout test.',
     date: '2026-07-08',
     tags: ['interpretability'],
     relatedPaper: {
-      label: 'Registers, Not Plans (OpenReview)',
-      href: 'https://openreview.net/forum?id=MNyJaBJ5Mx',
+      label: 'Registers, Not Plans (code and data)',
+      href: 'https://github.com/tao-hpu/jspace-replication',
     },
   },
   {
