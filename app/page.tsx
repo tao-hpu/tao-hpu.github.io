@@ -83,6 +83,28 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2026.07</span>
               <p className="news-body">
+                <span className="news-dot news-dot-research"></span>New preprint —{' '}
+                <a href="https://doi.org/10.5281/zenodo.21696223" target="_blank" rel="noopener noreferrer">
+                  Recombination or Discovery?
+                </a>
+                , a retrieval-grounded novelty audit of machine-generated research papers (under
+                review, NeurIPS&nbsp;2026 Workshop AI4MetaScience).
+              </p>
+            </div>
+            <div className="news-item">
+              <span className="news-date">2026.07</span>
+              <p className="news-body">
+                <span className="news-dot news-dot-research"></span>New preprint —{' '}
+                <a href="https://doi.org/10.5281/zenodo.21452779" target="_blank" rel="noopener noreferrer">
+                  Weakening in Real Time
+                </a>
+                , on the decade-long decoupling of artifact reuse and citation (under review,
+                Scientometrics).
+              </p>
+            </div>
+            <div className="news-item">
+              <span className="news-date">2026.07</span>
+              <p className="news-body">
                 <span className="news-dot news-dot-research"></span>
                 <a href="https://doi.org/10.3233/FAIA260506" target="_blank" rel="noopener noreferrer">
                   AI as Equalizer or Amplifier?
@@ -123,10 +145,10 @@ export default function Home() {
               <p className="news-body">
                 <span className="news-dot news-dot-research"></span>New preprint —{' '}
                 <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
-                  Verbatim Chunks Beat Extracted Artifacts
+                  Fidelity Before Structure
                 </a>
-                , a controlled ablation of memory representations for long LLM conversations (under
-                review, ARR).
+                , a controlled ablation of memory representations for long LLM conversations (now
+                under review at ARR, targeting EACL&nbsp;2027).
               </p>
             </div>
             <div className="news-item">
