@@ -24,10 +24,15 @@ OpenReview 等第三方平台。个人站是它当下唯一的发布地，目的
 3. **文章**：`app/articles/registry.ts` 加条目（`slug`/`title`/`description`/`date`/`tags`，
    有配套论文时补 `relatedPaper` / `paperDoi`），
    新建 `app/articles/<slug>/page.mdx` 写 companion note。
-   同步更新 `public/feed.xml` 与 `public/sitemap.xml`。
+   **feed 与 sitemap 不用手动改**：`app/feed.xml/route.ts` 与 `app/sitemap.ts`
+   从 registry 生成，加完条目就有。（原先是手写 `public/feed.xml` /
+   `public/sitemap.xml`，2026-09-20 删除：7 篇里 6 篇 description 已经漂了。
+   往 `public/` 放同名文件不会报错，只会被生成的那份静默覆盖，别再放。）
 4. **`app/research/publications.ts` 加 publication 条目**（不要直接堆进 page.tsx），即使没投任何地方。
-   - `status` / badges **只写真实状态**。没投就写 `preprint` / `Preprint`，不要编
-     `Under Review`，不要挂一个并不存在的 venue。双盲在审的另有匿名期规则，见 memory。
+   - `status` / badges **不写评审状态**（2026-09-20 用户裁定，公司站同规）。
+     有可引用的公开版本写 `preprint` / `Preprint`，没有写 `working` / `Working paper`，
+     **接收后才挂 venue 徽章**。`status` 联合类型里没有 `under-review`，写回去 TS 会报错。
+     首页 News、note 正文、`registry.ts` 的 description 同样不写。双盲在审的另有匿名期规则，见 memory。
    - links 给 PDF、DOI、`Interactive note`（指向第 3 步的文章）。
    - **BibTeX 用 DOI，不要用站点 URL 当 `howpublished`**。仓库改名或换域名会让所有
      引用失效，DOI 不会。

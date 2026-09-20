@@ -21,8 +21,11 @@ function rfc822(isoDate: string): string {
 }
 
 export async function GET() {
-  // registry.ts is maintained newest-first, which is also feed order.
-  const items = articles
+  // Sorted here rather than relying on the array order, so that appending an
+  // entry to registry.ts puts it first in the feed as well as on the index
+  // page (app/articles/page.tsx sorts the same way).
+  const items = [...articles]
+    .sort((a, b) => b.date.localeCompare(a.date))
     .map((a) => {
       const url = articleUrl(a)
       return `    <item>
