@@ -1,4 +1,4 @@
-/* 文章内交互图表: BenchmarkExplorer / LossyExtraction / PreferenceCentroid / AlignmentAmplifier / SpecificityLadder / LineageTimeline / InterventionGate / CostFragments / BenchmarkGap。 */
+/* 文章内交互图表: BenchmarkExplorer / LossyExtraction / PreferenceCentroid / AlignmentAmplifier / SpecificityLadder / LineageTimeline / InterventionGate / CostFragments / BenchmarkGap；以及视频嵌入 VideoEmbed。 */
 
 /* Interactive figures shared frame */
 .mem-explorer,
@@ -902,4 +902,37 @@
 
 .it-bench-mark.m-n {
     color: var(--color-border);
+}
+
+/* Video embed (VideoEmbed): same frame as the interactive figures, fixed 16:9 */
+.video-embed {
+    margin: 2rem 0;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    font-family: var(--font-sans);
+}
+
+.video-embed-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.video-embed-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-embed-caption {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+    margin: 0.7rem 0.25rem 0.1rem;
 }

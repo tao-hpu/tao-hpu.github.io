@@ -61,11 +61,12 @@ export const articles: Article[] = [
     description:
       'Interactive companion to "When Should the Agent Speak?": twenty years of research learned what it costs to interrupt a person, and had no agent capable of earning that cost back. The agents arrived. The price did not come with them.',
     date: '2026-07-14',
+    updated: '2026-09-20',
     tags: ['human-ai'],
     paperDoi: '10.5281/zenodo.21438396',
     relatedPaper: {
-      label: 'When Should the Agent Speak? (Zenodo)',
-      href: 'https://doi.org/10.5281/zenodo.21438396',
+      label: 'When Should the Agent Speak? (TMLR 2026)',
+      href: 'https://openreview.net/forum?id=b0yKEdAXEr',
     },
   },
   {

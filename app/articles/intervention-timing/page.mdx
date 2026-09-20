@@ -4,11 +4,23 @@ import InterventionGate from '@/components/InterventionGate'
 import CostFragments from '@/components/CostFragments'
 import FeedbackLadder from '@/components/FeedbackLadder'
 import BenchmarkGap from '@/components/BenchmarkGap'
+import VideoEmbed from '@/components/VideoEmbed'
 import { articleMetadata } from '@/app/articles/registry'
 
 export const metadata = articleMetadata('intervention-timing')
 
 <ArticleLayout slug="intervention-timing">
+
+> **Update, 20 September 2026.** The survey has been accepted by *Transactions on Machine
+> Learning Research* ([OpenReview](https://openreview.net/forum?id=b0yKEdAXEr)). Two things are new since this note was written
+> in July: a six-minute video summary, below, and a machine-scored pilot of the proposed
+> metrics (§8.4 of the paper), described in the last section.
+
+<VideoEmbed
+  youtubeId="roLy47J2m-M"
+  title="When Should the Agent Speak? A six-minute summary of the TMLR 2026 survey"
+  caption={<>Six-minute summary of the survey. Every number on screen is taken from the paper&rsquo;s tables. Also on <a href="https://www.bilibili.com/video/BV1k3eq6FEdS/" target="_blank" rel="noopener noreferrer">Bilibili</a>.</>}
+/>
 
 A smart-glasses assistant that waits to be asked is a voice recorder with extra steps.
 That is the whole reason the timing question is now urgent rather than academic. Agents
@@ -16,7 +28,7 @@ finish multi-step tasks against verifiable goals. Egocentric perception resolves
 you are looking at and reaching for. The one decision nobody has modeled is the one an
 always-on assistant makes hundreds of times an hour: *should I say something now?*
 
-My survey [When Should the Agent Speak?](https://doi.org/10.5281/zenodo.21438396) is
+My survey [When Should the Agent Speak?](https://openreview.net/forum?id=b0yKEdAXEr) (TMLR, 2026) is
 organized around a single rule:
 
 > intervene ⇔ E[benefit of acting] − E[cost of interrupting] > θ
@@ -25,8 +37,9 @@ and around a single claim about the state of the field in 2026: **the first term
 left has never been stronger, and the second has mostly vanished from the models.**
 
 This note is the interactive companion. It is not a substitute for the
-[paper](https://doi.org/10.5281/zenodo.21438396), which carries the full taxonomy, the
-tables, and the provenance for every number below. The [living
+[paper](https://openreview.net/forum?id=b0yKEdAXEr), which carries the full taxonomy, the
+tables, and the provenance for every number below (the July preprint stays archived on
+[Zenodo](https://doi.org/10.5281/zenodo.21438396)). The [living
 map](https://github.com/tao-hpu/awesome-proactive-agents) tracks the literature as it
 moves.
 
@@ -143,8 +156,9 @@ pick the moment.
 
 ## What I want to build next
 
-The survey's §8 is a design, not a result, and I am publishing the design before the
-data on purpose.
+When I wrote this note in July, the survey's §8 was a design with no data behind it, and
+I published the design before the data on purpose. The accepted version adds a first,
+machine-scored pilot (§8.4). The human annotation is still ahead.
 
 The proposal is an annotation protocol and a metric suite for open-world intervention
 timing. Annotators mark decision *windows*, not instants, and each window gets a
@@ -167,6 +181,24 @@ interventions with timing, made by someone who could see the same stream the mod
 Annotator disagreement is recorded rather than adjudicated, because receptivity is
 personal and the disagreement *is* the signal.
 
+**What the pilot already shows.** The metric suite can be run before any human label
+exists, on labels seeded by rule from HoloAssist's public annotation release: wrong
+actions become *must* windows, instructor-initiated follow-ups become *may* windows, and
+stretches where the user is speaking become *must-not* windows. That yields 1,758
+sessions and 131.5 hours, with 4,144 *must*, 21,707 *may* and 3,170 *must-not* windows,
+and five reference policies are scored on it. A policy that speaks every second has the
+highest timing recall (0.962) and the lowest cost-weighted score at every exchange rate
+in the sweep (−367,752 at λ = 1). A simulated detector set to catch 70% of mistakes,
+behind a gate that holds back while the user is speaking, reaches 0.703 recall with a
+0.09% violation rate against 0.82%, and scores +5,932 at λ = 1. From λ = 2 upward, never
+speaking beats it, which is why the exchange rate is reported as a curve and not fixed.
+
+The pilot shows that the metrics are executable and that they separate the policies. It
+does not validate the labels: they are seeded by rule, not judged by people, and
+inter-annotator agreement is the first deliverable of the annotation phase. The
+[code](https://github.com/tao-hpu/awesome-proactive-agents/tree/main/pilot) reproduces
+the table from the public annotation file with a fixed seed.
+
 I am building it. If you work on egocentric assistance, proactive agents, or MR
 interaction and this is your problem too, I would like to hear from you.
 
@@ -174,10 +206,10 @@ interaction and this is your problem too, I would like to hear from you.
 
 This is an interactive companion to the survey *When Should the Agent Speak? A Survey of
 Intervention Timing for Always-On AI Assistants*
-([Zenodo](https://doi.org/10.5281/zenodo.21438396)), with the accompanying living map at
+([TMLR 2026](https://openreview.net/forum?id=b0yKEdAXEr); preprint on [Zenodo](https://doi.org/10.5281/zenodo.21438396)), with the accompanying living map at
 [tao-hpu/awesome-proactive-agents](https://github.com/tao-hpu/awesome-proactive-agents).
 
-One caveat the survey states about itself, and which I will not bury here: of the 47
+One caveat the survey states about itself, and which I will not bury here: of the 50
 works it cites, 21 are arXiv-only preprints from 2024 to 2026 that have not passed peer
 review, including load-bearing ones. Where a paper's prose and its tables disagree, I
 cite the table. Where a paper's equations and its released code disagree, I say so.

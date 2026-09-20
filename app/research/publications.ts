@@ -146,6 +146,7 @@ export const publications: Publication[] = [
     links: [
       { label: 'OpenReview', href: 'https://openreview.net/forum?id=b0yKEdAXEr' },
       { label: 'Preprint (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21438396' },
+      { label: 'Video (6 min)', href: 'https://www.youtube.com/watch?v=roLy47J2m-M' },
       { label: 'Interactive note', href: '/articles/intervention-timing', internal: true },
       {
         label: 'Living map',
