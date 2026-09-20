@@ -81,6 +81,17 @@ export default function Home() {
           <h2 className="section-title-small fade-on-scroll">News</h2>
           <div className="news-list fade-on-scroll">
             <div className="news-item">
+              <span className="news-date">2026.09</span>
+              <p className="news-body">
+                <span className="news-dot news-dot-research"></span>
+                <a href="https://openreview.net/forum?id=b0yKEdAXEr" target="_blank" rel="noopener noreferrer">
+                  When Should the Agent Speak?
+                </a>{' '}
+                accepted at <strong>TMLR</strong> (Transactions on Machine Learning Research), a
+                survey of intervention timing for always-on assistants.
+              </p>
+            </div>
+            <div className="news-item">
               <span className="news-date">2026.07</span>
               <p className="news-body">
                 <span className="news-dot news-dot-research"></span>New preprint —{' '}

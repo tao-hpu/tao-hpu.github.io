@@ -133,32 +133,34 @@ export const publications: Publication[] = [
       'When Should the Agent Speak? A Survey of Intervention Timing for Always-On AI Assistants',
     takeaway:
       'Intervene only when expected benefit exceeds interruption cost—and evaluate that cost term explicitly.',
-    tldr: 'Tao An — Surveys intervention timing for always-on assistants around one decision rule: intervene iff the expected benefit of acting exceeds the expected cost of interrupting. Reconnects two literatures that do not cite each other, the 1999–2017 interruptibility line that formalized interruption cost but had no capable actor, and the 2024–2026 proactive-agent wave that has actors but rediscovers the cost term only in fragments. Argues evaluation is the gating layer, and proposes a benchmark design for open-world intervention timing with an explicit cost term.',
+    tldr: 'Tao An — Accepted at Transactions on Machine Learning Research (TMLR), 2026. Surveys intervention timing for always-on assistants around one decision rule: intervene iff the expected benefit of acting exceeds the expected cost of interrupting. Reconnects two literatures that do not cite each other, the 1999–2017 interruptibility line that formalized interruption cost but had no capable actor, and the 2024–2026 proactive-agent wave that has actors but rediscovers the cost term only in fragments. Argues evaluation is the gating layer, and proposes a benchmark design for open-world intervention timing with an explicit cost term.',
     year: '2026',
-    status: 'under-review',
+    status: 'published',
     badges: [
-      { label: 'Under Review' },
-      { label: 'TMLR · Decision pending', secondary: true },
+      { label: 'TMLR 2026', starred: true },
+      { label: 'Accepted · to appear', secondary: true },
       { label: 'Survey', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
     titleHref: 'https://doi.org/10.5281/zenodo.21438396',
     links: [
-      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21438396' },
+      { label: 'OpenReview', href: 'https://openreview.net/forum?id=b0yKEdAXEr' },
+      { label: 'Preprint (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21438396' },
       { label: 'Interactive note', href: '/articles/intervention-timing', internal: true },
       {
         label: 'Living map',
         href: 'https://github.com/tao-hpu/awesome-proactive-agents',
       },
     ],
-    bibtex: `@misc{an2026timing,
-  title        = {When Should the Agent Speak? A Survey of
-                  Intervention Timing for Always-On AI Assistants},
-  author       = {An, Tao},
-  year         = {2026},
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.21438396},
-  note         = {Under review at TMLR (decision pending)}
+    bibtex: `@article{an2026timing,
+  title   = {When Should the Agent Speak? A Survey of
+             Intervention Timing for Always-On AI Assistants},
+  author  = {An, Tao},
+  journal = {Transactions on Machine Learning Research},
+  issn    = {2835-8856},
+  year    = {2026},
+  url     = {https://openreview.net/forum?id=b0yKEdAXEr},
+  note    = {Accepted; to appear}
 }`,
   },
   {

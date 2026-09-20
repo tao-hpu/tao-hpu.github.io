@@ -103,7 +103,12 @@ no one can say whether a given intervention, at a given instant, was good. Which
 
 > **reward ⊆ eval.** The objective a proactive agent can be trained against is bounded
 > above by the evaluation the field can construct. Until intervention quality is
-> measurable, RL for proactivity is not hard. It is undefined.
+> measurable, RL for proactivity can be run. It cannot be validated.
+
+Mobile health shows the difference. It already learns intervention timing online, in
+deployment, because it has a validated proximal outcome to learn against: steps taken in
+the thirty minutes after a prompt. Open-world assistance has no such outcome, so any
+reward written today prices a proxy nobody has shown to measure the thing that matters.
 
 You can see the trap by walking up the ladder of things you could learn from.
 
