@@ -22,8 +22,8 @@ pnpm serve      # serve out/ locally
   registered in `app/articles/registry.ts` (which also generates citation
   metadata and BibTeX). Interactive figures are React components in
   `components/`.
-- `app/feed.xml/route.ts`, `app/sitemap.ts` — RSS feed and sitemap, generated
-  from `app/articles/registry.ts`. Adding a note needs no edit here.
+- `app/sitemap.ts` — sitemap, generated from `app/articles/registry.ts`.
+  Adding a note needs no edit here. The site has no RSS feed.
 - `app/globals.css` — single global stylesheet (design tokens as CSS variables,
   light/dark via `data-theme`)
 - `public/` — favicons, images

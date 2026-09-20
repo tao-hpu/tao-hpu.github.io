@@ -30,7 +30,6 @@ export default function Footer() {
           <h4>Work &amp; Writing</h4>
           <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">FIM One</a>
           <a href="/articles">Articles</a>
-          <a href="/feed.xml">RSS</a>
           <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer">Medium</a>
         </div>
 

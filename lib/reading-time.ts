@@ -6,7 +6,8 @@ const WORDS_PER_MINUTE = 225
 
 /**
  * 按 MDX 源文件估算阅读时长。构建期读一次，不写进 registry：
- * 写进去就要人工维护，跟 feed.xml / sitemap.xml 一样迟早会漏。
+ * 写进去就要人工维护，迟早会漏。手写的 public/feed.xml 与 public/sitemap.xml
+ * 就是这么漂的，7 篇里 6 篇 description 对不上，2026-09-20 改为生成（feed 随后移除）。
  * 交互图组件不计入词数，读者不"读"它们。
  */
 export function readingMinutes(slug: string): number {

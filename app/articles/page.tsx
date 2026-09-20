@@ -35,8 +35,7 @@ export default function ArticlesPage() {
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
               <strong>Research notes in a web-native format</strong>: interactive figures where a
               static PDF falls short, permanent URLs, and citation metadata. Longer-form and less
-              formal than the <a href="/research">papers</a>.{' '}
-              <a href="/feed.xml">Subscribe via RSS</a>.
+              formal than the <a href="/research">papers</a>.
             </p>
           </div>
         </section>

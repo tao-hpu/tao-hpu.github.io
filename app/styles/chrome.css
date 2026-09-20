@@ -114,15 +114,6 @@
     color: var(--color-accent);
 }
 
-.article-breadcrumb-sep {
-    margin: 0 0.4rem;
-    color: var(--color-muted);
-}
-
-.article-rss-link {
-    color: var(--color-muted);
-}
-
 .article-cite-header {
     display: flex;
     align-items: center;

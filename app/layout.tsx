@@ -67,11 +67,6 @@ export const metadata: Metadata = {
     apple: [{ url: '/favicon/apple-touch-icon.png', sizes: '180x180' }],
   },
   manifest: '/favicon/site.webmanifest',
-  alternates: {
-    types: {
-      'application/rss+xml': [{ url: '/feed.xml', title: 'Tao An · Articles' }],
-    },
-  },
 }
 
 export const viewport: Viewport = {
@@ -125,7 +120,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <meta name="renderer" content="webkit" />
-        <link rel="alternate" type="application/rss+xml" title="Tao An · Articles" href="/feed.xml" />
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <script
           defer

@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { articleUrl, articles } from './articles/registry'
 
-// Generated rather than hand-written for the same reason as feed.xml: an
-// article added to registry.ts must not need a second edit here to be indexed.
+// Generated rather than hand-written: an article added to registry.ts must not
+// need a second edit here to be indexed. The hand-written public/sitemap.xml it
+// replaced had already drifted from the registry.
 export const dynamic = 'force-static'
 
 const SITE = 'https://tao-hpu.github.io'

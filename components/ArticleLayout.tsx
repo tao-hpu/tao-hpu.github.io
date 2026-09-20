@@ -31,12 +31,6 @@ export default function ArticleLayout({
           <header className="article-header">
             <p className="article-breadcrumb">
               <a href="/articles">Articles</a>
-              <span className="article-breadcrumb-sep" aria-hidden="true">
-                /
-              </span>
-              <a href="/feed.xml" className="article-rss-link">
-                RSS
-              </a>
             </p>
             <h1 className="article-title">{a.title}</h1>
             <p className="article-byline">

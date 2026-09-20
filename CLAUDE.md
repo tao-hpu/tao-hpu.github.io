@@ -24,10 +24,12 @@ OpenReview 等第三方平台。个人站是它当下唯一的发布地，目的
 3. **文章**：`app/articles/registry.ts` 加条目（`slug`/`title`/`description`/`date`/`tags`，
    有配套论文时补 `relatedPaper` / `paperDoi`），
    新建 `app/articles/<slug>/page.mdx` 写 companion note。
-   **feed 与 sitemap 不用手动改**：`app/feed.xml/route.ts` 与 `app/sitemap.ts`
-   从 registry 生成，加完条目就有。（原先是手写 `public/feed.xml` /
-   `public/sitemap.xml`，2026-09-20 删除：7 篇里 6 篇 description 已经漂了。
-   往 `public/` 放同名文件不会报错，只会被生成的那份静默覆盖，别再放。）
+   **sitemap 不用手动改**：`app/sitemap.ts` 从 registry 生成，加完条目就有。
+   （原先是手写 `public/sitemap.xml`，2026-09-20 删除。往 `public/` 放同名文件
+   不会报错，只会被生成的那份静默覆盖，别再放。）
+   **站上没有 RSS**（2026-09-20 用户裁定移除，读者不用）。不要再加 `feed.xml`、
+   `<link rel="alternate" type="application/rss+xml">` 或 metadata 里的
+   `alternates.types`。
 4. **`app/research/publications.ts` 加 publication 条目**（不要直接堆进 page.tsx），即使没投任何地方。
    - `status` / badges **不写评审状态**（2026-09-20 用户裁定，公司站同规）。
      有可引用的公开版本写 `preprint` / `Preprint`，没有写 `working` / `Working paper`，

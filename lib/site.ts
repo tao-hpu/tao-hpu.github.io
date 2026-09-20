@@ -1,4 +1,4 @@
-/** Site-wide constants for metadata, feeds, and structured data. */
+/** Site-wide constants for metadata, sitemap, and structured data. */
 export const SITE_URL = 'https://tao-hpu.github.io'
 export const SITE_NAME = 'Tao An'
 export const SITE_TAGLINE =
