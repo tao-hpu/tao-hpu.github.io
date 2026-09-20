@@ -46,7 +46,7 @@ export const articles: Article[] = [
     slug: 'acl-2026-citation-audit',
     title: 'We Checked All 209,985 Citations in ACL 2026',
     description:
-      'Companion note to the Tuto audit report and the Scientometrics submission: fabricated references are a rounding error (2 confirmed, 0.001%); claim-support rates did not replicate across three identical-pipeline runs, so the paper takes non-replication—not any single rate—as the principal finding.',
+      'Companion note to the Tuto audit report and the paper behind it: fabricated references are a rounding error (2 confirmed, 0.001%); claim-support rates did not replicate across three identical-pipeline runs, so the paper takes non-replication—not any single rate—as the principal finding.',
     date: '2026-07-17',
     updated: '2026-07-23',
     tags: ['metascience'],
@@ -97,7 +97,7 @@ export const articles: Article[] = [
     slug: 'consensus-dispersion',
     title: 'How Much the Model Agrees with Itself',
     description:
-      'Interactive companion to "The Preference Centroid" (TMLR submission): sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
+      'Interactive companion to the working paper "The Preference Centroid": sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
     date: '2026-07-07',
     tags: ['human-ai'],
     relatedPaper: {

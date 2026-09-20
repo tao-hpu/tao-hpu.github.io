@@ -98,8 +98,7 @@ export default function Home() {
                 <a href="https://doi.org/10.5281/zenodo.21696223" target="_blank" rel="noopener noreferrer">
                   Recombination or Discovery?
                 </a>
-                , a retrieval-grounded novelty audit of machine-generated research papers (under
-                review, NeurIPS&nbsp;2026 Workshop AI4MetaScience).
+                , a retrieval-grounded novelty audit of machine-generated research papers.
               </p>
             </div>
             <div className="news-item">
@@ -109,8 +108,7 @@ export default function Home() {
                 <a href="https://doi.org/10.5281/zenodo.21452779" target="_blank" rel="noopener noreferrer">
                   Weakening in Real Time
                 </a>
-                , on the decade-long decoupling of artifact reuse and citation (under review,
-                Scientometrics).
+                , on the decade-long decoupling of artifact reuse and citation.
               </p>
             </div>
             <div className="news-item">
@@ -158,8 +156,7 @@ export default function Home() {
                 <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
                   Fidelity Before Structure
                 </a>
-                , a controlled ablation of memory representations for long LLM conversations (now
-                under review at ARR, targeting EACL&nbsp;2027).
+                , a controlled ablation of memory representations for long LLM conversations.
               </p>
             </div>
             <div className="news-item">

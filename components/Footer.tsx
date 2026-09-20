@@ -32,7 +32,6 @@ export default function Footer() {
           <a href="/articles">Articles</a>
           <a href="/feed.xml">RSS</a>
           <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer">Medium</a>
-          <a href="/Tao-An-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé / CV (PDF)</a>
         </div>
 
         <div className="footer-column">

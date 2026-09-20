@@ -13,8 +13,16 @@ export type Publication = {
   /** Longer abstract-style blurb (authors lead) */
   tldr: string
   year: string
-  /** Primary status for filtering */
-  status: 'published' | 'under-review' | 'preprint' | 'patent' | 'working'
+  /**
+   * Primary status for filtering.
+   *
+   * There is deliberately no "under review" value. Review status goes stale
+   * between site deploys and names a venue that has not accepted the paper,
+   * so a submission is listed by what is public about it — `preprint` when
+   * there is a citable public version, `working` when there is not — and the
+   * venue badge goes on only once the paper is accepted.
+   */
+  status: 'published' | 'preprint' | 'patent' | 'working'
   badges: { label: string; secondary?: boolean; starred?: boolean }[]
   topics: { label: string; className?: string }[]
   /** Primary title href when title is a link */
@@ -32,12 +40,8 @@ export const publications: Publication[] = [
       'LLM novelty rates are exploratory upper bounds: retrieval misses most known prior art, and another LLM cannot certify a novelty verdict.',
     tldr: 'Tao An — A retrieval-grounded, protocol-frozen novelty audit of 166 machine-generated papers (FARS) against 166 topic-matched ICLR 2025 submissions. Each paper is decomposed into contribution claims on four facets (purpose, mechanism, evaluation, domain; 549 machine and 494 human contributions); prior art is retrieved under per-paper submission-date cutoffs; contributions are classified as covered, recombination, or facet-novel under a pre-registered two-judge protocol. Machine contributions are judged facet-novel more often than human ones (56.1% vs. 35.6%), but the comparison is not certifiable: an adversarial re-audit flags 15–25% of purpose-novel verdicts as potentially covered, and a 106-pair gold prior-art audit finds the deployed retrieval surfaces known prior art for only 25–29% of pairs per arm. Automated novelty rates are therefore exploratory upper bounds. A companion integrity audit of 306 Agents4Science 2025 submissions finds hard fabrication evidence in 0/47 accepted versus 16/197 rejected (one-sided Fisher p = 0.029).',
     year: '2026',
-    status: 'under-review',
-    badges: [
-      { label: 'Under Review' },
-      { label: 'NeurIPS 2026 Workshop · AI4MetaScience', secondary: true },
-      { label: 'Preprint', secondary: true },
-    ],
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
     topics: [{ label: 'Metascience', className: 'topic-meta' }],
     titleHref: 'https://doi.org/10.5281/zenodo.21696223',
     links: [
@@ -50,9 +54,7 @@ export const publications: Publication[] = [
   author    = {An, Tao},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.21696223},
-  note      = {Under review at NeurIPS 2026 Workshop AI4MetaScience
-              (non-archival)}
+  doi       = {10.5281/zenodo.21696223}
 }`,
   },
   {
@@ -63,11 +65,8 @@ export const publications: Publication[] = [
       'Existence errors are a rounding error; a single-run claim-support audit has not established that it measured anything.',
     tldr: 'Tao An — Audits both promises a citation makes on the ACL 2026 proceedings treated as a census: 4,459 papers and 209,985 references. Existence holds: 91.0% of references resolve, and two references (0.001%) are confirmed nonexistent. Claim support, scored by a two-stage language-model judge, does not repeat. An audit of 2,110 claim citations from 100 papers put the confirmed support-defect rate at 0.95%; two further independent draws at the same commit returned 5.66% and 6.12%, pooling to 5.90% [5.12, 6.80] over 3,033 claim citations (7.9 SE from the audited figure). The gap sits in the support-judgment layer and traces to a first-pass judge whose model was read from an unlogged environment variable. The paper reports all three runs and takes the non-replication, not any single rate, as the principal finding: pin and log the judge, and repeatability returns. The existence census is unaffected.',
     year: '2026',
-    status: 'under-review',
-    badges: [
-      { label: 'Under Review' },
-      { label: 'Scientometrics · Technical checks', secondary: true },
-    ],
+    status: 'working',
+    badges: [{ label: 'Working paper' }],
     topics: [{ label: 'Metascience', className: 'topic-meta' }],
     titleHref: 'https://tuto.fim.ai/report',
     links: [
@@ -89,8 +88,7 @@ export const publications: Publication[] = [
             NLP Conference},
   author = {An, Tao},
   year   = {2026},
-  note   = {Under review at Scientometrics;
-            data DOI 10.5281/zenodo.21452257}
+  note   = {Data DOI 10.5281/zenodo.21452257}
 }`,
   },
   {
@@ -101,11 +99,8 @@ export const publications: Publication[] = [
       'Reuse and citation came apart by half over a decade: a calendar-period effect, not an LLM effect, and it spares the tail.',
     tldr: 'Tao An — Links 20,529 arXiv papers published 2015–2025 to their author-designated GitHub repositories and estimates the rank association between annual fork flow and annual citation flow in every cohort-by-period cell. The association falls from roughly 0.45–0.50 in the late 2010s to roughly 0.25 by 2024, and the variation sits on the calendar-period axis rather than the publication-cohort axis: with period included the cohort coefficient is −0.0017 (p = 0.74), and the 2015 cohort, the same 262 papers throughout, declines from 0.49 to 0.04 over its own lifetime. Two candidate explanations fail on the correct axis. There is no discontinuity at the public release of general-purpose language models (−0.002, 95% CI [−0.061, +0.057]) and no gradient in field-level exposure to them (p = 0.82); nor does the citation mix degrade, with the share of substantively influential citations flat across the decade. Enumerating the full frame of 160,150 papers rather than sampling from it, the association among works that are both substantially reused and substantially cited shows no trend (−0.0031 per year, 95% CI [−0.0156, +0.0094], n = 3,885), an interval that excludes the full-sample estimate: the decoupling is a property of the population, not of its high-impact tail.',
     year: '2026',
-    status: 'under-review',
-    badges: [
-      { label: 'Under Review' },
-      { label: 'Scientometrics · With editor', secondary: true },
-    ],
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
     topics: [{ label: 'Metascience', className: 'topic-meta' }],
     titleHref: 'https://doi.org/10.5281/zenodo.21452779',
     links: [
@@ -123,8 +118,7 @@ export const publications: Publication[] = [
   author    = {An, Tao},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.21452779},
-  note      = {Under review at Scientometrics (with editor)}
+  doi       = {10.5281/zenodo.21452779}
 }`,
   },
   {
@@ -200,11 +194,8 @@ export const publications: Publication[] = [
       'Output dispersion tracks task consensus density; alignment amplifies a gradient the base model already carries.',
     tldr: 'Tao An, Shuai Feng — Sampling an aligned LLM repeatedly and embedding the completions, output dispersion (mean pairwise cosine distance) is governed by the consensus density of the task—near-zero on factual prompts, wide on open-ended ones (Spearman ρ = 0.85), replicating on a second model and predicted by held-out judges that score only the prompt (ρ = −0.91). A matched base-vs-instruct comparison shows alignment amplifies a gradient the pretrained base already carries, compressing the high-consensus end ~8.7-fold against 1.8-fold at the low end—grounding the “equalizer vs. amplifier” boundary at the distribution level rather than in posited task complexity.',
     year: '2026',
-    status: 'under-review',
-    badges: [
-      { label: 'Under Review' },
-      { label: 'TMLR', secondary: true },
-    ],
+    status: 'working',
+    badges: [{ label: 'Working paper' }],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
     titleHref: 'https://openreview.net/forum?id=6ukieTMBcG',
     links: [
@@ -216,7 +207,6 @@ export const publications: Publication[] = [
             Output Dispersion in Aligned LLMs},
   author = {An, Tao and Feng, Shuai},
   year   = {2026},
-  note   = {Under review at TMLR},
   url    = {https://openreview.net/forum?id=6ukieTMBcG}
 }`,
   },
@@ -226,13 +216,10 @@ export const publications: Publication[] = [
       'Fidelity Before Structure: Verbatim Chunks Beat Lossy Artifact Extraction in Long-Conversation LLM Memory',
     takeaway:
       'Verbatim chunks beat lossy extracted artifacts by large margins—structure should augment text, not replace it.',
-    tldr: "Tao An — A controlled ablation isolating the stored memory representation inside one fixed retrieve–rerank–reason pipeline: LLM-extracted typed artifacts versus verbatim conversation chunks, holding the model, retriever, reranker, and judge constant. Verbatim chunks win by 15.9 points on LoCoMo (43.9% vs. 28.0%) and 22.0 points on LongMemEval-S (67.4% vs. 45.4%); the extracted-artifact pipeline never beats naive RAG. The mechanism is lossy distillation—extraction discards verbatim detail that chunks retain for free—so structured memory should augment verbatim text, not replace it. (ARR Aug 2026 resubmission of the March cycle; former title It's Fidelity, Not Structure.)",
+    tldr: "Tao An — A controlled ablation isolating the stored memory representation inside one fixed retrieve–rerank–reason pipeline: LLM-extracted typed artifacts versus verbatim conversation chunks, holding the model, retriever, reranker, and judge constant. Verbatim chunks win by 15.9 points on LoCoMo (43.9% vs. 28.0%) and 22.0 points on LongMemEval-S (67.4% vs. 45.4%); the extracted-artifact pipeline never beats naive RAG. The mechanism is lossy distillation—extraction discards verbatim detail that chunks retain for free—so structured memory should augment verbatim text, not replace it. (Formerly titled It's Fidelity, Not Structure.)",
     year: '2026',
-    status: 'under-review',
-    badges: [
-      { label: 'Under Review' },
-      { label: 'ARR 2026 August → EACL 2027', secondary: true },
-    ],
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
     topics: [{ label: 'LLM Memory', className: 'topic-mem' }],
     titleHref: 'https://arxiv.org/abs/2601.00821',
     links: [
@@ -252,8 +239,7 @@ export const publications: Publication[] = [
   author  = {An, Tao},
   journal = {arXiv preprint arXiv:2601.00821},
   year    = {2026},
-  note    = {Under review at ACL ARR 2026 August (target EACL 2027);
-             formerly titled It's Fidelity, Not Structure}
+  note    = {Formerly titled It's Fidelity, Not Structure}
 }`,
   },
   {
@@ -357,7 +343,6 @@ export type FilterKey = 'all' | Publication['status'] | 'topic:' | string
 export const STATUS_FILTERS: { key: Publication['status'] | 'all'; label: string }[] = [
   { key: 'all', label: 'All' },
   { key: 'published', label: 'Published' },
-  { key: 'under-review', label: 'Under review' },
   { key: 'preprint', label: 'Preprint' },
   { key: 'working', label: 'Working paper' },
   { key: 'patent', label: 'Patent' },
