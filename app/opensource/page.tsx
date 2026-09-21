@@ -374,26 +374,46 @@ export default function OpenSource() {
               <span className="contribution-status">Merged</span>
               <span className="contribution-text">
                 <a
-                  href="https://github.com/openai/openai-agents-python/pull/3749"
+                  href="https://github.com/openai/openai-agents-python"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   openai/openai-agents-python
                 </a>{' '}
-                &mdash; fixed a resume-time bug where a pending nested agent-as-tool approval could
-                bind to the wrong tool call after an earlier entry was filtered out during
-                deserialization. Root-caused with a failing regression test;{' '}
+                &mdash; two bugs in how a paused agent run is restored from serialized state:
+                a nested agent-as-tool run resolved its agent references against the parent
+                instead of the tool&rsquo;s own agent, and a pending approval could bind to the
+                wrong tool call once an earlier entry was filtered out.
+              </span>
+            </li>
+            <li className="contribution-item">
+              <span className="contribution-status">Merged</span>
+              <span className="contribution-text">
                 <a
-                  href="https://github.com/openai/openai-agents-python/commit/60d3f95219654d68e0a43789ecbd600e38ee2606"
+                  href="https://github.com/eigenpal/docx-editor"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  co-authored into main
-                </a>
-                .
+                  eigenpal/docx-editor
+                </a>{' '}
+                &mdash; CJK typography in the OOXML layout engine: resolving the{' '}
+                <code>eastAsia</code> font slot so CJK runs measure and paint in their own face,
+                and kinsoku line breaking between ideographs.
               </span>
             </li>
           </ul>
+
+          <p className="contribution-more fade-on-scroll">
+            Per-pull-request detail, with the root-cause notes and merge commits, is on my{' '}
+            <a
+              href="https://github.com/tao-hpu#-selected-contributions"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub profile
+            </a>
+            .
+          </p>
         </section>
 
         {/* DevOps Section */}

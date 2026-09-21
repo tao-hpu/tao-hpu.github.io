@@ -194,6 +194,30 @@ a.publication-simple-item {
     color: var(--color-accent);
 }
 
+/* Pointer to the full per-PR list, which lives on the GitHub profile */
+.contribution-more {
+    max-width: var(--content-width);
+    margin: 1rem auto 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+}
+
+.contribution-more a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.contribution-more a:hover {
+    color: var(--color-accent);
+}
+
 /* Topic tag (per publication) */
 .topic-tag {
     display: inline-flex;
