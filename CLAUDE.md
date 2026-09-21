@@ -69,6 +69,14 @@ Zenodo 铸的 DOI 是**论文**的身份，companion note 只是导读，两者�
 **后续回填**：将来 arXiv 放出来或 venue 录用了，回来更新 research 页的 badge 和 BibTeX，
 但 **concept DOI 不换**，它设计上就是跨版本恒定的引用目标。
 
+## 关联仓库：tao-hpu/tao-hpu（GitHub 首页 README）
+
+`app/opensource/page.tsx` 里 `id="contributions"` 那一段和 GitHub 首页的
+`Selected contributions` 段是同一批内容的两种粒度，没有自动同步。规则与那个仓库共享一份
+（两个仓库指向同一个文件，改一处两边生效）：
+
+@~/.claude/shared/contributions-sync.md
+
 ## 关联站点：fim-ai-www（公司站）
 
 两站的内容分工与同步规则是共享的，见下方导入（两个仓库指向同一份，改一处两边生效）：
