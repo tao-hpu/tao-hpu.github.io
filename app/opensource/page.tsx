@@ -4,9 +4,9 @@ export const metadata: Metadata = {
   title: 'Open Source',
   alternates: { canonical: '/opensource' },
   description:
-    'Open-source courses and developer tools by Tao An: a from-scratch LLM course, an IELTS whitepaper, Tuto for corpus-scale citation-integrity auditing, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
+    'Open-source courses and developer tools by Tao An: a from-scratch LLM course, a Chinese-English grammar reader, an IELTS whitepaper, Tuto for corpus-scale citation-integrity auditing, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
   keywords:
-    'Tao An, open source, linalg-to-attention, llm-from-scratch, ielts-whitepaper, IELTS, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
+    'Tao An, open source, linalg-to-attention, llm-from-scratch, english-catalog, English grammar, ielts-whitepaper, IELTS, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
   openGraph: {
     title: 'Open Source · Tao An',
     description: 'Open courses, AI-coding utilities, and ops automation, all open source.',
@@ -201,6 +201,44 @@ export default function OpenSource() {
                   </a>
                   <a
                     href="https://github.com/tao-hpu/ielts-whitepaper"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Course</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
+                <span className="venue-badge venue-badge-secondary">React · TypeScript</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://english.fim.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  english-catalog &mdash; 英语名录
+                </a>
+                <p className="publication-simple-tldr">
+                  A Chinese-English grammar reader for speakers of Chinese. The two languages do not
+                  share one system of tense, aspect, or state, so the book opens with that contrast
+                  and then walks sentence patterns, auxiliaries and tense, clauses, non-finite verbs,
+                  lexical chunks, and meeting language &mdash;{' '}
+                  <strong>20 sections across 4 parts</strong>. Band descriptors and the prep loop are
+                  in <em>ielts-whitepaper</em>; this volume is the grammar underneath.
+                </p>
+                <div className="publication-simple-links">
+                  <a href="https://english.fim.ai" target="_blank" rel="noopener noreferrer">
+                    Read online
+                  </a>
+                  <a
+                    href="https://github.com/tao-hpu/english-catalog"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
