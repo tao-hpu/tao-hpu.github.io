@@ -1,0 +1,152 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import VideoEmbed from '@/components/VideoEmbed'
+import ComplexityGap from '@/components/ComplexityGap'
+import DeferenceLoop from '@/components/DeferenceLoop'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('equalizer-amplifier')
+
+<ArticleLayout slug="equalizer-amplifier">
+
+A senior engineer reads a block of generated code, finds the flaw in a few seconds, and
+rewrites the prompt. A junior engineer reads the same block, finds it plausible, and ships
+it. Same model, same prompt, same afternoon. I watched versions of this scene often enough
+in our own team that it became the starting point of a paper,
+[AI as Equalizer or Amplifier?](https://doi.org/10.3233/FAIA260506), presented at HHAI 2026
+in Brussels.
+
+The scene contradicts the best-measured result in the field. In a field experiment with
+5,179 customer-service agents, AI assistance raised productivity 14% on average and 34%
+for the least-skilled agents, while top performers barely moved. Writing and coding studies
+found the same compression. On that evidence, AI is an equalizer: it helps most the people
+who need it most.
+
+Other studies point the opposite way. Among 758 BCG consultants, everyone gained on tasks
+inside the model's capability; on tasks outside it, consultants who leaned on the model did
+worse than those working alone, and the less-skilled ones were the least able to tell which
+kind of task they had. A 2025 measurement found experienced developers slower with AI while
+they believed they were faster.
+
+Both sets of results are careful. The paper's argument is that they are measuring different
+tasks.
+
+<VideoEmbed
+  youtubeId="O5W_uMm9H8g"
+  title="AI as Equalizer or Amplifier? A five-minute summary of the HHAI 2026 paper"
+  caption="Five-minute summary of the paper. The conference talk is on YouTube as well."
+/>
+
+## One moderator, two zones
+
+The reconciliation adds one variable: task complexity. On routine, well-structured work,
+the kind where the right approach is well represented in training data and quality can be
+checked against an explicit standard, the model supplies a ceiling of competent output.
+Novices are lifted to it. Experts are already there. The distribution compresses.
+
+On ill-defined, judgment-heavy work, the model supplies raw material. Someone has to decide
+what to ask, judge what came back, and steer the next attempt. That work is what domain
+expertise consists of, so the gap opens instead of closing.
+
+<ComplexityGap />
+
+The figure is a schematic, and I want to be precise about what it claims. The paper
+proposes a shape: compression inside the model's capability frontier, widening beyond it.
+It does not estimate where the frontier sits for any given job, and nothing on the y-axis
+is a measurement. The two numbers in the caption are real, but they come from other
+people's experiments at the two ends of the axis, not from a single study that swept
+complexity.
+
+The capability slider is there for the objection I hear most: models keep improving, so
+the amplifier zone will shrink until it disappears. Drag it right. The frontier moves and
+tasks that used to amplify start to equalize. The right-hand zone stays, because the work
+that pays most tends to sit just beyond whatever the current model does reliably.
+
+## Why judgment is the bottleneck
+
+The paper splits the human contribution into three layers: defining the problem,
+evaluating the output, and refining it. The second is where novices lose the most. If you
+cannot tell a good answer from a plausible one, better prompts do not help, because the
+prompt was never the constraint. That judgment is domain knowledge. It does not come from
+tool training.
+
+One model behavior turns the difference from additive into compounding. Language models
+defer to user feedback, and published measurements put compliance near 100%, including for
+requests that are logically flawed. Every refinement cycle therefore inherits the quality
+of the feedback that drove it.
+
+<DeferenceLoop />
+
+This is the mechanism I find most useful in practice, because it predicts something the
+equalizer framing does not: with more turns of conversation, the gap between two users of
+the same model should grow, and the weaker draft should end up sounding as confident as the
+stronger one. A reviewer skimming both outputs would not see the difference. Someone with
+domain knowledge would.
+
+## What this paper can and cannot carry
+
+It is a position paper, and its evidence is weaker than the evidence it reconciles. The
+equalizer side rests on randomized field experiments. The amplifier side rests on
+convergent indirect evidence plus my structured observation of roughly 10 to 20
+colleagues using Claude, Claude Code and Cursor since mid-2024, across frontend, backend
+and non-technical roles. Those observations were not pre-registered, tasks were not held
+constant, and quality was judged by the people involved. They generate hypotheses. They do
+not test them.
+
+The bigger gap is that "task complexity" is never turned into something you can measure.
+The paper places tasks on the axis by example: a formulaic reply on the left, legal
+reasoning on the right. That is enough to state the claim and not enough to check it. Until
+someone can score a task's position before seeing the results, the framework can explain
+any outcome after the fact, which is a weakness, not a strength.
+
+## What came after
+
+The measurement problem is the one I went back to. In a later working paper,
+[The Preference Centroid](/articles/consensus-dispersion), Shuai Feng and I replace
+"complexity" with a quantity you can read off the model: how much knowledgeable people
+would agree on what a good answer looks like. Judges shown only the prompt score that
+consensus, and it predicts how widely the model's own sampled answers scatter
+(Spearman &rho;&nbsp;=&nbsp;&minus;0.91 across 20 prompts). High-consensus tasks are the
+equalizer end of the axis above; low-consensus tasks are the amplifier end. It is still a
+proxy, and it still has to be connected to human performance data, but it gives the
+x-axis a scale.
+
+The paper closes with three research questions for the hybrid-intelligence community, and
+they remain open:
+
+1. **Where does equalization end?** Vary task complexity in one controlled design and
+   measure whether AI compresses or stretches the performance distribution.
+2. **Can an interface tell which zone a user is in?** And can it scaffold a novice in the
+   amplifier zone without training them to accept outputs passively?
+3. **Does sustained AI use build or erode expertise?** This needs multi-year tracking of
+   independent judgment, not of output volume.
+
+## What I tell teams rolling out AI
+
+The paper states the design consequence as one line: build AI that rewards expertise and
+develops it. In deployments that becomes three decisions.
+
+- **Split the workflow by zone.** Hand the routine stages to the model and expect them to
+  equalize. Keep the judgment stages with someone who can judge, and use the model to
+  extend that person's reach.
+- **Put friction where stakes are high.** Speed of acceptance is the wrong goal on
+  consequential decisions. Make the user check the assumptions the output depends on
+  before it goes out.
+- **Measure verification, not volume.** When a model can produce plausible work in
+  seconds, output counts stop telling you anything. Track whether the human in the loop
+  caught what needed catching.
+
+The same toolset rolled out across a company will work for some teams and backfire for
+others. In my experience the difference is rarely training. It is which side of the
+frontier the team's core work sits on.
+
+---
+
+This is an interactive companion to *AI as Equalizer or Amplifier? Task Complexity as the
+Moderating Factor for Human Expertise in Hybrid Intelligence Systems*, HHAI 2026, IOS Press
+Frontiers in Artificial Intelligence and Applications vol. 423, pp. 212–220, open access
+([DOI](https://doi.org/10.3233/FAIA260506); preprint on [arXiv](https://arxiv.org/abs/2512.10961)).
+Talk video on [YouTube](https://www.youtube.com/watch?v=dzhSFIvbmUU). Both figures above are
+schematics of the paper's claims; the only measured values on this page are the cited
+results from other studies and from the Preference Centroid paper.
+
+</ArticleLayout>

@@ -1,4 +1,4 @@
-/* 文章内交互图表: BenchmarkExplorer / LossyExtraction / PreferenceCentroid / AlignmentAmplifier / SpecificityLadder / LineageTimeline / InterventionGate / CostFragments / BenchmarkGap；以及视频嵌入 VideoEmbed。 */
+/* 文章内交互图表: BenchmarkExplorer / LossyExtraction / PreferenceCentroid / AlignmentAmplifier / SpecificityLadder / LineageTimeline / InterventionGate / CostFragments / BenchmarkGap / ComplexityGap / DeferenceLoop；以及视频嵌入 VideoEmbed。 */
 
 /* Interactive figures shared frame */
 .mem-explorer,
@@ -935,4 +935,80 @@
     color: var(--color-muted);
     line-height: 1.5;
     margin: 0.7rem 0.25rem 0.1rem;
+}
+
+/* Equalizer / amplifier (ComplexityGap, DeferenceLoop): schematic curves, expert in accent, novice in text */
+.ea-line {
+    fill: none;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.ea-expert {
+    stroke: var(--color-accent);
+}
+
+.ea-novice {
+    stroke: var(--color-text);
+    opacity: 0.7;
+}
+
+.ea-unaided {
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+    opacity: 0.45;
+}
+
+.ea-dot {
+    stroke: var(--color-surface);
+    stroke-width: 1.5;
+}
+
+.ea-dot-expert,
+.ea-swatch-expert {
+    fill: var(--color-accent);
+    background: var(--color-accent);
+}
+
+.ea-dot-novice,
+.ea-swatch-novice {
+    fill: var(--color-text);
+    background: var(--color-text);
+    opacity: 0.75;
+}
+
+.ea-zone-amp {
+    fill: var(--color-accent-light);
+}
+
+.ea-frontier {
+    stroke: var(--color-accent);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+}
+
+.ea-frontier-label {
+    font-size: 10px;
+    fill: var(--color-accent);
+}
+
+.ea-cursor {
+    stroke: var(--color-border);
+    stroke-width: 1;
+}
+
+.ea-gap {
+    stroke: var(--color-muted);
+    stroke-width: 3;
+    opacity: 0.35;
+}
+
+.ea-tickmark {
+    stroke: var(--color-muted);
+    stroke-width: 1;
+}
+
+.ea-toggle {
+    cursor: pointer;
 }

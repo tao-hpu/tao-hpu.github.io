@@ -29,6 +29,18 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'equalizer-amplifier',
+    title: 'Same Tool, Opposite Verdicts',
+    description:
+      'Interactive companion to the HHAI 2026 paper "AI as Equalizer or Amplifier?": why AI compresses the novice-expert gap on routine tasks and widens it on judgment-heavy ones, how model deference compounds the difference turn by turn, and what the position paper cannot yet show.',
+    date: '2026-09-24',
+    tags: ['human-ai'],
+    relatedPaper: {
+      label: 'AI as Equalizer or Amplifier? (HHAI 2026)',
+      href: 'https://doi.org/10.3233/FAIA260506',
+    },
+  },
+  {
     slug: 'citation-decoupling',
     title: 'The Citation Ledger Is Fine. The Citation Currency Is Dying.',
     description:

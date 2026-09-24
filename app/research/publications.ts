@@ -266,6 +266,7 @@ export const publications: Publication[] = [
       },
       { label: 'Summary (5 min)', href: 'https://www.youtube.com/watch?v=O5W_uMm9H8g' },
       { label: 'Talk (video)', href: 'https://www.youtube.com/watch?v=dzhSFIvbmUU' },
+      { label: 'Interactive note', href: '/articles/equalizer-amplifier', internal: true },
       { label: 'Conference', href: 'https://hhai-conference.org/2026/' },
     ],
     bibtex: `@inproceedings{an2026equalizer,
