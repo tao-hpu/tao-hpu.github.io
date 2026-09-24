@@ -135,7 +135,7 @@ export const publications: Publication[] = [
       { label: 'Survey', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
-    titleHref: 'https://doi.org/10.5281/zenodo.21438396',
+    titleHref: 'https://openreview.net/forum?id=b0yKEdAXEr',
     links: [
       { label: 'OpenReview', href: 'https://openreview.net/forum?id=b0yKEdAXEr' },
       { label: 'Preprint (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21438396' },
