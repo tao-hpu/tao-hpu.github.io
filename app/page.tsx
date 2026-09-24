@@ -87,7 +87,7 @@ export default function Home() {
                 <a href="https://openreview.net/forum?id=b0yKEdAXEr" target="_blank" rel="noopener noreferrer">
                   When Should the Agent Speak?
                 </a>{' '}
-                accepted at <strong>TMLR</strong> (Transactions on Machine Learning Research), a
+                published in <strong>TMLR</strong> (Transactions on Machine Learning Research), a
                 survey of intervention timing for always-on assistants.
               </p>
             </div>

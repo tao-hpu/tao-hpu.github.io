@@ -127,12 +127,11 @@ export const publications: Publication[] = [
       'When Should the Agent Speak? A Survey of Intervention Timing for Always-On AI Assistants',
     takeaway:
       'Intervene only when expected benefit exceeds interruption cost—and evaluate that cost term explicitly.',
-    tldr: 'Tao An — Accepted at Transactions on Machine Learning Research (TMLR), 2026. Surveys intervention timing for always-on assistants around one decision rule: intervene iff the expected benefit of acting exceeds the expected cost of interrupting. Reconnects two literatures that do not cite each other, the 1999–2017 interruptibility line that formalized interruption cost but had no capable actor, and the 2024–2026 proactive-agent wave that has actors but rediscovers the cost term only in fragments. Argues evaluation is the gating layer, and proposes a benchmark design for open-world intervention timing with an explicit cost term.',
+    tldr: 'Tao An — Transactions on Machine Learning Research (TMLR), 2026. Surveys intervention timing for always-on assistants around one decision rule: intervene iff the expected benefit of acting exceeds the expected cost of interrupting. Reconnects two literatures that do not cite each other, the 1999–2017 interruptibility line that formalized interruption cost but had no capable actor, and the 2024–2026 proactive-agent wave that has actors but rediscovers the cost term only in fragments. Argues evaluation is the gating layer, and proposes a benchmark design for open-world intervention timing with an explicit cost term.',
     year: '2026',
     status: 'published',
     badges: [
       { label: 'TMLR 2026', starred: true },
-      { label: 'Accepted · to appear', secondary: true },
       { label: 'Survey', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
@@ -154,8 +153,7 @@ export const publications: Publication[] = [
   journal = {Transactions on Machine Learning Research},
   issn    = {2835-8856},
   year    = {2026},
-  url     = {https://openreview.net/forum?id=b0yKEdAXEr},
-  note    = {Accepted; to appear}
+  url     = {https://openreview.net/forum?id=b0yKEdAXEr}
 }`,
   },
   {
