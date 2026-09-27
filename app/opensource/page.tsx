@@ -439,6 +439,21 @@ export default function OpenSource() {
                 and kinsoku line breaking between ideographs.
               </span>
             </li>
+            <li className="contribution-item">
+              <span className="contribution-status">Merged</span>
+              <span className="contribution-text">
+                <a
+                  href="https://github.com/acmesh-official/acme.sh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  acmesh-official/acme.sh
+                </a>{' '}
+                &mdash; a failed write on a full disk truncated the certificate&rsquo;s config
+                file to zero bytes and blocked renewal; config writes now go through a verified
+                temporary copy that replaces the original only on success.
+              </span>
+            </li>
           </ul>
 
           <p className="contribution-more fade-on-scroll">
