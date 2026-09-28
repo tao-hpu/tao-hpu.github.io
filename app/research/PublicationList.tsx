@@ -5,6 +5,16 @@ import { STATUS_FILTERS, publications, type Publication } from './publications'
 
 type StatusKey = (typeof STATUS_FILTERS)[number]['key']
 
+// Peer-reviewed work first, then public preprints, then the rest. Within a
+// status the array order in publications.ts holds (newest first).
+const STATUS_RANK: Record<Publication['status'], number> = {
+  published: 0,
+  preprint: 1,
+  working: 2,
+  patent: 3,
+}
+const ORDERED = [...publications].sort((a, b) => STATUS_RANK[a.status] - STATUS_RANK[b.status])
+
 function Badge({
   label,
   secondary,
@@ -54,7 +64,10 @@ function PubItem({ pub }: { pub: Publication }) {
           <span className="publication-simple-title">{pub.title}</span>
         )}
         <p className="publication-takeaway">{pub.takeaway}</p>
-        <p className="publication-simple-tldr">{pub.tldr}</p>
+        <details className="publication-abstract">
+          <summary>Abstract</summary>
+          <p className="publication-simple-tldr">{pub.tldr}</p>
+        </details>
         {(pub.links?.length || pub.bibtex) && (
           <div className="publication-simple-links">
             {pub.links?.map((l) => (
@@ -84,8 +97,8 @@ export default function PublicationList() {
   const [status, setStatus] = useState<StatusKey>('all')
 
   const filtered = useMemo(() => {
-    if (status === 'all') return publications
-    return publications.filter((p) => p.status === status)
+    if (status === 'all') return ORDERED
+    return ORDERED.filter((p) => p.status === status)
   }, [status])
 
   return (

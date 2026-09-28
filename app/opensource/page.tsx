@@ -4,19 +4,19 @@ export const metadata: Metadata = {
   title: 'Open Source',
   alternates: { canonical: '/opensource' },
   description:
-    'Open-source courses and developer tools by Tao An: a from-scratch LLM course, a Chinese-English grammar reader, an IELTS whitepaper, Tuto for corpus-scale citation-integrity auditing, AI-coding utilities for Claude Code, and ops automation. Free and contribution-welcome.',
+    'Courses and developer tools by Tao An: linear algebra to attention, a from-scratch LLM course, algorithm visualizations, an IELTS whitepaper, a Chinese-English grammar reader, Tuto for citation-integrity auditing, AI-coding utilities, TLS automation, and merged upstream fixes.',
   keywords:
     'Tao An, open source, linalg-to-attention, llm-from-scratch, english-catalog, English grammar, ielts-whitepaper, IELTS, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
   openGraph: {
     title: 'Open Source · Tao An',
-    description: 'Open courses, AI-coding utilities, and ops automation, all open source.',
+    description: 'Open courses, research tools, AI-coding utilities, and upstream contributions.',
     type: 'website',
     url: 'https://tao-hpu.github.io/opensource',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Open Source · Tao An',
-    description: 'Open courses, AI-coding utilities, and ops automation, all open source.',
+    description: 'Open courses, research tools, AI-coding utilities, and upstream contributions.',
   },
 }
 
@@ -38,16 +38,17 @@ export default function OpenSource() {
               </strong>
             </h1>
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
-              <strong>Courses, research tools, coding utilities, and ops automation</strong> released
-              under permissive licenses. Product work and client deployments live on{' '}
+              <strong>Courses, research tools, coding utilities, and ops automation</strong>, with
+              source on GitHub. Code is MIT or Apache-2.0; course text may carry its own license,
+              stated in each repository. Product work and client deployments live on{' '}
               <a href="/building">
                 <strong>Building</strong>
               </a>
-              ; the flagship agent platform is{' '}
+              ; the flagship agent platform,{' '}
               <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">
                 <strong>FIM One</strong>
               </a>
-              .
+              , is source-available rather than open source.
             </p>
           </div>
         </section>
@@ -70,15 +71,15 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  linalg-to-attention &mdash; 线性代数 → 注意力
+                  linalg-to-attention: 线性代数 → 注意力
                 </a>
                 <p className="publication-simple-tldr">
                   The visual prelude to <em>llm-from-scratch</em>: building from a single vector all
                   the way up to the attention mechanism, one geometric move at a time. Every page
-                  answers a single <em>why</em> &mdash; drag a slider, change a parameter, watch the
+                  answers a single <em>why</em>: drag a slider, change a parameter, watch the
                   geometry shift, then one line ties it straight back to LLMs. From vectors and
                   matrices through SVD, softmax, and cross-entropy to self-attention and the
-                  Transformer block &mdash; <strong>35 interactive lessons across 9 parts</strong>, so
+                  Transformer block, in <strong>35 interactive lessons across 9 parts</strong>, so
                   you understand the math behind training, fine-tuning, and inference instead of just
                   calling an API.
                 </p>
@@ -110,12 +111,12 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  llm-from-scratch &mdash; 从 0 到 1 手搓大模型
+                  llm-from-scratch: 从 0 到 1 手搓大模型
                 </a>
                 <p className="publication-simple-tldr">
                   A from-scratch LLM course in Chinese: build a Transformer by hand, line by line,
                   starting from a character-level bigram and working all the way up to reproducing{' '}
-                  <strong>GPT-2 124M</strong> &mdash; with interactive in-browser visualizations at
+                  <strong>GPT-2 124M</strong>, with interactive in-browser visualizations at
                   every step. Aimed at readers who want to understand attention, training, and
                   sampling by writing the code, not just calling an API.
                 </p>
@@ -147,7 +148,7 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  algo-viz &mdash; 算法可视化实验室
+                  algo-viz: 算法可视化实验室
                 </a>
                 <p className="publication-simple-tldr">
                   The visual counterpart to the LLM courses, turned on algorithms themselves: drag a
@@ -184,13 +185,13 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  ielts-whitepaper &mdash; 雅思白皮书
+                  ielts-whitepaper: 雅思白皮书
                 </a>
                 <p className="publication-simple-tldr">
                   Treats IELTS not as an English exam but as{' '}
                   <strong>a scoring system you can reverse-engineer</strong>: starting from the
                   official band descriptors and working backwards to what each of Listening, Reading,
-                  Writing, and Speaking actually rewards &mdash; covering score-allocation strategy,
+                  Writing, and Speaking rewards. It covers score-allocation strategy,
                   question-type maps, speaking and writing frameworks, and a
                   diagnose&nbsp;&rarr;&nbsp;prescribe&nbsp;&rarr;&nbsp;retrain prep loop. Written in
                   Chinese, for everyone heading out into the world.
@@ -223,13 +224,13 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  english-catalog &mdash; 英语名录
+                  english-catalog: 英语名录
                 </a>
                 <p className="publication-simple-tldr">
                   A Chinese-English grammar reader for speakers of Chinese. The two languages do not
                   share one system of tense, aspect, or state, so the book opens with that contrast
                   and then walks sentence patterns, auxiliaries and tense, clauses, non-finite verbs,
-                  lexical chunks, and meeting language &mdash;{' '}
+                  lexical chunks, and meeting language in{' '}
                   <strong>20 sections across 4 parts</strong>. Band descriptors and the prep loop are
                   in <em>ielts-whitepaper</em>; this volume is the grammar underneath.
                 </p>
@@ -273,16 +274,16 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Tuto &mdash; Citation-integrity auditing at corpus scale
+                  Tuto: Citation-integrity auditing at corpus scale
                 </a>
                 <p className="publication-simple-tldr">
-                  Audits whether a paper's references actually exist and, for claim citations, whether
-                  the cited paper really supports the claim. The first run swept all{' '}
-                  <strong>209,985 references</strong> in the ACL&nbsp;2026 proceedings (4,459 papers):
-                  only 2 came back confirmed nonexistent (0.001%), so fabrication is not the real
-                  problem, while <strong>16% of papers</strong> carry at least one confirmed
-                  unsupported citation. It publishes its own first-pass precision (13%), because the
-                  number-one enemy of automated citation checking is its own false positives.
+                  Audits whether a paper's references exist and, for claim citations, whether the
+                  cited paper supports the claim. The first run covered all{' '}
+                  <strong>209,985 references</strong> in the ACL&nbsp;2026 proceedings (4,459
+                  papers): 2 were confirmed nonexistent (0.001%). The claim-support rate did not
+                  replicate: three runs of the same pipeline gave 0.95%, 5.66%, and 6.12%, traced to
+                  an unlogged judge model. The report publishes all three runs and treats the
+                  non-replication as the finding.
                 </p>
                 <div className="publication-simple-links">
                   <a href="https://github.com/fim-ai/tuto" target="_blank" rel="noopener noreferrer">
@@ -301,9 +302,9 @@ export default function OpenSource() {
           </div>
         </section>
 
-        {/* AI Coding Section */}
+        {/* AI Coding & Ops Section */}
         <section className="publications-section" id="ai-coding">
-          <h2 className="section-title-small fade-on-scroll">AI Coding</h2>
+          <h2 className="section-title-small fade-on-scroll">AI Coding &amp; Ops</h2>
 
           <div className="publication-simple-list fade-on-scroll">
             <div className="publication-simple-item">
@@ -323,48 +324,17 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  nano-spec &mdash; Spec-driven thinking, nano-sized docs
+                  nano-spec: Spec-driven thinking, nano-sized docs
                 </a>
                 <p className="publication-simple-tldr">
                   A lightweight task-specification format for AI-assisted development. Instead of
-                  heavyweight specs or no spec at all, nano-spec captures just enough intent &mdash;
-                  goal, constraints, acceptance &mdash; in a tiny document the model and you can both
+                  heavyweight specs or no spec at all, nano-spec captures just enough intent
+                  (goal, constraints, acceptance) in a tiny document the model and you can both
                   hold in your head, so agents build the right thing on the first pass.
                 </p>
                 <div className="publication-simple-links">
                   <a
                     href="https://github.com/tao-hpu/nano-spec"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="publication-simple-item">
-              <div className="publication-simple-meta">
-                <span className="venue-badge">Toolkit</span>
-                <span className="venue-badge venue-badge-secondary">Python</span>
-              </div>
-              <div className="publication-simple-body">
-                <a
-                  className="publication-simple-title"
-                  href="https://github.com/tao-hpu/tao-ai-toolkit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  tao-ai-toolkit &mdash; Agents &amp; commands for AI coding
-                </a>
-                <p className="publication-simple-tldr">
-                  A curated collection of specialized AI coding agents and slash commands for
-                  Claude&nbsp;Code and other AI coding tools &mdash; the same workflows I use in
-                  production, packaged so you can drop them into your own setup.
-                </p>
-                <div className="publication-simple-links">
-                  <a
-                    href="https://github.com/tao-hpu/tao-ai-toolkit"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -386,15 +356,47 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  ccmap &mdash; Coding heatmap for Claude Code + Codex
+                  ccmap: Coding heatmap for Claude Code + Codex
                 </a>
                 <p className="publication-simple-tldr">
                   Scans your local Claude&nbsp;Code and Codex usage and renders a GitHub-style coding
-                  heatmap &mdash; both as an embeddable badge and a shareable HTML report, so you can
+                  heatmap, both as an embeddable badge and a shareable HTML report, so you can
                   see when and how much you actually code with AI assistants.
                 </p>
                 <div className="publication-simple-links">
                   <a href="https://github.com/tao-hpu/ccmap" target="_blank" rel="noopener noreferrer">
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Ops</span>
+                <span className="venue-badge venue-badge-secondary">Shell</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://github.com/tao-hpu/certease"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  certease: Bash ACME / SSL orchestration
+                </a>
+                <p className="publication-simple-tldr">
+                  One-command TLS certificates for heterogeneous fleets. Auto-detects the nginx flavor
+                  (standard / LNMP / BT panel), gives you unified observability (<code>doctor</code> /{' '}
+                  <code>status</code>), and falls back across CAs
+                  (ZeroSSL&nbsp;&rarr;&nbsp;Let's&nbsp;Encrypt). Built for ops managing many
+                  servers that were never set up the same way twice.
+                </p>
+                <div className="publication-simple-links">
+                  <a
+                    href="https://github.com/tao-hpu/certease"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     GitHub
                   </a>
                 </div>
@@ -417,9 +419,9 @@ export default function OpenSource() {
                   rel="noopener noreferrer"
                 >
                   openai/openai-agents-python
-                </a>{' '}
-                &mdash; two bugs in how a paused agent run is restored from serialized state:
-                a nested agent-as-tool run resolved its agent references against the parent
+                </a>:
+                two bugs in how a paused agent run is restored from serialized state.
+                A nested agent-as-tool run resolved its agent references against the parent
                 instead of the tool&rsquo;s own agent, and a pending approval could bind to the
                 wrong tool call once an earlier entry was filtered out.
               </span>
@@ -433,8 +435,8 @@ export default function OpenSource() {
                   rel="noopener noreferrer"
                 >
                   eigenpal/docx-editor
-                </a>{' '}
-                &mdash; CJK typography in the OOXML layout engine: resolving the{' '}
+                </a>:
+                CJK typography in the OOXML layout engine, by resolving the{' '}
                 <code>eastAsia</code> font slot so CJK runs measure and paint in their own face,
                 and kinsoku line breaking between ideographs.
               </span>
@@ -448,8 +450,8 @@ export default function OpenSource() {
                   rel="noopener noreferrer"
                 >
                   acmesh-official/acme.sh
-                </a>{' '}
-                &mdash; a failed write on a full disk truncated the certificate&rsquo;s config
+                </a>:
+                a failed write on a full disk truncated the certificate&rsquo;s config
                 file to zero bytes and blocked renewal; config writes now go through a verified
                 temporary copy that replaces the original only on success.
               </span>
@@ -471,8 +473,8 @@ export default function OpenSource() {
                   rel="noopener noreferrer"
                 >
                   docling-core
-                </a>{' '}
-                &mdash; East Asian list numbering in DOCX conversion: nine Chinese, Japanese and
+                </a>:
+                East Asian list numbering in DOCX conversion: nine Chinese, Japanese and
                 circled-digit numbering formats that were dropped are now rendered, checked against
                 the output of Microsoft Word, and kept through Markdown export.
               </span>
@@ -492,45 +494,6 @@ export default function OpenSource() {
           </p>
         </section>
 
-        {/* DevOps Section */}
-        <section className="publications-section" id="devops">
-          <h2 className="section-title-small fade-on-scroll">DevOps</h2>
-
-          <div className="publication-simple-list fade-on-scroll">
-            <div className="publication-simple-item">
-              <div className="publication-simple-meta">
-                <span className="venue-badge">Ops</span>
-                <span className="venue-badge venue-badge-secondary">Shell</span>
-              </div>
-              <div className="publication-simple-body">
-                <a
-                  className="publication-simple-title"
-                  href="https://github.com/tao-hpu/certease"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  certease &mdash; Bash ACME / SSL orchestration
-                </a>
-                <p className="publication-simple-tldr">
-                  One-command TLS certificates for heterogeneous fleets. Auto-detects the nginx flavor
-                  (standard / LNMP / BT panel), gives you unified observability (<code>doctor</code> /{' '}
-                  <code>status</code>), and falls back across CAs
-                  (ZeroSSL&nbsp;&rarr;&nbsp;Let's&nbsp;Encrypt) &mdash; built for ops managing many
-                  servers that were never set up the same way twice.
-                </p>
-                <div className="publication-simple-links">
-                  <a
-                    href="https://github.com/tao-hpu/certease"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   )

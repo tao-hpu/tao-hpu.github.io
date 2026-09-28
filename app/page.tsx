@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import HeroTitle from '@/components/HeroTitle'
-import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from '@/lib/site'
+import { SITE_DESCRIPTION, SITE_EMAIL, SITE_TAGLINE, SITE_URL } from '@/lib/site'
 import NeuralNetwork from './NeuralNetwork'
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
+            <h1 className="hero-eyebrow fade-in">Tao An · AI researcher</h1>
             <HeroTitle />
             <p className="hero-description fade-in" style={{ animationDelay: '1.0s' }}>
               <strong>MS in Artificial Intelligence</strong>, Hawaii Pacific University (2026). A
@@ -31,7 +32,7 @@ export default function Home() {
             <p className="hero-links fade-in" style={{ animationDelay: '1.25s' }}>
               <a href="/research">Research →</a>
               <a href="/articles">Interactive notes →</a>
-              <a href="mailto:tan1@my.hpu.edu">Email</a>
+              <a href={`mailto:${SITE_EMAIL}`}>Email</a>
             </p>
           </div>
           <div className="hero-visual fade-in" style={{ animationDelay: '0s' }}>
@@ -63,10 +64,10 @@ export default function Home() {
                 <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">
                   <strong>FIM One</strong>
                 </a>
-                , an open-source AI connector hub that links agents to enterprise systems (Feishu,
-                Slack, Teams &amp; more). Also serving government and enterprise clients in China,
-                with production AI systems focused on <strong>legal</strong> and{' '}
-                <strong>healthcare</strong> domains.
+                , a source-available agent platform that connects agents to the enterprise systems
+                a company already runs (Feishu, WeCom, Slack, Teams, ERP, CRM). Also serving
+                government and enterprise clients in China, with production AI systems in the{' '}
+                <strong>legal</strong> and <strong>healthcare</strong> domains.
               </p>
               <p className="about-text">
                 <strong>Research interests:</strong> Retrieval-Augmented Generation, LLM memory
@@ -92,9 +93,26 @@ export default function Home() {
               </p>
             </div>
             <div className="news-item">
+              <span className="news-date">2026.09</span>
+              <p className="news-body">
+                <span className="news-dot news-dot-building"></span>
+                New interactive note:{' '}
+                <a href="/articles/equalizer-amplifier">Same Tool, Opposite Verdicts</a>, the
+                companion to the HHAI&nbsp;2026 paper.
+              </p>
+            </div>
+            <div className="news-item">
+              <span className="news-date">2026.09</span>
+              <p className="news-body">
+                <span className="news-dot news-dot-building"></span>
+                Fixes merged upstream in openai-agents-python, docling, acme.sh, and docx-editor.{' '}
+                <a href="/opensource#contributions">Contributions</a>
+              </p>
+            </div>
+            <div className="news-item">
               <span className="news-date">2026.07</span>
               <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint —{' '}
+                <span className="news-dot news-dot-research"></span>New preprint:{' '}
                 <a href="https://doi.org/10.5281/zenodo.21696223" target="_blank" rel="noopener noreferrer">
                   Recombination or Discovery?
                 </a>
@@ -104,7 +122,7 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2026.07</span>
               <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint —{' '}
+                <span className="news-dot news-dot-research"></span>New preprint:{' '}
                 <a href="https://doi.org/10.5281/zenodo.21452779" target="_blank" rel="noopener noreferrer">
                   Weakening in Real Time
                 </a>
@@ -152,7 +170,7 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2026.01</span>
               <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint —{' '}
+                <span className="news-dot news-dot-research"></span>New preprint:{' '}
                 <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
                   Fidelity Before Structure
                 </a>
@@ -162,7 +180,8 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2026.01</span>
               <p className="news-body">
-                <span className="news-dot news-dot-building"></span>Interviewed by Medium —{' '}
+                <span className="news-dot news-dot-building"></span>Interviewed by Sanjay Singhania
+                on Medium:{' '}
                 <a
                   href="https://medium.com/@sanjays_8381/if-i-had-to-launch-ai-in-2026-id-start-here-expert-interview-ca62024f2ae8"
                   target="_blank"
@@ -176,7 +195,7 @@ export default function Home() {
             <div className="news-item">
               <span className="news-date">2025.08</span>
               <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint —{' '}
+                <span className="news-dot news-dot-research"></span>New preprint:{' '}
                 <a href="https://arxiv.org/abs/2508.13171" target="_blank" rel="noopener noreferrer">
                   Cognitive Workspace: Active Memory Management for LLMs
                 </a>
@@ -184,6 +203,14 @@ export default function Home() {
               </p>
             </div>
           </div>
+          <p className="news-legend" aria-hidden="true">
+            <span>
+              <span className="news-dot news-dot-research"></span>Research
+            </span>
+            <span>
+              <span className="news-dot news-dot-building"></span>Building &amp; writing
+            </span>
+          </p>
         </section>
 
         {/* Explore */}

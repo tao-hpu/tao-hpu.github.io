@@ -58,9 +58,9 @@ export const articles: Article[] = [
     slug: 'acl-2026-citation-audit',
     title: 'We Checked All 209,985 Citations in ACL 2026',
     description:
-      'Companion note to the Tuto audit report and the paper behind it: fabricated references are a rounding error (2 confirmed, 0.001%); claim-support rates did not replicate across three identical-pipeline runs, so the paper takes non-replication—not any single rate—as the principal finding.',
+      'Companion note to the Tuto audit report and the paper behind it: fabricated references are a rounding error (2 confirmed, 0.001%); claim-support rates did not replicate across three identical-pipeline runs, so the paper takes non-replication, not any single rate, as the principal finding.',
     date: '2026-07-17',
-    updated: '2026-07-23',
+    updated: '2026-09-28',
     tags: ['metascience'],
     relatedPaper: {
       label: 'What Citations Get Wrong (report)',
@@ -73,7 +73,7 @@ export const articles: Article[] = [
     description:
       'Interactive companion to "When Should the Agent Speak?": twenty years of research learned what it costs to interrupt a person, and had no agent capable of earning that cost back. The agents arrived. The price did not come with them.',
     date: '2026-07-14',
-    updated: '2026-09-20',
+    updated: '2026-09-28',
     tags: ['human-ai'],
     paperDoi: '10.5281/zenodo.21438396',
     relatedPaper: {
@@ -109,11 +109,11 @@ export const articles: Article[] = [
     slug: 'consensus-dispersion',
     title: 'How Much the Model Agrees with Itself',
     description:
-      'Interactive companion to the working paper "The Preference Centroid": sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
+      'Interactive companion to the working paper "Consensus Density Predicts Output Dispersion in Aligned LLMs": sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
     date: '2026-07-07',
     tags: ['human-ai'],
     relatedPaper: {
-      label: 'The Preference Centroid (OpenReview)',
+      label: 'Consensus Density Predicts Output Dispersion (OpenReview)',
       href: 'https://openreview.net/forum?id=6ukieTMBcG',
     },
   },
@@ -164,7 +164,8 @@ export function articleBibtex(a: Article): string {
 export function articleMetadata(slug: string): Metadata {
   const a = getArticle(slug)
   return {
-    title: `${a.title} · Tao An`,
+    // The root layout's title template already appends " · Tao An".
+    title: a.title,
     description: a.description,
     alternates: { canonical: `/articles/${a.slug}` },
     openGraph: {

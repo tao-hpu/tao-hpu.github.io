@@ -17,21 +17,34 @@ export default function SiteEffects() {
   const pathname = usePathname()
 
   useEffect(() => {
+    // An element counts as seen once it enters the viewport or is already
+    // above it: an anchor jump or a fast fling can skip past a section
+    // without it ever intersecting, and it must not stay invisible.
     const fadeObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
             entry.target.classList.add('visible')
             fadeObserver.unobserve(entry.target)
           }
         })
       },
-      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' },
+      { threshold: 0, rootMargin: '0px 0px -40px 0px' },
     )
-    document.querySelectorAll('.fade-on-scroll').forEach((el) => fadeObserver.observe(el))
+    const targets = document.querySelectorAll('.fade-on-scroll')
+    targets.forEach((el) => fadeObserver.observe(el))
+
+    // Printing: show faded sections, and open collapsed abstracts, since a
+    // closed <details> prints without its content.
+    const revealAll = () => {
+      targets.forEach((el) => el.classList.add('visible'))
+      document.querySelectorAll('details').forEach((d) => (d.open = true))
+    }
+    window.addEventListener('beforeprint', revealAll)
 
     return () => {
       fadeObserver.disconnect()
+      window.removeEventListener('beforeprint', revealAll)
     }
   }, [pathname])
 

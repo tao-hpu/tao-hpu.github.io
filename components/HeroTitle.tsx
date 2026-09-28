@@ -32,8 +32,9 @@ function SloganSpans({ slogan, animate }: { slogan: HeroSlogan; animate: boolean
 }
 
 /**
- * Home hero h1: picks one curated research thesis per page load.
- * Not a carousel. Metadata stays on SITE_TAGLINE.
+ * Home hero headline: picks one curated research thesis per page load.
+ * Not a carousel. Rendered as <p>: the page's h1 is the name above it, so the
+ * heading search engines read does not change on every load.
  */
 export default function HeroTitle() {
   const [slogan, setSlogan] = useState<HeroSlogan | null>(null)
@@ -46,14 +47,12 @@ export default function HeroTitle() {
   const display = slogan ?? DEFAULT_HERO_SLOGAN
 
   return (
-    <h1
+    <p
       key={ready ? display.id : 'pending'}
       className="hero-title"
       data-ready={ready ? 'true' : 'false'}
-      aria-label={display.plain}
-      aria-busy={!ready}
     >
       <SloganSpans slogan={display} animate={ready} />
-    </h1>
+    </p>
   )
 }

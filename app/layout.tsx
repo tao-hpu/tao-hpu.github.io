@@ -31,7 +31,7 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} · Official Site`,
+    default: `${SITE_NAME} · AI researcher: LLM memory, RAG, intervention timing`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,

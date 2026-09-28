@@ -1,5 +1,5 @@
 /**
- * Home hero h1 variants. Curated research theses, not a carousel.
+ * Home hero headline variants. Curated research theses, not a carousel.
  * Metadata / OG keep SITE_TAGLINE; only the visible h1 rotates on load.
  *
  * Layout rule: never start a segment with punctuation. Trailing .,?!:

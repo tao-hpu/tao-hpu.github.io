@@ -1,10 +1,11 @@
 /** Site-wide constants for metadata, sitemap, and structured data. */
 export const SITE_URL = 'https://tao-hpu.github.io'
 export const SITE_NAME = 'Tao An'
+export const SITE_EMAIL = 'tony@fim.ai'
 export const SITE_TAGLINE =
   'How production LLMs remember and when to act.'
 export const SITE_DESCRIPTION =
-  'Tao An: AI researcher (MS in AI, Hawaii Pacific University, 2026). LLM memory, retrieval-augmented generation, and intervention timing for always-on assistants—grounded in production systems for legal and healthcare.'
+  'Tao An: AI researcher (MS in AI, Hawaii Pacific University, 2026). LLM memory, retrieval-augmented generation, and intervention timing for always-on assistants, grounded in production systems for legal and healthcare.'
 export const SITE_KEYWORDS =
   'Tao An, AI Research, Machine Learning, RAG, LLM memory, intervention timing, knowledge graphs, FIM Labs, Hawaii Pacific University, Singapore'
 

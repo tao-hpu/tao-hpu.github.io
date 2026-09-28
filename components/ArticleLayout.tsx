@@ -1,7 +1,8 @@
-import { articleBibtex, doiUrl, getArticle } from '@/app/articles/registry'
+import { articleBibtex, articleUrl, doiUrl, getArticle } from '@/app/articles/registry'
 import ArticleToc from '@/components/ArticleToc'
 import CopyBibtex from '@/components/CopyBibtex'
 import { readingMinutes } from '@/lib/reading-time'
+import { SITE_URL } from '@/lib/site'
 
 function formatDate(iso: string): string {
   return new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
@@ -22,9 +23,35 @@ export default function ArticleLayout({
   const a = getArticle(slug)
   const bibtex = articleBibtex(a)
   const minutes = readingMinutes(slug)
+  const url = articleUrl(a)
+  // Server-rendered so crawlers that skip JS still read it. The companion paper
+  // goes in isBasedOn, not as this page's identifier: the note is not the paper.
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: a.title,
+    description: a.description,
+    datePublished: a.date,
+    dateModified: a.updated ?? a.date,
+    author: { '@id': `${SITE_URL}/#person` },
+    publisher: { '@id': `${SITE_URL}/#person` },
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    image: `${SITE_URL}/images/og-cover.jpg`,
+    inLanguage: 'en',
+    keywords: a.tags?.join(', '),
+    ...(a.relatedPaper
+      ? { isBasedOn: a.paperDoi ? doiUrl(a.paperDoi) : a.relatedPaper.href }
+      : {}),
+  }
 
   return (
     <div className="subpage articles-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="page-articles" id="main">
         <ArticleToc />
         <article className="article-container">

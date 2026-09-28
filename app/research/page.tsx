@@ -1,16 +1,20 @@
 import type { Metadata } from 'next'
-import { SITE_DESCRIPTION, SITE_URL } from '@/lib/site'
+import PublicationsJsonLd from '@/components/PublicationsJsonLd'
+import { SITE_URL } from '@/lib/site'
 import BibtexToggle from './BibtexToggle'
 import PublicationList from './PublicationList'
 import { academicService } from './publications'
 
+const RESEARCH_DESCRIPTION =
+  'Papers by Tao An: a TMLR survey on intervention timing for always-on assistants, an HHAI 2026 paper on AI as equalizer or amplifier, and preprints on LLM memory, metascience, and interpretability.'
+
 export const metadata: Metadata = {
   title: 'Research',
-  description: SITE_DESCRIPTION,
+  description: RESEARCH_DESCRIPTION,
   alternates: { canonical: '/research' },
   openGraph: {
     title: 'Research · Tao An',
-    description: 'Papers on LLM memory, RAG, intervention timing, and human–AI systems.',
+    description: RESEARCH_DESCRIPTION,
     type: 'website',
     url: `${SITE_URL}/research`,
   },
@@ -70,6 +74,7 @@ export default function ResearchPage() {
         </section>
       </main>
       <BibtexToggle />
+      <PublicationsJsonLd />
     </div>
   )
 }

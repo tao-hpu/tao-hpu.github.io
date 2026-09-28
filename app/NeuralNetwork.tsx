@@ -120,7 +120,7 @@ export default function NeuralNetwork() {
     arcRadii.forEach((r, i) => {
       const startAngle = -Math.PI * 0.7
       const endAngle = Math.PI * 0.4
-      const targetOpacity = 0.12 + i * 0.03
+      const targetOpacity = 0.2 + i * 0.04
 
       const arc = d3
         .arc()
@@ -194,7 +194,7 @@ export default function NeuralNetwork() {
         .duration(600)
         .delay(300 + idx * 50)
         .ease(d3.easeQuadOut)
-        .attr('opacity', 0.2)
+        .attr('opacity', 0.35)
 
       link.style('cursor', 'pointer').on('click', function (event: MouseEvent) {
         event.stopPropagation()
@@ -209,7 +209,7 @@ export default function NeuralNetwork() {
           .transition()
           .duration(600)
           .attr('stroke', darkColor)
-          .attr('opacity', 0.2)
+          .attr('opacity', 0.35)
           .attr('stroke-width', 2.5)
 
         // Fast particle along the line
@@ -258,7 +258,7 @@ export default function NeuralNetwork() {
           .attr('stroke-width', 3)
           .transition()
           .duration(1000)
-          .attr('opacity', 0.2)
+          .attr('opacity', 0.35)
           .attr('stroke-width', 2.5)
       })
     }
@@ -275,7 +275,7 @@ export default function NeuralNetwork() {
       .attr('cy', (d) => d.y)
       .attr('r', 0)
       .attr('fill', (d) => (d.type === 'output' ? accentColor : darkColor))
-      .attr('opacity', (d) => (d.type === 'hidden' ? 0.4 : 0.85))
+      .attr('opacity', (d) => (d.type === 'hidden' ? 0.6 : 0.9))
       .style('cursor', 'pointer')
 
     // Store for update
@@ -340,7 +340,7 @@ export default function NeuralNetwork() {
     svg.on('click', function () {
       nodeElements.each(function (d) {
         const node = d3.select(this)
-        const baseOpacity = d.type === 'hidden' ? 0.4 : 0.85
+        const baseOpacity = d.type === 'hidden' ? 0.6 : 0.9
 
         node
           .transition()
@@ -362,7 +362,7 @@ export default function NeuralNetwork() {
           .attr('stroke-width', 4)
           .transition()
           .duration(400)
-          .attr('opacity', 0.2)
+          .attr('opacity', 0.35)
           .attr('stroke-width', 2.5)
       })
     })
@@ -441,7 +441,7 @@ export default function NeuralNetwork() {
             .transition()
             .duration(500)
             .attr('r', d.r)
-            .attr('opacity', 0.4)
+            .attr('opacity', 0.6)
         })
 
       // Pulse output nodes - Layer 3

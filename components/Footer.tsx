@@ -1,10 +1,15 @@
+import { SITE_EMAIL, SITE_TAGLINE } from '@/lib/site'
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
     <footer className="footer-dark">
       <div className="footer-container">
-        <div className="footer-logo">T\A</div>
+        <div className="footer-brand">
+          <div className="footer-logo">T\A</div>
+          <p className="footer-tagline">{SITE_TAGLINE}</p>
+        </div>
 
         <div className="footer-column">
           <h4>Research</h4>
@@ -22,14 +27,12 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/tao-hpu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili (中文)</a>
-          <a href="mailto:tan1@my.hpu.edu">Email</a>
+          <a href={`mailto:${SITE_EMAIL}`}>Email</a>
         </div>
 
         <div className="footer-column">
           <h4>Work &amp; Writing</h4>
           <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">FIM One</a>
-          <a href="/articles">Articles</a>
           <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer">Medium</a>
         </div>
 

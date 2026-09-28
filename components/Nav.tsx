@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from 'react'
 const LINKS = [
   { href: '/', label: 'Home' },
   { href: '/research', label: 'Research' },
+  { href: '/articles', label: 'Articles' },
   { href: '/building', label: 'Building' },
   { href: '/opensource', label: 'Open Source' },
-  { href: '/articles', label: 'Articles' },
 ]
 
 function normalize(path: string): string {
