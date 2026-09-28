@@ -464,9 +464,17 @@ export default function OpenSource() {
                 >
                   docling-project/docling
                 </a>{' '}
+                and{' '}
+                <a
+                  href="https://github.com/docling-project/docling-core"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  docling-core
+                </a>{' '}
                 &mdash; East Asian list numbering in DOCX conversion: nine Chinese, Japanese and
                 circled-digit numbering formats that were dropped are now rendered, checked against
-                the output of Microsoft Word.
+                the output of Microsoft Word, and kept through Markdown export.
               </span>
             </li>
           </ul>
