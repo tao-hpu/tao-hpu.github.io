@@ -454,6 +454,21 @@ export default function OpenSource() {
                 temporary copy that replaces the original only on success.
               </span>
             </li>
+            <li className="contribution-item">
+              <span className="contribution-status">Merged</span>
+              <span className="contribution-text">
+                <a
+                  href="https://github.com/docling-project/docling"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  docling-project/docling
+                </a>{' '}
+                &mdash; East Asian list numbering in DOCX conversion: nine Chinese, Japanese and
+                circled-digit numbering formats that were dropped are now rendered, checked against
+                the output of Microsoft Word.
+              </span>
+            </li>
           </ul>
 
           <p className="contribution-more fade-on-scroll">
