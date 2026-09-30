@@ -59,6 +59,7 @@ html {
     --color-nav-bg: rgba(250, 248, 243, 0.9);
     --color-footer-bg: rgb(20, 20, 19);
     --color-footer-text: #faf8f3;
+    --color-footer-muted: #b5b0a7;
     
     /* New Semantic Variables */
     --color-border: rgba(25, 25, 24, 0.1);
@@ -165,4 +166,3 @@ body {
     outline: 2px solid var(--color-text);
     outline-offset: 2px;
 }
-

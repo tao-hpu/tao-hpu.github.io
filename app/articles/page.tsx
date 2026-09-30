@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Articles',
   alternates: { canonical: '/articles' },
   description:
-    'Web-native research notes by Tao An: interactive figures, permanent URLs, citation metadata.',
+    'Research notes by Tao An: ideas behind the papers, worked examples, and interactive explanations.',
 }
 
 function formatDate(iso: string): string {
@@ -33,9 +33,9 @@ export default function ArticlesPage() {
               </strong>
             </h1>
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
-              <strong>Research notes in a web-native format</strong>: interactive figures where a
-              static PDF falls short, permanent URLs, and citation metadata. Longer-form and less
-              formal than the <a href="/research">papers</a>.
+              <strong>Ideas behind the papers</strong>, worked examples, and interactive
+              explanations. A closer look at the questions, methods, and limits of the{' '}
+              <a href="/research">research</a>.
             </p>
           </div>
         </section>

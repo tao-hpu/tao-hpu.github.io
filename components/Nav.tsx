@@ -27,6 +27,7 @@ export default function Nav() {
   const pathname = normalize(usePathname() ?? '/')
   const [open, setOpen] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     if (!open) return
@@ -34,7 +35,10 @@ export default function Nav() {
       if (navRef.current && !navRef.current.contains(e.target as Node)) setOpen(false)
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === 'Escape') {
+        setOpen(false)
+        menuButtonRef.current?.focus()
+      }
     }
     document.addEventListener('click', onDocClick)
     document.addEventListener('keydown', onKey)
@@ -48,21 +52,22 @@ export default function Nav() {
     href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/')
 
   return (
-    <nav className="nav">
+    <nav className="nav" aria-label="Main navigation">
       <div className="nav-container" ref={navRef}>
-        <a href="/" className="nav-logo">
+        <a href="/" className="nav-logo" aria-label="Tao An — home">
           <span className="logo-char">T</span>
           <span className="logo-char">\</span>
           <span className="logo-char">A</span>
         </a>
 
         <div className="nav-right">
-          <div className={`nav-links${open ? ' open' : ''}`}>
+          <div id="main-navigation-links" className={`nav-links${open ? ' open' : ''}`}>
             {LINKS.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
                 className={isActive(href) ? 'active' : undefined}
+                aria-current={isActive(href) ? 'page' : undefined}
                 onClick={() => setOpen(false)}
               >
                 {label}
@@ -71,8 +76,11 @@ export default function Nav() {
           </div>
           <ThemeToggle />
           <button
+            ref={menuButtonRef}
+            type="button"
             className={`nav-toggle${open ? ' is-open' : ''}`}
-            aria-label="Toggle menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-controls="main-navigation-links"
             aria-expanded={open}
             onClick={(e) => {
               e.stopPropagation()
@@ -116,9 +124,10 @@ function ThemeToggle() {
 
   return (
     <button
+      type="button"
       className="theme-toggle"
       id="theme-toggle"
-      aria-label="Toggle dark mode"
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       onClick={() => applyTheme(theme === 'dark' ? 'light' : 'dark', true)}
     >
       <svg className="sun-icon" viewBox="0 0 24 24" style={{ display: theme === 'dark' ? 'block' : 'none' }}>

@@ -39,7 +39,10 @@ export default function OpenSource() {
             </h1>
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
               <strong>Courses, research tools, coding utilities, and ops automation</strong>, with
-              source on GitHub. Code is MIT or Apache-2.0; course text may carry its own license,
+              source on GitHub.
+            </p>
+            <p className="hero-note">
+              Code is MIT or Apache-2.0; course text may carry its own license,
               stated in each repository. Product work and client deployments live on{' '}
               <a href="/building">
                 <strong>Building</strong>
@@ -50,6 +53,13 @@ export default function OpenSource() {
               </a>
               , is source-available rather than open source.
             </p>
+
+            <nav className="section-jump-links" aria-label="On this page">
+              <a href="#learning">Learning</a>
+              <a href="#research-tools">Research tools</a>
+              <a href="#ai-coding">AI coding &amp; ops</a>
+              <a href="#contributions">Contributions</a>
+            </nav>
           </div>
         </section>
 

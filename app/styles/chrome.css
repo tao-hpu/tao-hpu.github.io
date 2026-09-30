@@ -18,11 +18,10 @@
 .hero-links a {
     color: var(--color-accent);
     text-decoration: none;
-    transition: letter-spacing 0.2s ease, color 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .hero-links a:hover {
-    letter-spacing: 0.02em;
     color: var(--color-text);
 }
 
@@ -186,6 +185,8 @@
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
     color: var(--color-muted);
     border-radius: 50%;
     display: flex;
@@ -245,7 +246,8 @@
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
     background: var(--color-nav-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -329,6 +331,44 @@
     max-width: var(--content-width);
     width: 100%;
     margin: 0 auto;
+}
+
+.hero-solo .hero-description {
+    max-width: var(--prose-width);
+}
+
+.hero-note {
+    max-width: var(--prose-width);
+    margin-top: 1rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.hero-note a {
+    color: var(--color-text);
+    text-underline-offset: 3px;
+}
+
+.section-jump-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin-top: 1.75rem;
+}
+
+.section-jump-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-text);
+    font-size: 0.875rem;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 5px;
+}
+
+.section-jump-links a:hover {
+    color: var(--color-accent);
 }
 
 .hero-eyebrow {
@@ -419,19 +459,20 @@
 
 .about-container {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 4rem;
+    grid-template-columns: 144px 1fr;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    gap: 2.5rem;
     align-items: start;
 }
 
 .about-avatar {
-    position: sticky;
-    top: 6rem;
+    align-self: start;
 }
 
 .avatar-img {
-    width: 200px;
-    height: 200px;
+    width: 144px;
+    height: 144px;
     border-radius: 50%;
     object-fit: cover;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -483,4 +524,3 @@
 .about-text a:hover strong {
     color: var(--color-accent);
 }
-

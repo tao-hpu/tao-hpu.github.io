@@ -23,11 +23,9 @@ export default function Home() {
             <h1 className="hero-eyebrow fade-in">Tao An · AI researcher</h1>
             <HeroTitle />
             <p className="hero-description fade-in" style={{ animationDelay: '1.0s' }}>
-              <strong>MS in Artificial Intelligence</strong>, Hawaii Pacific University (2026). A
-              decade in tech; AI since <strong>2021</strong>. Research on{' '}
-              <strong>LLM memory</strong>, <strong>RAG</strong>, and{' '}
-              <strong>intervention timing</strong>, grounded in systems shipped for legal and
-              healthcare.
+              I study <strong>LLM memory</strong>, <strong>retrieval</strong>, and when AI
+              assistants should act. My research draws on a decade in tech and systems shipped
+              for legal and healthcare.
             </p>
             <p className="hero-links fade-in" style={{ animationDelay: '1.25s' }}>
               <a href="/research">Research →</a>
@@ -60,18 +58,18 @@ export default function Home() {
                 <a href="https://fim.ai" target="_blank" rel="noopener noreferrer">
                   <strong>FIM Labs Pte Ltd</strong>
                 </a>{' '}
-                (🇸🇬 Singapore · 🇨🇳 Beijing), building{' '}
+                (Singapore · Beijing), building{' '}
                 <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">
                   <strong>FIM One</strong>
                 </a>
                 , a source-available agent platform that connects agents to the enterprise systems
-                a company already runs (Feishu, WeCom, Slack, Teams, ERP, CRM). Also serving
-                government and enterprise clients in China, with production AI systems in the{' '}
-                <strong>legal</strong> and <strong>healthcare</strong> domains.
+                a company already runs. I work across research and delivery, from agent memory
+                to production AI for government and enterprise clients.
               </p>
               <p className="about-text">
-                <strong>Research interests:</strong> Retrieval-Augmented Generation, LLM memory
-                architectures, knowledge graphs, and intervention timing for always-on assistants.
+                MS in Artificial Intelligence, Hawaii Pacific University (2026). Working in AI
+                since 2021, with interests in memory architectures, knowledge graphs, and
+                intervention timing for always-on assistants.
               </p>
             </div>
           </div>
@@ -79,142 +77,155 @@ export default function Home() {
 
         {/* News */}
         <section className="news-section" id="news">
-          <h2 className="section-title-small fade-on-scroll">News</h2>
-          <div className="news-list fade-on-scroll">
-            <div className="news-item">
-              <span className="news-date">2026.09</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>
-                <a href="https://openreview.net/forum?id=b0yKEdAXEr" target="_blank" rel="noopener noreferrer">
-                  When Should the Agent Speak?
-                </a>{' '}
-                published in <strong>TMLR</strong> (Transactions on Machine Learning Research), a
-                survey of intervention timing for always-on assistants.
-              </p>
+          <div className="news-container">
+            <header className="news-header">
+              <h2 className="section-title">News</h2>
+              <p>Recent research, writing, and work in the open.</p>
+            </header>
+            <div className="news-list">
+              <div className="news-item">
+                <time className="news-date" dateTime="2026-09">2026.09</time>
+                <p className="news-body">
+                  <span className="news-dot news-dot-research"></span>
+                  <a href="https://openreview.net/forum?id=b0yKEdAXEr" target="_blank" rel="noopener noreferrer">
+                    When Should the Agent Speak?
+                  </a>{' '}
+                  published in <strong>TMLR</strong> (Transactions on Machine Learning Research), a
+                  survey of intervention timing for always-on assistants.
+                </p>
+              </div>
+              <div className="news-item">
+                <time className="news-date" dateTime="2026-09">2026.09</time>
+                <p className="news-body">
+                  <span className="news-dot news-dot-building"></span>
+                  New interactive note:{' '}
+                  <a href="/articles/equalizer-amplifier">Same Tool, Opposite Verdicts</a>, the
+                  companion to the HHAI&nbsp;2026 paper.
+                </p>
+              </div>
+              <div className="news-item">
+                <time className="news-date" dateTime="2026-09">2026.09</time>
+                <p className="news-body">
+                  <span className="news-dot news-dot-building"></span>
+                  Fixes merged upstream in openai-agents-python, docling, acme.sh, and docx-editor.{' '}
+                  <a href="/opensource#contributions">Contributions</a>
+                </p>
+              </div>
             </div>
-            <div className="news-item">
-              <span className="news-date">2026.09</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-building"></span>
-                New interactive note:{' '}
-                <a href="/articles/equalizer-amplifier">Same Tool, Opposite Verdicts</a>, the
-                companion to the HHAI&nbsp;2026 paper.
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.09</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-building"></span>
-                Fixes merged upstream in openai-agents-python, docling, acme.sh, and docx-editor.{' '}
-                <a href="/opensource#contributions">Contributions</a>
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.07</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint:{' '}
-                <a href="https://doi.org/10.5281/zenodo.21696223" target="_blank" rel="noopener noreferrer">
-                  Recombination or Discovery?
-                </a>
-                , a retrieval-grounded novelty audit of machine-generated research papers.
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.07</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint:{' '}
-                <a href="https://doi.org/10.5281/zenodo.21452779" target="_blank" rel="noopener noreferrer">
-                  Weakening in Real Time
-                </a>
-                , on the decade-long decoupling of artifact reuse and citation.
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.07</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>
-                <a href="https://doi.org/10.3233/FAIA260506" target="_blank" rel="noopener noreferrer">
-                  AI as Equalizer or Amplifier?
-                </a>{' '}
-                published in the <strong>HHAI&nbsp;2026</strong> proceedings (IOS Press, FAIA
-                vol.&nbsp;423, open access).
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.07</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-building"></span>
-                New interactive notes:{' '}
-                <a href="/articles/citation-decoupling">citation decoupling</a>,{' '}
-                <a href="/articles/intervention-timing">intervention timing</a>, and the{' '}
-                <a href="/articles/acl-2026-citation-audit">ACL 2026 citation audit</a>.
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.06</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>Joined the{' '}
-                <a href="/research#service">NeurIPS 2026 Ethics Review Committee</a>.
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.04</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>
-                <a href="https://arxiv.org/abs/2512.10961" target="_blank" rel="noopener noreferrer">
-                  AI as Equalizer or Amplifier?
-                </a>{' '}
-                accepted to <strong>HHAI&nbsp;2026</strong> (Brussels; IOS Press proceedings).
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.01</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint:{' '}
-                <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
-                  Fidelity Before Structure
-                </a>
-                , a controlled ablation of memory representations for long LLM conversations.
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2026.01</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-building"></span>Interviewed by Sanjay Singhania
-                on Medium:{' '}
-                <a
-                  href="https://medium.com/@sanjays_8381/if-i-had-to-launch-ai-in-2026-id-start-here-expert-interview-ca62024f2ae8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  The Truth About AI Right Now
-                </a>
-                , on what actually works in real deployments.
-              </p>
-            </div>
-            <div className="news-item">
-              <span className="news-date">2025.08</span>
-              <p className="news-body">
-                <span className="news-dot news-dot-research"></span>New preprint:{' '}
-                <a href="https://arxiv.org/abs/2508.13171" target="_blank" rel="noopener noreferrer">
-                  Cognitive Workspace: Active Memory Management for LLMs
-                </a>
-                .
-              </p>
-            </div>
+            <details className="news-archive">
+              <summary>Earlier updates <span>2025–2026</span></summary>
+              <div className="news-list">
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-07">2026.07</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-research"></span>New preprint:{' '}
+                    <a href="https://doi.org/10.5281/zenodo.21696223" target="_blank" rel="noopener noreferrer">
+                      Recombination or Discovery?
+                    </a>
+                    , a retrieval-grounded novelty audit of machine-generated research papers.
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-07">2026.07</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-research"></span>New preprint:{' '}
+                    <a href="https://doi.org/10.5281/zenodo.21452779" target="_blank" rel="noopener noreferrer">
+                      Weakening in Real Time
+                    </a>
+                    , on the decade-long decoupling of artifact reuse and citation.
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-07">2026.07</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-research"></span>
+                    <a href="https://doi.org/10.3233/FAIA260506" target="_blank" rel="noopener noreferrer">
+                      AI as Equalizer or Amplifier?
+                    </a>{' '}
+                    published in the <strong>HHAI&nbsp;2026</strong> proceedings (IOS Press, FAIA
+                    vol.&nbsp;423, open access).
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-07">2026.07</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-building"></span>
+                    New interactive notes:{' '}
+                    <a href="/articles/citation-decoupling">citation decoupling</a>,{' '}
+                    <a href="/articles/intervention-timing">intervention timing</a>, and the{' '}
+                    <a href="/articles/acl-2026-citation-audit">ACL 2026 citation audit</a>.
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-06">2026.06</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-research"></span>Joined the{' '}
+                    <a href="/research#service">NeurIPS 2026 Ethics Review Committee</a>.
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-04">2026.04</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-research"></span>
+                    <a href="https://arxiv.org/abs/2512.10961" target="_blank" rel="noopener noreferrer">
+                      AI as Equalizer or Amplifier?
+                    </a>{' '}
+                    accepted to <strong>HHAI&nbsp;2026</strong> (Brussels; IOS Press proceedings).
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-01">2026.01</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-research"></span>New preprint:{' '}
+                    <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
+                      Fidelity Before Structure
+                    </a>
+                    , a controlled ablation of memory representations for long LLM conversations.
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-01">2026.01</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-building"></span>Interviewed by Sanjay Singhania
+                    on Medium:{' '}
+                    <a
+                      href="https://medium.com/@sanjays_8381/if-i-had-to-launch-ai-in-2026-id-start-here-expert-interview-ca62024f2ae8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      The Truth About AI Right Now
+                    </a>
+                    , on what actually works in real deployments.
+                  </p>
+                </div>
+                <div className="news-item">
+                  <time className="news-date" dateTime="2025-08">2025.08</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-research"></span>New preprint:{' '}
+                    <a href="https://arxiv.org/abs/2508.13171" target="_blank" rel="noopener noreferrer">
+                      Cognitive Workspace: Active Memory Management for LLMs
+                    </a>
+                    .
+                  </p>
+                </div>
+              </div>
+            </details>
+            <p className="news-legend" aria-hidden="true">
+              <span>
+                <span className="news-dot news-dot-research"></span>Research
+              </span>
+              <span>
+                <span className="news-dot news-dot-building"></span>Building &amp; writing
+              </span>
+            </p>
           </div>
-          <p className="news-legend" aria-hidden="true">
-            <span>
-              <span className="news-dot news-dot-research"></span>Research
-            </span>
-            <span>
-              <span className="news-dot news-dot-building"></span>Building &amp; writing
-            </span>
-          </p>
         </section>
 
         {/* Explore */}
         <section className="cards-section" id="explore">
+          <div className="home-explore-heading">
+            <h2 className="section-title">Explore the work</h2>
+          </div>
           <div className="cards-grid cards-grid-4">
             <a
               href="/research"
@@ -232,7 +243,7 @@ export default function Home() {
               </div>
               <span className="card-eyebrow">Academia</span>
               <h3 className="card-title">Research →</h3>
-              <p className="card-subtitle">Papers · LLM memory · RAG · intervention timing</p>
+              <p className="card-subtitle">Papers on memory, retrieval, and when agents should act</p>
             </a>
 
             <a
@@ -250,7 +261,7 @@ export default function Home() {
               </div>
               <span className="card-eyebrow">Notes</span>
               <h3 className="card-title">Articles →</h3>
-              <p className="card-subtitle">Interactive figures · permanent URLs · citeable notes</p>
+              <p className="card-subtitle">Research ideas explained through interactive figures</p>
             </a>
 
             <a
@@ -269,7 +280,7 @@ export default function Home() {
               </div>
               <span className="card-eyebrow">Industry</span>
               <h3 className="card-title">Building →</h3>
-              <p className="card-subtitle">FIM product family · government &amp; healthcare AI</p>
+              <p className="card-subtitle">Products and AI systems built with FIM Labs</p>
             </a>
 
             <a
@@ -285,8 +296,8 @@ export default function Home() {
                 </svg>
               </div>
               <span className="card-eyebrow">Community</span>
-              <h3 className="card-title">Open Source →</h3>
-              <p className="card-subtitle">Open courses · AI-coding tools · ops automation</p>
+              <h3 className="card-title">Open Source&nbsp;→</h3>
+              <p className="card-subtitle">Open courses, developer tools, and upstream contributions</p>
             </a>
           </div>
         </section>

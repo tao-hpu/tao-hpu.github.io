@@ -99,6 +99,13 @@ export default function Building() {
               </a>
               .
             </p>
+
+            <nav className="section-jump-links" aria-label="On this page">
+              <a href="#flagship">FIM One</a>
+              <a href="#products">Products</a>
+              <a href="#deployments">Deployments</a>
+              <a href="#media">Featured in</a>
+            </nav>
           </div>
         </section>
 
