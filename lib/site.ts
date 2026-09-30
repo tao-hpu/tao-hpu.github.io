@@ -12,6 +12,7 @@ export const SITE_KEYWORDS =
 export const PERSON_SAME_AS = [
   'https://scholar.google.com/citations?user=HBIPWm4AAAAJ',
   'https://orcid.org/0009-0006-2933-0320',
+  'https://dblp.org/pid/10/2015-1',
   'https://arxiv.org/a/0009-0006-2933-0320.html',
   'https://github.com/tao-hpu',
   'https://www.linkedin.com/in/tao-hpu',

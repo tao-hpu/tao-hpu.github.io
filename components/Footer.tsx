@@ -17,6 +17,7 @@ export default function Footer() {
           <a href="https://www.semanticscholar.org/author/Tao-An/2402727637" target="_blank" rel="noopener noreferrer">Semantic Scholar</a>
           <a href="https://arxiv.org/a/0009-0006-2933-0320.html" target="_blank" rel="noopener noreferrer">arXiv</a>
           <a href="https://orcid.org/0009-0006-2933-0320" target="_blank" rel="noopener noreferrer">ORCID</a>
+          <a href="https://dblp.org/pid/10/2015-1" target="_blank" rel="noopener noreferrer">DBLP</a>
           <a href="https://openreview.net/profile?id=~Tao_An3" target="_blank" rel="noopener noreferrer">OpenReview</a>
           <a href="https://huggingface.co/tao-hpu" target="_blank" rel="noopener noreferrer">Hugging Face</a>
         </div>
