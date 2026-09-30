@@ -460,7 +460,7 @@
 .about-container {
     display: grid;
     grid-template-columns: 144px 1fr;
-    max-width: var(--content-width);
+    max-width: var(--shell-width);
     margin: 0 auto;
     gap: 2.5rem;
     align-items: start;

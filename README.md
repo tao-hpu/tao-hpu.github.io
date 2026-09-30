@@ -25,9 +25,9 @@ pnpm serve      # serve out/ locally
 - `app/sitemap.ts` — sitemap, generated from `app/articles/registry.ts`.
   Adding a note needs no edit here. The site has no RSS feed.
 - `app/globals.css` — stylesheet entry point; tokens, site chrome, lists, and
-  article styles live in `app/styles/` (light/dark via `data-theme`). Home About,
-  News, and Explore share the centered content column. News shows recent
-  updates first, with earlier entries in a native expandable archive.
+  article styles live in `app/styles/` (light/dark via `data-theme`). Home About
+  and Explore use the wide page layout; News uses a narrower centered reading
+  column, with recent updates first and earlier entries in an expandable archive.
 - `public/` — favicons, images
 
 Legacy URLs from the previous static site (`/research.html` etc.) keep working:

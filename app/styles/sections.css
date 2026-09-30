@@ -22,7 +22,7 @@
 
 .home-explore-heading,
 .home-page .cards-grid-4 {
-    max-width: var(--content-width);
+    max-width: var(--shell-width);
     margin: 0 auto;
 }
 
