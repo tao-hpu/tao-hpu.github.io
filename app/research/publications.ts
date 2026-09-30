@@ -42,9 +42,9 @@ export const publications: Publication[] = [
       'LLM novelty rates are exploratory upper bounds: retrieval misses most known prior art, and another LLM cannot certify a novelty verdict.',
     tldr: 'Tao An. Poster at the NeurIPS 2026 Workshop on AI for Meta-Science (AI4MetaScience; non-archival). A retrieval-grounded, protocol-frozen novelty audit of 166 machine-generated papers (FARS) against 166 topic-matched ICLR 2025 submissions. Each paper is decomposed into contribution claims on four facets (purpose, mechanism, evaluation, domain; 549 machine and 494 human contributions); prior art is retrieved under per-paper submission-date cutoffs; contributions are classified as covered, recombination, or facet-novel under a pre-registered two-judge protocol. Machine contributions are judged facet-novel more often than human ones (56.1% vs. 35.6%), and the gap rests mainly on the purpose facet: requiring an uncovered facet other than purpose shrinks it from 20.5 to 4.1 points (95% CI −0.3 to 8.5). The judge layer cannot be certified by another LLM: adversarial re-auditors return refutation rates from 0% to 100% on the same items depending on auditor model and prompt. A 106-pair gold prior-art audit finds the deployed retrieval surfaces the known prior art for only 25–29% of pairs per arm, so automated novelty rates are exploratory upper bounds. A companion integrity audit of 306 Agents4Science 2025 submissions finds hard fabrication evidence in 0/47 accepted versus 16/197 rejected (one-sided Fisher p = 0.029; 0.072 under conservative coding), an association that reflects both AI-reviewer detection and authors\' own disclosure.',
     year: '2026',
-    // Workshop acceptance is non-archival: the Zenodo preprint stays the citable
-    // record, so status remains `preprint` and the venue goes on as a badge.
-    status: 'preprint',
+    // Accepted at a non-archival workshop: listed under Published, while the
+    // badge says non-archival and the Zenodo DOI stays the citable record.
+    status: 'published',
     badges: [
       { label: 'NeurIPS 2026 Workshop · AI4MetaScience' },
       { label: 'Poster · non-archival', secondary: true },
