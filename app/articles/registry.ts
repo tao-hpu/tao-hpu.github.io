@@ -29,6 +29,19 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'novelty-audit',
+    title: 'Machine Papers Look More Novel. Mostly in One Facet.',
+    description:
+      'Companion note to "Recombination or Discovery?" (NeurIPS 2026 AI4MetaScience workshop poster): machine contributions are judged facet-novel more often than matched human ones (56.1% vs. 35.6%), but the gap rests mainly on the purpose facet, LLM re-auditors return refutation rates from 0% to 100% on the same items, and retrieval finds the known prior art for only 25 to 29% of gold pairs. Plus an integrity audit: hard fabrication evidence in 0 of 47 accepted and 16 of 197 rejected Agents4Science 2025 submissions.',
+    date: '2026-09-30',
+    tags: ['metascience'],
+    paperDoi: '10.5281/zenodo.21696223',
+    relatedPaper: {
+      label: 'Recombination or Discovery? (NeurIPS 2026 Workshop, AI4MetaScience)',
+      href: 'https://doi.org/10.5281/zenodo.21696223',
+    },
+  },
+  {
     slug: 'equalizer-amplifier',
     title: 'Same Tool, Opposite Verdicts',
     description:

@@ -1,0 +1,174 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import VideoEmbed from '@/components/VideoEmbed'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('novelty-audit')
+
+<ArticleLayout slug="novelty-audit">
+
+The FARS pipeline produced 166 complete research papers at a reported cost of $186,000.
+The Agents4Science 2025 venue received more than 300 submissions written by AI systems.
+Machine-generated papers now arrive in volume, and the usual ways of evaluating them
+(reviewer scores, self-assessment, asking an LLM whether a paper is novel) do not answer
+the question I care about: does a machine paper contain anything that is absent from
+prior work, or does it recombine what already exists?
+
+My paper [Recombination or Discovery?](https://doi.org/10.5281/zenodo.21696223), a poster
+at the NeurIPS 2026 Workshop on AI for Meta-Science, tries to measure that. It found a gap
+in favor of the machines. Most of the paper, and most of this note, is about why I do not
+report that gap as a conclusion.
+
+<VideoEmbed
+  youtubeId="uik29EAbfAY"
+  title="Recombination or Discovery? A seven-minute summary of the AI4MetaScience poster"
+  caption={<>Seven-minute summary of the paper. Every number on screen is taken from the camera-ready text. Also on <a href="https://www.bilibili.com/video/BV1rjaf6EEkC/" target="_blank" rel="noopener noreferrer">Bilibili</a>.</>}
+/>
+
+## The audit
+
+The unit is a contribution claim, not a paper. Each paper is split into claims, and each
+claim into four facets: **purpose** (what objective), **mechanism** (by what means),
+**evaluation** (validated how), and **domain** (in what setting). The machine arm is the
+166 FARS papers (549 claims). The human arm is 166 ICLR 2025 submissions matched to them
+one-to-one by title and abstract embedding from the 8,613 with a decision (494 claims;
+median match similarity 0.676, 72 accepted and 94 rejected).
+
+For every claim, each facet gets its own prior-art queries, and results are cut off at
+that paper's own date, so both arms are checked against the literature that existed when
+they were written. Both arms run the identical retrieval stack.
+
+Two judges (GPT-4o and Claude Sonnet 4.6) then answer one factual question per facet: is
+this facet's content present in any retrieved neighbor? A third judge (Gemini 2.5 Pro)
+breaks facet-level ties. No model assigns the final label. The state follows from the
+facet votes by rule:
+
+- any facet uncovered: **facet-novel**
+- all facets covered by one prior work: **covered**
+- all facets covered, but only by several works together: **recombination**
+
+The rubric was calibrated on 20 validation items, frozen, and the full run executed once.
+Every alternative in this note was computed afterward from the frozen judgments, with no
+model re-run.
+
+## The headline, and where it lives
+
+Under the frozen rule, 56.1% of machine claims are facet-novel against 35.6% of human
+claims. Human claims are fully covered by a single prior work 21.5% of the time, machine
+claims 8.6%. Within the human arm, accepted and rejected ICLR papers look almost the same
+(34.4% and 36.6% facet-novel), so whatever reviewers select for, it is not visible at this
+level.
+
+A 20.5-point gap (95% CI 14.3 to 26.5, bootstrap over matched pairs) invites a story about
+machines being more original. The facet breakdown does not support that story. In 203 of
+the 308 machine facet-novel verdicts (66%), purpose is the only facet the judges found
+uncovered; for the human arm it is 102 of 176 (58%). So I recomputed the gap under
+stricter rules:
+
+- require an uncovered facet other than purpose: machine 19.1%, human 15.0%, gap **4.1
+  points** (95% CI −0.3 to 8.5)
+- require an uncovered mechanism: gap 1.8 points (−2.2 to 5.9)
+- require at least two uncovered facets: gap 5.8 points (2.3 to 9.4)
+
+Domain is uncovered in almost no facet-novel verdicts (8 machine, 2 human), which is
+intended: moving an existing idea to a new setting does not count.
+
+Two other checks shrink the gap without closing it. Restricting to the better-matched half
+of the pairs (similarity at least 0.676) leaves 12.9 points (4.1 to 21.8). The arms also
+differ in what they claim: machine claims skew toward findings (373 finding, 174 method),
+human claims toward methods (257 method, 211 finding). Reweighting either arm to the
+other's mix accounts for 2 to 5 of the 20.5 points.
+
+What separates the arms is mostly how their stated objectives compare with retrieved
+work. At the level of mechanism, they barely differ.
+
+## The judge layer cannot certify itself
+
+A facet-novel verdict means that retrieval found nothing and two judges saw nothing. That
+conflates three things: real absence from the literature, retrieval misses, and judge
+error. I tried to bound the judge error automatically. An adversarial auditor received the
+same neighbor list and was told to refute sampled purpose-novel verdicts by finding
+coverage. Three auditor models, two prompts, the same 20 items per arm in every cell.
+
+Under the prompt anchored to the panel's coverage standard, the machine and human
+refutation counts were:
+
+- GPT-4o: 3/20 and 5/20
+- Claude Sonnet 4.6: 1/20 and 0/20
+- Gemini 2.5 Pro: 19/20 and 19/20
+
+Under an unanchored "hostile reviewer" prompt, GPT-4o and Gemini refuted 20/20 in both
+arms, and Sonnet 3/20. The GPT-4o and Sonnet flag sets under the anchored prompt do not
+overlap at all.
+
+On identical items, the refutation rate runs from 0% to 100% depending on which model you
+ask and how you ask it. Majority voting does not fix this: the 2-of-3 consensus is 4/20 and
+5/20 under the anchored prompt and 20/20 under the unanchored one, so it tracks the prompt
+rather than the data. Voting removes the disagreement between models and keeps the bias
+that the coverage standard sets for all of them.
+
+This is the result I would most like other people to take away. An LLM re-audit of LLM
+novelty verdicts is not a measurement instrument. Any certification design built this way
+has a strictness parameter, and that parameter has to be fixed against labels produced
+outside the LLM layer.
+
+## Retrieval misses most of the known prior art
+
+The other half of a facet-novel verdict is retrieval. To measure it I built a gold set of
+106 prior-art pairs (57 machine, 49 human) independently of the retrieval channel, from
+each paper's own most relevant citations plus hand-confirmed pairs.
+
+The deployed retrieval put the gold paper in the judged claim's neighbor list for 24.6%
+of machine pairs and 28.6% of human pairs. Another 12 of the 78 missed pairs were
+retrieved but assigned to a different claim from the same paper; sharing neighbors across
+a paper's claims would raise pair recall to 36.8% and 38.8%. Among facet-novel claims in
+the gold sample, no gold paper was retrieved at all in 7 of 12 machine and 5 of 10 human
+cases. In 4 machine and 5 human cases, a gold paper tagged with the very facet called
+uncovered was in the neighbor list, and the judges did not accept it as cover.
+
+Every facet-novel rate in the paper is therefore an upper bound. Machine-arm recall is
+also the lower of the two, which means part of the gap may itself come from retrieval.
+
+## A separate finding: fabrication and disclosure
+
+The paper also reports an integrity audit of 306 Agents4Science 2025 submissions, coded
+blind by two coders on a five-level scale for evidence of data fabrication (Cohen's
+κ = 0.53 on the binary hard-evidence call, all 13 boundary disagreements arbitrated on full
+text). Hard evidence appears in 20 submissions: 16 rejected, 2 desk-rejected, 2
+withdrawn, and **0 of 47 accepted**. Against 16 of 197 rejected, the one-sided Fisher test
+gives p = 0.029, and p = 0.072 if only cases flagged by both coders count. With a zero
+cell that fragile, I report it as an association.
+
+What makes it more than a count is how the fabrications were caught. In 10 of the 16
+rejected cases, at least one of the venue's AI reviewers named the fabrication, often by
+quoting the authors' own answer on the mandatory AI-involvement checklist. The checklist
+turned several fabrications into self-admissions that reviewers then cited. The pattern
+reflects detection and honest disclosure together, and says nothing about venues without
+that checklist.
+
+## What would settle it
+
+The only ground truth available for the judge layer is human. The paper releases a frozen
+calibration protocol: 72 contributions (36 per arm) with their retrieved neighbors,
+blinded, normalized to English and shuffled across arms, plus a 10-item practice set with
+reference answers. Annotators label them under the same rubric as the automated judges.
+Running it with several annotators and reporting agreement against the automated
+consensus is the next step, and until then the machine-versus-human gap stays a
+hypothesis.
+
+If you work on automated research evaluation and want to run the protocol, or want to
+test a different derivation rule on the frozen judgments, the code and judgments are in
+the [repository](https://github.com/tao-hpu/machine-science-audit).
+
+---
+
+This is a companion note to *Recombination or Discovery? A Retrieval-Grounded Novelty
+Audit of Machine-Generated Research Papers*, a poster at the NeurIPS 2026 Workshop on AI
+for Meta-Science (non-archival). The citable version is the preprint on
+[Zenodo](https://doi.org/10.5281/zenodo.21696223); code and frozen judgments are on
+[GitHub](https://github.com/tao-hpu/machine-science-audit).
+A walkthrough on fim.ai, my company's site, adds a section on what the results mean for
+automated review in practice ([English](https://fim.ai/en/articles/recombination-or-discovery),
+[中文](https://fim.ai/zh/articles/recombination-or-discovery)).
+Every number above is taken from the camera-ready text and its robustness appendix.
+
+</ArticleLayout>

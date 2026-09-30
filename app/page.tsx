@@ -87,6 +87,17 @@ export default function Home() {
                 <time className="news-date" dateTime="2026-09">2026.09</time>
                 <p className="news-body">
                   <span className="news-dot news-dot-research"></span>
+                  <a href="https://doi.org/10.5281/zenodo.21696223" target="_blank" rel="noopener noreferrer">
+                    Recombination or Discovery?
+                  </a>{' '}
+                  accepted as a poster at the <strong>NeurIPS&nbsp;2026 Workshop on AI for
+                  Meta-Science</strong> (AI4MetaScience, non-archival).
+                </p>
+              </div>
+              <div className="news-item">
+                <time className="news-date" dateTime="2026-09">2026.09</time>
+                <p className="news-body">
+                  <span className="news-dot news-dot-research"></span>
                   <a href="https://openreview.net/forum?id=b0yKEdAXEr" target="_blank" rel="noopener noreferrer">
                     When Should the Agent Speak?
                   </a>{' '}
