@@ -53,7 +53,6 @@ export default function ArticleLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <main className="page-articles" id="main">
-        <ArticleToc />
         <article className="article-container">
           <header className="article-header">
             <p className="article-breadcrumb">
@@ -92,6 +91,7 @@ export default function ArticleLayout({
             )}
           </header>
 
+          <ArticleToc />
           <div className="article-prose">{children}</div>
 
           <section className="article-cite">

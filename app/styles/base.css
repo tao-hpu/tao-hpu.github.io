@@ -24,7 +24,7 @@
     /* Alias kept so older rules using --max-width keep working */
     --max-width: var(--shell-width);
 
-    --color-card-amber: #e8dcc8;
+    --color-card-amber: #e9ede8;
 }
 
 /* Shared column helpers — prefer these over one-off max-width values */
@@ -46,23 +46,23 @@
 
 /* 1. Default Theme (Light) - Applied to html tag */
 html {
-    --color-primary: #191918;
-    --color-background: #faf8f3;
-    --color-surface: #ebe8e1;
-    --color-text: #191918;
-    --color-muted: #6b635b;
-    --color-accent: #d97757;
-    --color-accent-light: rgba(217, 119, 87, 0.15);
-    --color-card-beige: #e8e4db;
-    --color-card-green: #c5d5c5;
-    --color-card-purple: #d5d0e0;
-    --color-nav-bg: rgba(250, 248, 243, 0.9);
-    --color-footer-bg: rgb(20, 20, 19);
-    --color-footer-text: #faf8f3;
-    --color-footer-muted: #b5b0a7;
+    --color-primary: #14283a;
+    --color-background: #f4f7f6;
+    --color-surface: #e7eeed;
+    --color-text: #14283a;
+    --color-muted: #4d6270;
+    --color-accent: #2457c5;
+    --color-accent-light: rgba(36, 87, 197, 0.11);
+    --color-card-beige: #e9ede8;
+    --color-card-green: #dbeae4;
+    --color-card-purple: #e2e8f5;
+    --color-nav-bg: rgba(244, 247, 246, 0.94);
+    --color-footer-bg: #10283b;
+    --color-footer-text: #eef6f4;
+    --color-footer-muted: #bcced4;
     
     /* New Semantic Variables */
-    --color-border: rgba(25, 25, 24, 0.1);
+    --color-border: rgba(20, 40, 58, 0.16);
     --color-button-text: #ffffff;
     
     scroll-behavior: smooth;
@@ -75,58 +75,60 @@ html {
 
 /* 2. Dark Theme (Explicit Attribute) */
 html[data-theme="dark"] {
-    --color-primary: #e6e6e6;
-    --color-background: #121212;
-    --color-surface: rgba(255, 255, 255, 0.03); /* Matches card backgrounds */
-    --color-text: #e6e6e6;
-    --color-muted: #a3a3a3;
-    --color-accent: #e68a6d; 
-    --color-accent-light: rgba(255, 255, 255, 0.05); /* More subtle hover background */
+    --color-primary: #eef6f4;
+    --color-background: #0e202d;
+    --color-surface: #193241;
+    --color-text: #eef6f4;
+    --color-muted: #afc4cc;
+    --color-accent: #9fbdff;
+    --color-accent-light: rgba(159, 189, 255, 0.14);
     
     /* Keep low-saturation card hues in dark mode so sections stay distinct */
-    --color-card-beige: rgba(232, 228, 219, 0.08);
-    --color-card-green: rgba(120, 160, 120, 0.14);
-    --color-card-purple: rgba(140, 120, 180, 0.14);
-    --color-card-amber: rgba(200, 160, 90, 0.14);
+    --color-card-beige: #18313d;
+    --color-card-green: #173f46;
+    --color-card-purple: #20385a;
+    --color-card-amber: #2a3a40;
     
-    --color-nav-bg: rgba(18, 18, 18, 0.8);
-    --color-footer-bg: #121212; /* Seamless footer */
-    --color-footer-text: #a3a3a3;
+    --color-nav-bg: rgba(14, 32, 45, 0.94);
+    --color-footer-bg: #071925;
+    --color-footer-text: #eef6f4;
+    --color-footer-muted: #afc4cc;
 
     /* Dark mode specific adjustments */
-    --color-border: rgba(255, 255, 255, 0.1);
-    --color-button-text: #121212;
+    --color-border: rgba(238, 246, 244, 0.19);
+    --color-button-text: #0e202d;
 
     /* FORCE background color */
-    background-color: #121212;
-    color: #e6e6e6;
+    background-color: #0e202d;
+    color: #eef6f4;
 }
 
 /* 3. System Dark Mode Fallback */
 @media (prefers-color-scheme: dark) {
     html:not([data-theme="light"]) {
-        --color-primary: #e6e6e6;
-        --color-background: #121212;
-        --color-surface: rgba(255, 255, 255, 0.03); /* Matches card backgrounds */
-        --color-text: #e6e6e6;
-        --color-muted: #a3a3a3;
-        --color-accent: #e68a6d; 
-        --color-accent-light: rgba(255, 255, 255, 0.05);
+        --color-primary: #eef6f4;
+        --color-background: #0e202d;
+        --color-surface: #193241;
+        --color-text: #eef6f4;
+        --color-muted: #afc4cc;
+        --color-accent: #9fbdff;
+        --color-accent-light: rgba(159, 189, 255, 0.14);
         
-        --color-card-beige: rgba(232, 228, 219, 0.08);
-        --color-card-green: rgba(120, 160, 120, 0.14);
-        --color-card-purple: rgba(140, 120, 180, 0.14);
-        --color-card-amber: rgba(200, 160, 90, 0.14);
+        --color-card-beige: #18313d;
+        --color-card-green: #173f46;
+        --color-card-purple: #20385a;
+        --color-card-amber: #2a3a40;
         
-        --color-nav-bg: rgba(18, 18, 18, 0.8);
-        --color-footer-bg: #121212;
-        --color-footer-text: #a3a3a3;
+        --color-nav-bg: rgba(14, 32, 45, 0.94);
+        --color-footer-bg: #071925;
+        --color-footer-text: #eef6f4;
+        --color-footer-muted: #afc4cc;
 
-        --color-border: rgba(255, 255, 255, 0.1);
-        --color-button-text: #121212;
+        --color-border: rgba(238, 246, 244, 0.19);
+        --color-button-text: #0e202d;
 
-        background-color: #121212;
-        color: #e6e6e6;
+        background-color: #0e202d;
+        color: #eef6f4;
     }
 }
 

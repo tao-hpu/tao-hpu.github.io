@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import HeroTitle from '@/components/HeroTitle'
+import ResearchInstrument from '@/components/ResearchInstrument'
 import { SITE_DESCRIPTION, SITE_EMAIL, SITE_TAGLINE, SITE_URL } from '@/lib/site'
-import NeuralNetwork from './NeuralNetwork'
 
 export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
@@ -33,11 +33,91 @@ export default function Home() {
               <a href={`mailto:${SITE_EMAIL}`}>Email</a>
             </p>
           </div>
-          <div className="hero-visual fade-in" style={{ animationDelay: '0s' }}>
-            <NeuralNetwork />
+          <div className="hero-visual">
+            <ResearchInstrument />
           </div>
         </section>
 
+        {/* Explore */}
+        <section className="cards-section" id="explore">
+          <div className="home-explore-heading">
+            <h2 className="section-title">Explore the work</h2>
+          </div>
+          <div className="cards-grid cards-grid-4">
+            <a
+              href="/research"
+              className="card card-green fade-on-scroll"
+              aria-label="Research: papers and academic work"
+            >
+              <div className="card-icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18 12 L50 12 L62 24 L62 68 L18 68 Z" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="M50 12 L50 24 L62 24" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <rect x="24" y="32" width="32" height="4" rx="1" fill="currentColor" />
+                  <rect x="24" y="42" width="32" height="4" rx="1" fill="currentColor" />
+                  <rect x="24" y="52" width="20" height="4" rx="1" fill="currentColor" />
+                </svg>
+              </div>
+              <span className="card-eyebrow">Academia</span>
+              <h3 className="card-title">Research →</h3>
+              <p className="card-subtitle">Papers on memory, retrieval, and when agents should act</p>
+            </a>
+
+            <a
+              href="/articles"
+              className="card card-amber fade-on-scroll"
+              aria-label="Articles: interactive research notes"
+            >
+              <div className="card-icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="16" y="14" width="48" height="52" rx="3" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="M28 28h24M28 38h24M28 48h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="56" cy="54" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="M56 50v8M52 54h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <span className="card-eyebrow">Notes</span>
+              <h3 className="card-title">Articles →</h3>
+              <p className="card-subtitle">Research ideas explained through interactive figures</p>
+            </a>
+
+            <a
+              href="/building"
+              className="card card-purple fade-on-scroll"
+              aria-label="Building: products and deployments"
+            >
+              <div className="card-icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M12 66 L68 66" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <rect x="20" y="50" width="40" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <rect x="22" y="34" width="17" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <rect x="41" y="34" width="17" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <rect x="31" y="18" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                </svg>
+              </div>
+              <span className="card-eyebrow">Industry</span>
+              <h3 className="card-title">Building →</h3>
+              <p className="card-subtitle">Products and AI systems built with FIM Labs</p>
+            </a>
+
+            <a
+              href="/opensource"
+              className="card card-beige fade-on-scroll"
+              aria-label="Open Source: courses and developer tools"
+            >
+              <div className="card-icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M30 24 L16 40 L30 56" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                  <path d="M50 24 L64 40 L50 56" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                  <line x1="44" y1="20" x2="36" y2="60" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <span className="card-eyebrow">Community</span>
+              <h3 className="card-title">Open Source&nbsp;→</h3>
+              <p className="card-subtitle">Open courses, developer tools, and upstream contributions</p>
+            </a>
+          </div>
+        </section>
         {/* About Section */}
         <section className="about-section" id="about">
           <div className="about-container">
@@ -232,86 +312,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Explore */}
-        <section className="cards-section" id="explore">
-          <div className="home-explore-heading">
-            <h2 className="section-title">Explore the work</h2>
-          </div>
-          <div className="cards-grid cards-grid-4">
-            <a
-              href="/research"
-              className="card card-green fade-on-scroll"
-              aria-label="Research: papers and academic work"
-            >
-              <div className="card-icon">
-                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M18 12 L50 12 L62 24 L62 68 L18 68 Z" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <path d="M50 12 L50 24 L62 24" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <rect x="24" y="32" width="32" height="4" rx="1" fill="currentColor" />
-                  <rect x="24" y="42" width="32" height="4" rx="1" fill="currentColor" />
-                  <rect x="24" y="52" width="20" height="4" rx="1" fill="currentColor" />
-                </svg>
-              </div>
-              <span className="card-eyebrow">Academia</span>
-              <h3 className="card-title">Research →</h3>
-              <p className="card-subtitle">Papers on memory, retrieval, and when agents should act</p>
-            </a>
-
-            <a
-              href="/articles"
-              className="card card-amber fade-on-scroll"
-              aria-label="Articles: interactive research notes"
-            >
-              <div className="card-icon">
-                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect x="16" y="14" width="48" height="52" rx="3" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <path d="M28 28h24M28 38h24M28 48h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="56" cy="54" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <path d="M56 50v8M52 54h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
-              <span className="card-eyebrow">Notes</span>
-              <h3 className="card-title">Articles →</h3>
-              <p className="card-subtitle">Research ideas explained through interactive figures</p>
-            </a>
-
-            <a
-              href="/building"
-              className="card card-purple fade-on-scroll"
-              aria-label="Building: products and deployments"
-            >
-              <div className="card-icon">
-                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M12 66 L68 66" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <rect x="20" y="50" width="40" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <rect x="22" y="34" width="17" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <rect x="41" y="34" width="17" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <rect x="31" y="18" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
-                </svg>
-              </div>
-              <span className="card-eyebrow">Industry</span>
-              <h3 className="card-title">Building →</h3>
-              <p className="card-subtitle">Products and AI systems built with FIM Labs</p>
-            </a>
-
-            <a
-              href="/opensource"
-              className="card card-beige fade-on-scroll"
-              aria-label="Open Source: courses and developer tools"
-            >
-              <div className="card-icon">
-                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M30 24 L16 40 L30 56" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                  <path d="M50 24 L64 40 L50 56" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                  <line x1="44" y1="20" x2="36" y2="60" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
-              <span className="card-eyebrow">Community</span>
-              <h3 className="card-title">Open Source&nbsp;→</h3>
-              <p className="card-subtitle">Open courses, developer tools, and upstream contributions</p>
-            </a>
-          </div>
-        </section>
       </main>
     </div>
   )

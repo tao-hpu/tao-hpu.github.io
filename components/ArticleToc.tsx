@@ -16,8 +16,8 @@ const MIN_HEADINGS = 5
 
 /**
  * 文章目录。标题与 id 都由 rehype-slug 在编译期生成，这里直接从渲染好的
- * DOM 里读，不另算一份 slug，省掉两边对不上的可能。宽度不够时整块不出现
- * （见 prose.css 的断点），所以移动端不用另做折叠式目录。
+ * DOM 里读，不另算一份 slug，省掉两边对不上的可能。宽屏为侧边目录，
+ * 窄屏为正文前的折叠目录。
  */
 export default function ArticleToc() {
   const [items, setItems] = useState<TocItem[]>([])
@@ -63,7 +63,17 @@ export default function ArticleToc() {
 
   return (
     <nav className="article-toc" aria-label="On this page">
-      <ul>
+      <details className="article-toc-mobile">
+        <summary>On this page</summary>
+        <ul>
+          {items.map((item) => (
+            <li key={item.id} className={item.level === 3 ? 'article-toc-sub' : undefined}>
+              <a href={`#${item.id}`}>{item.text}</a>
+            </li>
+          ))}
+        </ul>
+      </details>
+      <ul className="article-toc-desktop">
         {items.map((item) => (
           <li
             key={item.id}
