@@ -824,7 +824,9 @@
 .it-bench-head,
 .it-bench-row {
     display: grid;
-    grid-template-columns: 1fr 4.2rem 4.2rem 4.2rem;
+    /* 名称列下限 5.75rem 容得下最长的名字（ProactiveBench）；标记列窄屏可收，
+       否则 375 宽时整行比容器宽、页面横向滚动。表头与数据行共用同一下限，列才对得齐。 */
+    grid-template-columns: minmax(5.75rem, 1fr) repeat(3, minmax(0, 4.2rem));
     gap: 0.3rem;
     align-items: center;
 }
@@ -841,6 +843,14 @@
     letter-spacing: 0.06em;
     color: var(--color-muted);
     text-align: center;
+}
+
+/* 窄屏标记列收到约 46px，大写加字距的表头放不下，改小写去字距 */
+@media (max-width: 480px) {
+    .it-bench-head span {
+        text-transform: none;
+        letter-spacing: 0;
+    }
 }
 
 .it-bench-grid {
