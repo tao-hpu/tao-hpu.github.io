@@ -294,7 +294,7 @@
 
 @media (max-width: 480px) {
     .featured-project-section {
-        padding: 2rem 1.25rem 2.5rem;
+        padding: 2rem 1.5rem 2.5rem;
     }
 }
 
@@ -681,18 +681,30 @@
     background: var(--color-footer-bg);
     color: var(--color-footer-text);
     margin-top: 6rem;
-    padding: 4rem 3rem 2rem;
+    padding: 4rem 3rem 0;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* 页脚底部的版画地景：图片只当透明度蒙版，纸色取 --color-footer-land，
+   墨线处透出页脚底色，随亮暗主题换色。 */
+.footer-land {
+    height: clamp(90px, 11.8vw, 210px);
+    margin: 0 -3rem;
+    background-color: var(--color-footer-land);
+    -webkit-mask: url('/images/footer-horizon.webp') center bottom / cover no-repeat;
+    mask: url('/images/footer-horizon.webp') center bottom / cover no-repeat;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
 .footer-container {
-    max-width: var(--max-width);
+    /* 与 .nav-container 的内容区同宽：导航在 --max-width 内留了左右各 3rem */
+    max-width: calc(var(--max-width) - 6rem);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr repeat(4, auto);
     gap: 4rem;
     padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 .footer-logo {
@@ -710,6 +722,12 @@
     font-size: 0.875rem;
     line-height: 1.5;
     color: var(--color-footer-muted, rgba(255, 255, 255, 0.55));
+}
+
+.footer-copyright {
+    margin: 1.25rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--color-footer-muted);
 }
 
 .footer-column {
@@ -737,38 +755,6 @@
     color: var(--color-accent);
 }
 
-.footer-bottom {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding-top: 2rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 0.8125rem;
-    color: var(--color-footer-muted);
-}
-
-.footer-bottom-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.footer-dot {
-    color: var(--color-muted);
-    opacity: 0.5;
-}
-
-.footer-bottom a {
-    color: var(--color-footer-muted);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.footer-bottom a:hover {
-    color: var(--color-accent);
-}
-
 /* Responsive Design */
 @media (max-width: 1024px) {
     .footer-container {
@@ -783,14 +769,18 @@
 
     .hero {
         grid-template-columns: 1fr;
-        padding: 9rem 2rem 4rem;
+        padding: 9rem 3rem 4rem;
         min-height: auto;
+    }
+
+    .hero-solo .hero-content {
+        padding-bottom: 4rem;
     }
 
     .home-page .hero {
         min-height: auto;
         grid-template-columns: minmax(0, 1.2fr) minmax(15rem, 0.8fr);
-        padding: 8rem 2rem 4rem;
+        padding: 8rem 3rem 4rem;
         gap: 2rem;
     }
 
@@ -883,6 +873,7 @@
     .hero-solo .hero-content {
         grid-template-columns: 1fr;
         gap: 0.5rem;
+        padding-bottom: 3.5rem;
     }
 
     .hero-solo .hero-note,
@@ -953,7 +944,11 @@
 
     .footer-dark {
         margin-top: 3rem;
-        padding: 3rem 1.5rem 2rem;
+        padding: 3rem 1.5rem 0;
+    }
+
+    .footer-land {
+        margin: 0 -1.5rem;
     }
 
     .footer-container {
@@ -980,7 +975,11 @@
     }
 
     .hero {
-        padding: 8rem 1.25rem 2.5rem;
+        padding: 8rem 1.5rem 2.5rem;
+    }
+
+    .hero-solo .hero-content {
+        padding-bottom: 2.5rem;
     }
 
     .hero-title {
@@ -992,7 +991,7 @@
     }
 
     .about-section {
-        padding: 2.5rem 1.25rem 2.5rem;
+        padding: 2.5rem 1.5rem 2.5rem;
     }
 
     .about-container {
@@ -1010,7 +1009,7 @@
     }
 
     .news-section {
-        padding: 1rem 1.25rem 2.5rem;
+        padding: 1rem 1.5rem 2.5rem;
     }
 
     .news-item {
@@ -1019,15 +1018,15 @@
     }
 
     .cards-section {
-        padding: 1.5rem 1.25rem 2.5rem;
+        padding: 1.5rem 1.5rem 2.5rem;
     }
 
     .featured-section {
-        padding: 1.5rem 1.25rem 2.5rem;
+        padding: 1.5rem 1.5rem 2.5rem;
     }
 
     .connect-section {
-        padding: 2.5rem 1.25rem 3rem;
+        padding: 2.5rem 1.5rem 3rem;
     }
 
     .section-title {
@@ -1052,13 +1051,13 @@
 
     .footer-dark {
         margin-top: 2.5rem;
-        padding: 2.5rem 1.25rem 1.5rem;
+        padding: 2.5rem 1.5rem 0;
     }
 
-    .footer-bottom {
-        justify-content: center;
-        text-align: center;
+    .footer-land {
+        margin: 0 -1.5rem;
     }
+
 }
 
 /* Accessibility */

@@ -9,6 +9,7 @@ export default function Footer() {
         <div className="footer-brand">
           <div className="footer-logo">T\A</div>
           <p className="footer-tagline">{SITE_TAGLINE}</p>
+          <p className="footer-copyright">&copy; {year} Tao An</p>
         </div>
 
         <div className="footer-column">
@@ -46,15 +47,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <div className="footer-bottom-meta">
-          <span>&copy; {year} Tao An</span>
-          <span className="footer-dot">·</span>
-          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
-            CC BY-NC-SA 4.0
-          </a>
-        </div>
-      </div>
+      <div className="footer-land" aria-hidden="true" />
     </footer>
   )
 }

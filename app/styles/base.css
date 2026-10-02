@@ -60,6 +60,7 @@ html {
     --color-footer-bg: #10283b;
     --color-footer-text: #eef6f4;
     --color-footer-muted: #bcced4;
+    --color-footer-land: #c4d1cd;
     
     /* New Semantic Variables */
     --color-border: rgba(20, 40, 58, 0.16);
@@ -93,6 +94,7 @@ html[data-theme="dark"] {
     --color-footer-bg: #071925;
     --color-footer-text: #eef6f4;
     --color-footer-muted: #afc4cc;
+    --color-footer-land: #8ea2a2;
 
     /* Dark mode specific adjustments */
     --color-border: rgba(238, 246, 244, 0.19);
@@ -123,6 +125,7 @@ html[data-theme="dark"] {
         --color-footer-bg: #071925;
         --color-footer-text: #eef6f4;
         --color-footer-muted: #afc4cc;
+        --color-footer-land: #8ea2a2;
 
         --color-border: rgba(238, 246, 244, 0.19);
         --color-button-text: #0e202d;

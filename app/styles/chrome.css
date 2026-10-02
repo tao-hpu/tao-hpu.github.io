@@ -338,7 +338,9 @@
     min-height: min(760px, 92svh);
     grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
     gap: clamp(2rem, 5vw, 6rem);
-    padding: 8.75rem max(3rem, calc((100vw - var(--shell-width)) / 2)) 5.5rem;
+    /* 左右内边距与 .nav-container 的内容区对齐：外框 --shell-width 内再留 3rem。
+       用 100% 不用 100vw，100vw 含滚动条宽度。 */
+    padding: 8.75rem max(3rem, calc((100% - var(--shell-width)) / 2 + 3rem)) 5.5rem;
     color: #edf7f3;
     background: #163c58;
     position: relative;
@@ -367,17 +369,23 @@
     color: #bce4b6;
 }
 
-/* Subpage hero: single column, left edge aligned with the list column below */
+/* Subpage hero: single column, left edge aligned with the list column below.
+   分隔线画在内容区上而不是 section 上：section 两侧有内边距，
+   线画在 section 上会比导航和正文宽出一截。 */
 .hero-solo {
     grid-template-columns: 1fr;
     padding-top: 10rem;
-    padding-bottom: 4.25rem;
-    border-bottom: 1px solid var(--color-border);
+}
+
+.hero.hero-solo {
+    padding-bottom: 0;
 }
 
 .hero-solo .hero-content {
     max-width: var(--shell-width);
     width: 100%;
+    padding-bottom: 4.25rem;
+    border-bottom: 1px solid var(--color-border);
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -394,6 +402,16 @@
 .hero-solo .hero-note,
 .hero-solo .section-jump-links {
     grid-column: 2;
+}
+
+/* Open Source 的标题折成两行，比右栏首段高。与说明同处第一行并底对齐时，
+   右栏整体被压到标题底部；让标题跨右栏三行，右栏从顶部排起，与其他内页一致。
+   窄屏是单列，跨行会打乱顺序，只在双列时生效。 */
+@media (min-width: 769px) {
+    .page-opensource .hero-solo .hero-title {
+        grid-row: 1 / span 3;
+        align-self: start;
+    }
 }
 
 .hero-note {

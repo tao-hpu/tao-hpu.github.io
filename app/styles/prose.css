@@ -233,16 +233,18 @@
 }
 
 /*
- * 1360 是算式反推出来的下限: left = 50% - 360 - 48 - 240, 要给左边留出
- * 24px 余量, 视口至少 1344, 加上滚动条取整到 1360。再窄目录会被推出屏幕。
+ * 目录左缘对齐导航内容区: 外框 --shell-width 居中再内缩 3rem。
+ * 宽度是外框左缘到正文左侧 3rem 间距之间的空档,
+ * 即 shell/2 - prose/2 - 6rem = 636 - 360 - 96 = 180px, 与视口无关。
+ * 1360 起才显示: 视口窄于外框时左缘公式不再成立。
  */
 @media (min-width: 1360px) {
     .article-toc {
-        --toc-width: 15rem;
+        --toc-width: calc(var(--shell-width) / 2 - var(--prose-width) / 2 - 6rem);
         display: block;
         position: fixed;
         top: 9.5rem;
-        left: calc(50% - var(--prose-width) / 2 - 3rem - var(--toc-width));
+        left: calc(50% - var(--shell-width) / 2 + 3rem);
         width: var(--toc-width);
         max-height: calc(100vh - 13rem);
         overflow-y: auto;
