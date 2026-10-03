@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Courses and developer tools by Tao An: linear algebra to attention, a from-scratch LLM course, algorithm visualizations, an IELTS whitepaper, a Chinese-English grammar reader, Tuto for citation-integrity auditing, AI-coding utilities, TLS automation, and merged upstream fixes.',
   keywords:
-    'Tao An, open source, linalg-to-attention, llm-from-scratch, english-catalog, English grammar, ielts-whitepaper, IELTS, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
+    'Tao An, open source, linalg-to-attention, llm-from-scratch, english-catalog, English grammar, ielts-whitepaper, IELTS, body-whitepaper, weight management, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
   openGraph: {
     title: 'Open Source · Tao An',
     description: 'Open courses, research tools, AI-coding utilities, and upstream contributions.',
@@ -258,6 +258,37 @@ export default function OpenSource() {
                 </div>
               </div>
             </div>
+
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Guide</span>
+                <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
+                <span className="venue-badge venue-badge-secondary">In progress</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://body.fim.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  body-whitepaper: 体重白皮书
+                </a>
+                <p className="publication-simple-tldr">
+                  A guide to losing weight and keeping it off, built on one idea:{' '}
+                  <strong>body weight is a reading, behavior is the dial</strong>. Each number is
+                  tied to its source. The first section ships a calculator that takes current and
+                  target weight and returns where three plans settle (exercise only, diet only,
+                  both), using Hall et al.&apos;s rule of about 24&nbsp;kcal/day per kg and exercise
+                  compensation from 18% in short studies to 84% over about 80 weeks.
+                </p>
+                <div className="publication-simple-links">
+                  <a href="https://body.fim.ai" target="_blank" rel="noopener noreferrer">
+                    Read online
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -280,7 +311,7 @@ export default function OpenSource() {
               <div className="publication-simple-body">
                 <a
                   className="publication-simple-title"
-                  href="https://github.com/fim-ai/tuto"
+                  href="https://github.com/tao-hpu/tuto"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -296,7 +327,7 @@ export default function OpenSource() {
                   non-replication as the finding.
                 </p>
                 <div className="publication-simple-links">
-                  <a href="https://github.com/fim-ai/tuto" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/tao-hpu/tuto" target="_blank" rel="noopener noreferrer">
                     GitHub
                   </a>
                   <a href="https://tuto.fim.ai/report" target="_blank" rel="noopener noreferrer">

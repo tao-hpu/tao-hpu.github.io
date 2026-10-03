@@ -82,7 +82,7 @@ export const publications: Publication[] = [
     titleHref: 'https://tuto.fim.ai/report',
     links: [
       { label: 'Report', href: 'https://tuto.fim.ai/report' },
-      { label: 'Code', href: 'https://github.com/fim-ai/tuto' },
+      { label: 'Code', href: 'https://github.com/tao-hpu/tuto' },
       {
         label: 'Dataset (Zenodo)',
         href: 'https://doi.org/10.5281/zenodo.21452257',
