@@ -34,7 +34,7 @@
 }
 
 .mem-tab.on {
-    background: var(--color-accent);
+    background: var(--color-accent-ink);
     border-color: var(--color-accent);
     color: var(--color-background);
 }
@@ -324,7 +324,7 @@
 }
 
 .lossy-mark.ok {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .lossy-mark.fail {
@@ -477,7 +477,7 @@
 
 .pc-amp-fold {
     font-style: normal;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     margin-left: 0.2rem;
 }
 
@@ -591,7 +591,7 @@
 .it-node-year {
     font-size: 0.6875rem;
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-variant-numeric: tabular-nums;
 }
 
@@ -696,7 +696,7 @@
     font-size: 0.625rem;
     font-style: normal;
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
@@ -714,7 +714,7 @@
 }
 
 .it-gate-verdict.on {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .it-gate-verdict span {
@@ -903,7 +903,7 @@
 }
 
 .it-bench-mark.m-y {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .it-bench-mark.m-p {

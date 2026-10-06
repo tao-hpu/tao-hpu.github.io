@@ -25,7 +25,10 @@ pnpm serve      # serve out/ locally
 - `app/sitemap.ts` — sitemap, generated from `app/articles/registry.ts`.
   Adding a note needs no edit here. The site has no RSS feed.
 - `app/globals.css` — stylesheet entry point; tokens, site chrome, lists, and
-  article styles live in `app/styles/` (light/dark via `data-theme`). The home
+  article styles live in `app/styles/` (light/dark via `data-theme`). The visual
+  theme uses warm paper, charcoal, and terracotta, with a warm-toned etched
+  footer landscape. Layout widths and interactive figures share the same tokens.
+  The home
   page leads from the research thesis to Explore, About, and News. News uses a
   narrower reading column, with older entries in an expandable archive. Long
   research notes have a side table of contents on wide screens and a collapsible

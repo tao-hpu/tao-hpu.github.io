@@ -17,7 +17,7 @@
     font-weight: 600;
     text-transform: none;
     letter-spacing: 0;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     background: var(--color-accent-light);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
@@ -103,7 +103,7 @@ a.publication-simple-item {
 }
 
 .publication-simple-title:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .publication-simple-tldr {
@@ -132,7 +132,7 @@ a.publication-simple-item {
 }
 
 .publication-simple-links a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 /* Contribution List (upstream / merged PRs) */
@@ -168,7 +168,7 @@ a.publication-simple-item {
     font-weight: 600;
     text-transform: none;
     letter-spacing: 0;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     background: var(--color-accent-light);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
@@ -195,7 +195,7 @@ a.publication-simple-item {
 }
 
 .contribution-text a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 /* Pointer to the full per-PR list, which lives on the GitHub profile */
@@ -219,7 +219,7 @@ a.publication-simple-item {
 }
 
 .contribution-more a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 /* Topic tag (per publication) */
@@ -244,15 +244,15 @@ a.publication-simple-item {
 }
 
 .topic-mem::before {
-    background: #6288d8;
+    background: #d97757;
 }
 
 .topic-hai::before {
-    background: #4f9c90;
+    background: #6a9a78;
 }
 
 .topic-kg::before {
-    background: #9674ad;
+    background: #8a7bb3;
 }
 
 .topic-interp::before {
@@ -311,7 +311,7 @@ a.publication-simple-item {
 
 .bibtex-toggle::before {
     content: "+";
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-weight: 700;
 }
 
@@ -320,7 +320,7 @@ a.publication-simple-item {
 }
 
 .bibtex-toggle:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .bibtex-pre {

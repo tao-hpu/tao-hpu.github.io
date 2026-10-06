@@ -94,7 +94,7 @@
 
 .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 14px 34px rgba(13, 36, 53, 0.12);
+    box-shadow: 0 14px 34px rgba(25, 25, 24, 0.12);
 }
 
 .card-beige {
@@ -140,7 +140,7 @@
 }
 
 .card-title {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(1.8rem, 2.7vw, 2.5rem);
     font-weight: 600;
     line-height: 1.12;
@@ -199,7 +199,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     background: var(--color-accent-light);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
@@ -247,7 +247,7 @@
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     transition: letter-spacing 0.2s ease;
 }
 
@@ -348,8 +348,8 @@
 }
 
 .featured-button:hover {
-    background: var(--color-accent);
-    color: #ffffff; /* Accent background always needs white text */
+    background: var(--color-accent-ink);
+    color: var(--color-button-text);
 }
 
 .featured-icon {
@@ -404,7 +404,7 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .featured-title {
@@ -479,7 +479,7 @@
 }
 
 .section-title-small {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(1.55rem, 2.3vw, 2rem);
     font-weight: 600;
     text-transform: none;
@@ -562,11 +562,11 @@
 }
 
 .news-dot-research {
-    background: #6288d8;
+    background: #6a9a78;
 }
 
 .news-dot-building {
-    background: #5caa93;
+    background: #8a7bb3;
 }
 
 .news-archive > summary {
@@ -584,7 +584,7 @@
 }
 
 .news-archive > summary:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .news-legend {
@@ -610,7 +610,7 @@
 }
 
 .news-body a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     text-decoration-color: var(--color-accent);
 }
 
@@ -668,7 +668,7 @@
     opacity: 0;
     transform: translateX(-8px);
     transition: all 0.2s ease;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .connect-item:hover .connect-arrow {
@@ -708,7 +708,7 @@
 }
 
 .footer-logo {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 1px;

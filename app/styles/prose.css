@@ -24,7 +24,7 @@
 }
 
 .article-breadcrumb a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .article-title {
@@ -86,7 +86,7 @@
 }
 
 .article-prose a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .article-prose ul,
@@ -178,7 +178,7 @@
 }
 
 .article-cite p a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
 }
 
 .article-cite .bibtex-pre {
@@ -278,7 +278,7 @@
     }
 
     .article-toc-item a:hover {
-        color: var(--color-accent);
+        color: var(--color-accent-ink);
     }
 
     .article-toc-item.is-active a {
