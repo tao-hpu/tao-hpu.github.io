@@ -22,16 +22,6 @@ pnpm serve      # serve out/ locally
   registered in `app/articles/registry.ts` (which also generates citation
   metadata and BibTeX). Interactive figures are React components in
   `components/`.
-  Each note has its own simple, topic-specific etched illustration, matching
-  the footer's fine hatching rather than fixed-color collage. Artwork is stored
-  as transparent ink masks (`*-etch.webp`, plus `*-etch-thumb.webp`); CSS sets
-  the ink and paper colors, so the same drawing works in light and dark themes.
-  Keep transparent padding on all four edges; never bake in a frame or white
-  baseline. OG/Twitter images (1200 × 630) combine each drawing with its title.
-  `pnpm generate:article-images` regenerates them from the registry; dev/build
-  run it automatically. Articles without a cover use the site share image.
-  Rich interactive articles remain in MDX. Use recognizable subjects and clear
-  relationships; matching style does not mean reusing the same illustration.
 - `app/sitemap.ts` — sitemap, generated from `app/articles/registry.ts`.
   Adding a note needs no edit here. The site has no RSS feed.
 - `app/globals.css` — stylesheet entry point; tokens, site chrome, lists, and

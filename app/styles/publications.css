@@ -91,25 +91,6 @@ a.publication-simple-item {
     min-width: 0;
 }
 
-.article-thumbnail {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.75rem;
-    overflow: hidden;
-}
-
-.article-thumbnail .article-artwork {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-}
-
-@media (max-width: 768px) {
-    .page-articles .article-thumbnail {
-        width: 112px;
-    }
-}
-
 .publication-simple-title {
     display: block;
     font-family: var(--font-serif);

@@ -48,9 +48,6 @@ importers:
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0
-      sharp:
-        specifier: 0.34.5
-        version: 0.34.5
       typescript:
         specifier: ^5.8.0
         version: 5.9.3
@@ -1024,7 +1021,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@img/colour@1.1.0': {}
+  '@img/colour@1.1.0':
+    optional: true
 
   '@img/sharp-darwin-arm64@0.34.5':
     optionalDependencies:
@@ -1561,7 +1559,8 @@ snapshots:
 
   dequal@2.0.3: {}
 
-  detect-libc@2.1.2: {}
+  detect-libc@2.1.2:
+    optional: true
 
   devlop@1.1.0:
     dependencies:
@@ -2132,7 +2131,8 @@ snapshots:
 
   scheduler@0.27.0: {}
 
-  semver@7.8.5: {}
+  semver@7.8.5:
+    optional: true
 
   sharp@0.34.5:
     dependencies:
@@ -2164,6 +2164,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.34.5
       '@img/sharp-win32-ia32': 0.34.5
       '@img/sharp-win32-x64': 0.34.5
+    optional: true
 
   source-map-js@1.2.1: {}
 

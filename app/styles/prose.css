@@ -51,28 +51,6 @@
     color: var(--color-text);
 }
 
-.article-cover {
-    margin: 2rem 0 2.5rem;
-    aspect-ratio: 16 / 9;
-}
-
-/* Individual etched illustrations share the footer's print language.
-   Ink alpha is stored in each asset; its color follows the active theme. */
-.article-artwork {
-    position: relative;
-    overflow: hidden;
-    background: var(--color-surface);
-}
-
-.article-artwork::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--color-muted);
-    -webkit-mask: var(--article-artwork) center / contain no-repeat;
-    mask: var(--article-artwork) center / contain no-repeat;
-}
-
 .article-prose p,
 .article-prose ul,
 .article-prose ol,

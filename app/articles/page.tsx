@@ -46,13 +46,6 @@ export default function ArticlesPage() {
             {sorted.map((a) => (
               <div className="publication-simple-item" key={a.slug}>
                 <div className="publication-simple-meta">
-                  {a.cover && (
-                    <a href={`/articles/${a.slug}`} className="article-thumbnail" tabIndex={-1} aria-hidden="true">
-                      <span className="article-artwork" style={{
-                        '--article-artwork': `url("${a.cover.thumbnailSrc}")`,
-                      } as React.CSSProperties} />
-                    </a>
-                  )}
                   <span className="venue-year">{formatDate(a.date)}</span>
                   {a.tags?.map((t) => (
                     <span className="topic-tag" key={t}>

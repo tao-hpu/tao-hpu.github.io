@@ -38,7 +38,7 @@ export default function ArticleLayout({
     isPartOf: { '@id': `${SITE_URL}/#website` },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     url,
-    image: `${SITE_URL}${a.cover?.socialSrc ?? '/images/og-cover.jpg'}`,
+    image: `${SITE_URL}/images/og-cover.jpg`,
     inLanguage: 'en',
     keywords: a.tags?.join(', '),
     ...(a.relatedPaper
@@ -90,11 +90,6 @@ export default function ArticleLayout({
               </p>
             )}
           </header>
-
-          {a.cover && (
-            <div className="article-cover article-artwork" role="img" aria-label={a.cover.alt}
-              style={{ '--article-artwork': `url("${a.cover.src}")` } as React.CSSProperties} />
-          )}
 
           <ArticleToc />
           <div className="article-prose">{children}</div>
