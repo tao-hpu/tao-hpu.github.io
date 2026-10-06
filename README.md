@@ -31,6 +31,10 @@ pnpm serve      # serve out/ locally
   used for novelty, memory fidelity, and equalizer/amplifier notes. New covers
   should use those originals as style references. Rich interactive articles
   remain in MDX.
+  Prefer recognizable subjects and a clear relationship that explains the
+  article at thumbnail size. Citation audits use documents and magnifiers;
+  revisiting memory shows a summary missing information found in the original.
+  Use versioned asset names for replacements so cached share images can refresh.
 - `app/sitemap.ts` — sitemap, generated from `app/articles/registry.ts`.
   Adding a note needs no edit here. The site has no RSS feed.
 - `app/globals.css` — stylesheet entry point; tokens, site chrome, lists, and

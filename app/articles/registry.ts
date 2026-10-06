@@ -98,10 +98,10 @@ export const articles: Article[] = [
   {
     slug: 'acl-2026-citation-audit',
     cover: {
-      src: '/images/articles/acl-2026-citation-audit.webp',
-      thumbnailSrc: '/images/articles/acl-2026-citation-audit-thumb.webp',
-      alt: 'Three matching stone arches send the same ribbon along different paths above an orderly archive.',
-      socialSrc: '/images/articles/acl-2026-citation-audit-og.jpg',
+      src: '/images/articles/acl-2026-citation-audit-v2.webp',
+      thumbnailSrc: '/images/articles/acl-2026-citation-audit-v2-thumb.webp',
+      alt: 'Three documents under magnifying glasses receive different verdicts: a check, a question mark, and a cross.',
+      socialSrc: '/images/articles/acl-2026-citation-audit-v2-og.jpg',
     },
     title: 'We Checked All 209,985 Citations in ACL 2026',
     description:
@@ -191,10 +191,10 @@ export const articles: Article[] = [
   {
     slug: 'active-memory-revisited',
     cover: {
-      src: '/images/articles/active-memory-revisited.webp',
-      thumbnailSrc: '/images/articles/active-memory-revisited-thumb.webp',
-      alt: 'A sparse stone shelf and discarded fragments beside a mint path returning to an intact ribbon.',
-      socialSrc: '/images/articles/active-memory-revisited-og.jpg',
+      src: '/images/articles/active-memory-revisited-v2.webp',
+      thumbnailSrc: '/images/articles/active-memory-revisited-v2-thumb.webp',
+      alt: 'A summary is missing a key-shaped piece; an arrow leads back to the original notebook, where a magnifying glass reveals it.',
+      socialSrc: '/images/articles/active-memory-revisited-v2-og.jpg',
     },
     title: 'What I Got Wrong About LLM Memory',
     description:
