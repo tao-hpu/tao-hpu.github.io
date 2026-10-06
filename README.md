@@ -22,19 +22,16 @@ pnpm serve      # serve out/ locally
   registered in `app/articles/registry.ts` (which also generates citation
   metadata and BibTeX). Interactive figures are React components in
   `components/`.
-  Optional `cover` entries provide the list thumbnail (300 × 300), article artwork (700 × 700), and
-  OG/Twitter share image (1200 × 630); articles without a cover use the site
-  share image. Assets live in `public/images/articles/`. Covers follow the
-  Research Landscapes style: midnight blue, gray-green terrain, small mint
-  accents, layered print textures, no text, and one metaphor per article.
-  All nine current notes have their own illustration; the original three are
-  used for novelty, memory fidelity, and equalizer/amplifier notes. New covers
-  should use those originals as style references. Rich interactive articles
-  remain in MDX.
-  Prefer recognizable subjects and a clear relationship that explains the
-  article at thumbnail size. Citation audits use documents and magnifiers;
-  revisiting memory shows a summary missing information found in the original.
-  Use versioned asset names for replacements so cached share images can refresh.
+  Each note has its own simple, topic-specific etched illustration, matching
+  the footer's fine hatching rather than fixed-color collage. Artwork is stored
+  as transparent ink masks (`*-etch.webp`, plus `*-etch-thumb.webp`); CSS sets
+  the ink and paper colors, so the same drawing works in light and dark themes.
+  Keep transparent padding on all four edges; never bake in a frame or white
+  baseline. OG/Twitter images (1200 × 630) combine each drawing with its title.
+  `pnpm generate:article-images` regenerates them from the registry; dev/build
+  run it automatically. Articles without a cover use the site share image.
+  Rich interactive articles remain in MDX. Use recognizable subjects and clear
+  relationships; matching style does not mean reusing the same illustration.
 - `app/sitemap.ts` — sitemap, generated from `app/articles/registry.ts`.
   Adding a note needs no edit here. The site has no RSS feed.
 - `app/globals.css` — stylesheet entry point; tokens, site chrome, lists, and

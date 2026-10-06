@@ -8,8 +8,9 @@
     ]
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "generate:article-images": "node scripts/generate-article-share-images.mjs",
+    "dev": "pnpm generate:article-images && next dev",
+    "build": "pnpm generate:article-images && next build",
     "serve": "npx serve out"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "rehype-slug": "^6.0.0",
+    "sharp": "0.34.5",
     "typescript": "^5.8.0"
   }
 }

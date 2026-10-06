@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { articles } from './registry'
-import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Articles',
@@ -49,8 +48,9 @@ export default function ArticlesPage() {
                 <div className="publication-simple-meta">
                   {a.cover && (
                     <a href={`/articles/${a.slug}`} className="article-thumbnail" tabIndex={-1} aria-hidden="true">
-                      <Image src={a.cover.thumbnailSrc} alt="" width={300} height={300}
-                        sizes="(max-width: 768px) 112px, 150px" />
+                      <span className="article-artwork" style={{
+                        '--article-artwork': `url("${a.cover.thumbnailSrc}")`,
+                      } as React.CSSProperties} />
                     </a>
                   )}
                   <span className="venue-year">{formatDate(a.date)}</span>
