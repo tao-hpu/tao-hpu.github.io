@@ -91,6 +91,26 @@ a.publication-simple-item {
     min-width: 0;
 }
 
+.article-thumbnail {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    background: #10283b;
+}
+
+.article-thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .page-articles .article-thumbnail {
+        width: 112px;
+    }
+}
+
 .publication-simple-title {
     display: block;
     font-family: var(--font-serif);

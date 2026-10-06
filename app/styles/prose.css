@@ -51,6 +51,18 @@
     color: var(--color-text);
 }
 
+.article-cover {
+    margin: 2rem 0 2.5rem;
+    overflow: hidden;
+    background: #10283b;
+}
+
+.article-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .article-prose p,
 .article-prose ul,
 .article-prose ol,

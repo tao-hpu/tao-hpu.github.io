@@ -1,4 +1,13 @@
 import type { Metadata } from 'next'
+import { SITE_NAME, SITE_URL } from '@/lib/site'
+
+export type ArticleCover = {
+  src: string
+  thumbnailSrc: string
+  alt: string
+  /** A 1200 × 630 share image, composed from the same artwork. */
+  socialSrc: string
+}
 
 export type RelatedPaper = {
   label: string
@@ -13,6 +22,7 @@ export type Article = {
   date: string
   updated?: string
   tags?: string[]
+  cover?: ArticleCover
   /**
    * Zenodo *concept* DOI of the paper this note accompanies, e.g.
    * '10.5281/zenodo.21438396'. Always the concept DOI, never a version DOI:
@@ -30,6 +40,12 @@ export type Article = {
 export const articles: Article[] = [
   {
     slug: 'novelty-audit',
+    cover: {
+      src: '/images/articles/novelty-audit.webp',
+      thumbnailSrc: '/images/articles/novelty-audit-thumb.webp',
+      alt: 'Similar stone forms in a blue landscape, with a single mint-colored facet.',
+      socialSrc: '/images/articles/novelty-audit-og.jpg',
+    },
     title: 'Machine Papers Look More Novel. Mostly in One Facet.',
     description:
       'Companion note to "Recombination or Discovery?" (NeurIPS 2026 AI4MetaScience workshop poster): machine contributions are judged facet-novel more often than matched human ones (56.1% vs. 35.6%), but the gap rests mainly on the purpose facet, LLM re-auditors return refutation rates from 0% to 100% on the same items, and retrieval finds the known prior art for only 25 to 29% of gold pairs. Plus an integrity audit: hard fabrication evidence in 0 of 47 accepted and 16 of 197 rejected Agents4Science 2025 submissions.',
@@ -43,6 +59,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'equalizer-amplifier',
+    cover: {
+      src: '/images/articles/equalizer-amplifier.webp',
+      thumbnailSrc: '/images/articles/equalizer-amplifier-thumb.webp',
+      alt: 'A shared mint-colored gate with paths leading to different elevations.',
+      socialSrc: '/images/articles/equalizer-amplifier-og.jpg',
+    },
     title: 'Same Tool, Opposite Verdicts',
     description:
       'Interactive companion to the HHAI 2026 paper "AI as Equalizer or Amplifier?": why AI compresses the novice-expert gap on routine tasks and widens it on judgment-heavy ones, how model deference compounds the difference turn by turn, and what the position paper cannot yet show.',
@@ -55,6 +77,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'citation-decoupling',
+    cover: {
+      src: '/images/articles/citation-decoupling.webp',
+      thumbnailSrc: '/images/articles/citation-decoupling-thumb.webp',
+      alt: 'Two intact stone archives connected by a mint bridge with a gap in the middle.',
+      socialSrc: '/images/articles/citation-decoupling-og.jpg',
+    },
     title: 'The Citation Ledger Is Fine. The Citation Currency Is Dying.',
     description:
       'Citation bundles a ledger (registration, priority) and a currency (reputation) in one act, coupled only because reading was the sole transport layer of science. I argued LLM reader-side consumption is splitting them, and made three falsifiable predictions. Updated with the measurements: reuse and citation did come apart, by roughly half over a decade, but my mechanism lost. No break at model release, no field-exposure gradient, and the 2015 cohort declines as steeply as the 2023 one.',
@@ -69,6 +97,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'acl-2026-citation-audit',
+    cover: {
+      src: '/images/articles/acl-2026-citation-audit.webp',
+      thumbnailSrc: '/images/articles/acl-2026-citation-audit-thumb.webp',
+      alt: 'Three matching stone arches send the same ribbon along different paths above an orderly archive.',
+      socialSrc: '/images/articles/acl-2026-citation-audit-og.jpg',
+    },
     title: 'We Checked All 209,985 Citations in ACL 2026',
     description:
       'Companion note to the Tuto audit report and the paper behind it: fabricated references are a rounding error (2 confirmed, 0.001%); claim-support rates did not replicate across three identical-pipeline runs, so the paper takes non-replication, not any single rate, as the principal finding.',
@@ -82,6 +116,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'intervention-timing',
+    cover: {
+      src: '/images/articles/intervention-timing.webp',
+      thumbnailSrc: '/images/articles/intervention-timing-thumb.webp',
+      alt: 'A path approaches a stone gate beside a mint balance beam on a quiet hillside.',
+      socialSrc: '/images/articles/intervention-timing-og.jpg',
+    },
     title: 'The Missing Cost Term',
     description:
       'Interactive companion to "When Should the Agent Speak?": twenty years of research learned what it costs to interrupt a person, and had no agent capable of earning that cost back. The agents arrived. The price did not come with them.',
@@ -96,6 +136,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'workspace-registers',
+    cover: {
+      src: '/images/articles/workspace-registers.webp',
+      thumbnailSrc: '/images/articles/workspace-registers-thumb.webp',
+      alt: 'Geometric forms occupy open stone compartments beside a path hidden beyond the ridge.',
+      socialSrc: '/images/articles/workspace-registers-og.jpg',
+    },
     title: "What the Model Isn't About to Say",
     description:
       'Interactive companion to the working paper "Registers, Not Plans": an independent replication of Anthropic\'s global-workspace claim, and why only context registers, not content plans, survive a strict readout test.',
@@ -108,6 +154,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'verbatim-memory',
+    cover: {
+      src: '/images/articles/verbatim-memory.webp',
+      thumbnailSrc: '/images/articles/verbatim-memory-thumb.webp',
+      alt: 'A continuous ribbon passes through stone arches and emerges as fragments.',
+      socialSrc: '/images/articles/verbatim-memory-og.jpg',
+    },
     title: 'What Structured Memory Forgets',
     description:
       'Interactive companion to "Fidelity Before Structure" (arXiv:2601.00821): explore the benchmark results and see why extraction loses to verbatim chunks at write time.',
@@ -120,6 +172,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'consensus-dispersion',
+    cover: {
+      src: '/images/articles/consensus-dispersion.webp',
+      thumbnailSrc: '/images/articles/consensus-dispersion-thumb.webp',
+      alt: 'Two stone basins contrast a tight cluster of pebbles with a broadly dispersed group.',
+      socialSrc: '/images/articles/consensus-dispersion-og.jpg',
+    },
     title: 'How Much the Model Agrees with Itself',
     description:
       'Interactive companion to the working paper "Consensus Density Predicts Output Dispersion in Aligned LLMs": sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
@@ -132,6 +190,12 @@ export const articles: Article[] = [
   },
   {
     slug: 'active-memory-revisited',
+    cover: {
+      src: '/images/articles/active-memory-revisited.webp',
+      thumbnailSrc: '/images/articles/active-memory-revisited-thumb.webp',
+      alt: 'A sparse stone shelf and discarded fragments beside a mint path returning to an intact ribbon.',
+      socialSrc: '/images/articles/active-memory-revisited-og.jpg',
+    },
     title: 'What I Got Wrong About LLM Memory',
     description:
       'Cognitive Workspace (2025) argued for actively curated memory; my own 2026 ablation showed curation is lossy deletion. What failed, what survived, and the meta-lesson about measuring claims.',
@@ -176,6 +240,12 @@ export function articleBibtex(a: Article): string {
  */
 export function articleMetadata(slug: string): Metadata {
   const a = getArticle(slug)
+  const image = {
+    url: `${SITE_URL}${a.cover?.socialSrc ?? '/images/og-cover.jpg'}`,
+    width: 1200,
+    height: 630,
+    alt: a.cover?.alt ?? a.title,
+  }
   return {
     // The root layout's title template already appends " · Tao An".
     title: a.title,
@@ -187,7 +257,16 @@ export function articleMetadata(slug: string): Metadata {
       type: 'article',
       url: articleUrl(a),
       publishedTime: a.date,
+      modifiedTime: a.updated ?? a.date,
+      siteName: SITE_NAME,
       authors: ['Tao An'],
+      images: [image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: a.title,
+      description: a.description,
+      images: [image],
     },
     other: {
       citation_title: a.title,

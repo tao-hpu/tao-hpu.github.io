@@ -22,6 +22,15 @@ pnpm serve      # serve out/ locally
   registered in `app/articles/registry.ts` (which also generates citation
   metadata and BibTeX). Interactive figures are React components in
   `components/`.
+  Optional `cover` entries provide the list thumbnail (300 × 300), article artwork (700 × 700), and
+  OG/Twitter share image (1200 × 630); articles without a cover use the site
+  share image. Assets live in `public/images/articles/`. Covers follow the
+  Research Landscapes style: midnight blue, gray-green terrain, small mint
+  accents, layered print textures, no text, and one metaphor per article.
+  All nine current notes have their own illustration; the original three are
+  used for novelty, memory fidelity, and equalizer/amplifier notes. New covers
+  should use those originals as style references. Rich interactive articles
+  remain in MDX.
 - `app/sitemap.ts` — sitemap, generated from `app/articles/registry.ts`.
   Adding a note needs no edit here. The site has no RSS feed.
 - `app/globals.css` — stylesheet entry point; tokens, site chrome, lists, and

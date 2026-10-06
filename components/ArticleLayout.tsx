@@ -3,6 +3,7 @@ import ArticleToc from '@/components/ArticleToc'
 import CopyBibtex from '@/components/CopyBibtex'
 import { readingMinutes } from '@/lib/reading-time'
 import { SITE_URL } from '@/lib/site'
+import Image from 'next/image'
 
 function formatDate(iso: string): string {
   return new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
@@ -38,7 +39,7 @@ export default function ArticleLayout({
     isPartOf: { '@id': `${SITE_URL}/#website` },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     url,
-    image: `${SITE_URL}/images/og-cover.jpg`,
+    image: `${SITE_URL}${a.cover?.socialSrc ?? '/images/og-cover.jpg'}`,
     inLanguage: 'en',
     keywords: a.tags?.join(', '),
     ...(a.relatedPaper
@@ -90,6 +91,13 @@ export default function ArticleLayout({
               </p>
             )}
           </header>
+
+          {a.cover && (
+            <div className="article-cover">
+              <Image src={a.cover.src} alt={a.cover.alt} width={700} height={700}
+                sizes="(max-width: 720px) calc(100vw - 3rem), 672px" priority />
+            </div>
+          )}
 
           <ArticleToc />
           <div className="article-prose">{children}</div>

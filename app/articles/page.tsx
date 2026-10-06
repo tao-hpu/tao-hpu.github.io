@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { articles } from './registry'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Articles',
@@ -46,6 +47,12 @@ export default function ArticlesPage() {
             {sorted.map((a) => (
               <div className="publication-simple-item" key={a.slug}>
                 <div className="publication-simple-meta">
+                  {a.cover && (
+                    <a href={`/articles/${a.slug}`} className="article-thumbnail" tabIndex={-1} aria-hidden="true">
+                      <Image src={a.cover.thumbnailSrc} alt="" width={300} height={300}
+                        sizes="(max-width: 768px) 112px, 150px" />
+                    </a>
+                  )}
                   <span className="venue-year">{formatDate(a.date)}</span>
                   {a.tags?.map((t) => (
                     <span className="topic-tag" key={t}>
