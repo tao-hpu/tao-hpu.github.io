@@ -29,6 +29,14 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'punctuation-staircase',
+    title: 'The Punctuation Staircase Is Not an AI Fingerprint',
+    description:
+      'Diagonal runs of punctuation in Chinese chatbot replies looked like a model fingerprint. Pre-ChatGPT human answers have more of them, every corpus stays close to a random-placement baseline, and what the models change is where the staircases appear.',
+    date: '2026-10-09',
+    tags: ['human-ai'],
+  },
+  {
     slug: 'novelty-audit',
     title: 'Machine Papers Look More Novel. Mostly in One Facet.',
     description:

@@ -1,0 +1,155 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import StaircaseDemo from '@/components/StaircaseDemo'
+import StaircaseChance from '@/components/StaircaseChance'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('punctuation-staircase')
+
+<ArticleLayout slug="punctuation-staircase">
+
+I read a lot of Chinese written by Claude, most of it in a terminal, and for months I kept
+seeing the same shape. The commas, enumeration commas and colons on consecutive lines
+seemed to line up into diagonals, each one or two characters to the side of the one above,
+like a staircase running down the screen. I started treating it as a tell. When I saw the
+staircase, I assumed a model had written the text.
+
+Chinese makes this kind of shape easy to see. Every Han character and every full-width
+punctuation mark occupies the same square cell, so a block of Chinese text is laid out on
+graph paper, and the position of each mark is a coordinate. English words vary in length
+and their punctuation lands anywhere. The question I wanted answered was who puts the
+marks on those coordinates: the model, the training, or nobody.
+
+<StaircaseDemo />
+
+To count staircases I needed a rule. A staircase here is three or more punctuation marks on
+consecutive rendered rows, each one 1 to 3 characters left or right of the mark above it,
+all stepping in the same direction. Unless stated otherwise the numbers below use lines 40
+characters wide, close to what my terminal shows; the conclusions hold at 30 and 50.
+
+## The data
+
+The machine side has three parts. The first is 400 replies sampled at random from my own
+Claude Code sessions, out of 1,554 that are mostly Chinese and longer than 300 characters.
+The second is 347 replies from seven chat models (Claude Opus 4.6, Sonnet 4.6 and
+Sonnet 5.5, GPT-4o, GPT-5.1, Gemini 3.1 Pro and DeepSeek V4 Pro), each asked the same 50
+everyday questions in Chinese through the raw API with no system prompt. The third is 400
+ChatGPT answers from December 2022, taken from the HC3-Chinese corpus
+([Guo et al., 2023](https://arxiv.org/abs/2301.07597)).
+
+The human side was all written before ChatGPT was released. HC3-Chinese supplies 400
+answers from a psychology Q&A site and 400 Baidu Baike encyclopedia entries. The fourth
+human source is Ruan Yifeng, whose Chinese writing on programming I have read for years:
+nine issues of his weekly newsletter from 2018 to 2021 and five chapters of his ES6 book.
+
+## First guess: the rhythm is too even
+
+My first explanation was that the model writes clauses of nearly equal length, so the
+marks advance by a similar amount on every row and drift diagonally. That predicts a
+narrower spread of clause lengths in machine text. It is not there. The coefficient of
+variation of clause length (standard deviation over mean) is 0.69 in my Claude Code
+sample and 0.64 across the seven API models, against 0.59 to 0.71 for the three human
+sources. The model's clauses are as uneven as people's.
+
+A sharper test removes rhythm altogether. If I shuffle the clauses inside every paragraph,
+so that clause lengths stay the same but their order becomes random, any rhythm the writer
+had is destroyed. Within paragraphs, the staircase count does not move: 4.3 per 100 rows
+before shuffling and 4.6 after for Claude Code, 13.8 both times for the psychology answers.
+Whatever produces the staircase, it is not the order in which clauses are written.
+
+## Second guess, and a mistake
+
+Next I counted whole replies instead of paragraphs, and compared my Claude Code sample
+with the only human writing I had collected at that point, Ruan Yifeng's. Claude came out
+far ahead: 7.3 staircases per 100 rows that contain punctuation, against 2.8. Adding blank
+lines between Claude's lines removed most of the gap, so I concluded that the staircase was
+a layout effect: models stack many short lines with no blank line between them, and the
+marks on stacked lines can chain.
+
+That comparison was wrong, because one careful writer is not a baseline. Ruan Yifeng
+leaves a blank line after nearly every paragraph (62% of his lines are blank) and uses
+punctuation sparingly. When I added the HC3 human answers, the ranking reversed. Answers
+on the psychology Q&A site, written by ordinary people years before any chatbot, have
+15.3 staircases per 100 rows. My Claude Code sample has 5.1 and the seven models through
+the API have 2.3.
+
+## The chance baseline
+
+The reversal suggested the count tracks something duller than authorship. To check, I
+built a baseline for every document: keep the number of marks on each row and the length
+of the row, but place the marks at random positions along it, then count staircases
+again, ten draws per document.
+
+<StaircaseChance />
+
+Every corpus lands at or near its own chance baseline. For my Claude Code sample, the
+seven API models, Baidu Baike and Ruan Yifeng, observed and random differ by 1% to 3%.
+The two corpora that sit above chance are both paragraph prose: the psychology answers
+(14% above) and ChatGPT's answers from 2022 (25% above). The modern models' replies, the
+text I suspected, are the ones that sit exactly at chance. Most of the count is whatever
+punctuation density and line breaks produce when the marks fall anywhere. Writers who put
+nearly three marks on every row of a long, unbroken paragraph get many staircases,
+whoever they are, and the psychology answers carry the most marks per row in the data.
+The pattern holds at 30 and 50 characters per line, where the ratios range from 0.92 to
+1.25.
+
+The width slider in the demo shows the other half of the argument. Staircases appear and
+disappear as the line width changes, because the line breaks belong to the window, not to
+the text. The model generates a sequence of characters and never sees where they will
+wrap, so neither the model nor its training could aim at the shape.
+
+## What does differ
+
+The count does not separate human from machine text, but the kind of staircase does, and
+I think that explains what I was noticing.
+
+In human text the staircases sit inside paragraphs: only 3% to 38% of them cross from one
+source line into the next. In the seven models' replies, 91% do. They form across list
+items, and 61% of them sit in the left third of the line, against 35% to 43% for the human
+sources. They are made by a specific format: 68% of the models' lines are list items, and
+41% of lines open with a short label followed by a colon (运动：…, 兴趣培养：…), against 4%
+to 6% in the human sources. When two adjacent list items both open with a label, the
+labels have the same length 32% of the time and differ by one to three characters 48% of
+the time. Equal labels put the colons in a vertical column; labels that differ slightly
+put them on a diagonal.
+
+Format is also the only thing an intervention removes. Inserting a blank line after every
+line cuts the models' staircases from 6.1 to 0.4 per 100 punctuated rows, measured against
+the same text with all blank lines removed, while the psychology answers only drop from
+17.9 to 11.9, because their staircases live inside paragraphs that a blank line does not
+split.
+
+So the answer to "who did it" has three parts, and none of them is aiming at a staircase.
+Preference training makes models write lists: reward models and human raters favor lists,
+bold text and similar formatting, and a small share of biased preference data is enough to
+plant the bias, which best-of-n sampling and online DPO then amplify
+([Zhang et al., ACL 2025](https://arxiv.org/abs/2409.11704)). Chinese has an old habit of
+opening parallel items with short, similar labels, familiar from official documents and
+slides, and the models have learned it. The character grid does the rest, and as the
+chance baseline shows, the geometry is accidental.
+
+## Why I saw it in machine text
+
+This part I have not measured. A staircase inside a dense paragraph is one diagonal among
+many marks, a texture the eye does not separate out. A staircase down the left edge of a
+stacked list, where short lines leave white space around each mark, stands alone. I also
+read far more model output than casual human Chinese, and I read it already expecting a
+model. Any of these could account for my impression, and only a perception study, with the
+same text shown in list and paragraph layouts, could tell them apart.
+
+What the data does support is narrower. The punctuation staircase is not a fingerprint of
+Claude, or of language models. Human Chinese produces it at least as often, and in every
+corpus the count stays within a quarter of what random placement predicts, with the
+modern models closest to chance. What the machine replies carry is a layout
+(stacked list items opening with labels) that puts the staircase where I happened to be
+looking.
+
+## Limits
+
+The staircase rule is mine, and I have not checked it against what readers mark by hand.
+My Claude Code sample comes from my own sessions and is shaped by my instructions file,
+which pushes toward compact reports; the API sample, one reply per question at default
+settings, is the cleaner machine baseline. The human corpora differ from the machine ones
+in genre as well as authorship: encyclopedia entries and Q&A answers are not chat replies.
+None of this changes the chance result, which compares each corpus only with itself.
+
+</ArticleLayout>

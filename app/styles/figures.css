@@ -1022,3 +1022,116 @@
 .ea-toggle {
     cursor: pointer;
 }
+
+/* StaircaseDemo / StaircaseChance */
+.stair-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem 1.2rem;
+    margin: 1rem 0 0.4rem;
+}
+
+.stair-controls .mem-explorer-metrics {
+    margin-bottom: 0;
+}
+
+.stair-width {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.stair-width input {
+    accent-color: var(--color-accent);
+    width: 140px;
+}
+
+.stair-box {
+    width: 100%;
+    padding: 0.8rem 0;
+    container-type: inline-size;
+}
+
+/* One half-width cell: at most 10px, otherwise the container width / column count. */
+.stair-grid {
+    --u: min(10px, calc(100cqw / var(--stair-cols)));
+    position: relative;
+    width: calc(var(--u) * var(--stair-cols));
+    height: calc(var(--u) * 3.1 * var(--stair-rows));
+    font-size: calc(var(--u) * 2);
+    font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", var(--font-sans);
+}
+
+.stair-ch {
+    position: absolute;
+    left: calc(var(--u) * var(--c));
+    top: calc(var(--u) * 3.1 * var(--r));
+    width: calc(var(--u) * var(--w));
+    height: calc(var(--u) * 3.1);
+    line-height: calc(var(--u) * 3.1);
+    text-align: center;
+    color: var(--color-muted);
+    opacity: 0.75;
+}
+
+.stair-ch.p {
+    color: var(--color-text);
+    opacity: 1;
+    font-weight: 600;
+}
+
+.stair-ch.on {
+    color: var(--color-accent-ink);
+}
+
+.stair-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stair-lines polyline {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.55;
+}
+
+.stair-chance-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 220px) 1fr;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.7rem;
+}
+
+.stair-chance-n {
+    display: block;
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+}
+
+.stair-chance-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stair-chance-bars .mem-bar-track {
+    min-height: 14px;
+}
+
+.stair-chance-muted {
+    font-weight: 400;
+    color: var(--color-muted);
+}
