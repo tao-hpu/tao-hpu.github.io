@@ -6,7 +6,7 @@ import PublicationList from './PublicationList'
 import { academicService } from './publications'
 
 const RESEARCH_DESCRIPTION =
-  'Papers by Tao An: a TMLR survey on intervention timing for always-on assistants, an HHAI 2026 paper on AI as equalizer or amplifier, and preprints on LLM memory, metascience, and interpretability.'
+  'Papers by Tao An: two TMLR 2026 papers, a survey on intervention timing for always-on assistants and a study of consensus density and output dispersion in aligned LLMs, an HHAI 2026 paper on AI as equalizer or amplifier, and preprints on LLM memory, metascience, and interpretability.'
 
 export const metadata: Metadata = {
   title: 'Research',

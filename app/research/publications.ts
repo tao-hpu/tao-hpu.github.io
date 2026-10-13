@@ -201,22 +201,30 @@ export const publications: Publication[] = [
     title: 'Consensus Density Predicts Output Dispersion in Aligned LLMs',
     takeaway:
       'Output dispersion tracks task consensus density; alignment amplifies a gradient the base model already carries.',
-    tldr: 'Tao An, Shuai Feng. Sampling an aligned LLM repeatedly and embedding the completions, output dispersion (mean pairwise cosine distance) tracks the consensus density of the task: near-zero on factual prompts, wide on open-ended ones (Spearman ρ = 0.85), replicating on a second model and predicted by held-out judges that score only the prompt (ρ = −0.91). A matched base-vs-instruct comparison shows alignment amplifies a gradient the pretrained base already carries, compressing the high-consensus end ~8.7-fold against 1.8-fold at the low end. This places the “equalizer vs. amplifier” boundary at the distribution level rather than in posited task complexity.',
+    tldr: 'Tao An, Shuai Feng. Transactions on Machine Learning Research (TMLR), 2026. Sampling an aligned LLM 25 times per prompt and embedding the completions, output dispersion (mean pairwise cosine distance) is predicted by the consensus density of the task, scored by held-out judges that see only the prompt (Spearman ρ = −0.91). The task-type ordering holds on two unrelated models (ρ = 0.85 and 0.84), the judge relation holds within two professional domains (−0.83 over 42 pharmaceutical prompts, −0.62 over 40 software-engineering prompts), and a preliminary expert panel tracks the judges at ρ = 0.74. A matched base-vs-instruct comparison shows alignment amplifies a gradient the pretrained base already carries, compressing the high-consensus end ~8.7-fold against 1.8-fold at the low end. The link to AI equalizing or amplifying human outcomes is stated separately, as an untested hypothesis.',
     year: '2026',
-    status: 'working',
-    badges: [{ label: 'Working paper' }],
+    status: 'published',
+    badges: [
+      { label: 'TMLR 2026', starred: true },
+      { label: 'Accepted · to appear', secondary: true },
+    ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
     titleHref: 'https://openreview.net/forum?id=6ukieTMBcG',
     links: [
       { label: 'OpenReview', href: 'https://openreview.net/forum?id=6ukieTMBcG' },
+      { label: 'Video (5 min)', href: 'https://www.youtube.com/watch?v=4_Gzy4mbSQQ' },
+      { label: 'Code', href: 'https://github.com/tao-hpu/consensus-dispersion' },
       { label: 'Interactive note', href: '/articles/consensus-dispersion', internal: true },
     ],
-    bibtex: `@misc{an2026consensus,
-  title  = {Consensus Density Predicts Output Dispersion
-            in Aligned LLMs},
-  author = {An, Tao and Feng, Shuai},
-  year   = {2026},
-  url    = {https://openreview.net/forum?id=6ukieTMBcG}
+    bibtex: `@article{an2026consensus,
+  title   = {Consensus Density Predicts Output Dispersion
+             in Aligned {LLMs}},
+  author  = {An, Tao and Feng, Shuai},
+  journal = {Transactions on Machine Learning Research},
+  issn    = {2835-8856},
+  year    = {2026},
+  url     = {https://openreview.net/forum?id=6ukieTMBcG},
+  note    = {Accepted; to appear}
 }`,
   },
   {

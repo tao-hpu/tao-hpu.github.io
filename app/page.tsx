@@ -164,6 +164,20 @@ export default function Home() {
             </header>
             <div className="news-list">
               <div className="news-item">
+                <time className="news-date" dateTime="2026-10">2026.10</time>
+                <p className="news-body">
+                  <span className="news-dot news-dot-research"></span>
+                  <a href="https://openreview.net/forum?id=6ukieTMBcG" target="_blank" rel="noopener noreferrer">
+                    Consensus Density Predicts Output Dispersion in Aligned LLMs
+                  </a>{' '}
+                  (with Shuai Feng) accepted at <strong>TMLR</strong>, with a{' '}
+                  <a href="https://www.youtube.com/watch?v=4_Gzy4mbSQQ" target="_blank" rel="noopener noreferrer">
+                    five-minute video summary
+                  </a>{' '}
+                  and an <a href="/articles/consensus-dispersion">interactive note</a>.
+                </p>
+              </div>
+              <div className="news-item">
                 <time className="news-date" dateTime="2026-09">2026.09</time>
                 <p className="news-body">
                   <span className="news-dot news-dot-research"></span>
@@ -194,18 +208,18 @@ export default function Home() {
                   companion to the HHAI&nbsp;2026 paper.
                 </p>
               </div>
-              <div className="news-item">
-                <time className="news-date" dateTime="2026-09">2026.09</time>
-                <p className="news-body">
-                  <span className="news-dot news-dot-building"></span>
-                  Fixes merged upstream in openai-agents-python, docling, acme.sh, and docx-editor.{' '}
-                  <a href="/opensource#contributions">Contributions</a>
-                </p>
-              </div>
             </div>
             <details className="news-archive">
               <summary>Earlier updates <span>2025–2026</span></summary>
               <div className="news-list">
+                <div className="news-item">
+                  <time className="news-date" dateTime="2026-09">2026.09</time>
+                  <p className="news-body">
+                    <span className="news-dot news-dot-building"></span>
+                    Fixes merged upstream in openai-agents-python, docling, acme.sh, and docx-editor.{' '}
+                    <a href="/opensource#contributions">Contributions</a>
+                  </p>
+                </div>
                 <div className="news-item">
                   <time className="news-date" dateTime="2026-07">2026.07</time>
                   <p className="news-body">

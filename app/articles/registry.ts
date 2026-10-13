@@ -130,11 +130,12 @@ export const articles: Article[] = [
     slug: 'consensus-dispersion',
     title: 'How Much the Model Agrees with Itself',
     description:
-      'Interactive companion to the working paper "Consensus Density Predicts Output Dispersion in Aligned LLMs": sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
+      'Interactive companion to "Consensus Density Predicts Output Dispersion in Aligned LLMs" (TMLR 2026): sample clouds, judge-predicted dispersion, alignment as amplifier, and why instruction form is not consensus.',
     date: '2026-07-07',
+    updated: '2026-10-14',
     tags: ['human-ai'],
     relatedPaper: {
-      label: 'Consensus Density Predicts Output Dispersion (OpenReview)',
+      label: 'Consensus Density Predicts Output Dispersion (TMLR 2026)',
       href: 'https://openreview.net/forum?id=6ukieTMBcG',
     },
   },

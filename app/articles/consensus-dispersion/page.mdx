@@ -2,11 +2,25 @@ import ArticleLayout from '@/components/ArticleLayout'
 import DispersionScatter from '@/components/DispersionScatter'
 import AlignmentAmplifier from '@/components/AlignmentAmplifier'
 import SpecificityLadder from '@/components/SpecificityLadder'
+import VideoEmbed from '@/components/VideoEmbed'
 import { articleMetadata } from '@/app/articles/registry'
 
 export const metadata = articleMetadata('consensus-dispersion')
 
 <ArticleLayout slug="consensus-dispersion">
+
+> **Update, 14 October 2026.** The paper is accepted at *Transactions on Machine
+> Learning Research* ([OpenReview](https://openreview.net/forum?id=6ukieTMBcG)). The
+> accepted version adds a within-domain test, described below, and keeps the link to
+> human outcomes apart from the measured results; the last section of this note now
+> follows that split. A five-minute video summary is below, and the code is on
+> [GitHub](https://github.com/tao-hpu/consensus-dispersion).
+
+<VideoEmbed
+  youtubeId="4_Gzy4mbSQQ"
+  title="Consensus Density Predicts Output Dispersion in Aligned LLMs: a five-minute summary"
+  caption={<>Five-minute summary of the paper. Every number on screen is taken from the paper. Also on <a href="https://www.bilibili.com/video/BV1Bapz6PEfq/" target="_blank" rel="noopener noreferrer">Bilibili</a>.</>}
+/>
 
 Ask a model the capital of France 25 times and you get one answer in 25 wordings. Ask
 it for the opening line of a sea story 25 times and you get 25 different stories. Everyone
@@ -21,9 +35,11 @@ The vaguer word is "complexity." My earlier
 gaps" and "AI amplifies them" literatures by positing task complexity as the moderator:
 routine tasks equalize, complex tasks amplify. That answers *when*, not *why*. Complexity
 is a description of the task, not a property of the model you can point to. This paper
-supplies the measurable layer: what governs the split is the **consensus density** of
-the task, how much agreement exists about what a good answer looks like, and you can
-read it directly off the model's sampling behavior.
+measures a property that can be pointed to: the **consensus density** of the task, how
+much agreement exists about what a good answer looks like, and shows that it predicts
+how widely the model's samples spread. Whether that quantity is what governs the
+equalizer/amplifier split is a separate question, and the paper treats it as a
+hypothesis (see the last section).
 
 The measurement is deliberately simple. Sample N&nbsp;=&nbsp;25 completions at
 temperature 1.0, embed them, and take the mean pairwise cosine distance. Call that the
@@ -57,6 +73,11 @@ Click around this figure; it holds most of the paper.
   &rho;&nbsp;=&nbsp;0.74, and the token-level entropy of an open-weight model, a purely
   mechanical signal with no judgment in it, points the same way
   (&rho;&nbsp;=&nbsp;0.66 with dispersion).
+- The relation is not an artifact of mixing factual and creative prompts. Inside a
+  single field it still holds: &rho;&nbsp;=&nbsp;&minus;0.83 across 42
+  pharmaceutical-market prompts and &minus;0.62 across 40 software-engineering prompts.
+  Both are weaker than the full-range &minus;0.91, as expected when the judges' scores
+  span a narrower range.
 - Switch to the GPT-4o toggle: a different lab's model, same ordering
   (&rho;&nbsp;=&nbsp;0.84; per-prompt agreement with Claude 0.75). The gradient is a
   property of aligned models, not a quirk of one.
@@ -102,16 +123,23 @@ high-consensus as the scene pin, barely moves measured dispersion. The disagreem
 lands exactly on the measurement boundary, which is the behavior you want from an
 honest instrument.
 
-## Why I care
+## Why I care, and what is still a hypothesis
 
-If dispersion is inverse consensus density, then the equalizer/amplifier boundary is
-not a mystery about human skill; it is a property of the output distribution you can
-measure per task. Tight cloud: everyone gets the same competent answer, and expertise
-buys little (equalization). Wide cloud: the model returns a field of uneven
-candidates, and the outcome depends on who selects among them (amplification). The
-paper's interpretive layer, that selection skill, call it taste, is the binding
-constraint exactly where dispersion is high, rests on a premise about sample quality
-the measurements motivate but do not yet establish, and the paper says so plainly.
+Everything above is measured. What follows is not, and the accepted paper keeps it in
+a separate section for that reason. The hypothesis: if dispersion is inverse consensus
+density, the equalizer/amplifier boundary may be a property of the output
+distribution you can measure per task. Tight cloud: everyone gets the same competent
+answer, and expertise buys little (equalization). Wide cloud: the model returns a
+field of uneven candidates, and the outcome depends on who selects among them
+(amplification), which would make selection skill, call it taste, the constraint that
+binds where dispersion is high.
+
+That chain needs two assumptions about output quality: the default answer is
+competent, and most samples in a wide field are mediocre. The measurements do not test
+either. Two pre-registered first tests of the second one did not establish it: a
+simulated judge pass was inconclusive at its resolution, and a small human pass lost
+its confirmatory branch to an instrument error. None of the measured results depends
+on the hypothesis.
 
 One methodological note carries over to anything you build on this: absolute dispersion
 values drift between sampling batches. Every claim above is a rank correlation or an
