@@ -157,9 +157,9 @@ export const publications: Publication[] = [
         href: 'https://github.com/tao-hpu/awesome-proactive-agents',
       },
     ],
-    bibtex: `@article{an2026timing,
+    bibtex: `@article{an2026when,
   title   = {When Should the Agent Speak? A Survey of
-             Intervention Timing for Always-On AI Assistants},
+             Intervention Timing for Always-On {AI} Assistants},
   author  = {An, Tao},
   journal = {Transactions on Machine Learning Research},
   issn    = {2835-8856},
