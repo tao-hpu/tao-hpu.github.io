@@ -491,8 +491,8 @@
 .underline {
     text-decoration: underline;
     text-decoration-color: var(--color-accent);
-    text-decoration-thickness: 0.055em;
-    text-underline-offset: 0.13em;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 0.16em;
     text-decoration-skip-ink: none;
 }
 
