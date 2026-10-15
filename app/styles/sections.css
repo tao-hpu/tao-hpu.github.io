@@ -796,6 +796,11 @@
         order: 0;
     }
 
+    .illustration-container {
+        width: 380px;
+        height: 380px;
+    }
+
     .about-container {
         grid-template-columns: 112px minmax(0, 1fr);
         gap: 2rem;
@@ -894,12 +899,7 @@
     }
 
     .home-page .hero-visual {
-        display: flex;
-        align-items: center;
-    }
-
-    .home-page .research-instrument {
-        width: min(100%, 520px);
+        display: none;
     }
 
     .motion-ready .home-page .fade-on-scroll {
@@ -1208,7 +1208,7 @@ summary:focus-visible {
         break-inside: avoid;
     }
 
-    .research-instrument {
+    .hero-visual {
         display: none;
     }
 }

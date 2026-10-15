@@ -536,136 +536,16 @@
     min-width: 0;
 }
 
-.research-instrument {
-    width: min(100%, 460px);
-    padding: 1.25rem 0 0;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-text);
+/* Neural Network Illustration (D3.js) */
+.illustration-container {
+    position: relative;
+    width: 420px;
+    height: 420px;
 }
 
-.instrument-heading,
-.instrument-controls,
-.instrument-readout {
-    font-family: var(--font-sans);
-}
-
-.instrument-heading {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-}
-
-.instrument-heading span:last-child { color: var(--color-muted); }
-
-.instrument-field {
+.hero-illustration {
     width: 100%;
-    padding: 1.5rem 0 0.5rem;
-}
-
-.instrument-field svg {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.instrument-guide,
-.instrument-orbit,
-.instrument-route {
-    fill: none;
-    vector-effect: non-scaling-stroke;
-}
-
-.instrument-guide {
-    stroke: var(--color-border);
-    stroke-width: 1;
-    stroke-dasharray: 3 6;
-}
-
-.instrument-orbit {
-    stroke: var(--color-border);
-    stroke-width: 1;
-}
-
-.instrument-route {
-    stroke: var(--color-accent);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.instrument-ring,
-.instrument-point {
-    transition: fill 0.25s ease, stroke 0.25s ease, r 0.25s ease;
-}
-
-.instrument-ring {
-    fill: var(--color-background);
-    stroke: var(--color-muted);
-    stroke-width: 1.5;
-}
-
-.instrument-point { fill: var(--color-text); }
-.instrument-field .is-active .instrument-ring { stroke: var(--color-accent); stroke-width: 2.5; }
-.instrument-field .is-active .instrument-point { fill: var(--color-accent); }
-
-.instrument-controls {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.instrument-controls button {
-    min-height: 54px;
-    padding: 0.65rem 0.25rem;
-    border: 0;
-    border-bottom: 2px solid transparent;
-    background: transparent;
-    color: var(--color-muted);
-    cursor: pointer;
-    text-align: left;
-    font: 500 clamp(0.75rem, 1vw, 0.875rem)/1.25 var(--font-sans);
-    transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.instrument-controls button span {
-    display: block;
-    margin-bottom: 0.25rem;
-    font-size: 0.68rem;
-    color: var(--color-muted);
-    font-variant-numeric: tabular-nums;
-}
-
-.instrument-controls button:hover,
-.instrument-controls button.is-active {
-    color: var(--color-accent-ink);
-    border-bottom-color: var(--color-accent);
-}
-
-.instrument-controls button:focus-visible {
-    outline-color: var(--color-accent);
-    outline-offset: -2px;
-}
-
-.instrument-readout {
-    min-height: 5rem;
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    padding: 1.25rem 0;
-    font-size: clamp(0.9rem, 1.2vw, 1rem);
-    line-height: 1.45;
-}
-
-.instrument-readout span {
-    flex: 0 0 auto;
-    color: var(--color-muted);
-    font-size: 0.72rem;
-    font-variant-numeric: tabular-nums;
+    height: 100%;
 }
 
 /* About Section */
