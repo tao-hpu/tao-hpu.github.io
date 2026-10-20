@@ -340,6 +340,40 @@ export default function OpenSource() {
                 </div>
               </div>
             </div>
+
+            <div className="publication-simple-item">
+              <div className="publication-simple-meta">
+                <span className="venue-badge">Awesome List</span>
+                <span className="venue-badge venue-badge-secondary">Survey</span>
+              </div>
+              <div className="publication-simple-body">
+                <a
+                  className="publication-simple-title"
+                  href="https://github.com/tao-hpu/awesome-proactive-agents"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  awesome-proactive-agents: When should an always-on agent intervene?
+                </a>
+                <p className="publication-simple-tldr">
+                  A curated field map of proactive AI assistance, organized around one question most
+                  agent work skips: should the agent act right now, unprompted? Each work is placed in a
+                  five-stage pipeline (signals, decision, action, memory, evaluation &amp;
+                  self-improvement) by which part of the intervention trade-off it advances, with notes
+                  corrected from full-text reads rather than abstracts. Bilingual (EN / 中文), open to
+                  PRs.
+                </p>
+                <div className="publication-simple-links">
+                  <a
+                    href="https://github.com/tao-hpu/awesome-proactive-agents"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
