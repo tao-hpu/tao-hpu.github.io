@@ -217,7 +217,7 @@ export default function Home() {
                   <p className="news-body">
                     <span className="news-dot news-dot-building"></span>
                     Fixes merged upstream in openai-agents-python, docling, acme.sh, and docx-editor.{' '}
-                    <a href="/opensource#contributions">Contributions</a>
+                    <a href="/opensource#upstream-contributions">Upstream contributions</a>
                   </p>
                 </div>
                 <div className="news-item">

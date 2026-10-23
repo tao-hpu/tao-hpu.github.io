@@ -71,8 +71,11 @@ Zenodo 铸的 DOI 是**论文**的身份，companion note 只是导读，两者�
 
 ## 关联仓库：tao-hpu/tao-hpu（GitHub 首页 README）
 
-`app/opensource/page.tsx` 里 `id="contributions"` 那一段和 GitHub 首页的
-`Selected contributions` 段是同一批内容的两种粒度，没有自动同步。规则与那个仓库共享一份
+`app/opensource/page.tsx` 里 `id="upstream-contributions"` 列出 tao-hpu 在他人仓库里
+已经合并的 PR（不含 `tao-hpu/*` 与 `fim-ai/*`），每条链到具体 PR。锚点固定为
+`https://tao-hpu.github.io/opensource#upstream-contributions`（旧的 `#contributions`
+仍指到同一节）。GitHub 首页的 `Selected contributions` 是其中较大修复的导读，
+不是同一份名单，没有自动同步。规则与那个仓库共享一份
 （两个仓库指向同一个文件，改一处两边生效）：
 
 @~/.claude/shared/contributions-sync.md
