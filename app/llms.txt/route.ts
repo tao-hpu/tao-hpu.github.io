@@ -30,7 +30,7 @@ export function GET() {
     `- [Research](${SITE_URL}/research): papers, patents, academic service`,
     `- [Articles](${SITE_URL}/articles): interactive companion notes to the papers`,
     `- [Building](${SITE_URL}/building): FIM Labs products and deployments`,
-    `- [Open Source](${SITE_URL}/opensource): courses, tools, upstream contributions`,
+    `- [Open Source](${SITE_URL}/opensource): courses, tools, and [upstream contributions](${SITE_URL}/opensource#upstream-contributions)`,
     '',
     '## Papers',
     ...papers,

@@ -222,6 +222,56 @@ a.publication-simple-item {
     color: var(--color-accent-ink);
 }
 
+#contributions {
+    display: block;
+    height: 0;
+}
+
+.upstream-lead {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.upstream-pr-list {
+    list-style: none;
+    margin: 0.7rem 0 0;
+    padding: 0;
+}
+
+.upstream-pr-list li + li {
+    margin-top: 0.45rem;
+}
+
+.upstream-pr-list li {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+}
+
+.upstream-pr-list a {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.upstream-pr-list a:hover {
+    color: var(--color-accent-ink);
+}
+
 /* Topic tag (per publication) */
 .topic-tag {
     display: inline-flex;

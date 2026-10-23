@@ -20,6 +20,145 @@ export const metadata: Metadata = {
   },
 }
 
+type UpstreamPull = {
+  number: number
+  summary: React.ReactNode
+}
+
+type UpstreamProject = {
+  repo: string
+  tags: string[]
+  pulls: UpstreamPull[]
+}
+
+// Merged pull requests authored by tao-hpu in repositories outside tao-hpu/* and fim-ai/*.
+const upstreamContributions: UpstreamProject[] = [
+  {
+    repo: 'openai/openai-cookbook',
+    tags: ['Docs'],
+    pulls: [
+      {
+        number: 2841,
+        summary: (
+          <>
+            Fixes figure URLs in the two Deep Research API notebooks so each image loads from{' '}
+            <code>../../images/</code> at the repository root.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    repo: 'docling-project/docling',
+    tags: ['Python'],
+    pulls: [
+      {
+        number: 4336,
+        summary:
+          'Renders nine East Asian DOCX numbering formats, including Chinese counting, Japanese counting, and circled digits, as list markers.',
+      },
+    ],
+  },
+  {
+    repo: 'docling-project/docling-core',
+    tags: ['Python'],
+    pulls: [
+      {
+        number: 799,
+        summary:
+          'Keeps an original Markdown list marker in AUTO mode when it contains any Unicode letter or digit, so markers such as 第九条 and ① stay in the export.',
+      },
+    ],
+  },
+  {
+    repo: 'acmesh-official/acme.sh',
+    tags: ['Shell'],
+    pulls: [
+      {
+        number: 7278,
+        summary:
+          'Writes certificate config to a temporary copy, checks it, and replaces the original only after the write succeeds, so a full disk leaves the conf intact.',
+      },
+    ],
+  },
+  {
+    repo: 'openai/openai-agents-python',
+    tags: ['Python'],
+    pulls: [
+      {
+        number: 5142,
+        summary:
+          'Restores a paused nested agent-as-tool run against that tool’s own agent, so the saved agent references resolve to the agent they were serialized with.',
+      },
+    ],
+  },
+  {
+    repo: 'eigenpal/docx-editor',
+    tags: ['TypeScript'],
+    pulls: [
+      {
+        number: 539,
+        summary: (
+          <>
+            Measures and paints CJK text in the document&rsquo;s <code>eastAsia</code> font
+            (<code>w:rFonts w:eastAsia</code> and the theme&rsquo;s East Asian faces).
+          </>
+        ),
+      },
+      {
+        number: 540,
+        summary:
+          'Wraps CJK text at the column width with UAX #14 ideographic breaks and basic kinsoku.',
+      },
+    ],
+  },
+  {
+    repo: 'unicodeveloper/awesome-nextjs',
+    tags: ['Awesome List'],
+    pulls: [
+      {
+        number: 373,
+        summary: 'Adds FIM Agent to the curated Next.js list.',
+      },
+    ],
+  },
+  {
+    repo: 'kyrolabs/awesome-agents',
+    tags: ['Awesome List'],
+    pulls: [
+      {
+        number: 196,
+        summary: 'Adds FIM Agent to the curated agents list.',
+      },
+    ],
+  },
+  {
+    repo: 'PaddlePaddle/PaddleFormers',
+    tags: ['Docs'],
+    pulls: [
+      {
+        number: 1800,
+        summary:
+          'Removes a leftover sentence from the CPM-LM readme that said plato-mini does not support one-line prediction.',
+      },
+    ],
+  },
+  {
+    repo: 'PaddlePaddle/PaddleNLP',
+    tags: ['Docs'],
+    pulls: [
+      {
+        number: 1675,
+        summary: (
+          <>
+            Fixes the VisualDL launch example so the command passes <code>--logdir</code>.
+          </>
+        ),
+      },
+    ],
+  },
+]
+
 export default function OpenSource() {
   return (
     <div className="subpage opensource-page">
@@ -58,7 +197,7 @@ export default function OpenSource() {
               <a href="#learning">Learning</a>
               <a href="#research-tools">Research tools</a>
               <a href="#ai-coding">AI coding &amp; ops</a>
-              <a href="#contributions">Contributions</a>
+              <a href="#upstream-contributions">Upstream contributions</a>
             </nav>
           </div>
         </section>
@@ -480,84 +619,56 @@ export default function OpenSource() {
           </div>
         </section>
 
-        {/* Contributions Section */}
-        <section className="publications-section" id="contributions">
-          <h2 className="section-title-small fade-on-scroll">Contributions</h2>
+        {/* Upstream Contributions: merged PRs authored by tao-hpu in other people's repos */}
+        <section className="publications-section" id="upstream-contributions">
+          {/* Previous in-page links used #contributions. */}
+          <span id="contributions" />
+          <h2 className="section-title-small fade-on-scroll">Upstream Contributions</h2>
+          <p className="upstream-lead fade-on-scroll">
+            Merged pull requests in repositories maintained by other people.
+          </p>
 
-          <ul className="contribution-list fade-on-scroll">
-            <li className="contribution-item">
-              <span className="contribution-status">Merged</span>
-              <span className="contribution-text">
-                <a
-                  href="https://github.com/openai/openai-agents-python"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  openai/openai-agents-python
-                </a>:
-                two bugs in how a paused agent run is restored from serialized state.
-                A nested agent-as-tool run resolved its agent references against the parent
-                instead of the tool&rsquo;s own agent, and a pending approval could bind to the
-                wrong tool call once an earlier entry was filtered out.
-              </span>
-            </li>
-            <li className="contribution-item">
-              <span className="contribution-status">Merged</span>
-              <span className="contribution-text">
-                <a
-                  href="https://github.com/eigenpal/docx-editor"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  eigenpal/docx-editor
-                </a>:
-                CJK typography in the OOXML layout engine, by resolving the{' '}
-                <code>eastAsia</code> font slot so CJK runs measure and paint in their own face,
-                and kinsoku line breaking between ideographs.
-              </span>
-            </li>
-            <li className="contribution-item">
-              <span className="contribution-status">Merged</span>
-              <span className="contribution-text">
-                <a
-                  href="https://github.com/acmesh-official/acme.sh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  acmesh-official/acme.sh
-                </a>:
-                a failed write on a full disk truncated the certificate&rsquo;s config
-                file to zero bytes and blocked renewal; config writes now go through a verified
-                temporary copy that replaces the original only on success.
-              </span>
-            </li>
-            <li className="contribution-item">
-              <span className="contribution-status">Merged</span>
-              <span className="contribution-text">
-                <a
-                  href="https://github.com/docling-project/docling"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  docling-project/docling
-                </a>{' '}
-                and{' '}
-                <a
-                  href="https://github.com/docling-project/docling-core"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  docling-core
-                </a>:
-                East Asian list numbering in DOCX conversion: nine Chinese, Japanese and
-                circled-digit numbering formats that were dropped are now rendered, checked against
-                the output of Microsoft Word, and kept through Markdown export.
-              </span>
-            </li>
-          </ul>
+          <div className="publication-simple-list fade-on-scroll">
+            {upstreamContributions.map((project) => (
+              <div className="publication-simple-item" key={project.repo}>
+                <div className="publication-simple-meta">
+                  <span className="venue-badge">Merged</span>
+                  {project.tags.map((tag) => (
+                    <span className="venue-badge venue-badge-secondary" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="publication-simple-body">
+                  <a
+                    className="publication-simple-title"
+                    href={`https://github.com/${project.repo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.repo}
+                  </a>
+                  <ul className="upstream-pr-list">
+                    {project.pulls.map((pull) => (
+                      <li key={pull.number}>
+                        <a
+                          href={`https://github.com/${project.repo}/pull/${pull.number}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          #{pull.number}
+                        </a>
+                        <span>{pull.summary}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
 
           <p className="contribution-more fade-on-scroll">
-            Per-pull-request detail, with the root-cause notes and merge commits, is on my{' '}
+            Longer notes on the larger fixes are on my{' '}
             <a
               href="https://github.com/tao-hpu#-selected-contributions"
               target="_blank"
