@@ -196,7 +196,10 @@ export const publications: Publication[] = [
     badges: [{ label: 'Preprint' }],
     topics: [{ label: 'Evaluation', className: 'topic-eval' }],
     titleHref: 'https://doi.org/10.5281/zenodo.21869829',
-    links: [{ label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21869829' }],
+    links: [
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21869829' },
+      { label: 'Interactive note', href: '/articles/imported-or-induced', internal: true },
+    ],
     bibtex: `@misc{an2026imported,
   title     = {Imported or Induced? Three Design Artifacts That
                Manufacture Real-World Knowledge Import in
@@ -219,7 +222,10 @@ export const publications: Publication[] = [
     badges: [{ label: 'Preprint' }],
     topics: [{ label: 'Interpretability', className: 'topic-interp' }],
     titleHref: 'https://doi.org/10.5281/zenodo.23718991',
-    links: [{ label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.23718991' }],
+    links: [
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.23718991' },
+      { label: 'Interactive note', href: '/articles/sft-cross-language', internal: true },
+    ],
     bibtex: `@misc{an2026sft,
   title     = {Supervised Finetuning Sets Cross-Language
                Representation Geometry; {LLM} Judge Scores Fall

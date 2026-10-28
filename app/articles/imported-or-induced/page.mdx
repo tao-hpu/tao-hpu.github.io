@@ -1,0 +1,212 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import ImportArtifacts from '@/components/ImportArtifacts'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('imported-or-induced')
+
+<ArticleLayout slug="imported-or-induced">
+
+> **About the versions.** This note accompanies version 2 of the paper,
+> [Imported or Induced?](https://doi.org/10.5281/zenodo.21869829). Version 1 had a
+> different title, *Imported Verdicts: Where Language Model Errors Land in a Fully
+> Fictional Legal Domain*, and the opposite conclusion. It remains in the Zenodo version
+> history; the DOI above resolves to the current version.
+
+Fictional-domain evaluations give a model rules that differ from the real world and
+watch what it does with them. When the model gets an item wrong, the wrong answer is
+often the one the real world would give, and that is usually read as the model importing
+what it already knows. I built a testbed to measure this for law, ran 18 models on it,
+and in version 1 of this paper I reported that they import real legal doctrine. The
+errors landed on the doctrine option well above a third of the time, and most of all at
+a few conflict sites where the stronger models erred.
+
+Version 2 reports what happened when I controlled the design of the testbed itself.
+Three choices I had made could each produce the import signal without any import. With
+all three controlled, the share of errors landing on doctrine is at chance, and the
+doctrine test I preregistered for the last follow-up failed. Two results remain that the
+controls do not explain. This note walks through the three choices with the data that
+undid each one.
+
+## The testbed
+
+The testbed is twelve fictional Chinese statutes, three to five clauses each, in an
+invented legal vocabulary. Eight of them mirror a well-known doctrine (good-faith
+acquisition, consideration, proportional self-defense, strict liability, possessory
+liens, limitation, negotiorum gestio, lost property) but stipulate a different outcome
+at one pivot clause. A scan for 39 real legal terms across all rules, cases and options
+finds none.
+
+Each statute compiles to a function over the case's features, and every stored label is
+that function's output, so no label is written by hand or by a model. Items are
+four-option cases. On divergent items the stipulated verdict and the doctrine verdict
+differ, and the doctrine option is the "import target." On aligned items the two
+coincide, and accuracy there is the competence axis, cut into floor (below .40), mid
+(.40 to .80) and high (.80 and above) bands.
+
+The measure is the doctrine landing share: of a set of errors, the fraction that chose
+the import target. Because the rules are executable, I can enumerate for every item
+which verdicts the rules can produce and which single misreading of the case reaches
+each wrong option. That enumeration is what took version 1 apart.
+
+## First choice: which chance to compare against
+
+Import targets rotate over the three wrong positions, so a model that ignores content
+lands on the target a third of the time. That was my baseline in version 1, and against
+it the 18 models show a competence curve: 41% of floor-band errors land on doctrine, 48%
+of mid-band errors and 34% of high-band errors, pooled over seven targets. Read at face
+value, import rises and then falls as models get better.
+
+<ImportArtifacts artifact="null" />
+
+A third is the wrong chance. Each rule set's function returns only two to four of the
+four option verdicts, and most errors stay among the verdicts the rules can produce. On
+liens, limitation and negotiorum gestio, the doctrine verdict is the only producible
+wrong option, so any model that prefers producible verdicts lands on it above a third.
+On good-faith acquisition and self-defense the rules never produce it, and errors land
+there 26 of 99, 12 of 90 and 0 of 36 times across the three bands. A null that conditions
+on producible verdicts, calibrated on aligned-item errors, predicts the observed counts
+in all three bands, and a mixed model with that offset puts every band at the null.
+
+This null depends on how one clause is read. Limitation clause Q5, which the function
+does not model, can be read literally to produce one more option, and under that reading
+the mid band shows a modest excess (exact P = .014; mixed model one-sided p = .098). The
+paper reports both readings, and the checklist asks for the same.
+
+## Second choice: one sentence in the case
+
+After the first run, two conflict sites held most of the high-band errors. At a
+lost-property site all 25 errors landed on doctrine; at a strict-liability site, 22 of
+24. I wrote new items for both sites and the pattern held: 91% (77 of 85) and 95% (82 of
+86). This was the core of version 1's claim, because it was the strong models erring
+toward the real rule.
+
+Each site's case text contained a sentence that neither null looked at. Every
+lost-property case said the prior owner "named the treasure's private mark exactly."
+Under two clauses of the same statute, naming the mark returns the object to its owner
+in a market setting. A model that stretches that clause to the case reaches the doctrine
+verdict using only the fictional rules. Every strict-liability case said the victim
+"intruded into the work site," which triggers the clause that halves liability. Once a
+model wrongly finds the operator liable, that clause sends it to halved liability, which
+is also the doctrine verdict. For strict liability the doctrine verdict was the only
+wrong verdict a single misreading could reach, so the 95% carried no information about
+import.
+
+The two preregistered follow-ups deleted each sentence and kept everything else.
+
+<ImportArtifacts artifact="cue" />
+
+At lost property, 66 of 74 high-band errors land on doctrine with the sentence (89%,
+route null 1/2) and 20 of 44 without it (45%, null 0.4, P = .28). The difference in
+excess over each arm's null is 4.21 log-odds (SE 1.22). I had preregistered that the
+de-cued errors would still exceed their null; that hypothesis failed.
+
+At strict liability, deleting "intruded into the work site" makes full liability the
+doctrine verdict. High-band doctrine answers on conflict items fall from 108 to 57
+(paired McNemar 81 vs. 30, one-sided p = 6.9 × 10⁻⁷), and mid-band ones from 70 to 0.
+The remaining 57 high-band errors are not at chance, though. All 57 choose full
+liability, the new doctrine verdict. I read the stated reasons for all of them: each
+invokes fault, and 53 cite clause F5 ("the delegate's fault counts as the operator's
+fault"), reading it as creating fault rather than transferring it. That route was not
+in my preregistered list of misreadings. Counting it raises the null to 2/3, and 57 of
+57 still exceeds it. The reasons cite no doctrine, but the reading is post hoc, and the
+halved-liability option is also the longest option in both arms. This is the first of
+the two residuals.
+
+## Third choice: which clause comes last
+
+The first follow-up also built three new conflict sites where each wrong option was
+reachable by exactly one misreading of each kind, so the route null was 1/3 per item.
+The preregistered test failed: 29 of 66 high-band errors on doctrine, expected 22.0,
+P = .047 against a required .01. Nearly all the excess was at one site (thrown objects),
+and 26 of its 28 doctrine landings came from Qwen2.5-7B. Its stated reasons applied the
+third and last exception as a catch-all. On twin items, where the last exception gives a
+non-doctrine verdict, all 34 of its errors landed there. At the deposit site the
+doctrinal exception was listed first and drew 0 of 18 errors. I had rotated the
+doctrinal exception across sites, which confounded clause position with site.
+
+The second follow-up rendered each of 24 new surfaces per site three times, rotating the
+three exceptions in a Latin square, with case text and option order identical across the
+versions.
+
+<ImportArtifacts artifact="position" />
+
+Errors follow the last-listed exception: 187 of 319 high-band errors land on it where it
+is not the doctrinal one (59%, expected 106.3). Qwen2.5-7B (75 of 84) and Qwen2.5-3B
+(108 of 229) carry the effect, and they differ in form. A conditional logit finds
+Qwen2.5-7B favoring the third exception, Qwen2.5-3B the second and third, and the
+mid-band gemma-2-2b the second.
+
+With position counterbalanced, high-band conflict errors land on doctrine 43 of 134
+times, against 44.7 expected (P = .65). Qwen2.5-7B lands on doctrine 1 of 8, 1 of 3 and
+17 of 17 times as the doctrinal exception moves from first to last. Entered together in
+a conditional logit, last position gets a coefficient of 1.27 (p = .010) and doctrinal
+identity −0.29 (p = .36). The preregistered doctrine hypothesis failed.
+
+What this result can bound matters. All 134 errors come from those two models. Treated
+as independent, the 95% interval for the doctrine share is 24% to 41%, and the test had
+power .80 only for excesses of 11 points or more. It says nothing about import in other
+models.
+
+The second residual sits here. Qwen2.5-7B's own conditional logit gives doctrinal
+identity a coefficient of 1.80 (uncorrected p = .019), identified mainly by the 11
+conflict errors where the doctrinal exception was not last. On those 11 it lands on
+doctrine twice (P = .92).
+
+## What twins do and do not show
+
+The control I relied on in version 1 was the matched twin: repeat a conflict item's
+case text and flip the conflicting clause so that the stipulated verdict agrees with
+doctrine. In the amplified suite, twins cut high-band error rates from 27% to 2% and
+10%, and I read that as tying the errors to the doctrine conflict. But flipping the
+clause also makes the doctrine answer correct. Twins measure whether a conflict adds
+errors, not where the added errors go. On the cue-balanced sites of the later suites,
+twins draw more errors than conflict items (110 vs. 40 on deposits, 116 vs. 67 on
+thrown objects).
+
+The same amplified suite had a labeling problem that the paper documents in full. Its
+generator first wrote the strict-liability import target as full liability, against the
+frozen halved-liability target from the first run. I corrected it after nine of the 12
+models, and most of a tenth, had run. Under the run-time label, high-band landing on
+that block is 4 of 86; under the corrected label, 82 of 86. I found it only because the
+solver copied the run-time label into every result row, so the paper treats that block
+as descriptive only. In the last follow-up every row records its run-time label, and
+none of the 10,560 differs from the frozen one.
+
+## How common these checks are
+
+I coded 44 published evaluations that read prior-consistent answers as knowledge import,
+on four checks. Two state a chance model for where errors land. Ten check whether item or
+context cues could make the real-world answer correct or attractive. One of the 28 with
+orderable options or evidence counterbalances order and reports the effect. Twin or
+aligned controls are the common one, at 26 of 44. No paper does the first three together,
+and 32 do none of them. A random fifth was recoded independently, with agreement on 31 of
+36 decisions (κ = 0.80). The checks were derived from the artifacts in this paper, so the
+audit measures how often published work runs these particular checks, and 25 of the 44
+use free-form answers, where a chance model for error location is harder to define.
+
+The paper closes with a six-item checklist: derive the null from the verdicts the rules
+can produce, enumerate single-misreading routes and add a de-cued arm when the real-world
+answer is the only reachable one, read a sample of raw outputs for routes the null does
+not list, rotate clause and option positions and report position preference per model,
+use twins for error volume rather than destination, and freeze materials by hash with
+run-time labels logged per row. Reading raw outputs is on the list because both
+follow-ups found a misreading route, the catch-all last exception and the F5 reading,
+that my enumerated null did not model.
+
+## What I now think
+
+These data do not show doctrine-specific import at conflict sites once the three choices
+are controlled. They do not show that models never import doctrine. The three frontier
+models in the follow-ups (claude-sonnet-4.5, gpt-4o, gpt-5) made one conflict-item error
+between them, so the testbed cannot speak to them at all. The open-weights models are
+small (0.5B to 9B) and mostly from one family, the domain is one fictional legal system
+in one language, and each artifact is shown on few sites. The follow-up freezes are
+hashed archives with local timestamps, not third-party registrations, and the second
+follow-up was designed after the first one's results.
+
+What changed for me is the step from "errors land on the real-world answer" to "the
+model imported the real world." Each time I took that step, a feature of my own items
+had already put the real-world answer one misreading away, or listed it last. An
+executable rule set makes that checkable per item.
+
+</ArticleLayout>

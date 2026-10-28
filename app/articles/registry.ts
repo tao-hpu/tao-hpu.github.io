@@ -29,6 +29,32 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'imported-or-induced',
+    title: 'Imported or Induced?',
+    description:
+      'In a fictional legal testbed, a baseline that ignores producible verdicts, one case sentence and clause order each made errors look like imported real-world doctrine. With all three controlled, the doctrine share is at chance.',
+    date: '2026-10-28',
+    tags: ['evaluation'],
+    paperDoi: '10.5281/zenodo.21869829',
+    relatedPaper: {
+      label: 'Imported or Induced? (Zenodo preprint)',
+      href: 'https://doi.org/10.5281/zenodo.21869829',
+    },
+  },
+  {
+    slug: 'sft-cross-language',
+    title: 'The Gap Closes at SFT',
+    description:
+      'On the open Tülu 3 and OLMo 2 post-training ladders, the Chinese–English gap on a base-anchored register axis contracts at supervised finetuning and stays put through DPO and RLVR. LLM judges score Chinese chat lower after SFT; two native raters do not confirm a naturalness loss.',
+    date: '2026-10-28',
+    tags: ['interpretability'],
+    paperDoi: '10.5281/zenodo.23718991',
+    relatedPaper: {
+      label: 'Supervised Finetuning Sets Cross-Language Representation Geometry (Zenodo preprint)',
+      href: 'https://doi.org/10.5281/zenodo.23718991',
+    },
+  },
+  {
     slug: 'punctuation-staircase',
     title: 'The Punctuation Staircase Is Not an AI Fingerprint',
     description:

@@ -1,0 +1,204 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import StageLadderGap from '@/components/StageLadderGap'
+import DriftSubtraction from '@/components/DriftSubtraction'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('sft-cross-language')
+
+<ArticleLayout slug="sft-cross-language">
+
+People who use chat models in Chinese often say the answers read like translated English:
+European sentence shapes, pronouns where Chinese would drop them, English punctuation. The
+stage that usually gets the blame is RLHF. Preference optimization, the story goes, rewards
+one house style whose center of mass sits in English, and every other language is pulled
+toward it. As far as I know, nobody had tested it stage by stage.
+The paper behind this note,
+[Supervised Finetuning Sets Cross-Language Representation Geometry; LLM Judge Scores Fall Further Off the Axis](https://doi.org/10.5281/zenodo.23718991),
+is that test.
+
+The short version has two halves that point in different directions. On the representation
+side, the Chinese–English convergence enters at supervised finetuning, and the later stages
+barely move it. On the output side, LLM judges score Chinese chat answers lower after SFT,
+but the two native speakers who rated a paired sample did not agree with each other, so I
+cannot say that people perceive a loss of naturalness. Most of this note is about keeping
+those two halves apart.
+
+## Two open ladders and one fixed ruler
+
+The test needs a post-training pipeline whose intermediate checkpoints are public. Two
+exist. Tülu&nbsp;3 releases Llama-3.1-8B, its SFT model, its DPO model and its final RLVR
+model as separate checkpoints. OLMo&nbsp;2&nbsp;7B does the same on a base model whose
+pretraining corpus is heavily English-centric. The pair gives a contrast in pretraining
+language balance under one family of recipes. Neither ladder contains classical RLHF (PPO
+against a human-preference reward model), so the comparison is SFT against DPO and RLVR,
+and PPO-based RLHF stays untested.
+
+The ruler is a register axis of the kind I used in the
+[workspace-registers working paper](/articles/workspace-registers), with the same bilingual
+pools. For each layer it is the difference of means between the residual representations of
+16 content-matched English–Chinese sentence pairs, computed on the **base model only** and
+then held fixed for every later checkpoint. Sixty bilingual probe texts, topically disjoint
+from the axis pairs, are fed as bare text with no chat template, so each checkpoint sees
+byte-identical input. The summary numbers average over layers 8–23, the central half of the
+32-layer stack. The quantity I track is the gap between the mean English and mean Chinese
+positions on the axis.
+
+<StageLadderGap />
+
+## The gap closes once
+
+On Tülu&nbsp;3 the gap falls from 3.975 to 3.468 at SFT, a 12.8% contraction. On
+OLMo&nbsp;2 it falls from 6.187 to 4.952, 20.0%. After that it does not keep closing. From
+SFT to the final model the gap moves by 0.017 and 0.030 in the opposite direction, a slight
+re-widening worth 3.3% and 2.4% of the SFT effect. All stages share the same bootstrap
+resample in each draw, so these are paired differences with intervals: the SFT contraction
+is 0.507 [0.447, 0.534] on Tülu and 1.235 [1.104, 1.305] on OLMo.
+
+The direction is also set once. The SFT increment has cosine 0.943 (Tülu) and 0.962 (OLMo)
+with the total base-to-final drift of the Chinese items. The DPO and RLVR increments are a
+third or less of the SFT norm (on OLMo the RLVR step is 1/29 of it), and their cosines with
+the total drift are 0.06 to 0.23. The preference stages do change the representation, but
+mostly in directions other than this axis. On Tülu, DPO moves both languages along the axis
+(Chinese +0.358 to +0.244, English −0.149 to −0.250) while changing the gap between them by
+0.013.
+
+One qualification: this holds for the middle of the network. In the last three layers DPO
+does add contraction. At the final hidden-state index on Tülu the contraction is 5.1% after
+SFT, 20.8% after DPO and 21.5% after RLVR. Whether that late-layer change has anything to
+do with the output-side decline below, I have not tested.
+
+## Which language moves depends on the base
+
+The two families agree on the stage and disagree on the geometry. Toggle the figure. On
+Tülu&nbsp;3 both languages move toward each other, roughly a 70/30 split: Chinese +0.358,
+English −0.149. On OLMo&nbsp;2 Chinese moves +1.385 while English moves +0.150, slightly
+*away* from Chinese, so the whole contraction is Chinese moving toward English. My reading
+is that post-training pulls both languages toward one assistant register whose location is
+inherited from pretraining. On a balanced base it sits between the languages; on an
+English-centric base it sits at the English pole.
+
+There is a confound I cannot remove. OLMo&nbsp;2's base model handles Chinese poorly: 32 of
+its 60 bare Chinese continuations are degenerate. Part of the one-sided movement may be
+Chinese processing collapsing toward English rather than a change of register.
+
+## Is it register at all?
+
+An axis built from cross-language pairs carries language identity by construction. A
+shrinking gap could then mean the benign thing, better cross-lingual alignment, rather than
+a change of style. So on each base model I built a language-identity axis from 30 English
+and 30 Chinese texts with *no* shared content, so that only the language signal survives the
+average, plus a within-Chinese translationese axis from 16 pairs that state the same
+proposition idiomatically and with Europeanized syntax.
+
+The register axis is mostly language: its cosine with the identity axis is 0.72 on Tülu and
+0.79 on OLMo. The contraction appears on both axes. The test is what remains after removing
+the identity component. On OLMo the residual axis still contracts by 34% at SFT, so the
+one-sided convergence is not just language-identity collapse. On Tülu the residual
+contraction is 0.9%, so the symmetric convergence is almost entirely language-collinear,
+consistent with the benign reading. And on the translationese axis, the SFT drift of the
+Chinese items moves slightly toward the *idiomatic* pole on both families. Whatever SFT
+writes into the Chinese representations, it is not translationese in this sense.
+
+## What the judges see, and what two people see
+
+On the output side I generated from every checkpoint with greedy decoding on 60
+content-matched Chinese/English prompts. Chat outputs come from each instruct stage's own
+template; a 2-shot bare condition runs on all four stages so that base anchors the ladder.
+
+Fed back through the base model, the generated text tells a different story from the
+probes. The gap between English and Chinese output narrows mainly because *English* output
+drifts toward the middle (Tülu bare +1.33 to +1.11) while Chinese output barely moves.
+Assistant English is register-marked English.
+
+The LLM judge (Claude Sonnet 4.6, temperature 0, blind to stage) records a Chinese decline.
+Chat naturalness on a 1–5 scale goes 3.39, 3.13, 3.05 across SFT, DPO and RLVR on Tülu, and
+2.82, 2.66, 2.46 on OLMo. On items scored at all three stages, the paired SFT-to-final
+difference is −0.38 [−0.68, −0.11] on OLMo and −0.24 [−0.55, +0.07] on Tülu. A GPT-5.4
+judge rates higher overall and reproduces the decline (−0.54 and −0.46). Judged English
+naturalness stays between 4.67 and 4.95 at every stage.
+
+Two surface features rise after SFT on both families: the share of lines that are list or
+markdown items (0.34 to 0.49 on Tülu, 0.36 to 0.48 on OLMo) and the share of Latin letters
+(0.2% to 1.2%, 0.1% to 2.3%). Holding their paired changes fixed by regression accounts for
+25–52% of the judged decline. Western punctuation, the marker I would have bet on after the
+[punctuation-staircase note](/articles/punctuation-staircase), does not rise within chat:
+8.8 to 8.1 per thousand characters on Tülu, 7.2 to 7.7 on OLMo. Lists are the common thread
+with that note, where list layout turned out to be what separated model replies from human
+text.
+
+Then the human anchor. Two native speakers rated the SFT and RLVR chat outputs of 50
+prompts, shown without stage, family or judge score. Rater A is a volunteer and the primary
+human evidence. Rater B is me: I knew the hypothesis, I generated the sample files, I rated
+at a median of 4 seconds per item, and my test-retest correlation was 0.19, so my ratings
+are the weakest evidence in the paper. The two raters agree with each other at
+Spearman &rho;&nbsp;=&nbsp;0.08, and each agrees with the primary judge at 0.15–0.16. On
+OLMo the paired RLVR-minus-SFT difference is −0.43 [−0.77, −0.10] under the judge and
++0.13 [−0.33, +0.60] for rater A. Neither rater's change is significant.
+
+The disagreement has a visible source. Rater A's scores rise with list lines and Latin
+script; the judges' scores fall with Latin script, and so do mine. Whether native readers
+count those features as unnatural is exactly what the two raters disagree on. So the
+judged decline is real as a property of the judges, and a human-perceived loss of
+naturalness is not established. Fifty prompts and two raters, one of them the author,
+cannot rule one out either.
+
+## Subtracting the direction
+
+If the direction SFT moves were what makes the output read as translated, removing it
+should help. I tested this on the Tülu&nbsp;3 final model with inference-time hooks on
+layers 8–23.
+
+<DriftSubtraction />
+
+Subtracting half the mean Chinese drift vector restores 42% of the gap that SFT closed
+(3.485 to 3.692, against the base 3.975), with no degenerate English outputs and flat
+usefulness. Same-norm random directions at the same layers and dose restore none of it. So
+the measured direction is causally connected to the representation gap. Judged naturalness
+does not come back: it is 3.63 against 4.11 with no edit, a paired difference of −0.51
+[−0.75, −0.27]. Doubling the dose collapses generation; all 60 Chinese outputs loop.
+
+Put next to the observational result, both lines agree: the low-rank direction SFT moves
+governs the representation gap, and the judged change lives somewhere else. My conjecture
+is that it is a property of the generation policy rather than of this direction. The
+evidence is one symmetric edit at one working dose on one family, scored by an LLM judge.
+A symmetric edit is also limited by design, since restoring a between-language gap
+means moving one language relative to the other; language-conditional and weight-space
+edits are the next tests.
+
+## Japanese
+
+I wrote content-matched Japanese versions of all three pools and reran the ladder on both
+families. Every representation-side signature repeats. The gap contracts at SFT by 0.408
+(Tülu) and 1.028 (OLMo), and the post-SFT residual is 5.2% and 3.8% of that. The SFT
+increment has cosine 0.93 and 0.96 with the total drift. The geometry splits the same way:
+Japanese +0.263 and English −0.145 on Tülu, Japanese +1.151 and English +0.122 on OLMo.
+
+A single judge scores Japanese chat output below Chinese on both families (Tülu 3.07, 2.88,
+2.82 across the instruct stages). OLMo Japanese sits near the floor from SFT onward, with
+85% of final-stage answers rated heavy translationese, so a further decline could not show
+in the mean. These are uncalibrated score levels with no human anchor, and the
+language-identity control has not been repeated for Japanese.
+
+## What I take from it
+
+On the representation side the attribution holds within its scope: in the middle layers,
+the Chinese–English convergence on this axis enters at SFT, and DPO and RLVR leave it where
+SFT put it. Which language moves, and whether the movement is register or language identity,
+depends on the pretraining balance of the base model. If non-English register is the
+concern, the SFT mixture and pretraining balance are the places to look before preference
+data.
+
+The behavioral form of the folk claim stays open. Judges see a continued decline after SFT,
+off the axis; two people do not confirm it and disagree about the features driving it.
+Settling that needs a larger rater panel, or calibration against existing human
+naturalness data.
+
+The limits are the ones above plus a few structural ones. Both recipes are AI2's. Both
+non-English languages are high-resource CJK languages. The axis is one direction per layer
+and carries a large language-identity component. The representation numbers describe bare
+text, not the deployed chat condition, which the output side covers. The attribution is to
+stages as released, and in Tülu&nbsp;3 the preference stages use less data and compute than
+SFT; their increments are also mostly off the SFT direction, so more of that optimization
+would plausibly move the representation elsewhere rather than further along the axis.
+
+</ArticleLayout>
