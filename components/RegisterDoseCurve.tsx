@@ -3,28 +3,36 @@
 import { useState } from 'react'
 
 /**
- * E6 causal register control on Qwen3-4B: translate the language-register axis
- * by alpha times the measured population gap, against an amplitude-matched
- * random-direction control. Numbers from the E6 dose table (Appendix B, Table
- * B1); n = 79 baseline-valid items, covert subset n = 24. All values are
- * percent of baseline-valid items.
+ * Language-register write on Qwen3-4B: shift the residual along a language
+ * axis by alpha times the measured English/Chinese population gap, against an
+ * amplitude-matched random-direction control. Numbers from the revised working
+ * paper, dose table (Section 6) and direction table (Appendix D); n = 79
+ * prompts that pass the clean-answer gate. Random-arm preservation is given to
+ * the paper's precision (whole percent).
  */
-type Dose = { lang: number; full: number; preserved: number; covert: number; randFlip: number; randPres: number }
+type Dose = { lang: number; full: number; preserved: number; randFlip: number; randPres: number }
 
 const DATA: Record<string, Dose> = {
-  '0.0625': { lang: 64.6, full: 49.4, preserved: 78.5, covert: 29.2, randFlip: 0, randPres: 97.5 },
-  '0.125': { lang: 91.1, full: 64.6, preserved: 69.6, covert: 29.2, randFlip: 0, randPres: 94.9 },
-  '0.25': { lang: 92.4, full: 27.8, preserved: 30.4, covert: 20.8, randFlip: 0, randPres: 91.1 },
+  '0.0625': { lang: 64.6, full: 49.4, preserved: 78.5, randFlip: 0, randPres: 97 },
+  '0.125': { lang: 91.1, full: 64.6, preserved: 69.6, randFlip: 0, randPres: 95 },
+  '0.25': { lang: 92.4, full: 27.8, preserved: 30.4, randFlip: 0, randPres: 91 },
 }
 
 const ALPHAS = ['0.0625', '0.125', '0.25'] as const
 
 const ROWS: { key: keyof Dose; label: string; kind: 'chunks' | 'artifacts' | 'baseline' }[] = [
   { key: 'lang', label: 'output language flips', kind: 'chunks' },
-  { key: 'full', label: 'full flip (language + answer correct)', kind: 'chunks' },
-  { key: 'preserved', label: 'answer content preserved', kind: 'artifacts' },
-  { key: 'covert', label: 'full flip, covert subset', kind: 'chunks' },
-  { key: 'randFlip', label: 'random control (any flip)', kind: 'baseline' },
+  { key: 'full', label: 'full flip (language flipped, answer correct)', kind: 'chunks' },
+  { key: 'preserved', label: 'answer kept, either language', kind: 'artifacts' },
+  { key: 'randFlip', label: 'random control, language flips', kind: 'baseline' },
+]
+
+/** Full flips at alpha = 0.125 by direction (Appendix D). */
+const DIRECTION = [
+  { label: 'en → zh, all facts', v: 92.3, note: '36/39' },
+  { label: 'zh → en, all facts', v: 37.5, note: '15/40' },
+  { label: 'zh → en, capital template', v: 100, note: '13/13' },
+  { label: 'zh → en, other facts', v: 7.4, note: '2/27' },
 ]
 
 export default function RegisterDoseCurve() {
@@ -35,7 +43,7 @@ export default function RegisterDoseCurve() {
     <figure className="mem-explorer">
       <div className="mem-explorer-metrics" role="group" aria-label="Dose">
         <span className="mem-bar-na" style={{ lineHeight: '1.7', marginRight: '0.2rem' }}>
-          translate the register by α ×
+          shift along the language axis by α ×
         </span>
         {ALPHAS.map((a) => (
           <button key={a} type="button" className={`mem-metric${alpha === a ? ' on' : ''}`} onClick={() => setAlpha(a)}>
@@ -61,16 +69,29 @@ export default function RegisterDoseCurve() {
       </div>
 
       <p className="mem-explorer-note">
-        Amplitude-matched random control keeps {d.randPres.toFixed(1)}% of answers intact and flips essentially nothing
-        &mdash; the register move is not generic perturbation.
+        The amplitude-matched random direction keeps {d.randPres}% of answers and flips the language on none.
       </p>
 
+      <p className="mem-explorer-note">
+        <strong>Full flips at α = 0.125, by direction</strong>
+      </p>
+      <div className="mem-explorer-chart">
+        {DIRECTION.map((r) => (
+          <div className="mem-bar-row" key={r.label}>
+            <span className="mem-bar-label">{r.label}</span>
+            <span className="mem-bar-track">
+              <span className="mem-bar mem-bar-chunks" style={{ width: `${(r.v / 100) * 80}%` }} />
+              <span className="mem-bar-value">{r.note}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+
       <figcaption>
-        Pushing the language register flips which language the model speaks on up to 91% of prompts, with a full flip
-        (language changed <em>and</em> answer still correct) peaking near the operating point. But on the covert subset
-        &mdash; items where the target-language answer form was genuinely absent from the clean output &mdash; full flips
-        plateau around 29% while content preservation falls as the dose rises. The register carries the language
-        <em> setting</em>, not the content: it moves the tongue, not the fact.
+        Qwen3-4B. The operating point α = 0.125 is the dose with the highest full-flip rate on these same items, so it
+        is selected on the test set. Language flips occur in both directions, but the answer survives mainly when the
+        output flips into Chinese; from Chinese into English it survives on the capital template and almost nowhere
+        else.
       </figcaption>
     </figure>
   )

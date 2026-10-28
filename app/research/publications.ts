@@ -238,14 +238,29 @@ export const publications: Publication[] = [
   },
   {
     id: 'cgep',
-    title: 'CGEP: Toward Detecting and Attributing GEO Poisoning in Chinese AI Search',
+    title: 'CGEP: Pairing Chinese Generative-Search Citation Chains with an Open Paid-Placement Market',
     takeaway:
-      'GEO poisoning needs detection and account-cluster attribution on different substrates, not only attack success.',
-    tldr: 'Tao An. Defines GEO-poisoning detection and attribution for Chinese generative search (DeepSeek, Doubao, Kimi): a five-technique taxonomy of coordinated, inauthentic manipulation, a task reframing from attack-success to detection → classification → account-cluster attribution, and a legally-constructed synthetic benchmark. A provenance pilot shows detection and attribution need different substrates: content features detect that manipulation happened (F1 0.93), but only an account-interaction graph attributes it to a seller cluster (0.96). A confidence-gated fusion covers the taxonomy where a learned GNN and a zero-shot LLM both fail.',
+      'On real citation chains, low-authority concentration does not flag commercial queries; overlap with a placement price list does.',
+    tldr: 'Tao An. A two-part resource for studying GEO manipulation in Chinese AI search. CGEP-ITW pairs 124 generative-search answers over 62 stratified entities (1,777 citations, 768 cited pages) with a supply-side price list of 41,443 paid-placement offers across 11,355 domains, released only as derived statistics. Against motive-matched controls, the common low-authority proxy does not discriminate commercially motivated queries (odds ratio 0.67, p = 0.53); supply-side purchasability does (OR 9.00, p = 8.4 × 10⁻⁶) and holds after removing the twelve dominant platforms (OR 8.04). CGEP-Synth, a five-technique synthetic benchmark, ships with a self-audit stating how much of its separability is guaranteed by construction.',
     year: '2026',
-    status: 'working',
-    badges: [{ label: 'Working paper' }],
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
     topics: [{ label: 'AI Safety', className: 'topic-safety' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.23719633',
+    links: [
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.23719633' },
+      { label: 'Dataset (Zenodo)', href: 'https://doi.org/10.5281/zenodo.22084160' },
+      { label: 'Code', href: 'https://github.com/tao-hpu/cgep-pilot-release' },
+      { label: 'Interactive note', href: '/articles/cgep', internal: true },
+    ],
+    bibtex: `@misc{an2026cgep,
+  title     = {{CGEP}: Pairing Chinese Generative-Search Citation
+               Chains with an Open Paid-Placement Market},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23719633}
+}`,
   },
   {
     id: 'preference-centroid',

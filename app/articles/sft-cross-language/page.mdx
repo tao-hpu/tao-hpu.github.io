@@ -34,7 +34,7 @@ against a human-preference reward model), so the comparison is SFT against DPO a
 and PPO-based RLHF stays untested.
 
 The ruler is a register axis of the kind I used in the
-[workspace-registers working paper](/articles/workspace-registers), with the same bilingual
+[Jacobian-lens audit](/articles/workspace-registers), with the same bilingual
 pools. For each layer it is the difference of means between the residual representations of
 16 content-matched English–Chinese sentence pairs, computed on the **base model only** and
 then held fixed for every later checkpoint. Sixty bilingual probe texts, topically disjoint

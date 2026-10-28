@@ -1,0 +1,189 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import CgepSignalContrast from '@/components/CgepSignalContrast'
+import CgepSubstrateSplit from '@/components/CgepSubstrateSplit'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('cgep')
+
+<ArticleLayout slug="cgep">
+
+Ask a Chinese AI search product whether a rice cooker is worth buying and it answers in
+prose, citing a handful of pages. Those citations are the answer's evidence. If a place
+on a cited page can be bought, part of the answer can be bought too. The practice has a
+name, generative engine optimization (GEO), and in China it has a visible market:
+placement on content platforms is sold per domain, and some offers advertise "GEO" or
+"AI inclusion" as a feature.
+
+Work on detecting this kind of manipulation usually treats the manipulation itself as
+unobservable and relies on a proxy, most often the share of an answer's citations that
+land on low-authority domains. That proxy has not been tested against a control group
+that asks the same kind of question and differs only in commercial motive. My paper,
+[*CGEP: Pairing Chinese Generative-Search Citation Chains with an Open Paid-Placement
+Market*](https://doi.org/10.5281/zenodo.23719633), builds that test. It releases a two-part resource
+([dataset DOI](https://doi.org/10.5281/zenodo.22084160)): real generative-search answers
+joined to the supply side of the placement market (CGEP-ITW), and a synthetic benchmark
+that comes with an audit of its own construction (CGEP-Synth).
+
+## A control that asks the same question
+
+The unit of observation is a **citation group**: all pages cited by one answer. I
+sampled 62 entities in seven strata and asked two questions about each, "is X worth
+buying" and "X or Y, which is better", for 124 answers collected on 11 July 2026. They
+contain 1,777 citations over 768 distinct pages on 334 hosts; 684 of those pages were
+fetched as snapshots.
+
+Four strata carry commercial motive: small appliances and electronics (A), education
+and certification (B), medical aesthetics and health products (C), and major brands
+(D). The control that carries the design is **E1**: seven low-ticket household goods,
+a drying rack or a toilet brush, asked with the same two questions. Relative to the
+treatment strata the question type stays fixed and one thing changes: whether buying
+placement would pay. A factual-question control would change the question type as well
+as the motive. E2 (three factual entities) and Dcal (two non-Chinese brands) serve as
+floors.
+
+The supply side is a paid-placement price list received unsolicited in July 2026:
+41,443 offers across 11,355 domains, of which 816 offers on 204 domains are sold
+explicitly in terms of generative retrieval, at a median price of 18 RMB. Nothing was
+bought or negotiated. The raw list is an operational directory of placement channels,
+so it is withheld as dual-use; the release contains only derived statistics
+(domain-level overlap counts, price quantiles, GEO-flag counts), with overlapping
+domains pseudonymized.
+
+Each group is coded on seven signals tied to a five-technique taxonomy (below). Two
+carry the result. **S1** fires when at least half the citations sit on domains outside
+the Tranco top 100k: the low-authority proxy. **S7** fires when a cited host appears
+in the price list, a table lookup with no coder judgment.
+
+## Low authority does not discriminate; purchasability does
+
+<CgepSignalContrast />
+
+Start on S1. It fires on 25 of 100 treatment groups and 8 of 24 controls, an odds
+ratio of 0.67 in the wrong direction and not significant (p&nbsp;=&nbsp;0.86; on the
+continuous share, 0.325 against 0.351, p&nbsp;=&nbsp;0.53). Switch to "by stratum" to
+see why. E1 trips S1 on 8 of 14 groups: a drying rack is answered from small retailer
+and manufacturer pages whether or not anyone paid for them. Major brands (D) trip it on
+2 of 20, because they buy placement on popular hosts. Popularity measures salience,
+and salience is only incidentally related to manipulation.
+
+Now S7. Three quarters of treatment groups cite at least one purchasable host (75 of
+100) against a quarter of controls (6 of 24), odds ratio 9.00,
+p&nbsp;=&nbsp;8.4&nbsp;&times;&nbsp;10<sup>&minus;6</sup>. Restricting to offers sold
+explicitly as GEO raises it to 11.67. The obvious objection is that Chinese AI search
+leans on a few large publishing platforms that appear in any placement catalogue;
+three such hosts account for 151 of the 245 cited pages that overlap the list.
+Deleting every page on the twelve highest-traffic platforms leaves 66 of 449 treatment
+pages (14.7%) against 3 of 143 control pages (2.1%), odds ratio 8.04,
+p&nbsp;=&nbsp;3.9&nbsp;&times;&nbsp;10<sup>&minus;6</sup>. The gap does not come from
+the portals.
+
+Stratum D is the case a single detector misses. Its S1 rate is the lowest in the
+sample and its S7 rate is 12 of 20, every hit on an explicit GEO offer. Across the
+cross-tabulation, the most common cell in the commercial strata is S1 absent and S7
+present: 23 of 30 groups in A, 17 of 20 in C, 12 of 20 in D. Content placed on popular
+hosts is invisible to a detector that equates manipulation with obscurity.
+
+A note on method. An earlier version of the coder called any host missing from a
+hand-built whitelist low-authority. On the full sample it classed the China
+Meteorological Administration and a Chinese Academy of Sciences institute as marketing
+sites and fired on all 20 groups in E1 and E2. The current definition uses a public
+ranking (Tranco list N2Q7W, threshold fixed before analysis). The release ships the
+rank subset for the 288 cited domains rather than the list.
+
+## The taxonomy, and the technique that never appeared
+
+The paper sorts manipulation on two axes: the channel through which the engine is
+influenced (retrieval corpus, runtime session, or authority signal) and the
+organizational form (single item or coordinated cluster). Five techniques result:
+
+- **T1, account-matrix farming**: many accounts run by one party publish same-leaning
+  content.
+- **T2, citation stuffing**: pages cite one another to manufacture authority.
+- **T3, parasite content**: commercial content on a popular, trusted host.
+- **T4, hidden injection**: page content addressed to the model rather than the reader.
+- **T5, fake-review clusters**: coordinated reviews across platforms.
+
+The taxonomy is descriptive, drawn from public enforcement reporting and from the
+offer categories in the price list. The defender's task splits into detection (is this
+chain manipulated), classification (which technique), and attribution (which actor
+cluster placed it). CGEP-ITW supports only the first two, and only as observability,
+because no ground truth about transactions exists in the wild.
+
+One cell stayed empty. No LLM-directed hidden instruction appeared in any of the 684
+snapshots, so S5, the T4 signal, is zero throughout. On the synthetic benchmark the
+same technique is perfectly separable because a boolean flag carries it. The easiest
+technique on constructed data is the one I could not observe on real pages.
+
+## A synthetic benchmark that audits itself
+
+CGEP-Synth generates campaigns over cluster sizes 3, 10 and 30 crossed with three
+levels of intra-cluster homogeneity, in three realizations up to all five techniques
+(7,740 items, 774 per technique, balanced against organic items), each under five
+seeds. Items carry accounts, sellers, platforms, scalar and framing features, and edges
+in an interaction graph and a citation graph. It contains no natural-language text.
+
+Its organizing thesis is that each technique hides coordination in a different
+substrate, so a detector on the wrong substrate fails. That thesis is built into the
+generator, and the paper states how much of the resulting separability follows from
+construction:
+
+- Of the twelve technique-by-substrate cells, eight are structural zeros: the objects a
+  detector needs are absent from that substrate, so 0.00 reflects an empty graph, not a
+  failed model. All 1,501 interaction edges lie inside T1 clusters.
+- Two more are near-perfect because a label is readable as a feature. The DOM-carrier
+  flag is true for exactly the 774 T4 items. Host authority is a constant 0.300 for four
+  techniques, while T3 draws from 0.701 to 0.950 and organic items from 0.2 to 0.6.
+- Only content similarity on T3 (F1 0.547) and T5 (0.351) is earned by modeling, and
+  there the classes overlap.
+
+What remains useful is a harness for attribution methods:
+
+<CgepSubstrateSplit />
+
+Content features detect coordination well (F1 0.934) but attribute it to a seller
+cluster at 0.185, while Louvain communities on the interaction graph reach 0.959, both
+under one-to-one Hungarian assignment (a majority-mapping variant inflates every graph
+method to 1.00). A graph autoencoder does not beat the classical baseline. These
+numbers say a method can or cannot recover a structure the generator planted. Claims
+about real accounts have to come from somewhere else, which is the reason CGEP-ITW
+exists.
+
+## Evidence strength and boundaries
+
+**CGEP-Synth is synthetic and mostly decided by construction.** Ten of its twelve
+technique-by-substrate cells are fixed by the generator. It supports comparing
+attribution methods, not statements about real sellers.
+
+**CGEP-ITW is observational and small.** It is one instrument at one point in time,
+and generative-search citation behavior shifts over months. The instrument is a
+search-grounded LLM API with live retrieval over Chinese pages, not the consumer apps
+of Chinese engines, which need authenticated sessions; the bare chat APIs of those
+vendors do not browse and, in pilot testing, invented source URLs. The dataset shows
+how the Chinese content ecosystem appears in a generative-search citation chain, not
+how a particular product behaves. Coding is by one author with no agreement statistic;
+S7, as a lookup, needs none. Signals S2, S3 and S6 are often unverifiable at this
+sample size and support no conclusion. The price list is one vendor's catalogue and
+says nothing about market size. E2 and Dcal give a floor, not a rate.
+
+**What S7 does not show.** S7 records that a cited host *can* be bought, not that any
+citation *was* bought. No claim attaches a transaction to a page, entity, or account,
+and no entity is named as a manipulator. Confounding remains: user-publishing
+platforms take 5.2% of citations in E1 against 34.1% in stratum A, so the composition
+of the citation surface itself varies with commercial motive. The defensible statement
+is that commercially motivated queries draw on a citation surface that overlaps an open
+placement market far more than motive-matched controls do.
+
+## What I take from it
+
+For anyone using synthetic manipulation corpora: for each attack class, write down
+which feature channel carries it and whether that channel is populated for the other
+classes. Where it is not, a reported zero is a property of the generator. The check is
+cheap, and once it is done the point cannot be argued afterwards.
+
+For detection practice: popularity rankings are convenient weak supervision, and in
+this sample they point the wrong way. A supply-side lookup is cheaper, needs no
+judgment, and here carried an odds ratio of 9.00 against 0.67. Its cost is that it
+identifies exposure, not manipulation, and it exists only where a placement market can
+be observed.
+
+</ArticleLayout>

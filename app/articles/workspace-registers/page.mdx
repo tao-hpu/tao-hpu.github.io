@@ -1,5 +1,6 @@
 import ArticleLayout from '@/components/ArticleLayout'
 import RegisterPlanBars from '@/components/RegisterPlanBars'
+import RhymeProbeControl from '@/components/RhymeProbeControl'
 import RegisterDoseCurve from '@/components/RegisterDoseCurve'
 import { articleMetadata } from '@/app/articles/registry'
 
@@ -7,67 +8,88 @@ export const metadata = articleMetadata('workspace-registers')
 
 <ArticleLayout slug="workspace-registers">
 
-> **Update, 28 October 2026.** The working paper behind this note has been revised and
-> retitled *Output Anticipation or Internal Content? Auditing Jacobian-Lens Readouts with
-> Mouth-Exclusion*. Two positive controls added since this note was written change its
-> central reading. A probe trained at the rhyme-planning position reads the upcoming rhyme
-> far above the lens, but never beats a frequency baseline that reads no activations; an
-> entity held in three different roles shows covert readout near control level in all of
-> them. The revised paper therefore does not claim that the workspace holds registers *and
-> not* plans: on these models the lens cannot tell planned content from unplanned. The
-> mouth-exclusion measurements and the language-steering result below still hold. Code and
-> data are on [GitHub](https://github.com/tao-hpu/jspace-replication).
+> **Rewritten 28 October 2026.** This note now follows the revised working paper, *Output
+> Anticipation or Internal Content? Auditing Jacobian-Lens Readouts with Mouth-Exclusion*.
+> The earlier version, written in July for a draft titled *Registers, Not Plans*, read the
+> audit below as evidence that the workspace holds context registers and not content plans.
+> Two positive controls added since then do not support that reading. A trained probe reads
+> the upcoming rhyme where the lens reads nothing, but never beats a baseline that reads no
+> activations; an entity placed in three different roles is filtered out in all three. The
+> audit numbers and the language-steering result carry over. The interpretation is
+> narrower, and the self-report and transport-geometry sections are gone.
 
-How much of a language model's intermediate computation is *about to be said*, and how much is genuinely internal? A recent interpretability proposal from Anthropic's team, [Verbalizable Representations Form a Global Workspace](https://transformer-circuits.pub/2026/workspace/index.html), gives a bold answer: a small residual-stream subspace acts as a "global workspace," readable through a Jacobian lens, in which the model holds and manipulates intermediate thoughts. The lens itself is the network's own derivative of its final hidden state with respect to an intermediate layer, averaged over a corpus and decoded through the unembedding: a training-free cousin of the tuned lens. Read the workspace and you read the model's mind; steer along it and the model follows.
+Anthropic's interpretability team proposed that a language model keeps intermediate "thoughts" in a global workspace: a residual-stream subspace that a Jacobian lens can read and that swaps and steering can edit ([Verbalizable Representations Form a Global Workspace](https://transformer-circuits.pub/2026/workspace/index.html)). The lens is the network's own derivative of its final hidden state with respect to an intermediate layer, averaged over a corpus and decoded through the unembedding: a training-free relative of the tuned lens.
 
-I set out to replicate the core experiments on open-weight models (Qwen3-1.7B and 4B) and ended up asking a sharper question. There is a confound as old as the logit lens: the intermediate layers of a well-trained decoder increasingly *anticipate the output*. A lens readout at some middle layer that matches a token the model was already about to say is evidence of convergence, not of a workspace. So the question is not "can the lens read something," but: **which lens readouts reflect content the model is *not* about to say, and which are merely echoes of the output?**
+I replicated the core experiments on open models, Qwen3-1.7B and 4B with the official pre-fitted lenses, and Gemma-2-2B as a second family. Some of it replicates. On 4B, swapping a country's direction moves the full pattern of facts about it in 35 of 36 items; the same swap does almost nothing for months, animals or numbers (0/12, 1/14, 0/12). Rhyme planning reads at 0% at the designated position, and mental arithmetic sits at its permutation floor (7.3% against 7.3% on 1.7B).
 
-## A rank in the mouth
+That mixed picture raised the question this note is about. Intermediate layers of a trained decoder increasingly anticipate the output; that has been known since the logit lens. A lens readout that recovers a token the model was about to emit anyway is evidence of that convergence, not of an internal representation. So which lens readouts show something the model is *not* about to say?
 
-For every lens hit I also record the token's rank in the model's actual next-token distribution at that position, which I will call the "mouth." A hit whose token already sits near the top of the mouth is a *shadow*: it may be nothing more than output anticipation. A hit whose token sits far outside the mouth is *covert*: whatever the lens is reading there, the model was not about to say it. Only covert content can support a workspace claim that is genuinely distinct from decoder convergence. The original paper uses this idea once, as a throwaway ablation filter; I promote it to the central measuring device and audit all six official evaluation sets under a strict criterion.
+## Filtering out the next token
 
-The result is a clean split, and it has a name.
+For every lens hit I also record the decoded token's rank in the model's actual next-token distribution at the same position, which I call the *mouth* for short. A hit whose token sits high in the mouth may be next-token anticipation. A hit counts as *covert* under the strict criterion when the token is in the lens's top 10 and at mouth rank 100 or worse. The original paper used a version of this once, exempting the top 10 tokens of a clean pass; I make it the main instrument and call it mouth-exclusion. Permutation controls, which re-pair items with other items' targets, give a false-positive floor for each set under identical scoring.
+
+One property of the filter matters for everything that follows: it matches exact tokens at the next position only. It does not remove anticipation several tokens ahead, or anticipation of the same word in another language or spelling.
+
+## Two of six sets clear their floors
 
 <RegisterPlanBars />
 
-Covert content survives almost exclusively in two families: **multilingual** prompts, where the lens reads the answer's other-language form and the identity of the conversation's language, and **typo correction**, where it reads the intended word beneath a corrupted surface. Both are *metadata about the context*: which language we are in, what the user meant to type. I call these **context registers**. Every *content-plan* family dies. Poetry produces zero covert readouts of the upcoming rhyme; order-of-operations arithmetic stays at or below its permutation floor; multi-hop reasoning leaves a small residue that evaporates as the cut deepens.
+Under the strict criterion, four of the original paper's six evaluation sets fall near their permutation floors on Qwen: poetry (rhyme), order of operations, association, and multi-hop bridge entities. The two that clear them are multilingual (31.3% on 4B against a 3.3% floor) and typo correction (15.6% against 0%). Against their own permutation controls, those two give Holm-adjusted one-sided Fisher tests at p ≤ 2×10⁻⁴ on both models; none of the four content sets reaches significance after adjustment.
 
-This one decomposition explains, in a single stroke, both the original paper's successes (its flagship demos are all register-like) and the failures flagged in Neel Nanda's independent replication (rhyme planning and mental arithmetic are content plans). And it is not an artifact of where I put the cut: slide the threshold in the figure above and the register families decay slowly while the plan families fall to their floors almost at once. A register is a fact about the context that conditions everything downstream without being any particular token's output. A plan is prospective content. The workspace, read strictly, holds the first and not the second.
+What the two surviving sets share is a surface form the model is not about to emit. Multilingual items prompt in another language, and their listed intermediates are mostly English: the relation word, the English form of the input word, the English form of the answer. Typo items list the correct spelling of a word the prompt misspells. The four failing sets target content in the form the model will produce, and their lens hits cluster just outside the mouth's top 10, which is where output anticipation would put them.
 
-## From reading to writing
+The slot split narrows the multilingual result further. The language name, the one slot that is a fact about the context rather than content, clears its floor on only 6.5 to 7.5% of items. Most surviving hits are English content words, which matches the English-leaning intermediate layers reported for multilingual models by [Wendler et al. (2024)](https://arxiv.org/abs/2402.10588). The next token at the readout position is the answer in the prompt's language, so a lens hit on its English form may be anticipation of the answer in a form the exact-token filter cannot match. The stored ranks cannot test this.
 
-A correlation is not a mechanism. If the language register is real workspace content and not a readout artifact, it should be causally load-bearing under a controlled write. So I estimate a language-register axis as the mass-mean contrast between content-matched English/Chinese parallel sentences, verify per item that the target language is genuinely absent from the clean output, and translate the register by a fraction of the measured population gap, against an amplitude-matched random-direction control.
+## Why the audit alone does not settle planning
+
+My July reading of this split was that the workspace holds context registers, not content plans. That reading has a hole. A plan, meaning content held for later output, can itself raise the next-token probability of that content. A filter that removes output-adjacent hits is then biased against the very representation it is supposed to test, and calling the surviving sets "registers" and the failing ones "absent plans" is a definition, not a finding. Two positive controls test what the filter can and cannot show.
+
+## A probe at the rhyme position
+
+The poetry set asks whether the rhyme word that will end line 2 is readable at the newline that ends line 1. The lens reads nothing there. So for every fitted layer I train a linear map on the residual at that newline, initialised at the identity so training starts from the logit lens, with the rhyme word the model itself goes on to produce as target. Training couplets are the model's own: sampled first lines, greedy second lines, kept only if the two last words rhyme under the CMU pronouncing dictionary. Evaluation is on held-out generated couplets and on the official 98 couplets, which are never trained on.
+
+Next to the probe I put a baseline that reads no activations at all. It ranks rhyme words by how often they appear in the rhyme class of line 1's last word in the model's own training couplets, then by overall frequency.
+
+<RhymeProbeControl />
+
+The probe reads what the lens misses: 49 to 81% pass@10 on held-out couplets against 0 to 1% for the lens and 7 to 12% for the probe's permutation control. Every probe hit is covert by my own criterion, since the rhyme word's median mouth rank at the newline is above 15,000 on every model. The lens's silence at this position is a fact about the lens, not about the residual stream.
+
+But the frequency baseline beats the probe on every model and every split (94.9% against 81.4% on 1.7B held-out). Within the rhyme class, where the question is which of 87 to 157 candidates the model will pick, no fitted layer of any model beats the baseline either. The selected layers are early (layer 0 on 1.7B, layer 5 on Gemma, layer 20 on 4B), and moving the frozen probe back to line 1's last word shows the per-item readout is already there. A representation of a chosen word would have to beat a reader that knows only the rhyme class. On these models the probe reads the constraint the context has already fixed, and finds no evidence of a selection among the words that satisfy it. Tripling the 1.7B training data, from 854 to 2,484 pairs, raised the probe from 69.0% to 81.4% and left the within-class comparison unchanged.
+
+## One entity, three roles
+
+The second control holds content fixed and varies its role, which is the experiment a planning reading needs. Forty-eight entities are each named only by a description that never contains the word ("the desert animal that stores fat in its hump"). Every prompt then contains the same preamble, *Sure, I know this one.*, followed by a stem that differs by arm. In the plan arm the entity is the next token. In the register arm the task is to state a property, such as how many legs it has, without naming it, so the entity conditions the answer and is never emitted. In the idle arm the model changes the subject. Items enter the analysis only if the plan arm actually names the entity, 41 to 46 of 48 depending on the model.
+
+Covert readout is between 0 and 2.8% in every arm on every model, against floors of 0%. Role does not decide it. On 4B and Gemma the lens does read the entity, on 12 to 23% of preamble positions against 0% for a control word, and those hits concentrate at three pause points: the comma, *this*, and the period. At those positions the entity's median mouth rank drops in the plan arm and also in the register arm, where it will never be produced (4B: 88, 66, 83 against 109, 56, 277; elsewhere in the preamble the pooled medians run from 138 to 1,057). The three positions were picked after looking at the lens hits, so this breakdown is exploratory. On 1.7B the lens reads the entity on only 1 to 5% of positions, so its near-zero covert rate reflects low lens sensitivity, not the filter. The small residue on Gemma is larger in the plan arm (2.8%) than in the register arm (1.6%), the opposite of what a register-over-plan split predicts.
+
+So the filter does remove activated content that is not about to be said, but not selectively: a computed entity reaches the next-token distribution at pause points whether it is scheduled for output, held for a judgement, or about to be dropped. The multilingual and typo targets pass for a different reason. They never appear in the form the model is about to emit, so they pass whether or not they are anticipation. Neither case lets the audit separate planned content from unplanned.
+
+## Writing along a language axis
+
+Reading tests whether the lens can see something; writing tests whether the model uses it. I call a variable that conditions every output token but is never emitted a *register*; the language of the conversation is the obvious example. I estimate a language axis per band layer as the mass-mean contrast between 16 English/Chinese parallel sentences, disjoint from the test items, and shift the residual along it by a fraction α of the measured population gap. The control shifts by the same per-layer norm along a random direction. Test items are 60 facts in both languages; a prompt counts if the clean model answers it correctly in its own language (79 prompts on 4B, 63 on 1.7B). A *full flip* means the output language changed and the answer is still correct.
 
 <RegisterDoseCurve />
 
-The register moves the language on 79 to 96% of prompts, with full flips (language changed and the answer still correct) at the operating point, in both directions, while the random control moves nothing. But here is the part that matters for the workspace reading: on the strictly covert subset, pushing the register reliably changes *which language the model speaks* but does not by itself retrieve the answer's form in that language. The register carries the language setting, not the content. A second register, the typo axis, behaves the same way: erasing it dose-dependently abolishes the model's ability to spell a corrupted word correctly, against a flat random control. Two registers, two clean causal instances, both amplitude-controlled.
+At α = 0.125, full flips reach 64.6% on 4B and 55.6% on 1.7B, and 0% under the random control (exact McNemar test, p < 10⁻⁴ on both). Re-estimating the axis on five bootstrap resamples of the parallel pairs gives 59.5 ± 2.7% on 4B and 56.2 ± 1.8% on 1.7B, and the random control stays at 0% on every seed. The figure shows where the answer survives: mostly when the output flips into Chinese. From Chinese into English it survives on the capital template and on 2 of 27 other facts.
 
-## The edit rewrites the question
+The July version of this note read the covert subset, items whose target-language answer was absent from the clean output, as showing that the axis carries the language setting and not the content. Full flips do drop there, to 29.2% on 4B and 33.3% on 1.7B, while language flips stay at 79 to 96%. But half or more of those covert prompts are Chinese-to-English facts outside the capital template, where full flips are rare in any case, so the drop is confounded with direction. Within English to Chinese the covert prompts flip fully on 7 of 9 and 7 of 10. I no longer read that subset as separating the register from the content it conditions.
 
-The strangest result is about self-knowledge. When I edit the workspace representation of a question's subject entity and then ask the model to restate the question, it reproduces the *edited* question in 59 to 71% of trials, stably across a 1.7B to 14B scale ladder. A lens over fresh, hook-free forward passes agrees with this behavioral measure on 96% of items. The edit does not just flip the answer; it rewrites the model's representation of what was asked, question included.
+A second axis behaves the same way. Erasing a typo axis abolishes the model's ability to correct a misspelled word, reaching 0% at the full gap, while the random control leaves correction intact at α ≤ 0.5 (p < 10⁻⁴). On Gemma-2-2B both writes reproduce: typo correction survives on 79.6% of items at α = 0.5 against 100% for random, and the language axis gives 25.0% full flips at α = 0.125 with the random control at 0%. That is 39 to 45% of the Qwen rates, and it is not a knowledge gap: on items Gemma can answer in the target language it still full-flips only 27.8%.
 
-The model's self-report about the edit, by contrast, never stabilizes. At 1.7B there is no signal; at 4B an edit-specific channel appears; at 8B it is indistinguishable from a random perturbation; at 14B it reverses sign. Detection, where it occurs, is statistically independent of capture and does not rescue the question memory. Introspective blindness here is not inattention. It is the absence of any contradiction inside the model's own state: a coherent workspace edit removes the very discrepancy that noticing would require.
+## Swaps change the restated question
 
-## A second architecture
+Edits along lens directions also reach beyond the next token. A band swap replaces a question's subject with another entity along the two entities' lens directions; the model answers, and then, with the swap hooks off, continues from "The exact question I was asked was:". On 1.7B the full swap flips the answer on 78.6% of 56 capital items, and the restatement reproduces the swapped question on 71.4% (no-swap baseline 0%). A lens read on the hook-free restatement passes agrees with behavior on 54 of 56 items. The rate is 58.9 to 69.6% from 4B to 14B and 83.9% on Gemma-2-2B, where the no-swap arm already reads as the swapped question on 5.4% of items. The random control flips no answer at any scale, and the effect holds on US states and on a currency relation. The restatement is generated after the answer, so the model may be reconstructing the question from its own answer; the claim is only that the restated question follows the edit.
 
-Everything so far is Qwen. To check that none of it is a quirk of one model family, I rerun the load-bearing experiments on Gemma-2-2B, a different architecture with its own separately fitted lens.
+## What I conclude now
 
-Perspectival capture reproduces and, if anything, sharpens: the full-band swap rewrites the restatement to the *swapped* question on 83.9% of items, above every point on the Qwen ladder, while the random-direction control stays at behavioral zero. Both register writes reproduce too. Erasing the typo axis abolishes correction cleanly, and the language register stays causal, but at roughly 40% of Qwen's efficacy: 25.0% full flips at the operating point, against 55 to 65% on Qwen.
+On these models the Jacobian lens reads two things. On the content sets its hits fit next-token anticipation, and where the lens reads a computed entity at all, that holds whatever role the entity plays. What survives mouth-exclusion is content in a surface form the output does not use: English forms of the prompt's words and answer, a corrected spelling, and less often a language name. Whether the English answer is anticipation in another language, my data do not settle.
 
-That gap is itself informative. Gemma's Chinese is weaker, so pushing the language register reliably changes *which language it speaks* (language-only flip 79.2%) but into lower-quality Chinese that less often carries the correct answer. It is the same register-not-content dissociation the Qwen covert subset showed, reached here through a capability axis instead of a covertness filter: the register selects the language, and how much that selection pays off depends on how well the model commands the content.
+Three findings hold on their own terms. A language axis estimated from parallel sentences is causal against an amplitude-matched control. The residual stream holds more than the lens reports, since a trained probe reads the rhyme constraint where the lens reads nothing. Band swaps along lens directions change the question the model restates.
 
-Self-report stays unreliable, in a new shape. Where 4B over-reported the edit and 8B reported generic arousal, Gemma *under*-reports it: its edit-arm yes-rate (8.9%) sits below both its random-direction control (25.0%) and the clean baseline (16.1%), and detection is independent of capture. Across all five models the one invariant is that the report channel never faithfully tracks the edit, while capture and its zeroed control do not vary. The load-bearing picture is a property of lens-equipped decoders, not of one model family.
-
-## What survives
-
-Finally, the geometry. Transported through the fitted lens, the unembedding directions of ~190 test entities collapse from an effective dimensionality of 75 to 128 in the raw space down to 2 to 12 after transport, across the Qwen family. The model behind the public lens demos is the most collapsed of all: its transported directions carry roughly two effective dimensions, so the flagship workspace everyone has seen demonstrated is read through a channel about that wide. The two models with the tightest transport cones are exactly the two whose lens readouts are noisiest. The readable channel is a fitted property that predicts its own usability, and it is narrow.
-
-So the workspace picture that survives the controls is narrower and stranger than "the model's thoughts are readable and editable," but it is not empty, and parts of it are stronger than the original claims because they carry controls. What remains is a low-bandwidth, causally steerable channel that carries a handful of context registers: it is where the model keeps facts about the conversation that are nobody's next token. What does not survive: readable content plans, surgical edits of specific thoughts, and any consistent advantage of the Jacobian transport over a plain logit lens on the original evaluation sets.
-
-Registers, not plans.
+What the audit does not support is any statement about planning. The asymmetry across task families is real, but it matches what an exact-token filter removes. On these models, at 1.7B to 4B, the lens alone cannot tell planned content from unplanned. A frontier model, or Gemma-3-27B where rhyme planning has been reported, may hold representations these models lack; this bounds what the lens shows here, not what larger models do.
 
 ---
 
-This is an interactive companion to the working paper first titled *Registers, Not Plans: What Lives in a Language Model's Workspace That Isn't on Its Tongue*, now revised as *Output Anticipation or Internal Content? Auditing Jacobian-Lens Readouts with Mouth-Exclusion* (see the update at the top). Every number here traces to a results JSON produced by a runnable script; the code, prompt sets, and per-experiment outputs are at [github.com/tao-hpu/jspace-replication](https://github.com/tao-hpu/jspace-replication). Figures are regenerated from those files.
+This is an interactive companion to the working paper *Output Anticipation or Internal Content? Auditing Jacobian-Lens Readouts with Mouth-Exclusion*, a revision of the draft first titled *Registers, Not Plans*. Every number here traces to the paper and to a results file produced by a runnable script; code, prompt sets and per-experiment outputs are at [github.com/tao-hpu/jspace-replication](https://github.com/tao-hpu/jspace-replication).
 
 </ArticleLayout>

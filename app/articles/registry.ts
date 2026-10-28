@@ -29,6 +29,19 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'cgep',
+    title: 'Purchasable, Not Obscure',
+    description:
+      'In 124 Chinese generative-search answers, citations piling up on low-ranked domains did not separate commercial queries from motive-matched controls (odds ratio 0.67), while overlap with an open paid-placement price list did (9.00). A companion synthetic benchmark states which of its own results are fixed by construction.',
+    date: '2026-10-28',
+    tags: ['ai-safety'],
+    paperDoi: '10.5281/zenodo.23719633',
+    relatedPaper: {
+      label: 'CGEP (Zenodo preprint)',
+      href: 'https://doi.org/10.5281/zenodo.23719633',
+    },
+  },
+  {
     slug: 'imported-or-induced',
     title: 'Imported or Induced?',
     description:
@@ -130,9 +143,9 @@ export const articles: Article[] = [
   },
   {
     slug: 'workspace-registers',
-    title: "What the Model Isn't About to Say",
+    title: 'What the Jacobian Lens Reads',
     description:
-      'Interactive companion to an independent replication of Anthropic\'s global-workspace claim: which Jacobian-lens readouts survive a strict test against output anticipation. The current working paper, "Output Anticipation or Internal Content?", revises the register-versus-plan reading of this note.',
+      'Interactive companion to a replication of Anthropic\'s global-workspace claim on Qwen3 and Gemma-2. After filtering out next-token anticipation, the lens reads content in a surface form the output does not use, and two positive controls show it cannot tell planned from unplanned content on these models.',
     date: '2026-07-08',
     updated: '2026-10-28',
     tags: ['interpretability'],

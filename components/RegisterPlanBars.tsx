@@ -3,21 +3,22 @@
 import { useState } from 'react'
 
 /**
- * Covert-strict readout rate per official evaluation set, swept across the
- * mouth-rank exclusion threshold T. Numbers from the mouth-exclusion audit
- * (Appendix A threshold-sweep tables, Qwen3-4B and Qwen3-1.7B); floor = the
- * permutation-control false-positive rate under the identical scoring.
+ * Mouth-exclusion audit of the six official evaluation sets: covert readout
+ * rate (lens rank < 10, mouth rank >= T) swept across T, with permutation
+ * floors under identical scoring. Numbers from the revised working paper,
+ * Appendix B threshold-sweep table (Qwen3-4B / Qwen3-1.7B); the multilingual
+ * slot split is Table 1 (strict cut, T = 100 only).
  */
 type Sweep = { covert: Record<string, number>; floor: Record<string, number> }
-type Family = { key: string; label: string; kind: 'register' | 'plan' }
+type Family = { key: string; label: string; group: 'other-form' | 'output-form' }
 
 const FAMILIES: Family[] = [
-  { key: 'multilingual', label: 'multilingual', kind: 'register' },
-  { key: 'typo', label: 'typo correction', kind: 'register' },
-  { key: 'poetry', label: 'poetry (rhyme)', kind: 'plan' },
-  { key: 'orderops', label: 'order-of-ops', kind: 'plan' },
-  { key: 'assoc', label: 'association', kind: 'plan' },
-  { key: 'multihop', label: 'multi-hop', kind: 'plan' },
+  { key: 'multilingual', label: 'multilingual', group: 'other-form' },
+  { key: 'typo', label: 'typo correction', group: 'other-form' },
+  { key: 'poetry', label: 'poetry (rhyme)', group: 'output-form' },
+  { key: 'orderops', label: 'order-of-ops', group: 'output-form' },
+  { key: 'assoc', label: 'association', group: 'output-form' },
+  { key: 'multihop', label: 'multi-hop (bridge)', group: 'output-form' },
 ]
 
 const DATA: Record<string, Record<string, Sweep>> = {
@@ -39,28 +40,41 @@ const DATA: Record<string, Record<string, Sweep>> = {
   },
 }
 
+/** Multilingual set split by intermediate slot, strict cut (T = 100). */
+const SLOTS: Record<string, { label: string; covert: number; floor: number }[]> = {
+  '4b': [
+    { label: 'language name', covert: 6.5, floor: 0 },
+    { label: 'relation, input (English)', covert: 28.0, floor: 3.7 },
+    { label: 'answer (English)', covert: 62.6, floor: 5.6 },
+  ],
+  '1.7b': [
+    { label: 'language name', covert: 7.5, floor: 0 },
+    { label: 'relation, input (English)', covert: 16.4, floor: 1.9 },
+    { label: 'answer (English)', covert: 54.2, floor: 1.9 },
+  ],
+}
+
 const THRESHOLDS = ['10', '50', '100', '500'] as const
-const MAXV = 60
+const MAXV = 70
+
+type Row = { label: string; covert: number; floor: number; kind: 'chunks' | 'baseline' }
 
 export default function RegisterPlanBars() {
   const [model, setModel] = useState<'4b' | '1.7b'>('4b')
   const [t, setT] = useState<string>('100')
 
-  const rows = (kind: 'register' | 'plan') =>
-    FAMILIES.filter((f) => f.kind === kind).map((f) => {
+  const rows = (group: Family['group']): Row[] =>
+    FAMILIES.filter((f) => f.group === group).map((f) => {
       const s = DATA[model][f.key]
-      return { ...f, covert: s.covert[t], floor: s.floor[t] }
+      return { label: f.label, covert: s.covert[t], floor: s.floor[t], kind: group === 'other-form' ? 'chunks' : 'baseline' }
     })
 
-  const bar = (r: { label: string; kind: string; covert: number; floor: number }) => (
+  const bar = (r: Row) => (
     <div className="mem-bar-row" key={r.label}>
       <span className="mem-bar-label">{r.label}</span>
       <span className="mem-bar-track pc-amp-track">
         <span className="pc-amp-ghost" style={{ width: `${(r.floor / MAXV) * 80}%` }} />
-        <span
-          className={`mem-bar pc-amp-bar mem-bar-${r.kind === 'register' ? 'chunks' : 'baseline'}`}
-          style={{ width: `${(r.covert / MAXV) * 80}%` }}
-        />
+        <span className={`mem-bar pc-amp-bar mem-bar-${r.kind}`} style={{ width: `${(r.covert / MAXV) * 80}%` }} />
         <span className="mem-bar-value">
           {r.covert.toFixed(1)}%
           <em className="pc-amp-fold"> floor {r.floor.toFixed(1)}%</em>
@@ -80,9 +94,9 @@ export default function RegisterPlanBars() {
         </button>
       </div>
 
-      <div className="mem-explorer-metrics" role="group" aria-label="Mouth-rank exclusion threshold">
+      <div className="mem-explorer-metrics" role="group" aria-label="Mouth-rank cut">
         <span className="mem-bar-na" style={{ lineHeight: '1.7', marginRight: '0.2rem' }}>
-          keep only lens hits whose token sits at mouth rank ≥
+          count a lens hit only if its token sits at mouth rank ≥
         </span>
         {THRESHOLDS.map((v) => (
           <button key={v} type="button" className={`mem-metric${t === v ? ' on' : ''}`} onClick={() => setT(v)}>
@@ -92,33 +106,42 @@ export default function RegisterPlanBars() {
       </div>
 
       <p className="mem-explorer-note">
-        <strong>Context registers</strong> &mdash; metadata about the conversation the model is <em>not</em> about to emit.
+        <strong>Target in another surface form</strong>: the decoded token is not the form the model is about to emit.
       </p>
-      <div className="mem-explorer-chart">{rows('register').map(bar)}</div>
+      <div className="mem-explorer-chart">{rows('other-form').map(bar)}</div>
 
       <p className="mem-explorer-note">
-        <strong>Content plans</strong> &mdash; prospective content the model is building toward saying.
+        <strong>Target in the output&rsquo;s own form</strong>: the rhyme word, an arithmetic intermediate, a bridge
+        entity.
       </p>
-      <div className="mem-explorer-chart">{rows('plan').map(bar)}</div>
+      <div className="mem-explorer-chart">{rows('output-form').map(bar)}</div>
+
+      <p className="mem-explorer-note">
+        <strong>Multilingual, split by slot</strong> (strict cut T = 100 only, whatever is selected above).
+      </p>
+      <div className="mem-explorer-chart">
+        {SLOTS[model].map((s) => bar({ ...s, kind: 'chunks' }))}
+      </div>
 
       <div className="mem-explorer-legend">
         <span className="mem-legend-item">
-          <span className="mem-legend-swatch mem-bar-chunks" /> context register
+          <span className="mem-legend-swatch mem-bar-chunks" /> other surface form
         </span>
         <span className="mem-legend-item">
-          <span className="mem-legend-swatch mem-bar-baseline" /> content plan
+          <span className="mem-legend-swatch mem-bar-baseline" /> output&rsquo;s own form
         </span>
         <span className="mem-legend-item">
-          <span className="mem-legend-swatch" style={{ border: '1px dashed var(--color-muted)', background: 'none' }} /> permutation
-          floor
+          <span className="mem-legend-swatch" style={{ border: '1px dashed var(--color-muted)', background: 'none' }} />{' '}
+          permutation floor
         </span>
       </div>
 
       <figcaption>
-        A lens readout is <em>covert</em> only when its token is far outside the model&rsquo;s own next-token
-        distribution &mdash; below mouth rank T, so it is not mere output anticipation. Drag T from 10 to 500: the two
-        register families barely move, while the plan families collapse into their permutation floors. The split is a
-        property of the content, not of where the cut is placed.
+        Covert readout rate per evaluation set: the lens puts the target in its top 10 while the model&rsquo;s own
+        next-token distribution ranks it at T or below. At T = 50 and T = 100 the two groups separate: multilingual and
+        typo stay above their floors, the four content sets sit at or near theirs. At T = 10 and T = 500 the groups are
+        close. Within the multilingual set, most surviving hits are English content words and the English form of the
+        answer; the language name accounts for 6.5 to 7.5% of items.
       </figcaption>
     </figure>
   )
