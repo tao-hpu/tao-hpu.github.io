@@ -317,6 +317,10 @@ a.publication-simple-item {
     background: #7d8a99;
 }
 
+.topic-eval::before {
+    background: #a8707e;
+}
+
 .page-research .publication-simple-item {
     gap: 2rem;
 }

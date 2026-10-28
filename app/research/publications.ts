@@ -185,6 +185,52 @@ export const publications: Publication[] = [
     ],
   },
   {
+    id: 'imported-or-induced',
+    title:
+      'Imported or Induced? Three Design Artifacts That Manufacture Real-World Knowledge Import in Fictional-Domain Evaluation',
+    takeaway:
+      'Errors that land on the real-world answer are not evidence of imported knowledge until three design artifacts are ruled out.',
+    tldr: 'Tao An. Fictional and counterfactual evaluations often read errors that land on the real-world answer as imported prior knowledge. On a testbed that compiles fictional Chinese statutes into deductive functions, so producible verdicts and misreading routes can be enumerated per item, three design choices each produce this signal. Across 18 models, 48% of mid-band errors on seven doctrine-linked targets land on the doctrine option, above a positional 1/3 but not above a null restricted to producible verdicts (143 observed, 135.3 expected). At one site, 89% of high-band errors land on doctrine when a case sentence routes a misapplied clause there, and 45% (null 40%) when that sentence is deleted. In a preregistered clause-order manipulation, 187 of 319 errors land on the last-listed exception; with clause position counterbalanced the doctrine share is at chance, so the preregistered doctrine test failed. Two residuals remain unexplained. An audit of 44 published evaluations for these checks closes with a checklist. Version 2 of the preprint; it revises the central claim of version 1.',
+    year: '2026',
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
+    topics: [{ label: 'Evaluation', className: 'topic-eval' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.21869829',
+    links: [{ label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21869829' }],
+    bibtex: `@misc{an2026imported,
+  title     = {Imported or Induced? Three Design Artifacts That
+               Manufacture Real-World Knowledge Import in
+               Fictional-Domain Evaluation},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21869829}
+}`,
+  },
+  {
+    id: 'sft-cross-language-geometry',
+    title:
+      'Supervised Finetuning Sets Cross-Language Representation Geometry; LLM Judge Scores Fall Further Off the Axis',
+    takeaway:
+      'The Chinese–English convergence usually blamed on RLHF enters at SFT; later stages barely move it.',
+    tldr: 'Tao An. Non-English users often report that assistant output reads like translated English, and RLHF is usually blamed. On the fully open post-training ladders of Tülu 3 (Llama-3.1-8B) and OLMo 2 7B (base → SFT → DPO → RLVR), a base-anchored cross-language register axis shows the mid-band convergence of Chinese and English is almost entirely a supervised finetuning effect: the gap contracts at SFT (12.8% on Tülu 3, 20.0% on OLMo 2) and then moves by under 4% of that contraction through DPO and RLVR. After SFT, two LLM judges from different vendors score Chinese chat output lower, with list formatting and Latin script accounting for 25–52% of the paired decline, while two native raters disagree with each other (ρ = 0.08), so a loss of human-perceived naturalness is not established. Subtracting the SFT drift direction at inference restores 42% of the representation gap, against none for same-norm random directions, yet judged naturalness does not recover. Every representation-level signature replicates in Japanese.',
+    year: '2026',
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
+    topics: [{ label: 'Interpretability', className: 'topic-interp' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.23718991',
+    links: [{ label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.23718991' }],
+    bibtex: `@misc{an2026sft,
+  title     = {Supervised Finetuning Sets Cross-Language
+               Representation Geometry; {LLM} Judge Scores Fall
+               Further Off the Axis},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23718991}
+}`,
+  },
+  {
     id: 'cgep',
     title: 'CGEP: Toward Detecting and Attributing GEO Poisoning in Chinese AI Search',
     takeaway:
