@@ -106,11 +106,12 @@ export const articles: Article[] = [
     slug: 'workspace-registers',
     title: "What the Model Isn't About to Say",
     description:
-      'Interactive companion to the working paper "Registers, Not Plans": an independent replication of Anthropic\'s global-workspace claim, and why only context registers, not content plans, survive a strict readout test.',
+      'Interactive companion to an independent replication of Anthropic\'s global-workspace claim: which Jacobian-lens readouts survive a strict test against output anticipation. The current working paper, "Output Anticipation or Internal Content?", revises the register-versus-plan reading of this note.',
     date: '2026-07-08',
+    updated: '2026-10-28',
     tags: ['interpretability'],
     relatedPaper: {
-      label: 'Registers, Not Plans (code and data)',
+      label: 'Output Anticipation or Internal Content? (code and data)',
       href: 'https://github.com/tao-hpu/jspace-replication',
     },
   },

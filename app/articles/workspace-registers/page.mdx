@@ -7,6 +7,17 @@ export const metadata = articleMetadata('workspace-registers')
 
 <ArticleLayout slug="workspace-registers">
 
+> **Update, 28 October 2026.** The working paper behind this note has been revised and
+> retitled *Output Anticipation or Internal Content? Auditing Jacobian-Lens Readouts with
+> Mouth-Exclusion*. Two positive controls added since this note was written change its
+> central reading. A probe trained at the rhyme-planning position reads the upcoming rhyme
+> far above the lens, but never beats a frequency baseline that reads no activations; an
+> entity held in three different roles shows covert readout near control level in all of
+> them. The revised paper therefore does not claim that the workspace holds registers *and
+> not* plans: on these models the lens cannot tell planned content from unplanned. The
+> mouth-exclusion measurements and the language-steering result below still hold. Code and
+> data are on [GitHub](https://github.com/tao-hpu/jspace-replication).
+
 How much of a language model's intermediate computation is *about to be said*, and how much is genuinely internal? A recent interpretability proposal from Anthropic's team, [Verbalizable Representations Form a Global Workspace](https://transformer-circuits.pub/2026/workspace/index.html), gives a bold answer: a small residual-stream subspace acts as a "global workspace," readable through a Jacobian lens, in which the model holds and manipulates intermediate thoughts. The lens itself is the network's own derivative of its final hidden state with respect to an intermediate layer, averaged over a corpus and decoded through the unembedding: a training-free cousin of the tuned lens. Read the workspace and you read the model's mind; steer along it and the model follows.
 
 I set out to replicate the core experiments on open-weight models (Qwen3-1.7B and 4B) and ended up asking a sharper question. There is a confound as old as the logit lens: the intermediate layers of a well-trained decoder increasingly *anticipate the output*. A lens readout at some middle layer that matches a token the model was already about to say is evidence of convergence, not of a workspace. So the question is not "can the lens read something," but: **which lens readouts reflect content the model is *not* about to say, and which are merely echoes of the output?**
@@ -57,6 +68,6 @@ Registers, not plans.
 
 ---
 
-This is an interactive companion to the paper *Registers, Not Plans: What Lives in a Language Model's Workspace That Isn't on Its Tongue*, a working paper currently in revision. Every number here traces to a results JSON produced by a runnable script; the code, prompt sets, and per-experiment outputs are at [github.com/tao-hpu/jspace-replication](https://github.com/tao-hpu/jspace-replication). Figures are regenerated from those files.
+This is an interactive companion to the working paper first titled *Registers, Not Plans: What Lives in a Language Model's Workspace That Isn't on Its Tongue*, now revised as *Output Anticipation or Internal Content? Auditing Jacobian-Lens Readouts with Mouth-Exclusion* (see the update at the top). Every number here traces to a results JSON produced by a runnable script; the code, prompt sets, and per-experiment outputs are at [github.com/tao-hpu/jspace-replication](https://github.com/tao-hpu/jspace-replication). Figures are regenerated from those files.
 
 </ArticleLayout>

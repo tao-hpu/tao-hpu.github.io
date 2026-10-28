@@ -170,10 +170,10 @@ export const publications: Publication[] = [
   {
     id: 'workspace-registers',
     title:
-      "Registers, Not Plans: What Lives in a Language Model's Workspace That Isn't on Its Tongue",
+      'Output Anticipation or Internal Content? Auditing Jacobian-Lens Readouts with Mouth-Exclusion',
     takeaway:
-      'Covert workspace content is mostly context registers, not content plans, and it is causally load-bearing.',
-    tldr: "Tao An. An independent replication and reframing of Anthropic's “global workspace” (Jacobian-lens) claim on open Qwen3 models. A mouth-exclusion audit, which scores a lens readout as covert only when its token is far outside the model's own next-token distribution, splits the workspace: covert content survives almost only for context registers (the conversation's language, a corrupted word's intended form), while content plans (rhyme, arithmetic, associations) fall to a permutation floor. The surviving registers are causally load-bearing under amplitude-matched steering, and workspace edits rewrite the model's representation of the question itself across a 1.7B–14B scale ladder. The register and capture findings reproduce on a second architecture (Gemma-2-2B).",
+      'Most Jacobian-lens readouts are next-token anticipation; the lens cannot tell planned content from unplanned.',
+    tldr: "Tao An. Replicates the core experiments of the global-workspace (Jacobian-lens) proposal on open models (Qwen3-1.7B/4B, with Gemma-2-2B as a second family) and adds one filter to every lens readout: a hit counts as covert only if the decoded token is absent from the model's own next-token distribution at that position. Under this mouth-exclusion test on Qwen, four of the original six evaluation sets fall near their permutation floors. The two that clear them hold content whose surface form differs from the token about to be emitted: English forms of a non-English prompt's words and answer, and the corrected form of a misspelled word. Shifting activations along a language axis flips the output language with the answer intact on 56–65% of Qwen items, against 0% for an amplitude-matched control. Two positive controls calibrate the filter: a probe trained at the rhyme-planning position reads the upcoming rhyme far above the lens but never beats a frequency baseline that reads no activations, and an entity placed in three roles shows covert readout near control level in all of them. On these models the lens reads next-token anticipation plus content in a surface form the output does not use, and cannot tell planned content from unplanned.",
     year: '2026',
     status: 'working',
     badges: [{ label: 'Working paper' }],
