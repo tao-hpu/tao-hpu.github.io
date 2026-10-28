@@ -133,6 +133,27 @@ export const publications: Publication[] = [
 }`,
   },
   {
+    id: 'version-leakage',
+    title: 'Punished for Being Right: Version Leakage in LLM-Judged Evaluation of Peer Review',
+    takeaway:
+      'Grading review claims against the revised paper scores the comments authors acted on as reviewer errors.',
+    tldr: 'Tao An. Studies comparing AI and human peer reviews increasingly check review claims against papers on OpenReview, whose public version is revised after the reviews. A reviewer who correctly flagged a problem that the authors later fixed is then scored as wrong. Four LLM judges from four vendors check the claims of human and AI reviews of 50 ICLR 2024 papers. On 17 papers with a pre-review arXiv version, the public version overstates the human error rate by 50%, and the AI-to-human error ratio moves from 0.20 to 0.32; a single judge on 62 papers finds an overstatement of 35%. Claims the authors conceded and addressed in a revision are 10% of human claims but account for 42% of the net decrease in human errors on the pre-review version. AI claims remain less often contradicted. The paper closes with a checklist for choosing the reference version.',
+    year: '2026',
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
+    topics: [{ label: 'Metascience', className: 'topic-meta' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.23732186',
+    links: [{ label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.23732186' }],
+    bibtex: `@misc{an2026punished,
+  title     = {Punished for Being Right: Version Leakage in
+               {LLM}-Judged Evaluation of Peer Review},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23732186}
+}`,
+  },
+  {
     id: 'intervention-timing',
     title:
       'When Should the Agent Speak? A Survey of Intervention Timing for Always-On AI Assistants',
