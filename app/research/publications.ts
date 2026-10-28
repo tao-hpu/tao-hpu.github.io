@@ -206,7 +206,6 @@ export const publications: Publication[] = [
     status: 'published',
     badges: [
       { label: 'TMLR 2026', starred: true },
-      { label: 'Accepted · to appear', secondary: true },
     ],
     topics: [{ label: 'Human–AI', className: 'topic-hai' }],
     titleHref: 'https://openreview.net/forum?id=6ukieTMBcG',
@@ -223,8 +222,7 @@ export const publications: Publication[] = [
   journal = {Transactions on Machine Learning Research},
   issn    = {2835-8856},
   year    = {2026},
-  url     = {https://openreview.net/forum?id=6ukieTMBcG},
-  note    = {Accepted; to appear}
+  url     = {https://openreview.net/forum?id=6ukieTMBcG}
 }`,
   },
   {

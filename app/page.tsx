@@ -170,7 +170,7 @@ export default function Home() {
                   <a href="https://openreview.net/forum?id=6ukieTMBcG" target="_blank" rel="noopener noreferrer">
                     Consensus Density Predicts Output Dispersion in Aligned LLMs
                   </a>{' '}
-                  (with Shuai Feng) accepted at <strong>TMLR</strong>, with a{' '}
+                  (with Shuai Feng) published in <strong>TMLR</strong>, with a{' '}
                   <a href="https://www.youtube.com/watch?v=4_Gzy4mbSQQ" target="_blank" rel="noopener noreferrer">
                     five-minute video summary
                   </a>{' '}
