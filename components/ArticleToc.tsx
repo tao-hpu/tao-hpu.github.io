@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type TocItem = {
   id: string
@@ -59,10 +59,38 @@ export default function ArticleToc() {
     }
   }, [])
 
+  // 宽屏目录是 position: fixed，滚到页尾会压在页脚上。页脚顶端进入目录范围后，
+  // 把目录整体上移同样的距离，效果等同于目录随正文末尾一起滚走。
+  const navRef = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const nav = navRef.current
+    const footer = document.querySelector('footer')
+    if (!nav || !footer) return
+
+    const GAP = 48
+    const place = () => {
+      if (getComputedStyle(nav).position !== 'fixed') {
+        nav.style.transform = ''
+        return
+      }
+      nav.style.transform = ''
+      const overlap = nav.getBoundingClientRect().bottom + GAP - footer.getBoundingClientRect().top
+      if (overlap > 0) nav.style.transform = `translateY(${-overlap}px)`
+    }
+
+    place()
+    window.addEventListener('scroll', place, { passive: true })
+    window.addEventListener('resize', place)
+    return () => {
+      window.removeEventListener('scroll', place)
+      window.removeEventListener('resize', place)
+    }
+  }, [items])
+
   if (items.length === 0) return null
 
   return (
-    <nav className="article-toc" aria-label="On this page">
+    <nav ref={navRef} className="article-toc" aria-label="On this page">
       <details className="article-toc-mobile">
         <summary>On this page</summary>
         <ul>
