@@ -35,6 +35,33 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 'defender-window',
+    title:
+      'Who Wins the Window? Agentic Vulnerability-Response Benchmarks Measure Model Competence, Not Vulnerability Difficulty',
+    takeaway:
+      'The defender window an agentic CVE benchmark would report tracks which model is run, not the vulnerability: the deployable-defense rate spans 0.15 to 0.76 across four models.',
+    tldr:
+      'Tao An. Given a public advisory and a patch diff, an agent is scored on how fast it reaches a deployable defense against how fast it reaches a working reproducer, over nine patched N-day web vulnerabilities. Across four models the deployable-defense rate spans 0.15 to 0.76, and the ordering is a property of the model rather than of the CVE. The gap survives two scorer relaxations and a gate-threshold sweep, so it is not a scoring artifact; the one model that favors the defender does so only on CVEs it can recall from memory; and laboratory reproduction cost does not track the real-world delay to a first public exploit. A defensively framed window metric of this kind confounds model competence and memorization with vulnerability difficulty. Pilot scale (nine CVEs); all vulnerabilities are patched N-days exercised in local isolated containers, with no working exploit released.',
+    year: '2026',
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
+    topics: [
+      { label: 'AI Security', className: 'topic-safety' },
+      { label: 'Evaluation', className: 'topic-eval' },
+    ],
+    titleHref: 'https://doi.org/10.5281/zenodo.23800228',
+    links: [{ label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.23800228' }],
+    bibtex: `@misc{an2026window,
+  title     = {Who Wins the Window? Agentic Vulnerability-Response
+               Benchmarks Measure Model Competence, Not
+               Vulnerability Difficulty},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23800228}
+}`,
+  },
+  {
     id: 'machine-science-audit',
     title:
       'Recombination or Discovery? A Retrieval-Grounded Novelty Audit of Machine-Generated Research Papers',
