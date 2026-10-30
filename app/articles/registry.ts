@@ -29,6 +29,14 @@ export type Article = {
 // array order, so within a day arrange them in intended reading order.
 export const articles: Article[] = [
   {
+    slug: 'verification-without-understanding',
+    title: 'Verification Without Understanding',
+    description:
+      'Can the length of the shortest human-readable explanation of a chess endgame be measured? Three rounds say: king and rook needs four rules once "the box" is a concept, and lookahead trades against rules (3 rules at depth 3 vs 4 at depth 1). Bishop and knight stalled at 87% against a 95% gate. The ruler bends with the concept library; the humans are fine.',
+    date: '2026-10-30',
+    tags: ['human-ai'],
+  },
+  {
     slug: 'cgep',
     title: 'Purchasable, Not Obscure',
     description:
