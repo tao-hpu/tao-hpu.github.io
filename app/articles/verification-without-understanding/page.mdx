@@ -1,0 +1,188 @@
+import ArticleLayout from '@/components/ArticleLayout'
+import { articleMetadata } from '@/app/articles/registry'
+
+export const metadata = articleMetadata('verification-without-understanding')
+
+<ArticleLayout slug="verification-without-understanding">
+
+The seven-piece tablebase contains a position in which White forces mate in 549
+moves. Every move has been verified as optimal, and the whole line can be printed.
+Nobody can say why it wins. Tim Krabbé's verdict on such lines: a grandmaster
+understands them no better than someone who learned chess yesterday.
+
+Verified truths that nobody understands used to be rare, because whoever could
+not follow one could not have found it either. Machine search changed the supply.
+Computer proofs of the four-colour theorem, AlphaZero moves that strong players
+cannot explain, and features inside language models that match no human concept
+all belong to the same class. This note is about a small, mostly failed attempt to
+measure that class in the one domain where the ground truth is complete.
+
+## Three ways of failing to understand
+
+Philosophy has a name for the worry that human understanding has a ceiling. Colin
+McGinn (1989) called it *cognitive closure*: a mind M is closed with respect to a
+property P when the concept-forming procedures available to M cannot extend to a
+grasp of P. Chomsky's "problems versus mysteries" and Nagel's bat make the same
+point from different sides. David Deutsch's reply is that a mind with recursive
+language, mathematics and external memory is a universal explainer, so nothing
+explicable is out of reach in principle.
+
+The debate has stalled for decades, and I think one reason is that both sides treat
+"understanding" as something a mind either has or lacks. Vlerick and Boudry (2017)
+made the first useful cut. They separate *representational* closure (no true theory
+can be represented at all) from *psychological* closure (the theory can be written
+down, but not grasped), and argue that McGinn's evidence reaches only the second.
+
+I add one level below theirs and sort the three by where a human fails:
+
+| Level | Where the failure is | Example | Decidable? |
+| --- | --- | --- | --- |
+| 1 Intuitive | Cannot picture it, can reason about it formally | 4-D geometry, superposition | Yes, and mathematics already routes around it |
+| 2 Capacity | An explanation exists, but its shortest acceptable form exceeds working memory, training time or a lifetime | The 549-move mate | **Measurable** |
+| 3 Representational | The concept-forming machinery produces no adequate representation | The ant and the third dimension; perhaps consciousness | Not from the inside |
+
+Level 3 can never be confirmed from inside: a mind missing a concept cannot list
+what it is missing. That is both the strength of McGinn's position and the reason
+it is hard to argue for. Level 2 is different. "An explanation exists and exceeds a
+bound" is a statement about two quantities. If both can be estimated, level 2 stops
+being speculation.
+
+So the experiment had one goal: take an endgame and measure the length of its
+shortest human-readable explanation.
+
+## Round one: score by optimal moves, and KRK does not calibrate
+
+The plan looked straightforward. Fix a vocabulary of features a chess player
+actually uses (king distance, the opposition, the region the defending king can
+reach), fit a decision tree to the tablebase's optimal moves, and count the rules
+needed for 95% fidelity. The rule count is the explanation length L.
+
+King and rook against king is an ending a club player learns in an hour. The method
+could not measure it. Across four endings and three feature vocabularies, no fit
+reached 80% agreement with the tablebase's optimal move. KRK topped out at 72% and
+stayed there with a thousand rules. Letting the learned rules actually play the
+ending out against perfect tablebase defence, within the fifty-move rule, won at
+most 19% of games.
+
+The criterion was wrong. Matching the tablebase's move at every step measures the
+tablebase's precision, and textbook technique is not move-optimal. The criterion
+would classify an ending that every club player understands as incomprehensible.
+
+There was a second problem underneath. I wrote out the textbook KRK method by hand,
+five to seven rules, and it converted 30% to 43% of positions. The failures were all
+repetitions. Textbooks contain a rule about tempo: when the box cannot shrink, make
+a waiting move with the rook. A single-step feature set has no way to say "wait".
+
+## Round two: score by winning, and KRK passes while KBNK is at zero
+
+Switch the criterion to whole-game conversion: the rule list plays White, the
+tablebase plays best defence, and only a mate inside fifty moves counts. Let the
+rules be an ordered list and let them see a little history (did the last move
+shrink the box, is this a repetition).
+
+KRK passed immediately with four rules:
+
+1. do not repeat a position;
+2. do not hang the rook or stalemate;
+3. bring the king towards the enemy king;
+4. otherwise shrink the box.
+
+Three hundred held-out positions, all won; 1,000 fresh positions over three seeds,
+99.9% to 100%. Remove any one rule and conversion drops to 42%, 13%, 83% or 0.7%.
+Four rules is the order of magnitude of a textbook presentation.
+
+Then bishop and knight against king. This is the ending players find hard. The mate
+takes over thirty moves and can only be delivered in a corner of the bishop's
+colour, so the defending king runs to the wrong-coloured corner and White has to
+escort it along the edge using a fixed knight manoeuvre that traces a W on the
+board. With the KRK vocabulary, six rules converted 0% of positions. Adding the one
+textbook concept "drive the king towards the bishop's corner" moved that to 0–1%.
+
+The contrast with KRK is the point. **KRK needs only four rules because the concept
+"the box" has already done most of the work.** Without it, a tree with hundreds of
+leaves could not win in round one. So L was never the length of the explanation. It
+was the number of rules *given a concept library*. Change the library and the
+number changes.
+
+## Round three: give rules lookahead, reach 87%, stop
+
+Round two failed for a clear reason: the W-manoeuvre is a plan a dozen moves long,
+and single-step rules cannot express a plan. Round three borrowed Bratko's 1984
+"advice language" for KRK. Each rule names a goal (say, minimise the black king's
+distance to the mating corner) and a lookahead depth d, and the engine picks the
+move that best advances the goal within d plies against worst-case defence. Depth
+counts towards explanation length; otherwise a deep enough search is just the
+tablebase again.
+
+KRK gave one clean result: **lookahead trades against rules.** Three rules with
+depths (1, 1, 3) won 99.3% of the test set; round two's four rules at depth 1 won
+100%. Explanation length can be exchanged between rule count and reasoning depth.
+
+KBNK went from 0% to 87.3% on 300 test positions, with eleven rules and depth at
+most 4. A night of beam search on 26 cores, about fifty thousand games per
+generation, took the training set to 93% and no further. The pre-registered gate
+was 95% on the test set with at most twelve rules. It did not pass.
+
+The sticking point was the same W-manoeuvre. In the wrong corner, pushing the king
+out by one square first requires repositioning knight and bishop, and for several
+moves the distance-to-corner objective does not change. A 4-ply lookahead sees no
+progress and the engine marks time until the fifty-move rule ends the game. Depth
+was not even monotone: the same rule list at depths 4, 5 and 6 converted 56%, 25%
+and 71% of positions, which is worst-case search behaving differently on odd and
+even depths.
+
+## What three rounds show
+
+First, what they do not show. **They do not show that humans are cognitively closed
+to KBNK.** Players learn it; a textbook covers it in a page. Three rounds failed to
+measure it, and that is a fact about the ruler.
+
+They do show three things.
+
+**Explanation length is always relative to a concept library.** With "the box", KRK
+is four rules; without it, hundreds of rules do not win. The same ending looks like
+level 3 (every compression fails) when a concept is missing and drops to level 2 (a
+short explanation exists) when it is supplied. The boundary between levels 2 and 3
+is a property of the library, not of the world. That is an empirical version of the
+phrase McGinn's definition turns on, "concept-forming procedures": what decides
+closure in practice is not the abstract power of the procedures but which concepts
+they have produced so far.
+
+**The rule language decides what can be written short.** KBNK went 0% → 56% → 87%
+across the three rounds, and each jump came from extending the language: history,
+then goals, then lookahead. The remaining 13% sits in a fixed multi-move sequence
+that "rules plus shallow lookahead" cannot compress. How do human players handle
+it? They memorise it. The W-manoeuvre has a name in the textbooks; it is a macro.
+
+**A measurement of human limits must first calibrate on things humans understand.**
+Round one failed on KRK, which means it was not measuring understanding at all.
+This sounds obvious. In discussions of AI producing results humans cannot follow,
+the step is usually skipped.
+
+## If this restarts
+
+The entry point is clear: allow move macros in the rule language and charge their
+length to the explanation. The cost convention has to come first (an eight-move
+macro costs eight, or one?), then KBNK has to clear 95%, and only then is there any
+business pushing to five- and seven-piece endings. The curve I wanted, L against
+human capacity from KRK out to the 549-move mate, is still the figure I would like
+to see. I now know that drawing it first requires proving the ruler is straight.
+
+The point of the exercise was to split an uncomfortable question into a part that
+can be measured and a part that is marked undecidable. The experiment did not give
+me the figure. It gave me a precise account of why the ruler bends, which is worth
+more than a figure that does not hold up.
+
+---
+
+Code, data and the notes for all three rounds live in a local repository
+(`cognitive-closure-probe/`, directories `pilot/`, `pilot2/`, `pilot3/`). Endgame
+truth comes from Syzygy 3–5 piece tables. Rule search is beam search; the lookahead
+core is written in C and was checked position by position against a Python
+reference. Every conversion rate above is the share of positions mated within fifty
+moves against best tablebase defence. References: McGinn 1989, *Mind* 98;
+Vlerick & Boudry 2017, *Dialectica* 71(1); Bratko 1984 on the KRK advice language;
+Schut et al. 2025, *PNAS* 122(13); Hewitt, Geirhos & Kim 2025, ICML; Krabbé's
+remark is quoted in the Wikipedia article on endgame tablebases.
+
+</ArticleLayout>
