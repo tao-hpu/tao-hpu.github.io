@@ -80,6 +80,8 @@ export const publications: Publication[] = [
     titleHref: 'https://doi.org/10.5281/zenodo.21696223',
     links: [
       { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21696223' },
+      { label: 'NeurIPS page', href: 'https://neurips.cc/virtual/2026/loc/paris/164103' },
+      { label: 'OpenReview', href: 'https://openreview.net/forum?id=Ew2phMa9Ou' },
       { label: 'Code', href: 'https://github.com/tao-hpu/machine-science-audit' },
       { label: 'Video (7 min)', href: 'https://www.youtube.com/watch?v=uik29EAbfAY' },
       { label: 'Interactive note', href: '/articles/novelty-audit', internal: true },
