@@ -164,6 +164,16 @@ export default function Home() {
             </header>
             <div className="news-list">
               <div className="news-item">
+                <time className="news-date" dateTime="2026-11">2026.11</time>
+                <p className="news-body">
+                  <span className="news-dot news-dot-research"></span>
+                  <a href="https://arxiv.org/abs/2601.00821" target="_blank" rel="noopener noreferrer">
+                    Fidelity Before Structure
+                  </a>{' '}
+                  accepted to the <strong>EACL&nbsp;2027</strong> main conference (Athens, March 2027).
+                </p>
+              </div>
+              <div className="news-item">
                 <time className="news-date" dateTime="2026-10">2026.10</time>
                 <p className="news-body">
                   <span className="news-dot news-dot-research"></span>

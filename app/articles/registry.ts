@@ -166,7 +166,7 @@ export const articles: Article[] = [
     slug: 'verbatim-memory',
     title: 'What Structured Memory Forgets',
     description:
-      'Interactive companion to "Fidelity Before Structure" (arXiv:2601.00821): explore the benchmark results and see why extraction loses to verbatim chunks at write time.',
+      'Interactive companion to "Fidelity Before Structure" (EACL 2027; arXiv:2601.00821): explore the benchmark results and see why extraction loses to verbatim chunks at write time.',
     date: '2026-07-07',
     tags: ['llm-memory'],
     relatedPaper: {
