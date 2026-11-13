@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { STATUS_FILTERS, publications, type Publication } from './publications'
 
 type StatusKey = (typeof STATUS_FILTERS)[number]['key']
@@ -93,8 +93,34 @@ function PubItem({ pub }: { pub: Publication }) {
   )
 }
 
+const STATUS_KEYS = new Set<string>(STATUS_FILTERS.map((f) => f.key))
+
+// The active tab lives in ?status= so a refresh or a shared link keeps it.
+// The page is statically exported, so the query is read on mount (not via
+// useSearchParams, which would need a Suspense boundary and render the list
+// client-only); the first paint shows "All" and switches if a param is set.
+function readStatusFromUrl(): StatusKey {
+  const v = new URLSearchParams(window.location.search).get('status')
+  return v && STATUS_KEYS.has(v) ? (v as StatusKey) : 'all'
+}
+
 export default function PublicationList() {
   const [status, setStatus] = useState<StatusKey>('all')
+
+  useEffect(() => {
+    setStatus(readStatusFromUrl())
+    const onPop = () => setStatus(readStatusFromUrl())
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
+  const selectStatus = (key: StatusKey) => {
+    setStatus(key)
+    const url = new URL(window.location.href)
+    if (key === 'all') url.searchParams.delete('status')
+    else url.searchParams.set('status', key)
+    window.history.replaceState(window.history.state, '', url)
+  }
 
   const filtered = useMemo(() => {
     if (status === 'all') return ORDERED
@@ -110,7 +136,7 @@ export default function PublicationList() {
             type="button"
             className={`pub-filter${status === f.key ? ' is-active' : ''}`}
             aria-pressed={status === f.key}
-            onClick={() => setStatus(f.key)}
+            onClick={() => selectStatus(f.key)}
           >
             {f.label}
             {f.key !== 'all' && (

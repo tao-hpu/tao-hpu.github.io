@@ -35,6 +35,44 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 'verbatim-memory',
+    title:
+      'Fidelity Before Structure: Verbatim Chunks Beat Lossy Artifact Extraction in Long-Conversation LLM Memory',
+    takeaway:
+      'Verbatim chunks beat lossy extracted artifacts by 16 to 22 points; structure should augment text, not replace it.',
+    tldr: "Tao An. A controlled ablation isolating the stored memory representation inside one fixed retrieve-rerank-reason pipeline: LLM-extracted typed artifacts versus verbatim conversation chunks, holding the model, retriever, reranker, and judge constant. Verbatim chunks win by 15.9 points on LoCoMo (43.9% vs. 28.0%) and 22.0 points on LongMemEval-S (67.4% vs. 45.4%); the extracted-artifact pipeline never beats naive RAG. The mechanism is lossy distillation: extraction discards verbatim detail that chunks retain for free, so structured memory should augment verbatim text, not replace it. (Formerly titled It's Fidelity, Not Structure.)",
+    year: '2027',
+    status: 'published',
+    badges: [
+      { label: 'EACL 2027', starred: true },
+      { label: 'Main · to appear', secondary: true },
+    ],
+    topics: [{ label: 'LLM Memory', className: 'topic-mem' }],
+    titleHref: 'https://arxiv.org/abs/2601.00821',
+    links: [
+      { label: 'arXiv', href: 'https://arxiv.org/abs/2601.00821' },
+      { label: 'OpenReview', href: 'https://openreview.net/forum?id=RbKvrqN564' },
+      { label: 'PDF', href: 'https://arxiv.org/pdf/2601.00821' },
+      { label: 'Code', href: 'https://github.com/tao-hpu/cog-canvas' },
+      {
+        label: 'Dataset',
+        href: 'https://huggingface.co/datasets/tao-hpu/cog-canvas-benchmark',
+      },
+      { label: 'Interactive note', href: '/articles/verbatim-memory', internal: true },
+      { label: 'Read on Aha. (中文)', href: 'https://aha.fim.ai/paper/2601.00821' },
+    ],
+    bibtex: `@inproceedings{an2027fidelity,
+  title     = {Fidelity Before Structure: Verbatim Chunks Beat Lossy
+               Artifact Extraction in Long-Conversation LLM Memory},
+  author    = {An, Tao},
+  booktitle = {Proceedings of the 2027 Conference of the European Chapter
+               of the Association for Computational Linguistics
+               (Volume 1: Long Papers)},
+  year      = {2027},
+  note      = {To appear. arXiv:2601.00821}
+}`,
+  },
+  {
     id: 'defender-window',
     title:
       'Who Wins the Window? Agentic Vulnerability-Response Benchmarks Measure Model Competence, Not Vulnerability Difficulty',
@@ -340,38 +378,6 @@ export const publications: Publication[] = [
   issn    = {2835-8856},
   year    = {2026},
   url     = {https://openreview.net/forum?id=6ukieTMBcG}
-}`,
-  },
-  {
-    id: 'verbatim-memory',
-    title:
-      'Fidelity Before Structure: Verbatim Chunks Beat Lossy Artifact Extraction in Long-Conversation LLM Memory',
-    takeaway:
-      'Verbatim chunks beat lossy extracted artifacts by 16 to 22 points; structure should augment text, not replace it.',
-    tldr: "Tao An. A controlled ablation isolating the stored memory representation inside one fixed retrieve-rerank-reason pipeline: LLM-extracted typed artifacts versus verbatim conversation chunks, holding the model, retriever, reranker, and judge constant. Verbatim chunks win by 15.9 points on LoCoMo (43.9% vs. 28.0%) and 22.0 points on LongMemEval-S (67.4% vs. 45.4%); the extracted-artifact pipeline never beats naive RAG. The mechanism is lossy distillation: extraction discards verbatim detail that chunks retain for free, so structured memory should augment verbatim text, not replace it. (Formerly titled It's Fidelity, Not Structure.)",
-    year: '2026',
-    status: 'preprint',
-    badges: [{ label: 'Preprint' }],
-    topics: [{ label: 'LLM Memory', className: 'topic-mem' }],
-    titleHref: 'https://arxiv.org/abs/2601.00821',
-    links: [
-      { label: 'arXiv', href: 'https://arxiv.org/abs/2601.00821' },
-      { label: 'PDF', href: 'https://arxiv.org/pdf/2601.00821' },
-      { label: 'Code', href: 'https://github.com/tao-hpu/cog-canvas' },
-      {
-        label: 'Dataset',
-        href: 'https://huggingface.co/datasets/tao-hpu/cog-canvas-benchmark',
-      },
-      { label: 'Interactive note', href: '/articles/verbatim-memory', internal: true },
-      { label: 'Read on Aha. (中文)', href: 'https://aha.fim.ai/paper/2601.00821' },
-    ],
-    bibtex: `@article{an2026fidelity,
-  title   = {Fidelity Before Structure: Verbatim Chunks Beat Lossy
-             Artifact Extraction in Long-Conversation LLM Memory},
-  author  = {An, Tao},
-  journal = {arXiv preprint arXiv:2601.00821},
-  year    = {2026},
-  note    = {Formerly titled It's Fidelity, Not Structure}
 }`,
   },
   {
