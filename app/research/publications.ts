@@ -448,17 +448,17 @@ export const publications: Publication[] = [
 }`,
   },
   {
-    id: 'gnn-patent',
-    title: 'A Graph-Neural-Network Method for Data-Information Recommendation',
-    takeaway: 'Chinese invention patent (pending): GNN recommendation over heterogeneous graphs.',
-    tldr: 'Tao An. Chinese invention patent, under examination. GNN-based recommendation over heterogeneous data–information graphs.',
+    id: 'tool-call-patent',
+    title: 'A Tool-Call Governance Method and System for Large Language Model Agents',
+    takeaway: 'Chinese invention patent application (filed; preliminary examination passed): governing tool calls made by LLM agents.',
+    tldr: 'Tao An (inventor; applicant Beijing FIM Network Technology Co., Ltd.). Chinese invention patent application No. 202611257740.2, filed 19 August 2026. Passed preliminary examination on 10 September 2026; early publication requested. Not yet granted.',
     year: '2026',
     status: 'patent',
     badges: [
-      { label: 'Patent' },
-      { label: 'Pending', secondary: true },
+      { label: 'Patent application' },
+      { label: 'Filed', secondary: true },
     ],
-    topics: [{ label: 'Knowledge Graphs', className: 'topic-kg' }],
+    topics: [{ label: 'AI Security', className: 'topic-safety' }],
   },
 ]
 
