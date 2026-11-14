@@ -1,6 +1,7 @@
 import ArticleLayout from '@/components/ArticleLayout'
 import MemoryBenchmarkExplorer from '@/components/MemoryBenchmarkExplorer'
 import LossyExtractionDemo from '@/components/LossyExtractionDemo'
+import VideoEmbed from '@/components/VideoEmbed'
 import { articleMetadata } from '@/app/articles/registry'
 
 export const metadata = articleMetadata('verbatim-memory')
@@ -23,6 +24,12 @@ should show up here, with everything else held constant.
 It does not. This note is the interactive companion: the result tables as figures you
 can poke at, and a demo of the mechanism. It is not a substitute for the
 [paper](https://arxiv.org/pdf/2601.00821), which has the controls and the statistics.
+
+<VideoEmbed
+  youtubeId="sc2Inm9WP-c"
+  title="Fidelity Before Structure (EACL 2027): Verbatim Chunks Beat Extracted Memory in LLM Conversations"
+  caption={<>Six-minute summary of the paper. Also on <a href="https://www.bilibili.com/video/BV1D3WB6QEex/" target="_blank" rel="noopener noreferrer">Bilibili</a>.</>}
+/>
 
 ## The result, and the trap I built for myself
 

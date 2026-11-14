@@ -53,6 +53,7 @@ export const publications: Publication[] = [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2601.00821' },
       { label: 'OpenReview', href: 'https://openreview.net/forum?id=RbKvrqN564' },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2601.00821' },
+      { label: 'Video (6 min)', href: 'https://www.youtube.com/watch?v=sc2Inm9WP-c' },
       { label: 'Code', href: 'https://github.com/tao-hpu/cog-canvas' },
       {
         label: 'Dataset',
