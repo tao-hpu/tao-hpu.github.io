@@ -5,15 +5,9 @@ import { STATUS_FILTERS, publications, type Publication } from './publications'
 
 type StatusKey = (typeof STATUS_FILTERS)[number]['key']
 
-// Peer-reviewed work first, then public preprints, then the rest. Within a
-// status the array order in publications.ts holds (newest first).
-const STATUS_RANK: Record<Publication['status'], number> = {
-  published: 0,
-  preprint: 1,
-  working: 2,
-  patent: 3,
-}
-const ORDERED = [...publications].sort((a, b) => STATUS_RANK[a.status] - STATUS_RANK[b.status])
+// Newest first, in the array order of publications.ts; the status tabs do the
+// grouping, so the "All" view is a plain timeline.
+const ORDERED = publications
 
 function Badge({
   label,

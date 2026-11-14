@@ -423,6 +423,19 @@ export const publications: Publication[] = [
 }`,
   },
   {
+    id: 'tool-call-patent',
+    title: 'A Tool-Call Governance Method and System for Large Language Model Agents',
+    takeaway: 'Chinese invention patent application (filed; preliminary examination passed): governing tool calls made by LLM agents.',
+    tldr: 'Tao An (inventor; applicant Beijing FIM Network Technology Co., Ltd.). Chinese invention patent application No. 202611257740.2, filed 19 August 2026. Passed preliminary examination on 10 September 2026; early publication requested. Not yet granted.',
+    year: '2026',
+    status: 'patent',
+    badges: [
+      { label: 'Patent application' },
+      { label: 'Filed', secondary: true },
+    ],
+    topics: [{ label: 'AI Security', className: 'topic-safety' }],
+  },
+  {
     id: 'cognitive-workspace',
     title: 'Cognitive Workspace: Active Memory Management for LLMs',
     takeaway:
@@ -446,19 +459,6 @@ export const publications: Publication[] = [
   journal = {arXiv preprint arXiv:2508.13171},
   year    = {2025}
 }`,
-  },
-  {
-    id: 'tool-call-patent',
-    title: 'A Tool-Call Governance Method and System for Large Language Model Agents',
-    takeaway: 'Chinese invention patent application (filed; preliminary examination passed): governing tool calls made by LLM agents.',
-    tldr: 'Tao An (inventor; applicant Beijing FIM Network Technology Co., Ltd.). Chinese invention patent application No. 202611257740.2, filed 19 August 2026. Passed preliminary examination on 10 September 2026; early publication requested. Not yet granted.',
-    year: '2026',
-    status: 'patent',
-    badges: [
-      { label: 'Patent application' },
-      { label: 'Filed', secondary: true },
-    ],
-    topics: [{ label: 'AI Security', className: 'topic-safety' }],
   },
 ]
 
