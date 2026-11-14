@@ -33,8 +33,8 @@ Three things worth clicking through:
 1. **On both real benchmarks, verbatim chunks win big.** 43.9% vs. 28.0% on LoCoMo,
    67.4% vs. 45.4% on LongMemEval-S. That is a 15.9 and a 22.0 point gap from changing
    nothing but the stored representation (McNemar p&nbsp;&lt;&nbsp;10⁻¹⁵ on both).
-   The extracted-artifact pipeline, with all its machinery, never beats naive
-   RAG + rerank overall.
+   The extracted-artifact pipeline, with all its machinery, does not beat naive
+   RAG + rerank in overall accuracy on either benchmark.
 2. **Temporal questions are where extraction hurts most.** On LoCoMo temporal
    reasoning, chunks hit 50.2% against 31.2% for artifacts, and 16.5% for a plain
    RAG baseline with no timestamps at all. A verbatim store preserves dates
@@ -46,9 +46,12 @@ Three things worth clicking through:
    extractor is good at catching, so the benchmark and the system agreed with each
    other. Real benchmarks ask about things no schema author anticipated.
 
-Also worth noting what did *not* help: unioning the two stores. Chunks ∪ artifacts
-scores slightly *below* chunks alone on both benchmarks. Adding a lossy store to a
-faithful one just adds retrieval noise.
+The union row is the other control worth a look. Indexing artifacts *alongside* the
+chunks scores 42.5% on LoCoMo and 64.6% on LongMemEval-S, slightly below chunks alone,
+with no significant difference detected on either benchmark (which does not establish
+equivalence). It stays far above artifacts alone. Keeping structure next to the
+verbatim text costs no detected accuracy; substituting it for the text is what loses
+the 16 to 22 points.
 
 ## The mechanism is lossy distillation
 
@@ -62,12 +65,14 @@ watch which crosses it can and cannot fix:
 
 <LossyExtractionDemo />
 
-In the error analysis of 147 discordant LoCoMo questions, 69% of the diagnosable
-chunks-pass-artifacts-fail cases are write-time gaps: the fact simply was not
-deliberately extracted. Within those, 78.8% are salience misjudgments (the extractor
-did not consider it worth keeping), 14.9% are lost dates and times, and 6.4% are
-broken reasoning chains. A store-level probe makes it concrete: for 29.3% of these
-questions, the gold answer survives in *zero* artifacts. The information was in the
+A store-level probe over the 147 LoCoMo questions that chunks answer and artifacts
+miss makes this concrete. Of the 58 that can be diagnosed, 29.3% concern facts absent
+from every stored artifact, and another 39.7% concern facts that survive only in a raw
+context field, never as a typed fact. A paraphrase-tolerant re-test with an LLM judge
+finds an extracted artifact sufficient for only 2 of 42 validated questions. Across
+the 3,121 keywords missing from the artifact pipeline's failed answers, 78.8% trace
+to salience misjudgments (the extractor did not consider the fact worth keeping),
+14.9% to lost dates and times, and 6.4% to broken reasoning chains. The information was in the
 conversation, the pipeline was fine, and the answer had already been deleted before
 any question was asked.
 
