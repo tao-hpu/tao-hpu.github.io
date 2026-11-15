@@ -425,6 +425,13 @@ export default function OpenSource() {
                   <a href="https://body.fim.ai" target="_blank" rel="noopener noreferrer">
                     Read online
                   </a>
+                  <a
+                    href="https://github.com/tao-hpu/body-whitepaper"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
                 </div>
               </div>
             </div>
