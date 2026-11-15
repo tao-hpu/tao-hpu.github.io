@@ -29,6 +29,7 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/tao-hpu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili</a>
           <a href={`mailto:${SITE_EMAIL}`}>Email</a>
         </div>
 
@@ -36,14 +37,6 @@ export default function Footer() {
           <h4>Work &amp; Writing</h4>
           <a href="https://github.com/fim-ai/fim-one" target="_blank" rel="noopener noreferrer">FIM One</a>
           <a href="https://tao-hpu.medium.com/" target="_blank" rel="noopener noreferrer">Medium</a>
-        </div>
-
-        <div className="footer-column">
-          <h4>中文资源</h4>
-          <a href="https://aha.fim.ai" target="_blank" rel="noopener noreferrer">Aha. 论文导读</a>
-          <a href="https://learn-llm.fim.ai/" target="_blank" rel="noopener noreferrer">从零手写大语言模型</a>
-          <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili</a>
-          <a href="https://l2a.fim.ai" target="_blank" rel="noopener noreferrer">线性代数 → 注意力</a>
         </div>
       </div>
 

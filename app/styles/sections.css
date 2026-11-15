@@ -702,7 +702,7 @@
     max-width: calc(var(--max-width) - 6rem);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr repeat(4, auto);
+    grid-template-columns: 1fr repeat(3, auto);
     gap: 4rem;
     padding-bottom: 3rem;
 }
