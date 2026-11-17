@@ -87,7 +87,7 @@ export const publications: Publication[] = [
     titleHref: 'https://doi.org/10.5281/zenodo.24303153',
     links: [
       { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.24303153' },
-      { label: 'Code', href: 'https://github.com/tao-hpu/jspace-replication' },
+      { label: 'Code + per-item data (Zenodo)', href: 'https://doi.org/10.5281/zenodo.24303153' },
     ],
     bibtex: `@misc{an2026null,
   title     = {Making the Null Interpretable: Verified Workspace
