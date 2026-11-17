@@ -74,6 +74,56 @@ export const publications: Publication[] = [
 }`,
   },
   {
+    id: 'null-interpretable',
+    title:
+      'Making the Null Interpretable: Verified Workspace Rewrites and the Limits of Introspective Report',
+    takeaway:
+      "A verified internal rewrite is rarely reported, and yes rates above 2% appear only with the model's own answer in context.",
+    tldr: "Tao An. Verifies an internal workspace rewrite on every item and scores verbal report against an amplitude-matched random control; report of the verified swap is rare or non-specific, and yes rates above 2% appear only with the model's own answer in context.",
+    year: '2026',
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
+    topics: [{ label: 'Interpretability', className: 'topic-interp' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.24303153',
+    links: [
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.24303153' },
+      { label: 'Code + per-item data (Zenodo)', href: 'https://doi.org/10.5281/zenodo.24303153' },
+    ],
+    bibtex: `@misc{an2026null,
+  title     = {Making the Null Interpretable: Verified Workspace
+               Rewrites and the Limits of Introspective Report},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.24303153}
+}`,
+  },
+  {
+    id: 'workspace-development',
+    title:
+      'Collapse, Read, Consolidate? Tracing a Jacobian-Lens Workspace Through Pythia Training',
+    takeaway:
+      'Across Pythia training the lens cone collapses first, answers become readable next, and multi-hop intermediates last and only at scale.',
+    tldr: 'Tao An. Fits an independent Jacobian lens at each of 23 public training checkpoints of four Pythia models (70M–1.4B) and reads three observables: the effective dimension of the lens-transported entity cone, the drift of lens coordinates away from the unembedding, and the rank of answers and multi-hop intermediates in the per-layer readout. Under fixed onset criteria the signatures arrive in ordered stages: effective dimension collapses first (steps 512–1,000), answer readability follows (2,000–6,000), and intermediate readability appears last (9,000–13,000 in the 1B and deduplicated 1.4B runs) and only at sufficient scale. Induction heads form inside the collapse window, one stage before answers. On OLMo-1B, over its first 143,000 steps, the three stages arrive in the same order, while the step windows, the lead of induction heads and the time course of the compression differ, so the scale account of consolidation remains a hypothesis within Pythia. The paper also documents an anisotropy correction without which cross-model effective dimensions are incomparable, and a public Pythia checkpoint branch that contains the final weights and mimics a phase transition.',
+    year: '2026',
+    status: 'preprint',
+    badges: [{ label: 'Preprint' }],
+    topics: [{ label: 'Interpretability', className: 'topic-interp' }],
+    titleHref: 'https://doi.org/10.5281/zenodo.21696226',
+    links: [
+      { label: 'PDF (Zenodo)', href: 'https://doi.org/10.5281/zenodo.21696226' },
+      { label: 'Code', href: 'https://github.com/tao-hpu/jspace-replication' },
+    ],
+    bibtex: `@misc{an2026collapse,
+  title     = {Collapse, Read, Consolidate? Tracing a Jacobian-Lens
+               Workspace Through Pythia Training},
+  author    = {An, Tao},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21696226}
+}`,
+  },
+  {
     id: 'defender-window',
     title:
       'Who Wins the Window? Agentic Vulnerability-Response Benchmarks Measure Model Competence, Not Vulnerability Difficulty',
