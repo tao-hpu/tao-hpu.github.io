@@ -476,13 +476,13 @@ export const publications: Publication[] = [
   {
     id: 'tool-call-patent',
     title: 'A Tool-Call Governance Method and System for Large Language Model Agents',
-    takeaway: 'Chinese invention patent application (published; not yet granted): governing tool calls made by LLM agents.',
-    tldr: 'Tao An (inventor; applicant Beijing FIM Network Technology Co., Ltd.). Chinese invention patent application No. 202611257740.2, filed 19 August 2026. Passed preliminary examination on 10 September 2026; published by CNIPA on 17 November 2026 as CN 123116265 A. Not yet granted.',
+    takeaway: 'Chinese invention patent application (published, under substantive examination; not yet granted): governing tool calls made by LLM agents.',
+    tldr: 'Tao An (inventor; applicant Beijing FIM Network Technology Co., Ltd.). Chinese invention patent application No. 202611257740.2, filed 19 August 2026. Passed preliminary examination on 10 September 2026; published by CNIPA on 17 November 2026 as CN 123116265 A and entered substantive examination the same day. Not yet granted.',
     year: '2026',
     status: 'patent',
     badges: [
       { label: 'Patent application' },
-      { label: 'Published', secondary: true },
+      { label: 'Under examination', secondary: true },
     ],
     topics: [{ label: 'AI Security', className: 'topic-safety' }],
   },
