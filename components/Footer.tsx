@@ -30,6 +30,7 @@ export default function Footer() {
           <a href="https://github.com/tao-hpu" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.youtube.com/@tao-hpu" target="_blank" rel="noopener noreferrer">YouTube</a>
           <a href="https://space.bilibili.com/29563269" target="_blank" rel="noopener noreferrer">Bilibili</a>
+          <a href="https://www.xiaohongshu.com/user/profile/62cf44db000000000e00e8f0" target="_blank" rel="noopener noreferrer">Xiaohongshu</a>
           <a href={`mailto:${SITE_EMAIL}`}>Email</a>
         </div>
 
