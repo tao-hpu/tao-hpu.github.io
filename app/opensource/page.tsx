@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Courses and developer tools by Tao An: linear algebra to attention, a from-scratch LLM course, algorithm visualizations, an IELTS whitepaper, a Chinese-English grammar reader, Tuto for citation-integrity auditing, AI-coding utilities, TLS automation, and merged upstream fixes.',
   keywords:
-    'Tao An, open source, linalg-to-attention, llm-from-scratch, english-catalog, English grammar, ielts-whitepaper, IELTS, body-whitepaper, weight management, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
+    'Tao An, open source, linalg-to-attention, llm-from-scratch, learn-llm, english-catalog, English grammar, ielts-whitepaper, IELTS, body-whitepaper, weight management, Tuto, citation integrity, citation auditing, research tools, nano-spec, Claude Code, AI coding tools, DevOps, ACME, SSL automation',
   openGraph: {
     title: 'Open Source · Tao An',
     description: 'Open courses, research tools, AI-coding utilities, and upstream contributions.',
@@ -251,7 +251,7 @@ export default function OpenSource() {
               <div className="publication-simple-meta">
                 <span className="venue-badge">Course</span>
                 <span className="venue-badge venue-badge-secondary">中文 · Chinese</span>
-                <span className="venue-badge venue-badge-secondary">Python · HTML</span>
+                <span className="venue-badge venue-badge-secondary">Python · React</span>
               </div>
               <div className="publication-simple-body">
                 <a
@@ -278,7 +278,14 @@ export default function OpenSource() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    GitHub
+                    Code (GitHub)
+                  </a>
+                  <a
+                    href="https://github.com/tao-hpu/learn-llm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Site source (GitHub)
                   </a>
                 </div>
               </div>
