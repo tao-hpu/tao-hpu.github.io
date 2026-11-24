@@ -1,6 +1,9 @@
 'use client'
 
 import * as d3 from 'd3'
+// d3 >=7.9.2 declares sideEffects:false, so the bundler drops d3-transition's
+// selection.prototype.transition patch unless it is imported directly.
+import 'd3-transition'
 import { useEffect, useRef } from 'react'
 
 /**
