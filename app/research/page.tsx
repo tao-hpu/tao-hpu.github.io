@@ -36,7 +36,8 @@ export default function ResearchPage() {
             <p className="hero-description fade-in" style={{ animationDelay: '0.6s' }}>
               <strong>Retrieval-augmented generation</strong>, <strong>LLM long-term memory</strong>,
               and <strong>when agents should intervene</strong>: formalizing production practice into
-              reproducible research. MS in Artificial Intelligence, Hawaii Pacific University (2026).
+              reproducible research. MS in Artificial Intelligence, Hawaii Pacific University (2026);
+              incoming Doctor of Artificial Intelligence student, Golden Gate University (January 2027).
             </p>
           </div>
         </section>

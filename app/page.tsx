@@ -147,8 +147,9 @@ export default function Home() {
                 to production AI for government and enterprise clients.
               </p>
               <p className="about-text">
-                MS in Artificial Intelligence, Hawaii Pacific University (2026). Working in AI
-                since 2021, with interests in memory architectures, knowledge graphs, and
+                MS in Artificial Intelligence, Hawaii Pacific University (2026); admitted to the
+                Doctor of Artificial Intelligence program at Golden Gate University, starting
+                January 2027. Working in AI since 2021, with interests in memory architectures, knowledge graphs, and
                 intervention timing for always-on assistants.
               </p>
             </div>
