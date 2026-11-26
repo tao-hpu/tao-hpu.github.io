@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
+import HeroIndex from '@/components/HeroIndex'
 import HeroTitle from '@/components/HeroTitle'
-import NeuralNetwork from '@/components/NeuralNetwork'
 import { SITE_DESCRIPTION, SITE_EMAIL, SITE_TAGLINE, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -33,8 +33,8 @@ export default function Home() {
               <a href={`mailto:${SITE_EMAIL}`}>Email</a>
             </p>
           </div>
-          <div className="hero-visual fade-in" style={{ animationDelay: '0s' }}>
-            <NeuralNetwork />
+          <div className="hero-visual fade-in" style={{ animationDelay: '0.5s' }}>
+            <HeroIndex />
           </div>
         </section>
 
