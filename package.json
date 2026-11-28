@@ -16,14 +16,11 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.3.4",
-    "d3": "^7.9.0",
-    "d3-transition": "^3.0.2",
     "next": "^15.5.28",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@types/d3": "^7.4.3",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.15.0",
     "@types/react": "^19.1.0",
